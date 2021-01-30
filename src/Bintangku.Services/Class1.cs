@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bintangku.Service
+namespace Bintangku.Services
 {
     public class Class1
     {
