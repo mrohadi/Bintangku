@@ -28,6 +28,8 @@ namespace Bintangku.WebApi
                     );
             });
             services.AddControllers();
+            services.AddCors();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bintangku.WebApi", Version = "v1" });
@@ -47,6 +49,9 @@ namespace Bintangku.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(policy => 
+                policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 
