@@ -1,16 +1,14 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Bintangku.Data;
 using Bintangku.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bintangku.WebApi.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class NakesUsersController : ControllerBase
+    public class NakesUsersController : BaseApiController
     {
         private readonly ApplicationDataContext _context;
         public NakesUsersController(ApplicationDataContext context)
@@ -22,6 +20,7 @@ namespace Bintangku.WebApi.Controllers
         /// Http get method to get nakes user data from database
         /// </summary>
         /// <returns>List of nakes users</returns>
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NakesUser>>> GetNakesUsers()
         {
@@ -33,6 +32,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<NakesUser>> GetNakesUser(int id)
         {

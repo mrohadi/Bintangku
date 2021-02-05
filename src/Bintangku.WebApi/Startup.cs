@@ -1,11 +1,13 @@
-using Bintangku.Data;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Bintangku.Services.Extensions;
 
 namespace Bintangku.WebApi
 {
@@ -21,12 +23,10 @@ namespace Bintangku.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDataContext>(options =>
-            {
-                options.UseSqlite(
-                    _config.GetConnectionString("DefaultConnection")
-                    );
-            });
+            // Extension method for application services
+            services.AddApplicationServices(_config);
+            // Extension method for identity services
+            services.AddIdentityServices(_config);
             services.AddControllers();
             services.AddCors();
 
@@ -53,6 +53,7 @@ namespace Bintangku.WebApi
             app.UseCors(policy => 
                 policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
