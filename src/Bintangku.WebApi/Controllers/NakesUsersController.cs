@@ -20,7 +20,7 @@ namespace Bintangku.WebApi.Controllers
         /// Http get method to get nakes user data from database
         /// </summary>
         /// <returns>List of nakes users</returns>
-        [Authorize]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NakesUser>>> GetNakesUsers()
         {
@@ -32,7 +32,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
-        [Authorize]
+
         [HttpGet("{id}")]
         public async Task<ActionResult<NakesUser>> GetNakesUser(int id)
         {

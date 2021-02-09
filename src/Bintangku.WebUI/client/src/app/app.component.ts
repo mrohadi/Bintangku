@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { User } from "./_models/user";
+import { AccountServices } from "./_services/account.service";
 
 @Component({
   selector: "app-root",
@@ -10,20 +12,14 @@ export class AppComponent implements OnInit {
   title = "Bintangku";
   nakesUsers: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private accountServie: AccountServices) {}
 
   ngOnInit() {
-    this.getUser();
+    this.setCurrentUser();
   }
 
-  getUser() {
-    this.http.get("https://localhost:5001/api/nakesusers").subscribe(
-      (response) => {
-        this.nakesUsers = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem("user") ?? "{}");
+    this.accountServie.setCurrentUser(user);
   }
 }
