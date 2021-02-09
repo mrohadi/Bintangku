@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { AccountServices } from "../_services/account.service";
 
 @Component({
@@ -9,7 +10,7 @@ import { AccountServices } from "../_services/account.service";
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(public accountService: AccountServices) {}
+  constructor(public accountService: AccountServices, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,5 +27,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl("/");
   }
 }
