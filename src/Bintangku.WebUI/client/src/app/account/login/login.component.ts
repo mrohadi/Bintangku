@@ -20,15 +20,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    this.accountService.loginService(this.model).subscribe(
-      (response) => {
-        console.log(response);
-        this.router.navigateByUrl("/");
-      },
-      (error) => {
-        console.log(error.error);
-        this.toastr.error(error.error);
-      }
-    );
+    this.accountService.loginService(this.model).subscribe((response) => {
+      console.log(response);
+      this.router.navigateByUrl("/");
+    });
   }
 }
