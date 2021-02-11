@@ -1,19 +1,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Bintangku.Data;
+using Bintangku.Data.DTO;
 using Bintangku.Data.Entities;
+using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Bintangku.WebApi.Controllers
 {
+    [Authorize]
     public class NakesUsersController : BaseApiController
     {
-        private readonly ApplicationDataContext _context;
-        public NakesUsersController(ApplicationDataContext context)
+        private readonly INakesUserRepository _nakesUserRepository;
+          private readonly IMapper _mapper;
+        public NakesUsersController(INakesUserRepository nakesUserRepository, IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
+            _nakesUserRepository = nakesUserRepository;
         }
 
         /// <summary>
@@ -22,9 +27,11 @@ namespace Bintangku.WebApi.Controllers
         /// <returns>List of nakes users</returns>
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NakesUser>>> GetNakesUsers()
+        public async Task<ActionResult<IEnumerable<MemberNakesUserDto>>> GetNakesUsers()
         {
-            return await _context.NakesUsers.ToListAsync();
+            var users = await _nakesUserRepository.GetMembersAsync();
+
+            return Ok(users);
         }
 
         /// <summary>
@@ -33,10 +40,10 @@ namespace Bintangku.WebApi.Controllers
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<NakesUser>> GetNakesUser(int id)
+        [HttpGet("{nakesUsername}")]
+        public async Task<ActionResult<MemberNakesUserDto>> GetNakesUser(string nakesUsername)
         {
-            return await _context.NakesUsers.FindAsync(id);
+            return await _nakesUserRepository.GetMemberAsync(nakesUsername);
         }
     }
 }
