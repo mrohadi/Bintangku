@@ -9,13 +9,16 @@ import { NavComponent } from "./nav/nav.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./account/login/login.component";
 import { RegisterComponent } from "./account/register/register.component";
-import { NakesComponent } from "./nakes/nakes.component";
+import { NakesComponent } from "./memberNakes/nakes/nakes.component";
 import { SharedModule } from "./_modules/shared.module";
 import { FormsModule } from "@angular/forms";
 import { TestErrorsComponent } from "./errors/test-errors/test-errors.component";
 import { ErrorInterceptor } from "./_interceptors/error.interceptor";
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { NotFoundComponent } from "./errors/not-found/not-found.component";
+import { ServerErrorComponent } from "./errors/server-error/server-error.component";
+import { NakesCardComponent } from "./memberNakes/nakes-card/nakes-card.component";
+import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
+import { NakesDetailComponent } from './memberNakes/nakes-detail/nakes-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    NakesCardComponent,
+    NakesDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

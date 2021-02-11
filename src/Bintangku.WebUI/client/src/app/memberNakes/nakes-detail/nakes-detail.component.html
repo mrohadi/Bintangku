@@ -1,0 +1,29 @@
+<div class="row" *ngIf="memberNakes">
+  <div class="col-4">
+    <div class="card">
+      <img
+        src="{{ memberNakes.photoUrl || './assets/images/user.png' }}"
+        alt="{{ memberNakes.username }}"
+        class="card-img-top img-thumbnail"
+      />
+      <div class="card-body">
+        <div>
+          <strong>Nama Tenaga Kesehatan:</strong>
+          <p class="">{{ memberNakes.fullName }}</p>
+        </div>
+        <div>
+          <strong>Umur:</strong>
+          <p class="">{{ memberNakes.age }}</p>
+        </div>
+        <div>
+          <strong>Tempat Pelayanan:</strong>
+          <p class="">{{ memberNakes.tempatPelayanan }}</p>
+        </div>
+        <div>
+          <strong>No STR Tenaga Kesehatan:</strong>
+          <p class="">{{ memberNakes.noStrTenagaKesehatan }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

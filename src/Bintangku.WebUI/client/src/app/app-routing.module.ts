@@ -6,7 +6,8 @@ import { NotFoundComponent } from "./errors/not-found/not-found.component";
 import { ServerErrorComponent } from "./errors/server-error/server-error.component";
 import { TestErrorsComponent } from "./errors/test-errors/test-errors.component";
 import { HomeComponent } from "./home/home.component";
-import { NakesComponent } from "./nakes/nakes.component";
+import { NakesDetailComponent } from "./memberNakes/nakes-detail/nakes-detail.component";
+import { NakesComponent } from "./memberNakes/nakes/nakes.component";
 import { AuthGuard } from "./_guards/auth.guard";
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "nakes", component: NakesComponent, canActivate: [AuthGuard] },
+      { path: "nakes/:username", component: NakesDetailComponent },
     ],
   },
   { path: "errors", component: TestErrorsComponent },
