@@ -20,14 +20,6 @@ namespace Bintangku.Data.Entities
         public byte[] PasswordSalt { get; set; }
 
         public ICollection<Photo> Photos { get; set; }
-
-        /// <summary>
-        /// Method to get the nakes age
-        /// </summary>
-        /// <returns>Nakes Age</returns>
-        // public int GetAge()
-        // {
-        //     return DateOfBirth.CalculateAge();
-        // }
+        public ICollection<DataAnak> DataAnaks { get; set; }
     }
 }

@@ -19,7 +19,10 @@ namespace Bintangku.Services.Helpers
                     destination => destination.Age, 
                     options => options.MapFrom(
                         source => source.DateOfBirth.CalculateAge()));
+            CreateMap<DataAnak, DataAnakDto>();
             CreateMap<Photo, PhotoDto>();
+            CreateMap<MemberNakesUserUpdateDto, NakesUser>();
+            
         }
     }
 }

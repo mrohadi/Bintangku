@@ -19,6 +19,10 @@ import { ServerErrorComponent } from "./errors/server-error/server-error.compone
 import { NakesCardComponent } from "./memberNakes/nakes-card/nakes-card.component";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
 import { NakesDetailComponent } from './memberNakes/nakes-detail/nakes-detail.component';
+import { NakesEditComponent } from './memberNakes/nakes-edit/nakes-edit.component';
+import { FooterComponent } from './footer/footer.component';
+import { AnakComponent } from './memberAnak/anak/anak.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { NakesDetailComponent } from './memberNakes/nakes-detail/nakes-detail.co
     ServerErrorComponent,
     NakesCardComponent,
     NakesDetailComponent,
+    NakesEditComponent,
+    FooterComponent,
+    AnakComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

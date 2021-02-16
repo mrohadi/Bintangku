@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Bintangku.Services.Helpers;
+using Newtonsoft.Json;
 
 namespace Bintangku.Services.Extensions
 {
@@ -16,6 +17,9 @@ namespace Bintangku.Services.Extensions
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<INakesUserRepository, NakesUserRepository>();
+            // Json serializer config to ignore object cycle problem
+            services.AddMvc().AddNewtonsoftJson(
+                options => {options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             services.AddDbContext<ApplicationDataContext>(options =>
             {

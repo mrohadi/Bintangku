@@ -10,6 +10,7 @@ namespace Bintangku.Data.Entities
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
 
+        // Related entities
         public int NakesUserId { get; set; }
         public NakesUser NakesUser { get; set; }
     }
