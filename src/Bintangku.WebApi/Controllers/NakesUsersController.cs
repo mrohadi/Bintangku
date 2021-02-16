@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
-using Bintangku.Data;
 using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
 using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,7 @@ namespace Bintangku.WebApi.Controllers
     public class NakesUsersController : BaseApiController
     {
         private readonly INakesUserRepository _nakesUserRepository;
-          private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
         public NakesUsersController(INakesUserRepository nakesUserRepository, IMapper mapper)
         {
             _mapper = mapper;
@@ -44,6 +43,26 @@ namespace Bintangku.WebApi.Controllers
         public async Task<ActionResult<MemberNakesUserDto>> GetNakesUser(string nakesUsername)
         {
             return await _nakesUserRepository.GetMemberAsync(nakesUsername);
+        }
+
+        /// <summary>
+        /// Update Nakes profile
+        /// </summary>
+        /// <param name="memberNakesUserUpdateDto"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<ActionResult> UpdateNakesUser(
+            MemberNakesUserUpdateDto memberNakesUserUpdateDto)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _nakesUserRepository.GetNakesUserByUsername(username);
+
+            _mapper.Map(memberNakesUserUpdateDto, user);
+
+            _nakesUserRepository.Update(user);
+
+            if (await _nakesUserRepository.SaveAllAsync()) return NoContent();
+            return BadRequest();
         }
     }
 }

@@ -35,7 +35,11 @@ namespace Bintangku.WebApi.Controllers
             var nakesUser = new NakesUser
             {
                 UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Username)),
+                FullName = registerDto.FullName,
+                PhoneNumber = registerDto.PhoneNumber,
+                NoStrTenagaKesehatan = registerDto.NoStrTenagaKesehatan,
+                TempatPelayanan = registerDto.TempatPelayanan,
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key
             };
 
