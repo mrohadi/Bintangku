@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Bintangku.Data.Extensions;
 
 namespace Bintangku.Data.Entities
 {

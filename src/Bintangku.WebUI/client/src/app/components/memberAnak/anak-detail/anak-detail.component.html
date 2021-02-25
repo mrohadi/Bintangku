@@ -1,0 +1,209 @@
+<div class="row detail-anak" *ngIf="memberAnak">
+  <!-- Detail profile anak -->
+  <div class="col-4">
+    <div class="card">
+      <!-- Photo Anak -->
+      <img
+        src="{{ memberAnak.photoAnakUrl || './assets/images/user.png' }}"
+        alt="{{ memberAnak.namaLengkap }}"
+        class="card-img-top img-thumbnail"
+      />
+      <!-- End - Photo anak -->
+      <!-- Informasi anak -->
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Nama Anak</th>
+              <th scope="col">{{ memberAnak.namaLengkap }}</th>
+            </tr>
+            <tr>
+              <th scope="col">NIK</th>
+              <th scope="col">{{ memberAnak.nik }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Jenis Kelamin</th>
+              <th scope="col">{{ memberAnak.jenisKelaminAnak }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanggal Lahir</th>
+              <th scope="col">{{ memberAnak.tanggalLahirAnak }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Alamat Lengkap</th>
+              <th scope="col">{{ memberAnak.alamat }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Kontak</th>
+              <th scope="col">{{ memberAnak.kontak }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End - Informasi anak -->
+      <!--  -->
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button
+            class="btn btn-primary"
+            routerLink="/anak-members/edit"
+            style="margin-right: 5px"
+          >
+            Edit
+          </button>
+          <button class="btn btn-warning">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End - Detail profile anak -->
+
+  <!-- Tab Menu Details -->
+  <div class="col-8">
+    <!-- Menu Details Name -->
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="pills-home-tab"
+          data-toggle="pill"
+          href="#pills-home"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+          >Riwayat Penyakit dan Pengobatan</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills-profile-tab"
+          data-toggle="pill"
+          href="#pills-profile"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="false"
+          >Riwayat Kelahiran</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills-contact-tab"
+          data-toggle="pill"
+          href="#pills-contact"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false"
+          >Riwayat Orang Tua</a
+        >
+      </li>
+    </ul>
+    <!-- End - Menu Details Name -->
+
+    <!-- Menu Details Content -->
+    <div class="tab-content" id="pills-tabContent">
+      <!-- Detail Riwayat Penyakit dan Pengobatan -->
+      <div
+        class="tab-pane fade show active"
+        id="pills-home"
+        role="tabpanel"
+        aria-labelledby="pills-home-tab"
+      >
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Jumalah Saudara</th>
+              <th scope="col">{{ memberAnak.jumlahSaudara }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End - Detail Riwayat dan Pengobatan -->
+      <!-- Detail Riwayat Kelahiran -->
+      <div
+        class="tab-pane fade"
+        id="pills-profile"
+        role="tabpanel"
+        aria-labelledby="pills-profile-tab"
+      >
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Berat Lahir</th>
+              <th scope="col">{{ memberAnak.beratBadan }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Panjang Lahir</th>
+              <th scope="col">{{ memberAnak.panjangLahir }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Apgar Score</th>
+              <th scope="col">{{ memberAnak.apgarScore }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Kelahiran Dibantu Oleh</th>
+              <th scope="col">{{ memberAnak.kelahiranDibantuOleh }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Lain - Lain (Masalah Ketika Lahir</th>
+              <th scope="col">{{ memberAnak.lainLain }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End - Detail Riwayat Kelahiran -->
+      <!-- Detail Pekerjaan Orang Tua -->
+      <div
+        class="tab-pane fade"
+        id="pills-contact"
+        role="tabpanel"
+        aria-labelledby="pills-contact-tab"
+      >
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Nama Ayah</th>
+              <th scope="col">{{ memberAnak.namaAyah }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanggal Lahir Ayah</th>
+              <th scope="col">{{ memberAnak.tanggalLahirAyah }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Pekerjaan Ayah</th>
+              <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Nama Ibu</th>
+              <th scope="col">{{ memberAnak.namaIbu }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanggal Lahir Ibu</th>
+              <th scope="col">{{ memberAnak.tanggalLahirIbu }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Pekerjaan Ibu</th>
+              <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Penghasilan Orang Tua</th>
+              <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Anggota Rumah Tangga</th>
+              <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanda Tangan Orang Tua</th>
+              <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End - Detail Pekerjaan Orang Tua -->
+    </div>
+    <!-- End - Menu Details Content -->
+  </div>
+  <!-- End - Tab Menu Details -->
+</div>

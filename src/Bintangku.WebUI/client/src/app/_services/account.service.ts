@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { ReplaySubject } from "rxjs";
-import { map } from "rxjs/operators";
-import { environment } from "src/environments/environment";
-import { User } from "../_models/user";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { User } from '../_models/user';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AccountServices {
   baseUrl: string = environment.apiUrl;
@@ -16,11 +16,11 @@ export class AccountServices {
   constructor(private http: HttpClient) {}
 
   loginService(model: any) {
-    return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
+    return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
         if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
         return user;
@@ -29,10 +29,10 @@ export class AccountServices {
   }
 
   registerService(model: any) {
-    return this.http.post<User>(this.baseUrl + "account/register", model).pipe(
+    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
         if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
         return user;
@@ -41,7 +41,7 @@ export class AccountServices {
   }
 
   logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
 

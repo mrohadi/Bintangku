@@ -1,18 +1,19 @@
 <div class="row" *ngIf="memberNakes">
+  <!-- Profile -->
   <div class="col-4">
-    <h1>Your Profile</h1>
+    <h1>Edit Your Profile</h1>
   </div>
-
+  <!-- End - Profile -->
+  <!-- Alert Information -->
   <div class="col-8">
     <div class="alert alert-info">
-      <p>
-        <strong>Information</strong>: You have made changes, any unsaved changes
-        will be lost
-      </p>
+      <strong>Information</strong>: You have made changes, any unsaved changes
+      will be lost
     </div>
   </div>
-
-  <div class="col-4">
+  <!-- End - Alert Information -->
+  <!-- Card Nakes Profile -->
+  <div class="col-6">
     <div class="card">
       <img
         src="{{ memberNakes.photoUrl || './assets/images/user.png' }}"
@@ -38,8 +39,9 @@
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-success btn-block">Save </button>
+        <button class="btn btn-success btn-block">Save</button>
       </div>
     </div>
   </div>
+  <!-- End - Card Nakes Information -->
 </div>

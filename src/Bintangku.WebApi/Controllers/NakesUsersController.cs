@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Bintangku.Data.DTO;
+using Bintangku.Services.Extensions;
 using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +21,9 @@ namespace Bintangku.WebApi.Controllers
         }
 
         /// <summary>
-        /// Http get method to get nakes user data from database
+        /// HTTP Get method to get nakes user data from database
         /// </summary>
         /// <returns>List of nakes users</returns>
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberNakesUserDto>>> GetNakesUsers()
         {
@@ -34,7 +33,7 @@ namespace Bintangku.WebApi.Controllers
         }
 
         /// <summary>
-        /// api/nakesusers/1
+        /// HTTP Post method to get specific nakes user (api/nakesusers/1)
         /// </summary>
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
@@ -46,7 +45,7 @@ namespace Bintangku.WebApi.Controllers
         }
 
         /// <summary>
-        /// Update Nakes profile
+        /// HTTP Update method to update nakes profile
         /// </summary>
         /// <param name="memberNakesUserUpdateDto"></param>
         /// <returns></returns>
@@ -54,7 +53,7 @@ namespace Bintangku.WebApi.Controllers
         public async Task<ActionResult> UpdateNakesUser(
             MemberNakesUserUpdateDto memberNakesUserUpdateDto)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.GetUserName();
             var user = await _nakesUserRepository.GetNakesUserByUsername(username);
 
             _mapper.Map(memberNakesUserUpdateDto, user);

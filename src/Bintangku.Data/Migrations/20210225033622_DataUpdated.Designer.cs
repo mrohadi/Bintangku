@@ -3,14 +3,16 @@ using System;
 using Bintangku.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bintangku.Data.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210225033622_DataUpdated")]
+    partial class DataUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +48,7 @@ namespace Bintangku.Data.Migrations
                     b.Property<string>("PhotoAnakUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TanggalLahirAnak")
+                    b.Property<DateTime>("TanggalLahir")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -133,7 +135,7 @@ namespace Bintangku.Data.Migrations
                     b.Property<int>("ApgarScore")
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte>("BeratBadan")
+                    b.Property<byte>("BearatBadan")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DataAnakId")
@@ -145,7 +147,7 @@ namespace Bintangku.Data.Migrations
                     b.Property<string>("LainLain")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PanjangLahir")
+                    b.Property<int>("PanjangLaahir")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

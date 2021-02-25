@@ -1,172 +1,172 @@
 [
-  {
-    "UserName": "Veronica",
-    "FullName": "Veronica Chan",
-    "Gender": "female",
-    "DateOfBirth": "1959-12-13",
-    "PhoneNumber": "+1 (899) 557-3800",
-    "Created": "2019-04-14",
-    "LastActive": "2020-06-13",
-    "TempatPelayanan": "Enlow",
-    "NoStrTenagaKesehatan": 7123050978,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/women/54.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Dorthy",
-    "FullName": "Dorthy Chan",
-    "Gender": "female",
-    "DateOfBirth": "1962-12-15",
-    "PhoneNumber": "+1 (949) 584-2568",
-    "Created": "2019-01-09",
-    "LastActive": "2020-06-21",
-    "TempatPelayanan": "Sutton",
-    "NoStrTenagaKesehatan": 5322764329,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/women/58.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Gladys",
-    "FullName": "Gladys Chan",
-    "Gender": "female",
-    "DateOfBirth": "1977-01-22",
-    "PhoneNumber": "+1 (977) 414-3659",
-    "Created": "2020-05-05",
-    "LastActive": "2020-05-24",
-    "TempatPelayanan": "Norvelt",
-    "NoStrTenagaKesehatan": 7026515238,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/women/8.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Claudia",
-    "FullName": "Claudia Chan",
-    "Gender": "female",
-    "DateOfBirth": "1962-08-02",
-    "PhoneNumber": "+1 (997) 488-3812",
-    "Created": "2019-01-15",
-    "LastActive": "2020-06-15",
-    "TempatPelayanan": "Groveville",
-    "NoStrTenagaKesehatan": 4968797835,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/women/24.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Bridget",
-    "FullName": "Bridget Chan",
-    "Gender": "female",
-    "DateOfBirth": "1960-09-20",
-    "PhoneNumber": "+1 (899) 446-2076",
-    "Created": "2019-12-28",
-    "LastActive": "2020-05-06",
-    "TempatPelayanan": "Morningside",
-    "NoStrTenagaKesehatan": 444831498,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/women/84.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Bradford",
-    "FullName": "Bradford Alvares",
-    "Gender": "male",
-    "DateOfBirth": "1968-07-02",
-    "PhoneNumber": "+1 (972) 495-2150",
-    "Created": "2019-05-30",
-    "LastActive": "2020-06-23",
-    "TempatPelayanan": "Kansas",
-    "NoStrTenagaKesehatan": 3176813052,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/men/17.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Duran",
-    "FullName": "Duran Alvares",
-    "Gender": "male",
-    "DateOfBirth": "1983-11-09",
-    "PhoneNumber": "+1 (807) 417-3076",
-    "Created": "2019-06-24",
-    "LastActive": "2020-05-31",
-    "TempatPelayanan": "Wildwood",
-    "NoStrTenagaKesehatan": 5901204677,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/men/73.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Frank",
-    "FullName": "Frank Alvares",
-    "Gender": "male",
-    "DateOfBirth": "1969-04-19",
-    "PhoneNumber": "+1 (819) 481-3619",
-    "Created": "2019-11-15",
-    "LastActive": "2020-05-28",
-    "TempatPelayanan": "Harborton",
-    "NoStrTenagaKesehatan": 9802688484,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/men/70.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Macias",
-    "FullName": "Macias Alvares",
-    "Gender": "male",
-    "DateOfBirth": "1985-03-05",
-    "PhoneNumber": "+1 (866) 421-2595",
-    "Created": "2019-02-11",
-    "LastActive": "2020-06-13",
-    "TempatPelayanan": "Osage",
-    "NoStrTenagaKesehatan": 2461959847,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/men/98.jpg",
-        "IsMain": true
-      }
-    ]
-  },
-  {
-    "UserName": "Avery",
-    "FullName": "Avery Alvares",
-    "Gender": "male",
-    "DateOfBirth": "1958-01-05",
-    "PhoneNumber": "+1 (940) 523-2969",
-    "Created": "2020-03-08",
-    "LastActive": "2020-05-12",
-    "TempatPelayanan": "Flintville",
-    "NoStrTenagaKesehatan": 9413234095,
-    "Photos": [
-      {
-        "Url": "https://randomuser.me/api/portraits/men/80.jpg",
-        "IsMain": true
-      }
-    ]
-  }
+    {
+        "UserName": "Veronica",
+        "FullName": "Veronica Chan",
+        "Gender": "female",
+        "DateOfBirth": "1959-12-13",
+        "PhoneNumber": "+1 (899) 557-3800",
+        "Created": "2019-04-14",
+        "LastActive": "2020-06-13",
+        "TempatPelayanan": "Enlow",
+        "NoStrTenagaKesehatan": 7123050978,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/54.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Dorthy",
+        "FullName": "Dorthy Chan",
+        "Gender": "female",
+        "DateOfBirth": "1962-12-15",
+        "PhoneNumber": "+1 (949) 584-2568",
+        "Created": "2019-01-09",
+        "LastActive": "2020-06-21",
+        "TempatPelayanan": "Sutton",
+        "NoStrTenagaKesehatan": 5322764329,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/58.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Gladys",
+        "FullName": "Gladys Chan",
+        "Gender": "female",
+        "DateOfBirth": "1977-01-22",
+        "PhoneNumber": "+1 (977) 414-3659",
+        "Created": "2020-05-05",
+        "LastActive": "2020-05-24",
+        "TempatPelayanan": "Norvelt",
+        "NoStrTenagaKesehatan": 7026515238,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/8.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Claudia",
+        "FullName": "Claudia Chan",
+        "Gender": "female",
+        "DateOfBirth": "1962-08-02",
+        "PhoneNumber": "+1 (997) 488-3812",
+        "Created": "2019-01-15",
+        "LastActive": "2020-06-15",
+        "TempatPelayanan": "Groveville",
+        "NoStrTenagaKesehatan": 4968797835,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/24.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Bridget",
+        "FullName": "Bridget Chan",
+        "Gender": "female",
+        "DateOfBirth": "1960-09-20",
+        "PhoneNumber": "+1 (899) 446-2076",
+        "Created": "2019-12-28",
+        "LastActive": "2020-05-06",
+        "TempatPelayanan": "Morningside",
+        "NoStrTenagaKesehatan": 444831498,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/84.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Bradford",
+        "FullName": "Bradford Alvares",
+        "Gender": "male",
+        "DateOfBirth": "1968-07-02",
+        "PhoneNumber": "+1 (972) 495-2150",
+        "Created": "2019-05-30",
+        "LastActive": "2020-06-23",
+        "TempatPelayanan": "Kansas",
+        "NoStrTenagaKesehatan": 3176813052,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/17.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Duran",
+        "FullName": "Duran Alvares",
+        "Gender": "male",
+        "DateOfBirth": "1983-11-09",
+        "PhoneNumber": "+1 (807) 417-3076",
+        "Created": "2019-06-24",
+        "LastActive": "2020-05-31",
+        "TempatPelayanan": "Wildwood",
+        "NoStrTenagaKesehatan": 5901204677,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/73.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Frank",
+        "FullName": "Frank Alvares",
+        "Gender": "male",
+        "DateOfBirth": "1969-04-19",
+        "PhoneNumber": "+1 (819) 481-3619",
+        "Created": "2019-11-15",
+        "LastActive": "2020-05-28",
+        "TempatPelayanan": "Harborton",
+        "NoStrTenagaKesehatan": 9802688484,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/70.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Macias",
+        "FullName": "Macias Alvares",
+        "Gender": "male",
+        "DateOfBirth": "1985-03-05",
+        "PhoneNumber": "+1 (866) 421-2595",
+        "Created": "2019-02-11",
+        "LastActive": "2020-06-13",
+        "TempatPelayanan": "Osage",
+        "NoStrTenagaKesehatan": 2461959847,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/98.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Avery",
+        "FullName": "Avery Alvares",
+        "Gender": "male",
+        "DateOfBirth": "1958-01-05",
+        "PhoneNumber": "+1 (940) 523-2969",
+        "Created": "2020-03-08",
+        "LastActive": "2020-05-12",
+        "TempatPelayanan": "Flintville",
+        "NoStrTenagaKesehatan": 9413234095,
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/80.jpg",
+                "IsMain": true
+            }
+        ]
+    }
 ]

@@ -3,14 +3,16 @@ using System;
 using Bintangku.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bintangku.Data.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210220143129_RefactorDataBase")]
+    partial class RefactorDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,28 @@ namespace Bintangku.Data.Migrations
                     b.Property<string>("Alamat")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte>("AnggotaRumahTangga")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ApgarScore")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte>("BeratBadan")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("JenisKelamin")
                         .HasColumnType("TEXT");
 
                     b.Property<byte>("JumlahSaudara")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("KelahiranDibantuOleh")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Kontak")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LainLain")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NIK")
@@ -40,13 +57,28 @@ namespace Bintangku.Data.Migrations
                     b.Property<int>("NakesUserId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("NamaAyah")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NamaIbu")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NamaLengkap")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PhotoAnakUrl")
+                    b.Property<int>("PanjangLahir")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PekerjaanOrangTua")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TanggalLahirAnak")
+                    b.Property<float>("PenghasilanOranTua")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("TandaTanganOrangTua")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TanggalLahir")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -125,72 +157,29 @@ namespace Bintangku.Data.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("Bintangku.Data.Entities.RiwayatKelahiran", b =>
+            modelBuilder.Entity("Bintangku.Data.Entities.PhotoAnak", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ApgarScore")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<byte>("BeratBadan")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DataAnakId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("KelahiranDibantuOleh")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LainLain")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PanjangLahir")
+                    b.Property<bool>("IsMain")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("RiwayatKelahirans");
-                });
-
-            modelBuilder.Entity("Bintangku.Data.Entities.RiwayatOrangTua", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<byte>("AnggotaRumahTangga")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DataAnakId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("NamaAyah")
+                    b.Property<string>("PublicId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NamaIbu")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PekerjaanAyah")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PekerjaanIbu")
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("PenghasilanOrangTua")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("TandaTanganOrangTua")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("TanggalLahirAyah")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("TanggalLahirIbu")
+                    b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RiwayatOrangTuas");
+                    b.HasIndex("DataAnakId");
+
+                    b.ToTable("PhotoAnak");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.DataAnak", b =>
@@ -215,22 +204,11 @@ namespace Bintangku.Data.Migrations
                     b.Navigation("NakesUser");
                 });
 
-            modelBuilder.Entity("Bintangku.Data.Entities.RiwayatKelahiran", b =>
+            modelBuilder.Entity("Bintangku.Data.Entities.PhotoAnak", b =>
                 {
                     b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
-                        .WithOne("RiwayatKelahiran")
-                        .HasForeignKey("Bintangku.Data.Entities.RiwayatKelahiran", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DataAnak");
-                });
-
-            modelBuilder.Entity("Bintangku.Data.Entities.RiwayatOrangTua", b =>
-                {
-                    b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
-                        .WithOne("RiwayatOrangTua")
-                        .HasForeignKey("Bintangku.Data.Entities.RiwayatOrangTua", "Id")
+                        .WithMany("PhotoAnaks")
+                        .HasForeignKey("DataAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -239,9 +217,7 @@ namespace Bintangku.Data.Migrations
 
             modelBuilder.Entity("Bintangku.Data.Entities.DataAnak", b =>
                 {
-                    b.Navigation("RiwayatKelahiran");
-
-                    b.Navigation("RiwayatOrangTua");
+                    b.Navigation("PhotoAnaks");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.NakesUser", b =>

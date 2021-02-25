@@ -2,22 +2,22 @@
 
 namespace Bintangku.Data.Migrations
 {
-    public partial class RepairNakesUsersProperty : Migration
+    public partial class TanggalLahirAnakUpdated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "PasswordHas",
-                table: "NakesUsers",
-                newName: "PasswordHash");
+                name: "TanggalLahir",
+                table: "DataAnaks",
+                newName: "TanggalLahirAnak");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "PasswordHash",
-                table: "NakesUsers",
-                newName: "PasswordHas");
+                name: "TanggalLahirAnak",
+                table: "DataAnaks",
+                newName: "TanggalLahir");
         }
     }
 }

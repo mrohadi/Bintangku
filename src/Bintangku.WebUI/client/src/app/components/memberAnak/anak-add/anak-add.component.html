@@ -1,0 +1,260 @@
+<div class="add-anak-container">
+  <!-- Titile -->
+  <h2 class="add-anak">Tambah Anak</h2>
+  <!-- End - Title -->
+  <form [formGroup]="addAnakForm" (ngSubmit)="addDataAnak()">
+    <!-- Profile Anak -->
+    <h5>Profile Anak</h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="namaAnak">Nama Anak</label>
+        <input
+          formControlName="namaLengkap"
+          name="namaAnak"
+          placeholder="Nama Anak"
+          type="text"
+          class="form-control"
+          id="namaAnak"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="nik">NIK</label>
+        <input
+          formControlName="nik"
+          name="nik"
+          placeholder="NIK"
+          type="number"
+          class="form-control"
+          id="nik"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="jenisKelaminAnak">Jenis Kelamin</label>
+        <input
+          formControlName="jenisKelaminAnak"
+          name="jenisKelaminAnak"
+          placeholder="Jenis Kelamin"
+          type="text"
+          class="form-control"
+          id="jenisKelaminAnak"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tanggalLahirAnak">Tanggal Lahir</label>
+        <input
+          formControlName="tanggalLahirAnak"
+          type="text"
+          placeholder="Tanggal Lahir"
+          class="form-control"
+          bsDatepicker
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="alamat">Alamat Lengkap</label>
+        <input
+          formControlName="alamat"
+          type="text"
+          placeholder="Alamat Lengkap"
+          class="form-control"
+          id="alamat"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="kontak">Kontak</label>
+        <input
+          formControlName="kontak"
+          type="text"
+          placeholder="Kontak"
+          class="form-control"
+          id="kontak"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="photoAnakUrl">Photo Anak Url</label>
+        <input
+          formControlName="photoAnakUrl"
+          type="text"
+          placeholder="Photo Anak Url"
+          class="form-control"
+          id="photoAnakUrl"
+        />
+      </div>
+    </div>
+    <!-- End - Profile Anak -->
+
+    <!-- Riwayat Penyakit dan Pengobatan -->
+    <h5>Riwayat Penyakit dan Pengobatan</h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="jumlahSaudara">Jumlah Saudara</label>
+        <input
+          formControlName="jumlahSaudara"
+          type="number"
+          placeholder="Jumlah Saudara"
+          class="form-control"
+          id="jumlahSaudara"
+        />
+      </div>
+    </div>
+    <!-- End - Riwayat Penyakit dan Pengobatan -->
+
+    <!-- Riwayat Kelahiran -->
+    <h5>Riwayat Kelahiran</h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="beratBadan">Berat Badan</label>
+        <input
+          formControlName="beratBadan"
+          type="number"
+          placeholder="Berat Badan"
+          class="form-control"
+          id="beratBadan"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="panjangLahir">Panjang Lahir</label>
+        <input
+          formControlName="panjangLahir"
+          type="number"
+          placeholder="Panjang Lahir"
+          class="form-control"
+          id="panjangLahir"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="apgharScore">Apghar Score</label>
+        <input
+          formControlName="apgarScore"
+          type="number"
+          placeholder="Apgar Score"
+          class="form-control"
+          id="apgharScore"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="kelahiranDibantuOleh">Kelahiran Dibantu Oleh</label>
+        <input
+          formControlName="kelahiranDibantuOleh"
+          type="text"
+          placeholder="Kelahiran Dibantu Oleh"
+          class="form-control"
+          id="kelahiranDibantuOleh"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lainLain">Lain - Lain (Masalah Ketika Lahir)</label>
+        <input
+          formControlName="lainLain"
+          type="text"
+          placeholder="Lain - Lain (Masalah Ketika Lahir)"
+          class="form-control"
+          id="lainLain"
+        />
+      </div>
+    </div>
+    <!-- End - Riwayat Kelahiran -->
+
+    <!-- Riwayat Orang Tua -->
+    <h5>Riwayat Orang Tua</h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="namaAyah">Nama Ayah</label>
+        <input
+          formControlName="namaAyah"
+          type="text"
+          placeholder="Nama Ayah"
+          class="form-control"
+          id="namaAyah"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="namaIbu">Nama Ibu</label>
+        <input
+          formControlName="namaIbu"
+          type="text"
+          placeholder="namaIbu"
+          class="form-control"
+          id="namaIbu"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tanggalLahirAyah">Tanggal Lahir Ayah </label>
+        <input
+          formControlName="tanggalLahirAyah"
+          type="text"
+          placeholder="Tanggal Lahir Ayah"
+          class="form-control"
+          id="tanggalLahirAyah"
+          bsDatepicker
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tanggalLahirIbu">Tanggal Lahir Ibu</label>
+        <input
+          formControlName="tanggalLahirIbu"
+          type="text"
+          placeholder="Tanggal Lahir Ibu"
+          class="form-control"
+          id="tanggalLahirIbu"
+          bsDatepicker
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="pekerjaanAyah">Pekerjaan Ayah</label>
+        <input
+          formControlName="pekerjaanAyah"
+          type="text"
+          placeholder="Pekerjaan Ayah"
+          class="form-control"
+          id="pekerjaanAyah"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="pekerjaanIbu">Pekerjaan Ibu</label>
+        <input
+          formControlName="pekerjaanIbu"
+          type="text"
+          placeholder="Pekerjaan Ibu"
+          class="form-control"
+          id="pekerjaanIbu"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="penghasilanOrangTua">Penghasilan Orang Tua</label>
+        <input
+          formControlName="penghasilanOrangTua"
+          type="number"
+          placeholder="Penghasilan Orang Tua"
+          class="form-control"
+          id="penghasilanOrangTua"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="anggotaRumahTangga">Anggota Rumah Tangga</label>
+        <input
+          formControlName="anggotaRumahTangga"
+          type="number"
+          placeholder="Anggota Rumah Tangga"
+          class="form-control"
+          id="anggotaRumahTangga"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tandaTanganOrangTua">Tanda Tangan Orang Tua</label>
+        <input
+          formControlName="tandaTanganOrangTua"
+          type="text"
+          placeholder="Tanda Tangan Orang Tua"
+          class="form-control"
+          id="tandaTanganOrangTua"
+        />
+      </div>
+    </div>
+    <!-- End - Riwayat Orang Tua -->
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Tambahkan</button>
+    <!-- End - Submit Button -->
+  </form>
+  <!--  -->
+</div>

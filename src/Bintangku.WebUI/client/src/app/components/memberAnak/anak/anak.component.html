@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h2 class="text-center">Data Anak</h2>
+  </div>
+  <div class="row" style="margin-bottom: 20px">
+    <button class="btn btn-primary float-right" routerLink="/anak-members/add">
+      Tambah
+    </button>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Nama</th>
+          <th scope="col">NIK</th>
+          <th scope="col">Jenis Kelamin</th>
+          <th scope="col">Tanggal Lahir</th>
+          <th scope="col">Nama Ayah</th>
+          <th scope="col">Nama Ibu</th>
+          <th scope="col">Alamat Lengkap</th>
+          <th scope="col">Kontak</th>
+          <th scope="col">Diinput Oleh</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let memberAnak of memberAnaks">
+        <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
+          <th scope="row">{{ memberAnak.id }}</th>
+          <td>{{ memberAnak.namaLengkap }}</td>
+          <td>{{ memberAnak.nik }}</td>
+          <td>{{ memberAnak.jenisKelaminAnak }}</td>
+          <td>{{ memberAnak.tanggalLahirAnak }}</td>
+          <td>{{ memberAnak.namaAyah }}</td>
+          <td>{{ memberAnak.namaIbu }}</td>
+          <td>{{ memberAnak.alamat }}</td>
+          <td>{{ memberAnak.kontak }}</td>
+          <td>{{ memberAnak.namaNakes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
