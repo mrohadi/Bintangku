@@ -171,15 +171,77 @@ namespace Bintangku.WebApi.Controllers
             
             return Ok(dataAnak);
         }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> UpdateDataAnak([FromQuery]int id)
+        
+        /// <summary>
+        /// Update Specific Data Anak
+        /// </summary>
+        /// <param name="id">Uniqe anak id</param>
+        /// <param name="updateDataAnak"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateDataAnak(
+            int id, [FromBody]UpdateDataAnak updateDataAnak)
         {
             var anak = await _context.DataAnaks
-                .FirstOrDefaultAsync(anak => anak.Id == id);
+                .SingleOrDefaultAsync(anak => anak.Id == id);
             
             if (anak == null) return BadRequest("Data Anak Tidak Ditemukan");
 
+            // Update Prfile Anak
+            anak.NamaLengkap = updateDataAnak.NamaLengkap;
+            anak.NIK = updateDataAnak.NIK;
+            anak.JenisKelamin = updateDataAnak.JenisKelaminAnak;
+            anak.TanggalLahirAnak = updateDataAnak.TanggalLahirAnak;
+            anak.PhotoAnakUrl = updateDataAnak.PhotoAnakUrl;
+            anak.Alamat = updateDataAnak.Alamat;
+            anak.Kontak = updateDataAnak.Kontak;
+            anak.JumlahSaudara = updateDataAnak.JumlahSaudara;
+
+            // Update Riwayat Kelahiran Data
+            var riwayatKelahiran = await _context.RiwayatKelahirans
+                .SingleOrDefaultAsync(x => x.DataAnak.Id == anak.Id); 
+            riwayatKelahiran.BeratBadan = updateDataAnak.BeratBadan;
+            riwayatKelahiran.PanjangLahir = updateDataAnak.PanjangLahir;
+            riwayatKelahiran.ApgarScore = updateDataAnak.ApgarScore;
+            riwayatKelahiran.KelahiranDibantuOleh = updateDataAnak.KelahiranDibantuOleh;
+            riwayatKelahiran.LainLain = updateDataAnak.LainLain;
+
+            // Update Riwayat Orang Tua Data
+            var riwayatOrangTua = await _context.RiwayatOrangTuas
+                .FirstOrDefaultAsync(x => x.DataAnak.Id == anak.Id);
+            riwayatOrangTua.NamaAyah = updateDataAnak.NamaAyah;
+            riwayatOrangTua.TanggalLahirAyah = updateDataAnak.TanggalLahirAyah;
+            riwayatOrangTua.PekerjaanAyah = updateDataAnak.PekerjaanAyah;
+            riwayatOrangTua.NamaIbu = updateDataAnak.NamaIbu;
+            riwayatOrangTua.TanggalLahirIbu = updateDataAnak.TanggalLahirIbu;
+            riwayatOrangTua.PekerjaanIbu = updateDataAnak.PekerjaanIbu;
+            riwayatOrangTua.PenghasilanOrangTua = updateDataAnak.PenghasilanOrangTua;
+            riwayatOrangTua.AnggotaRumahTangga = updateDataAnak.AnggotaRumahTangga;
+            riwayatOrangTua.TandaTanganOrangTua = updateDataAnak.TandaTanganOrangTua;
+
+            _context.Entry(anak).State = EntityState.Modified; 
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> UpdateDataAnak(int id)
+        {
+            var anak = await _context.DataAnaks
+                .Where(x => x.Id == id)
+                .Include(r => r.RiwayatKelahiran)
+                .Include(o => o.RiwayatOrangTua)
+                .Include(n => n.NakesUser)
+                .SingleAsync();
+            
+            if (anak == null) return BadRequest("Data Anak Tidak Ditemukan!");
+            
+            _context.Remove(anak);
+
+            await _context.SaveChangesAsync();
+            
             return Ok();
         }
     }
