@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as EventEmitter from 'events';
 import { ToastrService } from 'ngx-toastr';
@@ -11,8 +11,19 @@ import { MemberAnakService } from 'src/app/_services/member-anak.service';
   styleUrls: ['./anak-add.component.css'],
 })
 export class AnakAddComponent implements OnInit {
+  jenisKelamins = ['None', 'Laki-Laki', 'Perempuan'];
+  pekerjaan = [
+    'None',
+    'Petani',
+    'Nelayan',
+    'Pedagang',
+    'Karyawan',
+    'Guru',
+    'PNS',
+    'Wirwaswasta',
+  ];
   addAnakForm = this.formBuilder.group({
-    namaLengkap: ''.toLowerCase(),
+    namaLengkap: ''.toUpperCase(),
     nik: Number,
     jenisKelaminAnak: '',
     tanggalLahirAnak: '',
@@ -49,15 +60,14 @@ export class AnakAddComponent implements OnInit {
   addDataAnak(): void {
     this.memberAnakService.addMemberAnak(this.addAnakForm.value).subscribe(
       () => {
-        this.toastr.success('Data Anak Berhasil Ditambahkan!');
+        this.toastr.success('Data Anak Added Successfully');
         this.route.navigateByUrl('/anak-members');
       },
       (error) => console.log(error)
     );
-    console.log(this.addAnakForm.value);
   }
 
   cancelAddAnak() {
-    // this.cancel.emit();
+    this.route.navigateByUrl('/anak-members');
   }
 }

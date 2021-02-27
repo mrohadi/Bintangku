@@ -30,14 +30,18 @@
       </div>
       <div class="form-group col-md-6">
         <label for="jenisKelaminAnak">Jenis Kelamin</label>
-        <input
+        <select
           formControlName="jenisKelaminAnak"
-          name="jenisKelaminAnak"
-          placeholder="Jenis Kelamin"
-          type="text"
           class="form-control"
           id="jenisKelaminAnak"
-        />
+        >
+          <option
+            [value]="jenisKelamin"
+            *ngFor="let jenisKelamin of jenisKelamins"
+          >
+            {{ jenisKelamin }}
+          </option>
+        </select>
       </div>
       <div class="form-group col-md-6">
         <label for="tanggalLahirAnak">Tanggal Lahir</label>
@@ -47,6 +51,10 @@
           placeholder="Tanggal Lahir"
           class="form-control"
           bsDatepicker
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-YYYY',
+            containerClass: 'theme-blue'
+          }"
         />
       </div>
       <div class="form-group col-md-6">
@@ -186,6 +194,10 @@
           class="form-control"
           id="tanggalLahirAyah"
           bsDatepicker
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-YYYY',
+            containerClass: 'theme-blue'
+          }"
         />
       </div>
       <div class="form-group col-md-6">
@@ -197,27 +209,35 @@
           class="form-control"
           id="tanggalLahirIbu"
           bsDatepicker
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-YYYY',
+            containerClass: 'theme-blue'
+          }"
         />
       </div>
       <div class="form-group col-md-6">
         <label for="pekerjaanAyah">Pekerjaan Ayah</label>
-        <input
+        <select
           formControlName="pekerjaanAyah"
-          type="text"
-          placeholder="Pekerjaan Ayah"
           class="form-control"
           id="pekerjaanAyah"
-        />
+        >
+          <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+            {{ pekerjaan }}
+          </option>
+        </select>
       </div>
       <div class="form-group col-md-6">
         <label for="pekerjaanIbu">Pekerjaan Ibu</label>
-        <input
+        <select
           formControlName="pekerjaanIbu"
-          type="text"
-          placeholder="Pekerjaan Ibu"
           class="form-control"
           id="pekerjaanIbu"
-        />
+        >
+          <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+            {{ pekerjaan }}
+          </option>
+        </select>
       </div>
       <div class="form-group col-md-6">
         <label for="penghasilanOrangTua">Penghasilan Orang Tua</label>
@@ -253,8 +273,11 @@
     <!-- End - Riwayat Orang Tua -->
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Tambahkan</button>
+    <button type="submit" class="btn btn-primary" style="margin-right: 5px">
+      Submit
+    </button>
     <!-- End - Submit Button -->
+    <a (click)="cancelAddAnak()" class="btn btn-warning">Cancel</a>
   </form>
   <!--  -->
 </div>

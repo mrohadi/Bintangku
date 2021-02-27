@@ -27,6 +27,8 @@ import { AnakDetailComponent } from './components/memberAnak/anak-detail/anak-de
 import { AnakAddComponent } from './components/memberAnak/anak-add/anak-add.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AnakEditComponent } from './components/memberAnak/anak-edit/anak-edit.component';
+import { AnakPemeriksaanComponent } from './components/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
+import { ModalBeratBadanComponent } from './components/memberAnak/modals/modal-berat-badan/modal-berat-badan.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { AnakEditComponent } from './components/memberAnak/anak-edit/anak-edit.c
     AnakAddComponent,
     AnakEditComponent,
     AnakAddComponent,
+    AnakPemeriksaanComponent,
+    ModalBeratBadanComponent,
   ],
   imports: [
     BrowserModule,

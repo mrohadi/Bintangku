@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AnakAddComponent } from './components/memberAnak/anak-add/anak-add.component';
 import { AnakDetailComponent } from './components/memberAnak/anak-detail/anak-detail.component';
 import { AnakEditComponent } from './components/memberAnak/anak-edit/anak-edit.component';
+import { AnakPemeriksaanComponent } from './components/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
 import { AnakComponent } from './components/memberAnak/anak/anak.component';
 import { NakesDetailComponent } from './components/memberNakes/nakes-detail/nakes-detail.component';
 import { NakesEditComponent } from './components/memberNakes/nakes-edit/nakes-edit.component';
@@ -37,9 +38,13 @@ const routes: Routes = [
       { path: 'nakes-members/:username', component: NakesDetailComponent },
       { path: 'nakes-member/edit', component: NakesEditComponent },
       { path: 'anak-members', component: AnakComponent },
-      { path: 'anak-members/add', component: AnakAddComponent },
-      { path: 'anak-members/edit', component: AnakEditComponent },
       { path: 'anak-members/:id', component: AnakDetailComponent },
+      { path: 'anak-member/add', component: AnakAddComponent },
+      { path: 'anak-members/edit/:id', component: AnakEditComponent },
+      {
+        path: 'anak-members/pemeriksaan-kesehatan/:id',
+        component: AnakPemeriksaanComponent,
+      },
     ],
   },
   { path: 'errors', component: TestErrorsComponent },

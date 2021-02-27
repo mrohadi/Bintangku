@@ -3,7 +3,7 @@
     <h2 class="text-center">Data Anak</h2>
   </div>
   <div class="row" style="margin-bottom: 20px">
-    <button class="btn btn-primary float-right" routerLink="/anak-members/add">
+    <button class="btn btn-primary float-right" routerLink="/anak-member/add">
       Tambah
     </button>
   </div>
@@ -26,11 +26,11 @@
       </thead>
       <tbody *ngFor="let memberAnak of memberAnaks">
         <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
-          <th scope="row">{{ memberAnak.id }}</th>
+          <th scope="row">No</th>
           <td>{{ memberAnak.namaLengkap }}</td>
           <td>{{ memberAnak.nik }}</td>
           <td>{{ memberAnak.jenisKelaminAnak }}</td>
-          <td>{{ memberAnak.tanggalLahirAnak }}</td>
+          <td>{{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}</td>
           <td>{{ memberAnak.namaAyah }}</td>
           <td>{{ memberAnak.namaIbu }}</td>
           <td>{{ memberAnak.alamat }}</td>

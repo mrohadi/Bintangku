@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MemberAnak } from 'src/app/_models/memberAnak';
 import { MemberAnakService } from 'src/app/_services/member-anak.service';
 
@@ -13,6 +15,8 @@ export class AnakDetailComponent implements OnInit {
 
   constructor(
     private memberAnakService: MemberAnakService,
+    private _toastr: ToastrService,
+    private location: Location,
     private route: ActivatedRoute
   ) {}
 
@@ -24,5 +28,14 @@ export class AnakDetailComponent implements OnInit {
     this.memberAnakService
       .getMemberAnak(parseInt(this.route.snapshot.paramMap.get('id')))
       .subscribe((memberAnak) => (this.memberAnak = memberAnak));
+  }
+
+  delete(): any {
+    this.memberAnakService
+      .deleteMemberAnak(parseInt(this.route.snapshot.paramMap.get('id')))
+      .subscribe(() => {
+        this._toastr.success('Data Anak Deleted Successfully');
+        this.location.back();
+      });
   }
 }

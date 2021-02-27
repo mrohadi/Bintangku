@@ -1,6 +1,7 @@
+<h3 *ngIf="memberAnak">Detail Informasi {{ memberAnak.namaLengkap }}</h3>
 <div class="row detail-anak" *ngIf="memberAnak">
   <!-- Detail profile anak -->
-  <div class="col-4">
+  <div class="col-3">
     <div class="card">
       <!-- Photo Anak -->
       <img
@@ -27,7 +28,9 @@
             </tr>
             <tr>
               <th scope="col">Tanggal Lahir</th>
-              <th scope="col">{{ memberAnak.tanggalLahirAnak }}</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}
+              </th>
             </tr>
             <tr>
               <th scope="col">Alamat Lengkap</th>
@@ -46,12 +49,12 @@
         <div class="btn-group d-flex">
           <button
             class="btn btn-primary"
-            routerLink="/anak-members/edit"
+            routerLink="/anak-members/edit/{{ memberAnak.id }}"
             style="margin-right: 5px"
           >
             Edit
           </button>
-          <button class="btn btn-warning">Delete</button>
+          <button (click)="delete()" class="btn btn-warning">Delete</button>
         </div>
       </div>
     </div>
@@ -59,9 +62,9 @@
   <!-- End - Detail profile anak -->
 
   <!-- Tab Menu Details -->
-  <div class="col-8">
+  <div class="col-9">
     <!-- Menu Details Name -->
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
         <a
           class="nav-link active"
@@ -71,7 +74,7 @@
           role="tab"
           aria-controls="pills-home"
           aria-selected="true"
-          >Riwayat Penyakit dan Pengobatan</a
+          >Riwayat Penyakit</a
         >
       </li>
       <li class="nav-item" role="presentation">
@@ -96,6 +99,30 @@
           aria-controls="pills-contact"
           aria-selected="false"
           >Riwayat Orang Tua</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills-imunisasi-tab"
+          data-toggle="pill"
+          href="#pills-imunisasi"
+          role="tab"
+          aria-controls="pills-imunisasi"
+          aria-selected="false"
+          >Jadwal Imunisasi</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills-kesehatan-tab"
+          data-toggle="pill"
+          href="#pills-kesehatan"
+          role="tab"
+          aria-controls="pills-kesehatan"
+          aria-selected="false"
+          >Kesehatan Anak</a
         >
       </li>
     </ul>
@@ -168,7 +195,9 @@
             </tr>
             <tr>
               <th scope="col">Tanggal Lahir Ayah</th>
-              <th scope="col">{{ memberAnak.tanggalLahirAyah }}</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
+              </th>
             </tr>
             <tr>
               <th scope="col">Pekerjaan Ayah</th>
@@ -180,7 +209,9 @@
             </tr>
             <tr>
               <th scope="col">Tanggal Lahir Ibu</th>
-              <th scope="col">{{ memberAnak.tanggalLahirIbu }}</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
+              </th>
             </tr>
             <tr>
               <th scope="col">Pekerjaan Ibu</th>
@@ -202,6 +233,81 @@
         </table>
       </div>
       <!-- End - Detail Pekerjaan Orang Tua -->
+      <!-- Kesehatan Anak -->
+      <div
+        class="tab-pane fade"
+        id="pills-imunisasi"
+        role="tabpanel"
+        aria-labelledby="pills-imunisasi-tab"
+      ></div>
+      <!-- End - Kesehatan Anak -->
+      <!-- Kesehatan Anak -->
+      <div
+        class="tab-pane fade"
+        id="pills-kesehatan"
+        role="tabpanel"
+        aria-labelledby="pills-kesehatan-tab"
+      >
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Status Gizi BB/TB</th>
+              <th scope="col">{{ memberAnak.namaAyah }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Status Gizi IMT/U</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">IP/TB</th>
+              <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Lingkar Kepala</th>
+              <th scope="col">{{ memberAnak.namaIbu }}</th>
+            </tr>
+            <tr>
+              <th scope="col">KPSP</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">Daya Dengar</th>
+              <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Daya Lihat</th>
+              <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+            </tr>
+            <tr>
+              <th scope="col">KMPE</th>
+              <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+            </tr>
+            <tr>
+              <th scope="col">M-CHAT</th>
+              <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+            </tr>
+            <tr>
+              <th scope="col">GPPH</th>
+              <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanggal Pemeriksaan</th>
+              <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+            </tr>
+          </tbody>
+          <button
+            class="btn btn-primary align-right"
+            routerLink="/anak-members/pemeriksaan-kesehatan/{{ memberAnak.id }}"
+          >
+            Pemeriksaan
+          </button>
+        </table>
+      </div>
+      <!-- End - Kesehatan Anak -->
     </div>
     <!-- End - Menu Details Content -->
   </div>

@@ -1,0 +1,250 @@
+<div class="add-anak-container">
+  <!-- Titile -->
+  <h2 class="add-anak">Pemeriksaan Anak</h2>
+  <!-- End - Title -->
+  <h5>Deteksi Dini Penyimpangan Pertumbuhan</h5>
+  <form>
+    <!-- Pemeriksaan Anak -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="tanggalPemeriksaan">Tanggal Pemeriksaan</label>
+        <input
+          formControlName="tanggalPemeriksaaan"
+          type="text"
+          placeholder="Tanggal Pemeriksaan"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-YYYY',
+            containerClass: 'theme-blue'
+          }"
+        />
+      </div>
+      <div class="col-md-6"></div>
+      <div class="form-group col-md-6">
+        <label for="namaAnak">Berat Badan</label>
+        <input
+          formControlName="namaLengkap"
+          name="namaAnak"
+          placeholder="Berat Badan"
+          type="text"
+          class="form-control"
+          id="namaAnak"
+        />
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary petunjuk"
+          data-toggle="modal"
+          data-target="#tinggiBadan"
+        >
+          Petunjuk
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="tinggiBadan"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Petunjuk Berat Badan
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Menggunakan timbangan bayi
+                    <ul>
+                      <li>
+                        Timbangan bayi digunakan untuk menimbang anak sampai
+                        umur 2 tahun atau selama anak masih bisa berbaring/duduk
+                        tenang.
+                      </li>
+                      <li>
+                        Letakkan timbangan pada meja yang datar dan tidak mudah
+                        bergoyang.
+                      </li>
+                      <li>
+                        Lihat posisi jarum atau angka harus menunjuk ke angka 0.
+                      </li>
+                      <li>
+                        Bayi sebaiknya telanjang, tanpa topi, kaus kaki, sarung
+                        tangan.
+                      </li>
+                      <li>
+                        Baringkan bayi dengan hati−hati di atas timbangan sampai
+                        berhenti.
+                      </li>
+                      <li>
+                        Baca angka yang ditunjukkan oleh jarum timbangan atau
+                        angka timbangan.
+                      </li>
+                      <li>
+                        Bila bayi terus menerus bergerak, perhatikan gerakan
+                        jarum, baca angka di tengah-tengah antara gerakan jarum
+                        ke kanan dan kekiri.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Menggunakan timbangan dacin
+                    <ul>
+                      <li>
+                        Pastikan dacin masih layak digunakan, periksa dan
+                        letakkan banul geser pada angka nol. Jika ujung kedua
+                        paku dacin tidak dalam posisi lurus, maka timbangan
+                        tidak layak digunakan dan harus dikalibrasi.
+                      </li>
+                      <li>
+                        Masukan Balita ke dalam sarung timbang dengan pakaian
+                        seminimal mungkin dan geser bandul sampai jarum tegak
+                        lurus.
+                      </li>
+                      <li>
+                        Baca berat badan Balita dengan melihat angka di ujung
+                        bandul geser.
+                      </li>
+                      <li>Catat hasil penimbangan dengan benar</li>
+                      <li>
+                        Kembalikan bandul ke angka nol dan keluarkan Balita dari
+                        sarung timbang.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Menggunakan timbangan injak (timbangan digital)
+                    <ul>
+                      <li>
+                        Letakkan timbangan di lantai yang datar sehingga tidak
+                        mudah bergerak.
+                      </li>
+                      <li>
+                        Lihat posisi jarum atau angka harus menunjuk ke angka 0.
+                      </li>
+                      <li>
+                        Anak sebaiknya memakai baju sehari−hari yang tipis,
+                        tidak memakai alas kaki, jaket, topi, jam tangan,
+                        kalung, dan tidak memegang sesuatu.
+                      </li>
+                      <li>Anak berdiri di atas timbangan tanpa dipegangi.</li>
+                      <li>Lihat jarum timbangan sampai berhenti.</li>
+                      <li>
+                        Baca angka yang ditunjukkan oleh jarum timbangan atau
+                        angka timbangan
+                      </li>
+                      <li>
+                        Bila anak terus menerus bergerak, perhatikan gerakan
+                        jarum, baca angka di tengah tengah antara gerakan jarum
+                        ke kanan dan ke kiri.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tinggiBadan">Tinggi Badan</label>
+        <input
+          formControlName="tinggiBadan"
+          name="tinggiBadan"
+          placeholder="Tinggi Badan"
+          type="text"
+          class="form-control"
+          id="nik"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lingkarKepala">Lingkar Kepala</label>
+        <input
+          formControlName="lingkarKepala"
+          type="text"
+          placeholder="Lingkar Kepala"
+          class="form-control"
+          id="lingkarKepala"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="imt">IMT</label>
+        <input
+          formControlName="imt"
+          type="text"
+          placeholder="IMT"
+          class="form-control"
+          id="imt"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="kpsp">KPSP</label>
+        <input
+          formControlName="kpsp"
+          type="text"
+          placeholder="Nilai"
+          class="form-control"
+          id="kpsp"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tesDayaDengar">Tes Daya Dengar</label>
+        <input
+          formControlName="tesDayaDengar"
+          type="text"
+          placeholder="Nilai"
+          class="form-control"
+          id="tesDayaDengar"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tesDayaLihat">Tes Daya Lihat</label>
+        <input
+          formControlName="tesDayaLihat"
+          type="text"
+          placeholder="Nilai"
+          class="form-control"
+          id="lingkarKepala"
+        />
+        <button class="btn btn-primary petunjuk">Petunjuk</button>
+      </div>
+    </div>
+    <!-- End - Pemeriksaan -->
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" style="margin-right: 5px">
+      Submit
+    </button>
+    <!-- End - Submit Button -->
+    <a class="btn btn-warning">Cancel</a>
+  </form>
+  <!--  -->
+</div>

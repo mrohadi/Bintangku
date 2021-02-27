@@ -23,4 +23,12 @@ export class MemberAnakService {
   getMemberAnak(id: number): Observable<MemberAnak> {
     return this.http.get<MemberAnak>(this.baseUrl + 'dataanak/' + id);
   }
+
+  updateMemberAnak(id: number, model: any) {
+    return this.http.put(this.baseUrl + 'dataanak/' + id, model);
+  }
+
+  deleteMemberAnak(id: number) {
+    return this.http.delete(this.baseUrl + 'dataanak/' + id);
+  }
 }
