@@ -1,0 +1,236 @@
+<h2 class="h2" *ngIf="memberAnak">
+  Detail Informasi {{ memberAnak.namaLengkap }}
+</h2>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" *ngIf="memberAnak">
+  <!-- Detail profile anak -->
+  <div class="col-3">
+    <div class="card">
+      <!-- Photo Anak -->
+      <img
+        src="{{ memberAnak.photoAnakUrl || './assets/images/user.png' }}"
+        alt="{{ memberAnak.namaLengkap }}"
+        class="card-img-top img-thumbnail"
+      />
+      <!-- End - Photo anak -->
+      <!-- Informasi anak -->
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col">Nama Anak</th>
+              <th scope="col">{{ memberAnak.namaLengkap }}</th>
+            </tr>
+            <tr>
+              <th scope="col">NIK</th>
+              <th scope="col">{{ memberAnak.nik }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Jenis Kelamin</th>
+              <th scope="col">{{ memberAnak.jenisKelaminAnak }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Tanggal Lahir</th>
+              <th scope="col">
+                {{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">Alamat Lengkap</th>
+              <th scope="col">{{ memberAnak.alamat }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Kontak</th>
+              <th scope="col">{{ memberAnak.kontak }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End - Informasi anak -->
+      <!--  -->
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button
+            mat-raised-button
+            color="primary"
+            routerLink="/anak-members/edit/{{ memberAnak.id }}"
+            style="margin-right: 5px"
+          >
+            Edit
+          </button>
+          <button (click)="delete()" mat-raised-button color="warn">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End - Detail profile anak -->
+
+  <!-- Tab Menu Details -->
+  <div class="col-9">
+    <section fxLayout="column" fxFlexAlign="start">
+      <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
+        <mat-tab label="Riwayat Penyakit">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="col">Jumalah Saudara</th>
+                <th scope="col">{{ memberAnak.jumlahSaudara }}</th>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Riwayat Kelahiran">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="col">Berat Lahir</th>
+                <th scope="col">{{ memberAnak.beratBadan }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Panjang Lahir</th>
+                <th scope="col">{{ memberAnak.panjangLahir }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Apgar Score</th>
+                <th scope="col">{{ memberAnak.apgarScore }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Kelahiran Dibantu Oleh</th>
+                <th scope="col">{{ memberAnak.kelahiranDibantuOleh }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Lain - Lain (Masalah Ketika Lahir</th>
+                <th scope="col">{{ memberAnak.lainLain }}</th>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Riwayat Orang Tua">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="col">Nama Ayah</th>
+                <th scope="col">{{ memberAnak.namaAyah }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Tanggal Lahir Ayah</th>
+                <th scope="col">
+                  {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">Pekerjaan Ayah</th>
+                <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Nama Ibu</th>
+                <th scope="col">{{ memberAnak.namaIbu }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Tanggal Lahir Ibu</th>
+                <th scope="col">
+                  {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">Pekerjaan Ibu</th>
+                <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Penghasilan Orang Tua</th>
+                <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Anggota Rumah Tangga</th>
+                <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Tanda Tangan Orang Tua</th>
+                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Jadwal Imunisasi">
+          <p>
+            By using material components, we are going to create fully
+            responsive navigation menu, with its side-bar as well.
+          </p>
+        </mat-tab>
+        <mat-tab label="Kesehatan Anak">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="col">Status Gizi BB/TB</th>
+                <th scope="col">{{ memberAnak.namaAyah }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Status Gizi IMT/U</th>
+                <th scope="col">
+                  {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">IP/TB</th>
+                <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Lingkar Kepala</th>
+                <th scope="col">{{ memberAnak.namaIbu }}</th>
+              </tr>
+              <tr>
+                <th scope="col">KPSP</th>
+                <th scope="col">
+                  {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">Daya Dengar</th>
+                <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Daya Lihat</th>
+                <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+              </tr>
+              <tr>
+                <th scope="col">KMPE</th>
+                <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+              </tr>
+              <tr>
+                <th scope="col">M-CHAT</th>
+                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+              </tr>
+              <tr>
+                <th scope="col">GPPH</th>
+                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Tanggal Pemeriksaan</th>
+                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+              </tr>
+            </tbody>
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              routerLink="/anak-members/pemeriksaan-kesehatan/{{
+                memberAnak.id
+              }}"
+            >
+              Pemeriksaan
+            </button>
+          </table>
+        </mat-tab>
+        <mat-tab label="Grafik">
+          <p>
+            By using material components, we are going to create fully
+            responsive navigation menu, with its side-bar as well.
+          </p>
+        </mat-tab>
+      </mat-tab-group>
+    </section>
+    <!-- End - Menu Details Content -->
+  </div>
+  <!-- End - Tab Menu Details -->
+</div>

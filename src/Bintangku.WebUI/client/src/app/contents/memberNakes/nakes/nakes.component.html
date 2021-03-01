@@ -1,0 +1,9 @@
+<div class="px-3 mt-2">
+  <h1 class="my-title">Tenaga Kesehatan Kami</h1>
+  <hr />
+  <div class="row">
+    <div *ngFor="let member of memberNakes" class="col-3">
+      <app-nakes-card [memberNakes]="member"></app-nakes-card>
+    </div>
+  </div>
+</div>

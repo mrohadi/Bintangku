@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <a mat-icon-button (click)="onToggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </a>
+  <a class="example-app-name bintangku" routerLink="/home">Bintangku</a>
+
+  <!-- Dropdown User When Login -->
+  <div
+    class="dropdown"
+    fxFlex
+    fxLayout
+    fxLayoutAlign="end"
+    fxHide.xs
+    *ngIf="accountService.currentUser$ | async as user"
+  >
+    <mat-icon
+      class="account-circle"
+      material-icons.md-48
+      [matMenuTriggerFor]="menu"
+      >account_circle</mat-icon
+    >
+    <!-- <button mat-button>Menu</button> -->
+    <mat-menu #menu="matMenu">
+      <a class="a" mat-menu-item routerLink="/nakes-members/{{ user.username }}"
+        >Profile</a
+      >
+      <a class="a" mat-menu-item (click)="logout()">Logout</a>
+    </mat-menu>
+  </div>
+  <!-- End - Dropdown User When Login -->
+
+  <!-- Account Navigation When User Not Login -->
+  <div
+    fxFlex
+    fxLayout
+    fxLayoutAlign="end"
+    fxHide.xs
+    *ngIf="(accountService.currentUser$ | async) === null"
+  >
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a mat-raised-button color="primary" routerLink="/login">Login</a>
+      </li>
+      <li>
+        <a mat-raised-button color="accent" routerLink="/register">Register</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End - Account Navigation When User Not Login -->
+</mat-toolbar>

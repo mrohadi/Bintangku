@@ -1,0 +1,61 @@
+<div class="add-anak-container px-3">
+  <!-- Titile -->
+  <h2 class="my-title">Pemeriksaan Anak</h2>
+  <!-- End - Title -->
+  <h2>Deteksi Dini Penyimpangan Pertumbuhan</h2>
+  <form
+    class="my-form"
+    fxLayout="row"
+    fxLayout.xs="column"
+    gdColumns="900px 600px"
+    fxLayoutGap="100px"
+  >
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Berat Badan</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openBeratBadan()">
+        Petunjuk
+      </button>
+    </div>
+
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Tinggi Badan</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openTinggiBadan()">
+        Petunjuk
+      </button>
+    </div>
+
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Lingkar Kepala</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openLingkarKepala()">
+        Petunjuk
+      </button>
+    </div>
+
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>IMT</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>KPSP</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openKpsp()">
+        Petunjuk
+      </button>
+    </div>
+  </form>
+</div>

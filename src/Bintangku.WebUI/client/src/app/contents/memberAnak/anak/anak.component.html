@@ -1,0 +1,84 @@
+<div class="px-4">
+  <h2 class="dasboard mb-4">Dashboard</h2>
+  <!-- Material Accordian -->
+  <div class="row mb-3" style="margin-bottom: 20px">
+    <div class="col-4">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header color="primary">
+            <mat-panel-title> Jadwal Vaksin Minggu Ini </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-4">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Anak Dalam Pemantauan </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-4">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Rujuk Ke Dokter Anak</mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+  <!-- End - Material Accordian -->
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" class="mb-3">
+    <button mat-raised-button color="primary" routerLink="/anak-member/add">
+      Tambahkan Anak
+    </button>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" class="mb-3">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Nama</th>
+          <th scope="col">NIK</th>
+          <th scope="col">Jenis Kelamin</th>
+          <th scope="col">Tanggal Lahir</th>
+          <th scope="col">Nama Ayah</th>
+          <th scope="col">Nama Ibu</th>
+          <th scope="col">Alamat Lengkap</th>
+          <th scope="col">Kontak</th>
+          <th scope="col">Diinput Oleh</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let memberAnak of memberAnaks">
+        <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
+          <th scope="row">No</th>
+          <td>{{ memberAnak.namaLengkap }}</td>
+          <td>{{ memberAnak.nik }}</td>
+          <td>{{ memberAnak.jenisKelaminAnak }}</td>
+          <td>{{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}</td>
+          <td>{{ memberAnak.namaAyah }}</td>
+          <td>{{ memberAnak.namaIbu }}</td>
+          <td>{{ memberAnak.alamat }}</td>
+          <td>{{ memberAnak.kontak }}</td>
+          <td>{{ memberAnak.namaNakes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

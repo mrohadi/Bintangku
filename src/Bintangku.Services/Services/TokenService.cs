@@ -29,14 +29,14 @@ namespace Bintangku.Services.Services
             {
                 new Claim(JwtRegisteredClaimNames.NameId, nakesUser.UserName)
             };
-
+            
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 // FIXME: change the days
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddMinutes(2000),
                 SigningCredentials = creds
             };
 
