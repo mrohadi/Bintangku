@@ -37,7 +37,6 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
-
         [HttpGet("{nakesUsername}")]
         public async Task<ActionResult<MemberNakesUserDto>> GetNakesUser(string nakesUsername)
         {

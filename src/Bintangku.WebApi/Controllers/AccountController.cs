@@ -46,10 +46,14 @@ namespace Bintangku.WebApi.Controllers
             
             if (!result.Succeeded) return BadRequest(result.Errors);
 
+            var roleResult = await _userManager.AddToRoleAsync(nakesUser, "Nakes");
+
+            if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
+
             return new NakesUserDto
             {
                 Username = nakesUser.UserName,
-                Token = _tokenService.CreateToken(nakesUser)
+                Token = await _tokenService.CreateToken(nakesUser)
             };
         }
 
@@ -74,7 +78,7 @@ namespace Bintangku.WebApi.Controllers
             return new NakesUserDto
             {
                 Username = nakesUser.UserName,
-                Token = _tokenService.CreateToken(nakesUser)
+                Token = await _tokenService.CreateToken(nakesUser)
             };
         }
 

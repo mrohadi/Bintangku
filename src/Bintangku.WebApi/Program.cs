@@ -23,8 +23,9 @@ namespace Bintangku.WebApi
             {
                 var context = services.GetRequiredService<ApplicationDataContext>();
                 var userManager = services.GetRequiredService<UserManager<NakesUser>>();
+                var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
                 await context.Database.MigrateAsync();
-                await DataSeed.SeedNakesUser(userManager);
+                await DataSeed.SeedNakesUser(userManager, roleManager);
             }
             catch (Exception ex)
             {  

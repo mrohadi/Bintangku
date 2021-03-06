@@ -15,7 +15,8 @@ namespace Bintangku.Data
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task SeedNakesUser(UserManager<NakesUser> userManager)
+        public static async Task SeedNakesUser(
+            UserManager<NakesUser> userManager, RoleManager<AppRole> roleManager)
         {
             if (await userManager.Users.AnyAsync()) return;
 
@@ -24,11 +25,32 @@ namespace Bintangku.Data
             var users = JsonSerializer.Deserialize<List<NakesUser>>(nakesUserData);
             if (users == null) return;
             
+            var roles = new List<AppRole>
+            {
+                new AppRole { Name = "Nakes" },
+                new AppRole { Name = "Puskesmas" },
+                new AppRole { Name = "Admin" },
+            };
+            
+            foreach (var role in roles)
+            {
+                await roleManager.CreateAsync(role); 
+            }
+            
             foreach (var user in users)
             {
                 user.UserName = user.UserName.ToLower();
                 await userManager.CreateAsync(user, "Pa$$w0rd");
+                await userManager.AddToRoleAsync(user, "Nakes");
             }
+            
+            var admin = new NakesUser
+            {
+                UserName = "admin"
+            };
+
+            await userManager.CreateAsync(admin, "Pa$$w0rd"); 
+            await userManager.AddToRolesAsync(admin, new[] { "Admin", "Puskesmas" });
         }
     }
 }

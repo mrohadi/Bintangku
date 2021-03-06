@@ -15,15 +15,16 @@ namespace Bintangku.Services.Extensions
             this IServiceCollection services, IConfiguration config)
         {
             // FIXME: setting for identity
-            services.AddIdentityCore<NakesUser>(options =>
-            {
-                options.Password.RequireNonAlphanumeric = false;
-            })
-            .AddRoles<AppRole>()
-            .AddRoleManager<RoleManager<AppRole>>()
-            .AddSignInManager<SignInManager<NakesUser>>()
-            .AddRoleValidator<RoleValidator<AppRole>>()
-            .AddEntityFrameworkStores<ApplicationDataContext>();
+            services
+                .AddIdentityCore<NakesUser>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                })
+                .AddRoles<AppRole>()
+                .AddRoleManager<RoleManager<AppRole>>()
+                .AddSignInManager<SignInManager<NakesUser>>()
+                .AddRoleValidator<RoleValidator<AppRole>>()
+                .AddEntityFrameworkStores<ApplicationDataContext>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -36,6 +37,12 @@ namespace Bintangku.Services.Extensions
                         ValidateAudience = false
                     };
                 });
+            
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                option.AddPolicy("RequirePuskesmasRole", policy => policy.RequireRole("Admin", "Puskesmas"));
+            });
                 
             return services;
         }
