@@ -32,7 +32,7 @@ namespace Bintangku.WebApi.Controllers
         public async Task<IActionResult> CreateDataAnak([FromBody] PostDataAnak postDataAnak)
         {
             var currentNakesUsername = User.GetUserName();
-            var currentNakes = _context.NakesUsers.SingleOrDefaultAsync(
+            var currentNakes = _context.Users.SingleOrDefaultAsync(
                 x => x.UserName == currentNakesUsername);
 
             var dataToPost = new DataAnak
@@ -69,7 +69,7 @@ namespace Bintangku.WebApi.Controllers
                 },
                 // Nakes
                 NakesUser = currentNakes.Result,
-                NakesUserId = currentNakes.Id
+                UserId = currentNakes.Id
             };  
 
              _context.Add(dataToPost);

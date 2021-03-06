@@ -1,5 +1,8 @@
 using System.Text;
+using Bintangku.Data;
+using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -11,6 +14,17 @@ namespace Bintangku.Services.Extensions
         public static IServiceCollection AddIdentityServices(
             this IServiceCollection services, IConfiguration config)
         {
+            // FIXME: setting for identity
+            services.AddIdentityCore<NakesUser>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddRoles<AppRole>()
+            .AddRoleManager<RoleManager<AppRole>>()
+            .AddSignInManager<SignInManager<NakesUser>>()
+            .AddRoleValidator<RoleValidator<AppRole>>()
+            .AddEntityFrameworkStores<ApplicationDataContext>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

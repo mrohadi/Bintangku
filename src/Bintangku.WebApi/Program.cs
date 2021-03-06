@@ -1,7 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using Bintangku.Data;
+using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,8 +22,9 @@ namespace Bintangku.WebApi
             try
             {
                 var context = services.GetRequiredService<ApplicationDataContext>();
+                var userManager = services.GetRequiredService<UserManager<NakesUser>>();
                 await context.Database.MigrateAsync();
-                await DataSeed.SeedNakesUser(context);
+                await DataSeed.SeedNakesUser(userManager);
             }
             catch (Exception ex)
             {  

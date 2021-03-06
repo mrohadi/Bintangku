@@ -38,6 +38,13 @@ import { BeratBadanComponent } from './contents/memberAnak/dialogs/berat-badan/b
 import { TinggiBadanComponent } from './contents/memberAnak/dialogs/tinggi-badan/tinggi-badan.component';
 import { LingkarKepalaComponent } from './contents/memberAnak/dialogs/lingkar-kepala/lingkar-kepala.component';
 import { KpspComponent } from './contents/memberAnak/dialogs/kpsp/kpsp.component';
+import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { ImtComponent } from './contents/memberAnak/dialogs/imt/imt.component';
+import { DayaDengarComponent } from './contents/memberAnak/dialogs/daya-dengar/daya-dengar.component';
+import { DayaLihatComponent } from './contents/memberAnak/dialogs/daya-lihat/daya-lihat.component';
+import { KmpeComponent } from './contents/memberAnak/dialogs/kmpe/kmpe.component';
+import { GpphComponent } from './contents/memberAnak/dialogs/gpph/gpph.component';
+import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +76,12 @@ import { KpspComponent } from './contents/memberAnak/dialogs/kpsp/kpsp.component
     TinggiBadanComponent,
     LingkarKepalaComponent,
     KpspComponent,
+    ImtComponent,
+    DayaDengarComponent,
+    DayaLihatComponent,
+    KmpeComponent,
+    GpphComponent,
+    MchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +98,12 @@ import { KpspComponent } from './contents/memberAnak/dialogs/kpsp/kpsp.component
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    [
+      {
+        provide: MAT_RADIO_DEFAULT_OPTIONS,
+        useValue: { color: 'primary' },
+      },
+    ],
   ],
   bootstrap: [AppComponent],
 })

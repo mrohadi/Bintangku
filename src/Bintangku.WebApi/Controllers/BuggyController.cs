@@ -32,7 +32,7 @@ namespace Bintangku.WebApi.Controllers
         [HttpGet("not-found")]
         public ActionResult<NakesUser> GetNotFound()
         {
-            var thing = _dataContext.NakesUsers.Find(-1);
+            var thing = _dataContext.Users.Find(-1);
 
             if (thing == null) return NotFound();
 
@@ -46,7 +46,7 @@ namespace Bintangku.WebApi.Controllers
         [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
-            var thing = _dataContext.NakesUsers.Find(-1);
+            var thing = _dataContext.Users.Find(-1);
 
             var thingToReturn = thing.ToString();
 

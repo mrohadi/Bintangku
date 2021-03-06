@@ -10,6 +10,7 @@
     gdColumns="900px 600px"
     fxLayoutGap="100px"
   >
+    <!-- Berat Badan -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
       <mat-form-field class="my-full-width">
         <mat-label>Berat Badan</mat-label>
@@ -19,7 +20,9 @@
         Petunjuk
       </button>
     </div>
+    <!-- End - Berat Badan -->
 
+    <!-- Tinggi Badan -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
       <mat-form-field class="my-full-width">
         <mat-label>Tinggi Badan</mat-label>
@@ -29,7 +32,9 @@
         Petunjuk
       </button>
     </div>
+    <!-- End - Tinggi Badan -->
 
+    <!-- Lingkar Kepala -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
       <mat-form-field class="my-full-width">
         <mat-label>Lingkar Kepala</mat-label>
@@ -39,7 +44,9 @@
         Petunjuk
       </button>
     </div>
+    <!-- End - Lingkar Kepala -->
 
+    <!-- IMT -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
       <mat-form-field class="my-full-width">
         <mat-label>IMT</mat-label>
@@ -47,7 +54,9 @@
       </mat-form-field>
       <button mat-raised-button color="primary">Petunjuk</button>
     </div>
+    <!-- End - IMT -->
 
+    <!-- KPSP -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
       <mat-form-field class="my-full-width">
         <mat-label>KPSP</mat-label>
@@ -57,5 +66,72 @@
         Petunjuk
       </button>
     </div>
+    <!-- End - KPSP -->
+
+    <!-- Tes Daya Dengar -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Tet Daya Dengar</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+    <!-- End - Tes Daya Dengar -->
+
+    <!-- Tes Daya Lihat (Mata Kanan) -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Tes Daya Lihat (Mata Kanan)</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+    <!-- End - Tes Daya Lihat (Mata Kanan) -->
+
+    <!-- Tes Daya Lihat (Mata Kiri) -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>Tes Daya Lihat (Mata Kiri)</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+    <!-- End - Tes Daya Lihat (Mata Kanan) -->
+
+    <!-- Deteksi Dini Penyimpangan Perilaku Emosional -->
+    <h2>Deteksi Dini Penyimpangan Perilaku Emosional</h2>
+    <h2></h2>
+
+    <!-- KMPE -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>KMPE</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+    <!-- End - KMPE -->
+
+    <!-- M-CHAT -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>M-CHAT</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Petunjuk</button>
+    </div>
+    <!-- End - M-CHAT -->
+
+    <!-- GPPH -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width">
+        <mat-label>GPPH</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openGpph()">
+        Petunjuk
+      </button>
+    </div>
+    <!-- End - GPPH -->
   </form>
 </div>

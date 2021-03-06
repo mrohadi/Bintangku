@@ -9,6 +9,7 @@ using Bintangku.Data.Entities;
 using Bintangku.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Bintangku.Services.Repository
 {
     public class NakesUserRepository : INakesUserRepository
@@ -28,7 +29,7 @@ namespace Bintangku.Services.Repository
         /// <returns></returns>
         public async Task<MemberNakesUserDto> GetMemberAsync(string username)
         {
-            return await _context.NakesUsers
+            return await _context.Users
                 .Where(x => x.UserName == username)
                 .ProjectTo<MemberNakesUserDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
@@ -40,7 +41,7 @@ namespace Bintangku.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<MemberNakesUserDto>> GetMembersAsync()
         {
-            return await _context.NakesUsers
+            return await _context.Users
                 .ProjectTo<MemberNakesUserDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
@@ -52,7 +53,7 @@ namespace Bintangku.Services.Repository
           /// <returns></returns>
         public async Task<NakesUser> GetNakesUserByIdAsync(int id)
         {
-            return await _context.NakesUsers.FindAsync(id);
+            return await _context.Users.FindAsync(id);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Bintangku.Services.Repository
         /// <returns></returns>
         public async Task<NakesUser> GetNakesUserByUsername(string username)
         {
-            return await _context.NakesUsers
+            return await _context.Users
                 .Include(p => p.Photos)
                 .SingleOrDefaultAsync(x => x.UserName == username);
         }
@@ -73,7 +74,7 @@ namespace Bintangku.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<NakesUser>> GetNakesUsersAsync()
         {
-            return await _context.NakesUsers
+            return await _context.Users
                 .Include(p => p.Photos)
                 .ToListAsync();
         }

@@ -21,9 +21,14 @@ namespace Bintangku.Data.Entities
 
         // Riwayat Orang Tua Related Entity
         public RiwayatOrangTua RiwayatOrangTua { get; set; }
+        
+        // Kesehatan Anak Related Entity
+        public KesehatanAnak KesehatanAnak { get; set; }
 
         // Nakes User relatied entities
-        public int NakesUserId { get; set; }
+        public int UserId { get; set; }
         public NakesUser NakesUser { get; set; }
+        
+        // Keseahatan Anak realted entity
     }
 }

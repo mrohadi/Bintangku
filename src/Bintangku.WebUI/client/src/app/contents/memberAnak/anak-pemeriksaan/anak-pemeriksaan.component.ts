@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BeratBadanComponent } from '../dialogs/berat-badan/berat-badan.component';
+import { GpphComponent } from '../dialogs/gpph/gpph.component';
 import { KpspComponent } from '../dialogs/kpsp/kpsp.component';
 import { LingkarKepalaComponent } from '../dialogs/lingkar-kepala/lingkar-kepala.component';
 import { TinggiBadanComponent } from '../dialogs/tinggi-badan/tinggi-badan.component';
@@ -42,6 +43,14 @@ export class AnakPemeriksaanComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openGpph() {
+    const dialogRef = this.dialog.open(GpphComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 
