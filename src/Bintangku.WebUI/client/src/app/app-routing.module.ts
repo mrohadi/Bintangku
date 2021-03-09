@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './contents/account/login/login.component';
 import { RegisterComponent } from './contents/account/register/register.component';
+import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.component';
 import { DashboardComponent } from './contents/dashboard/dashboard.component';
 import { NotFoundComponent } from './contents/errors/not-found/not-found.component';
 import { ServerErrorComponent } from './contents/errors/server-error/server-error.component';
@@ -16,6 +17,7 @@ import { NakesDetailComponent } from './contents/memberNakes/nakes-detail/nakes-
 import { NakesEditComponent } from './contents/memberNakes/nakes-edit/nakes-edit.component';
 import { NakesComponent } from './contents/memberNakes/nakes/nakes.component';
 import { HomesComponent } from './homes/homes.component';
+import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
@@ -33,6 +35,7 @@ const routes: Routes = [
         component: DashboardComponent,
         canActivate: [AuthGuard],
       },
+
       {
         path: 'nakes-members',
         component: NakesComponent,
@@ -46,6 +49,11 @@ const routes: Routes = [
       {
         path: 'anak-members/pemeriksaan-kesehatan/:id',
         component: AnakPemeriksaanComponent,
+      },
+      {
+        path: 'admin',
+        component: AdminPanelComponent,
+        canActivate: [AdminGuard],
       },
     ],
   },

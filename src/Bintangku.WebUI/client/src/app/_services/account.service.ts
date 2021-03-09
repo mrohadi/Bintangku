@@ -20,10 +20,8 @@ export class AccountServices {
       map((response: User) => {
         const user = response;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
-        return user;
       })
     );
   }
@@ -32,12 +30,20 @@ export class AccountServices {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
-        return user;
       })
     );
+  }
+
+  // Helper method
+  setCurrentUser(user: User) {
+    user.roles = [];
+    const roles = this.getDecodedToke(user.token).role;
+    Array.isArray(roles) ? (user.roles = roles) : user.roles.push(roles);
+    // FIXME: explore the best way to store token
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUserSource.next(user);
   }
 
   logout() {
@@ -45,8 +51,8 @@ export class AccountServices {
     this.currentUserSource.next(null);
   }
 
-  // Helper method
-  setCurrentUser(user: User) {
-    this.currentUserSource.next(user);
+  //
+  getDecodedToke(token) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }

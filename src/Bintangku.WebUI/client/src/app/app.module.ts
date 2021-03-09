@@ -45,6 +45,8 @@ import { DayaLihatComponent } from './contents/memberAnak/dialogs/daya-lihat/day
 import { KmpeComponent } from './contents/memberAnak/dialogs/kmpe/kmpe.component';
 import { GpphComponent } from './contents/memberAnak/dialogs/gpph/gpph.component';
 import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.component';
+import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directive/has-role.directive';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,8 @@ import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.compon
     KmpeComponent,
     GpphComponent,
     MchatComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
   ],
   imports: [
     BrowserModule,
