@@ -115,6 +115,9 @@ namespace Bintangku.Data.Migrations
                     b.Property<string>("Gpph")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Imt")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Kmpe")
                         .HasColumnType("TEXT");
 
@@ -127,6 +130,12 @@ namespace Bintangku.Data.Migrations
                     b.Property<string>("Mchat")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("PemeriksaanBeratBadan")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PemeriksaanTinggiBadan")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("StatusGiziBbTb")
                         .HasColumnType("TEXT");
 
@@ -138,7 +147,7 @@ namespace Bintangku.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("KesehatanAnak");
+                    b.ToTable("KesehatanAnaks");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.NakesUser", b =>

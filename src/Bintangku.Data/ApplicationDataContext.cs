@@ -16,6 +16,7 @@ namespace Bintangku.Data
         public DbSet<DataAnak> DataAnaks { get; set; }
         public DbSet<RiwayatKelahiran> RiwayatKelahirans { get; set; }
         public DbSet<RiwayatOrangTua> RiwayatOrangTuas { get; set; }
+        public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

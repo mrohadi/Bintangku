@@ -3,10 +3,13 @@ namespace Bintangku.Data.Entities
     public class KesehatanAnak
     {
         public int Id { get; set; } 
+        public int PemeriksaanBeratBadan { get; set; }
+        public int PemeriksaanTinggiBadan { get; set; }
+        public int Imt { get; set; }
+        public string LingkarKepala { get; set; }
         public string StatusGiziBbTb { get; set; }
         public string StatusGiziImtU { get; set; }
         public string StatusGiziIpTb { get; set; }
-        public string LingkarKepala { get; set; }
         public string Kpsp { get; set; }
         public string DayaDengar { get; set; }
         public string DayaLihat { get; set; }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bintangku.Data.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20210306061903_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20210311045416_RefactorDatabse")]
+    partial class RefactorDatabse
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,6 +98,58 @@ namespace Bintangku.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("DataAnaks");
+                });
+
+            modelBuilder.Entity("Bintangku.Data.Entities.KesehatanAnak", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DataAnakId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DayaDengar")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DayaLihat")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gpph")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Imt")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Kmpe")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Kpsp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LingkarKepala")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mchat")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PemeriksaanBeratBadan")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PemeriksaanTinggiBadan")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StatusGiziBbTb")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StatusGiziImtU")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StatusGiziIpTb")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KesehatanAnaks");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.NakesUser", b =>
@@ -393,6 +445,17 @@ namespace Bintangku.Data.Migrations
                     b.Navigation("NakesUser");
                 });
 
+            modelBuilder.Entity("Bintangku.Data.Entities.KesehatanAnak", b =>
+                {
+                    b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
+                        .WithOne("KesehatanAnak")
+                        .HasForeignKey("Bintangku.Data.Entities.KesehatanAnak", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DataAnak");
+                });
+
             modelBuilder.Entity("Bintangku.Data.Entities.Photo", b =>
                 {
                     b.HasOne("Bintangku.Data.Entities.NakesUser", "NakesUser")
@@ -469,6 +532,8 @@ namespace Bintangku.Data.Migrations
 
             modelBuilder.Entity("Bintangku.Data.Entities.DataAnak", b =>
                 {
+                    b.Navigation("KesehatanAnak");
+
                     b.Navigation("RiwayatKelahiran");
 
                     b.Navigation("RiwayatOrangTua");
