@@ -31,10 +31,12 @@ namespace Bintangku.WebApi.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<NakesUserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.Username)) return BadRequest("Username already exist");
-
+            if (await UserExists(registerDto.Username)) 
+                return BadRequest("Username already exist");
+            
             var nakesUser = new NakesUser
             {
+                Email = registerDto.Email,
                 UserName = registerDto.Username.ToLower(),
                 FullName = registerDto.FullName,
                 PhoneNumber = registerDto.PhoneNumber,
@@ -44,11 +46,13 @@ namespace Bintangku.WebApi.Controllers
             
             var result = await _userManager.CreateAsync(nakesUser, registerDto.Password);
             
-            if (!result.Succeeded) return BadRequest(result.Errors);
+            if (!result.Succeeded) 
+                return BadRequest(result.Errors);
 
             var roleResult = await _userManager.AddToRoleAsync(nakesUser, "Nakes");
 
-            if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
+            if (!roleResult.Succeeded) 
+                return BadRequest(roleResult.Errors);
 
             return new NakesUserDto
             {

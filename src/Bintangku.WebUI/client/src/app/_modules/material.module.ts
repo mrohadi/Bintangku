@@ -15,10 +15,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
-// import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -42,6 +43,12 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
   ],
   exports: [
     MatTabsModule,
@@ -62,6 +69,12 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}

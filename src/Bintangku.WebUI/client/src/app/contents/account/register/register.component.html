@@ -26,11 +26,56 @@
           >
             <div class="form-group">
               <input
+                [(ngModel)]="model.email"
+                class="form-control"
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="form-group">
+              <input
                 [(ngModel)]="model.username"
                 class="form-control"
                 type="text"
                 name="username"
-                placeholder="username"
+                placeholder="Username"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="model.fullname"
+                class="form-control"
+                type="text"
+                name="fullname"
+                placeholder="Nama Lengkap"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="model.phonenumber"
+                class="form-control"
+                type="text"
+                name="phonenumber"
+                placeholder="phonenumber"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="model.tempatpelayanan"
+                class="form-control"
+                type="text"
+                name="tempatpelayanan"
+                placeholder="Tempat Pelayanan"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="model.nostrtenagakesehatan"
+                class="form-control"
+                type="number"
+                name="nostrtenagakesehatan"
+                placeholder="No Str Ketenaga Kerjaan"
               />
             </div>
             <div class="form-group">

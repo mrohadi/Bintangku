@@ -2,7 +2,7 @@
   <!-- Titile -->
   <h2 class="add-anak">Tambah Anak</h2>
   <!-- End - Title -->
-  <form [formGroup]="addAnakForm" (ngSubmit)="addDataAnak()">
+  <form [formGroup]="PostDataAnak" (ngSubmit)="addDataAnak()">
     <!-- Profile Anak -->
     <h2>Profile Anak</h2>
     <div class="form-row">
@@ -78,10 +78,10 @@
         />
       </div>
       <div class="form-group col-md-6">
-        <label for="photoAnakUrl">Photo Anak Url</label>
+        <label for="photoAnakUrl">Photo Anak</label>
         <input
           formControlName="photoAnakUrl"
-          type="text"
+          type="file"
           placeholder="Photo Anak Url"
           class="form-control"
           id="photoAnakUrl"

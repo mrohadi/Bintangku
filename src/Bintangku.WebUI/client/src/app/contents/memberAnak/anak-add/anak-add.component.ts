@@ -22,7 +22,7 @@ export class AnakAddComponent implements OnInit {
     'PNS',
     'Wirwaswasta',
   ];
-  addAnakForm = this.formBuilder.group({
+  PostDataAnak = this.formBuilder.group({
     namaLengkap: ''.toUpperCase(),
     nik: Number,
     jenisKelaminAnak: '',
@@ -58,13 +58,14 @@ export class AnakAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addDataAnak(): void {
-    this.memberAnakService.addMemberAnak(this.addAnakForm.value).subscribe(
-      () => {
-        this.toastr.success('Data Anak Added Successfully');
-        this.route.navigateByUrl('/anak-members');
-      },
-      (error) => console.log(error)
-    );
+    // this.memberAnakService.addMemberAnak(this.addAnakForm.value).subscribe(
+    //   () => {
+    //     this.toastr.success('Data Anak Added Successfully');
+    //     this.route.navigateByUrl('/anak-members');
+    //   },
+    //   (error) => console.log(error)
+    // );
+    console.log(this.PostDataAnak);
   }
 
   cancelAddAnak() {
