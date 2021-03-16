@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,7 +7,10 @@ using Bintangku.Data;
 using Bintangku.Data.DTO;
 using Bintangku.Data.Entities;
 using Bintangku.Services.Extensions;
+using Bintangku.Services.Interfaces;
+using Bintangku.WebApi.ModelBinding;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,10 +21,79 @@ namespace Bintangku.WebApi.Controllers
     {
         private readonly ApplicationDataContext _context;
         private readonly IMapper _mapper;
-        public DataAnakController(ApplicationDataContext context, IMapper mapper)
+        private readonly IPhotoService _photoService;
+        public DataAnakController(
+            ApplicationDataContext context, 
+            IMapper mapper,
+            IPhotoService photoService)
         {
             _mapper = mapper;
             _context = context;
+            _photoService = photoService;
+        }
+
+        /// <summary>
+        /// HTTP Get to get all data anak from data base
+        /// </summary>
+        /// <returns>List of data anak</returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<DataAnak>>> GetDataAnaks()
+        {
+            var dataAnak = await _context.DataAnaks
+                .Select(anak => new
+                {   
+                    Id = anak.Id,
+                    NamaLengkap = anak.NamaLengkap,
+                    Nik = anak.NIK,
+                    JenisKelaminAnak = anak.JenisKelamin,
+                    TanggalLahirAnak = anak.TanggalLahirAnak,
+                    Alamat = anak.Alamat,
+                    Kontak = anak.Kontak,
+                    JumlahSaudara = anak.JumlahSaudara,
+                    PhotoAnak = anak.PhotoAnak,
+                    RiwayatKelahiran = anak.RiwayatKelahiran,
+                    RiwayatOrangTua = anak.RiwayatOrangTua,
+                    NamaNakes = anak.NakesUser.FullName,
+                    NakesPhoto = anak.NakesUser.Photos
+                        .Select(p => new { Url = p.Url })
+                })
+                .ToListAsync();
+
+            return Ok(dataAnak);
+        }
+
+        /// <summary>
+        /// HTTP Get to get specific data anak based on given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Specific data anak</returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DataAnak>> GetDataAnak(int id)
+        {
+            var dataAnak = await _context.DataAnaks
+                .Where(x => x.Id == id)
+                .Select(anak => new 
+                {
+                    Id = anak.Id,
+                    NamaLengkap = anak.NamaLengkap,
+                    Nik = anak.NIK,
+                    JenisKelaminAnak = anak.JenisKelamin,
+                    TanggalLahirAnak = anak.TanggalLahirAnak,
+                    Alamat = anak.Alamat,
+                    Kontak = anak.Kontak,
+                    JumlahSaudara = anak.JumlahSaudara,
+                    PhotoAnak = anak.PhotoAnak,
+                    RiwayatKelahiran = anak.RiwayatKelahiran,
+                    RiwayatOrangTua = anak.RiwayatOrangTua,
+                    NamaNakes = anak.NakesUser.FullName,
+                    NakesPhoto = anak.NakesUser.Photos
+                        .Select(p => new { Url = p.Url })
+                })
+                .SingleAsync();
+
+                if (dataAnak.Id != id) return BadRequest("Data Anak Tidak Ditemukan!");
+            
+            return Ok(dataAnak);
         }
 
         /// <summary>
@@ -29,11 +102,19 @@ namespace Bintangku.WebApi.Controllers
         /// <param name="dataAnakDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateDataAnak([FromBody] PostDataAnak postDataAnak)
+        public async Task<IActionResult> CreateDataAnak([FromForm] DataAnakModel model)
         {
             var currentNakesUsername = User.GetUserName();
             var currentNakes = _context.Users.SingleOrDefaultAsync(
                 x => x.UserName == currentNakesUsername);
+
+            var postDataAnak = model.PostDataAnak;
+            var image = model.File;
+            
+            var result = await _photoService.AddPhotoAsync(image);
+
+            if (result.Error != null)
+                return BadRequest(result.Error.Message);
 
             var dataToPost = new DataAnak
             {
@@ -41,10 +122,15 @@ namespace Bintangku.WebApi.Controllers
                 NIK = postDataAnak.NIK,
                 JenisKelamin = postDataAnak.JenisKelaminAnak,
                 TanggalLahirAnak = postDataAnak.TanggalLahirAnak,
-                PhotoAnakUrl = postDataAnak.PhotoAnakUrl,
                 Alamat = postDataAnak.Alamat,
                 Kontak = postDataAnak.Kontak,
                 JumlahSaudara = postDataAnak.JumlahSaudara,
+                // Photo Anak
+                PhotoAnak = new PhotoAnak
+                {
+                    Url = result.Url.AbsoluteUri,
+                    PublicId = result.PublicId
+                },
                 // Riwayat Kelahiran
                 RiwayatKelahiran = new RiwayatKelahiran
                 {
@@ -72,104 +158,12 @@ namespace Bintangku.WebApi.Controllers
                 UserId = currentNakes.Id
             };  
 
-             _context.Add(dataToPost);
-            await _context.SaveChangesAsync();
-
-            return Ok();
-        }
-
-        /// <summary>
-        /// HTTP Get to get all data anak from data base
-        /// </summary>
-        /// <returns>List of data anak</returns>
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<DataAnak>>> GetDataAnaks()
-        {
-            var dataAnak = await _context.DataAnaks
-                .Select(anak => new
-                {   
-                    Id = anak.Id,
-                    NamaLengkap = anak.NamaLengkap,
-                    Nik = anak.NIK,
-                    JenisKelaminAnak = anak.JenisKelamin,
-                    TanggalLahirAnak = anak.TanggalLahirAnak,
-                    Alamat = anak.Alamat,
-                    Kontak = anak.Kontak,
-                    JumlahSaudara = anak.JumlahSaudara,
-                    PhotoAnakUrl = anak.PhotoAnakUrl,
-                    // Riwayat Kelahiran
-                    BeratBadan = anak.RiwayatKelahiran.BeratBadan,
-                    PanjangLahir = anak.RiwayatKelahiran.PanjangLahir,
-                    ApgarScore = anak.RiwayatKelahiran.ApgarScore,
-                    KelahiranDibantuOleh = anak.RiwayatKelahiran.KelahiranDibantuOleh,
-                    LainLain = anak.RiwayatKelahiran.LainLain,
-                    // Riwayat Orang Tua
-                    NamaAyah = anak.RiwayatOrangTua.NamaAyah,
-                    TanggalLahirAyah = anak.RiwayatOrangTua.TanggalLahirAyah,
-                    PekerjaanAyah = anak.RiwayatOrangTua.PekerjaanAyah,
-                    NamaIbu = anak.RiwayatOrangTua.NamaIbu,
-                    TanggalLahirIbu = anak.RiwayatOrangTua.TanggalLahirIbu,
-                    PekerjaanIbu = anak.RiwayatOrangTua.PekerjaanIbu,
-                    PenghasilanOrangTua = anak.RiwayatOrangTua.PenghasilanOrangTua,
-                    AnggotaRumahTangga = anak.RiwayatOrangTua.AnggotaRumahTangga,
-                    TandaTanganOrangTua = anak.RiwayatOrangTua.TandaTanganOrangTua,
-                    // Nakes
-                    NamaNakes = anak.NakesUser.FullName,
-                    NakesPhoto = anak.NakesUser.Photos
-                        .Select(p => new { Url = p.Url })
-                })
-                .ToListAsync();
-
-            return Ok(dataAnak);
-        }
-
-        /// <summary>
-        /// HTTP Get to get specific data anak based on given id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Specific data anak</returns>
-        [HttpGet("{id}")]
-        public async Task<ActionResult<DataAnak>> GetDataAnak(int id)
-        {
-            var dataAnak = await _context.DataAnaks
-                .Where(x => x.Id == id)
-                .Select(anak => new 
-                {
-                    Id = anak.Id,
-                    namaLengkap = anak.NamaLengkap,
-                    Nik = anak.NIK,
-                    JenisKelaminAnak = anak.JenisKelamin,
-                    TanggalLahirAnak = anak.TanggalLahirAnak,
-                    Alamat = anak.Alamat,
-                    Kontak = anak.Kontak,
-                    JumlahSaudara = anak.JumlahSaudara,
-                    PhotoAnakUrl = anak.PhotoAnakUrl,
-                    // Riwayat Kelahiran
-                    BeratBadan = anak.RiwayatKelahiran.BeratBadan,
-                    PanjangLahir = anak.RiwayatKelahiran.PanjangLahir,
-                    ApgarScore = anak.RiwayatKelahiran.ApgarScore,
-                    KelahiranDibantuOleh = anak.RiwayatKelahiran.KelahiranDibantuOleh,
-                    LainLain = anak.RiwayatKelahiran.LainLain,
-                    // Riwayat Orang Tua
-                    NamaAyah = anak.RiwayatOrangTua.NamaAyah,
-                    TanggalLahirAyah = anak.RiwayatOrangTua.TanggalLahirAyah,
-                    PekerjaanAyah = anak.RiwayatOrangTua.PekerjaanAyah,
-                    NamaIbu = anak.RiwayatOrangTua.NamaIbu,
-                    TanggalLahirIbu = anak.RiwayatOrangTua.TanggalLahirIbu,
-                    PekerjaanIbu = anak.RiwayatOrangTua.PekerjaanIbu,
-                    PenghasilanOrangTua = anak.RiwayatOrangTua.PenghasilanOrangTua,
-                    AnggotaRumahTangga = anak.RiwayatOrangTua.AnggotaRumahTangga,
-                    TandaTanganOrangTua = anak.RiwayatOrangTua.TandaTanganOrangTua,
-                    // Nakes
-                    NamaNakes = anak.NakesUser.FullName,
-                    NakesPhoto = anak.NakesUser.Photos
-                        .Select(p => new { Url = p.Url })
-                })
-                .SingleAsync();
-
-                if (dataAnak.Id != id) return BadRequest("Data Anak Tidak Ditemukan!");
+            _context.Add(dataToPost);
             
-            return Ok(dataAnak);
+            if (await _context.SaveChangesAsync() > 0)
+                return Ok();
+                
+            return BadRequest("Failed to save data anak");
         }
         
         /// <summary>
@@ -186,42 +180,38 @@ namespace Bintangku.WebApi.Controllers
                 .SingleOrDefaultAsync(anak => anak.Id == id);
             
             if (anak == null) return BadRequest("Data Anak Tidak Ditemukan");
-
+            
             // Update Prfile Anak
             anak.NamaLengkap = updateDataAnak.NamaLengkap;
             anak.NIK = updateDataAnak.NIK;
             anak.JenisKelamin = updateDataAnak.JenisKelaminAnak;
             anak.TanggalLahirAnak = updateDataAnak.TanggalLahirAnak;
-            anak.PhotoAnakUrl = updateDataAnak.PhotoAnakUrl;
             anak.Alamat = updateDataAnak.Alamat;
             anak.Kontak = updateDataAnak.Kontak;
             anak.JumlahSaudara = updateDataAnak.JumlahSaudara;
 
             // Update Riwayat Kelahiran Data
-            var riwayatKelahiran = await _context.RiwayatKelahirans
-                .SingleOrDefaultAsync(x => x.DataAnak.Id == anak.Id); 
-            riwayatKelahiran.BeratBadan = updateDataAnak.BeratBadan;
-            riwayatKelahiran.PanjangLahir = updateDataAnak.PanjangLahir;
-            riwayatKelahiran.ApgarScore = updateDataAnak.ApgarScore;
-            riwayatKelahiran.KelahiranDibantuOleh = updateDataAnak.KelahiranDibantuOleh;
-            riwayatKelahiran.LainLain = updateDataAnak.LainLain;
+            // anak.RiwayatKelahiran.BeratBadan = updateDataAnak.BeratBadan;
+            // anak.RiwayatKelahiran.PanjangLahir = updateDataAnak.PanjangLahir;
+            // anak.RiwayatKelahiran.ApgarScore = updateDataAnak.ApgarScore;
+            // anak.RiwayatKelahiran.KelahiranDibantuOleh = updateDataAnak.KelahiranDibantuOleh;
+            // anak.RiwayatKelahiran.LainLain = updateDataAnak.LainLain;
 
             // Update Riwayat Orang Tua Data
-            var riwayatOrangTua = await _context.RiwayatOrangTuas
-                .FirstOrDefaultAsync(x => x.DataAnak.Id == anak.Id);
-            riwayatOrangTua.NamaAyah = updateDataAnak.NamaAyah;
-            riwayatOrangTua.TanggalLahirAyah = updateDataAnak.TanggalLahirAyah;
-            riwayatOrangTua.PekerjaanAyah = updateDataAnak.PekerjaanAyah;
-            riwayatOrangTua.NamaIbu = updateDataAnak.NamaIbu;
-            riwayatOrangTua.TanggalLahirIbu = updateDataAnak.TanggalLahirIbu;
-            riwayatOrangTua.PekerjaanIbu = updateDataAnak.PekerjaanIbu;
-            riwayatOrangTua.PenghasilanOrangTua = updateDataAnak.PenghasilanOrangTua;
-            riwayatOrangTua.AnggotaRumahTangga = updateDataAnak.AnggotaRumahTangga;
-            riwayatOrangTua.TandaTanganOrangTua = updateDataAnak.TandaTanganOrangTua;
+            // anak.RiwayatOrangTua.NamaAyah = updateDataAnak.NamaAyah;
+            // anak.RiwayatOrangTua.TanggalLahirAyah = updateDataAnak.TanggalLahirAyah;
+            // anak.RiwayatOrangTua.PekerjaanAyah = updateDataAnak.PekerjaanAyah;
+            // anak.RiwayatOrangTua.NamaIbu = updateDataAnak.NamaIbu;
+            // anak.RiwayatOrangTua.TanggalLahirIbu = updateDataAnak.TanggalLahirIbu;
+            // anak.RiwayatOrangTua.PekerjaanIbu = updateDataAnak.PekerjaanIbu;
+            // anak.RiwayatOrangTua.PenghasilanOrangTua = updateDataAnak.PenghasilanOrangTua;
+            // anak.RiwayatOrangTua.AnggotaRumahTangga = updateDataAnak.AnggotaRumahTangga;
+            // anak.RiwayatOrangTua.TandaTanganOrangTua = updateDataAnak.TandaTanganOrangTua;
 
             _context.Entry(anak).State = EntityState.Modified; 
 
             await _context.SaveChangesAsync();
+            
 
             return Ok();
         }

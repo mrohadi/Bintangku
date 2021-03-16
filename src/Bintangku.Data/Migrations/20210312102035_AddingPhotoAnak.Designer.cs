@@ -3,14 +3,16 @@ using System;
 using Bintangku.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bintangku.Data.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210312102035_AddingPhotoAnak")]
+    partial class AddingPhotoAnak
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +103,6 @@ namespace Bintangku.Data.Migrations
             modelBuilder.Entity("Bintangku.Data.Entities.KesehatanAnak", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DataAnakId")
@@ -148,10 +149,7 @@ namespace Bintangku.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataAnakId")
-                        .IsUnique();
-
-                    b.ToTable("KesehatanAnak");
+                    b.ToTable("KesehatanAnaks");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.NakesUser", b =>
@@ -291,7 +289,6 @@ namespace Bintangku.Data.Migrations
             modelBuilder.Entity("Bintangku.Data.Entities.RiwayatKelahiran", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ApgarScore")
@@ -314,16 +311,12 @@ namespace Bintangku.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataAnakId")
-                        .IsUnique();
-
-                    b.ToTable("RiwayatKelahiran");
+                    b.ToTable("RiwayatKelahirans");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.RiwayatOrangTua", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<byte>("AnggotaRumahTangga")
@@ -358,10 +351,7 @@ namespace Bintangku.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataAnakId")
-                        .IsUnique();
-
-                    b.ToTable("RiwayatOrangTua");
+                    b.ToTable("RiwayatOrangTuas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -482,7 +472,7 @@ namespace Bintangku.Data.Migrations
                 {
                     b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
                         .WithOne("KesehatanAnak")
-                        .HasForeignKey("Bintangku.Data.Entities.KesehatanAnak", "DataAnakId")
+                        .HasForeignKey("Bintangku.Data.Entities.KesehatanAnak", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -515,7 +505,7 @@ namespace Bintangku.Data.Migrations
                 {
                     b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
                         .WithOne("RiwayatKelahiran")
-                        .HasForeignKey("Bintangku.Data.Entities.RiwayatKelahiran", "DataAnakId")
+                        .HasForeignKey("Bintangku.Data.Entities.RiwayatKelahiran", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -526,7 +516,7 @@ namespace Bintangku.Data.Migrations
                 {
                     b.HasOne("Bintangku.Data.Entities.DataAnak", "DataAnak")
                         .WithOne("RiwayatOrangTua")
-                        .HasForeignKey("Bintangku.Data.Entities.RiwayatOrangTua", "DataAnakId")
+                        .HasForeignKey("Bintangku.Data.Entities.RiwayatOrangTua", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

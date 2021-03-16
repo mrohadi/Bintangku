@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Bintangku.Data.Entities
 {
+    [Table("RiwayatKelahiran")]
     public class RiwayatKelahiran
     {
         public int Id { get; set; }

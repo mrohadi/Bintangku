@@ -9,9 +9,11 @@ namespace Bintangku.Data.Entities
         public int NIK { get; set; }
         public string JenisKelamin { get; set; }
         public DateTime TanggalLahirAnak { get; set; } = DateTime.Now;
-        public string PhotoAnakUrl { get; set; }
         public string Alamat { get; set; }
         public string Kontak { get; set; }
+
+        // Photo Anak Related Entity
+        public PhotoAnak PhotoAnak { get; set; }
 
         // Riwayat Penyakit dan Pengobatan
         public byte JumlahSaudara { get; set; }

@@ -1,7 +1,9 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bintangku.Data.Entities
 {
+    [Table("RiwayatOrangTua")]
     public class RiwayatOrangTua
     {
         public int Id { get; set; }
