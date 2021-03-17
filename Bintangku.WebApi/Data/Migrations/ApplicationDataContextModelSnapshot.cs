@@ -3,23 +3,21 @@ using System;
 using Bintangku.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Bintangku.Data.Migrations
+namespace Bintangku.WebApi.Data.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20210316061347_MigrateToPostgreSql")]
-    partial class MigrateToPostgreSql
+    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("Bintangku.Data.Entities.AppRole", b =>
                 {

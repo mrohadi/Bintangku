@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Bintangku.Data.Migrations
+namespace Bintangku.WebApi.Data.Migrations
 {
-    public partial class MigrateToPostgreSql : Migration
+    public partial class RefactorApp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

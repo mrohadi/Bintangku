@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Bintangku.Data.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Bintangku.Data
 {

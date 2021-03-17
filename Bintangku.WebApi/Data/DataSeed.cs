@@ -21,7 +21,7 @@ namespace Bintangku.Data
             if (await userManager.Users.AnyAsync()) return;
 
             var nakesUserData = await File.ReadAllTextAsync(
-                "../Bintangku.Data/NakesUserSeedData.json");
+                "Data/NakesUserSeedData.json");
             var users = JsonSerializer.Deserialize<List<NakesUser>>(nakesUserData);
             if (users == null) return;
             
