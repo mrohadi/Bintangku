@@ -109,7 +109,7 @@ namespace Bintangku.WebApi.Controllers
                 x => x.UserName == currentNakesUsername);
 
             var postDataAnak = model.PostDataAnak;
-            var image = model.File;
+            var image = model.Image;
             
             var result = await _photoService.AddPhotoAsync(image);
 
