@@ -48,6 +48,8 @@ import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.co
 import { HasRoleDirective } from './_directive/has-role.directive';
 import { UploadPhotoAnakComponent } from './contents/memberAnak/upload-photo-anak/upload-photo-anak.component';
 import { UploadTtdComponent } from './contents/memberAnak/upload-ttd/upload-ttd.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -100,10 +102,12 @@ import { UploadTtdComponent } from './contents/memberAnak/upload-ttd/upload-ttd.
     FlexLayoutModule,
     FormsModule,
     SharedModule,
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     [
       {
         provide: MAT_RADIO_DEFAULT_OPTIONS,
