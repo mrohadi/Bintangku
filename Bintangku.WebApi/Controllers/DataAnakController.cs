@@ -49,8 +49,8 @@ namespace Bintangku.WebApi.Controllers
                     TanggalLahirAnak = anak.TanggalLahirAnak,
                     Alamat = anak.Alamat,
                     Kontak = anak.Kontak,
+                    ImagePath = anak.ImagePath,
                     JumlahSaudara = anak.JumlahSaudara,
-                    PhotoAnak = anak.PhotoAnak,
                     RiwayatKelahiran = anak.RiwayatKelahiran,
                     RiwayatOrangTua = anak.RiwayatOrangTua,
                     NamaNakes = anak.NakesUser.FullName,
@@ -81,8 +81,8 @@ namespace Bintangku.WebApi.Controllers
                     TanggalLahirAnak = anak.TanggalLahirAnak,
                     Alamat = anak.Alamat,
                     Kontak = anak.Kontak,
+                    ImagePath = anak.ImagePath,
                     JumlahSaudara = anak.JumlahSaudara,
-                    PhotoAnak = anak.PhotoAnak,
                     RiwayatKelahiran = anak.RiwayatKelahiran,
                     RiwayatOrangTua = anak.RiwayatOrangTua,
                     NamaNakes = anak.NakesUser.FullName,
@@ -102,19 +102,11 @@ namespace Bintangku.WebApi.Controllers
         /// <param name="dataAnakDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateDataAnak([FromForm] DataAnakModel model)
+        public async Task<IActionResult> CreateDataAnak([FromBody] PostDataAnak postDataAnak)
         {
             var currentNakesUsername = User.GetUserName();
             var currentNakes = _context.Users.SingleOrDefaultAsync(
                 x => x.UserName == currentNakesUsername);
-
-            var postDataAnak = model.PostDataAnak;
-            var image = model.Image;
-            
-            var result = await _photoService.AddPhotoAsync(image);
-
-            if (result.Error != null)
-                return BadRequest(result.Error.Message);
 
             var dataToPost = new DataAnak
             {
@@ -124,13 +116,8 @@ namespace Bintangku.WebApi.Controllers
                 TanggalLahirAnak = postDataAnak.TanggalLahirAnak,
                 Alamat = postDataAnak.Alamat,
                 Kontak = postDataAnak.Kontak,
+                ImagePath = postDataAnak.ImagePath,
                 JumlahSaudara = postDataAnak.JumlahSaudara,
-                // Photo Anak
-                PhotoAnak = new PhotoAnak
-                {
-                    Url = result.Url.AbsoluteUri,
-                    PublicId = result.PublicId
-                },
                 // Riwayat Kelahiran
                 RiwayatKelahiran = new RiwayatKelahiran
                 {
@@ -151,7 +138,7 @@ namespace Bintangku.WebApi.Controllers
                     PekerjaanIbu = postDataAnak.PekerjaanIbu,
                     PenghasilanOrangTua = postDataAnak.PenghasilanOrangTua,
                     AnggotaRumahTangga = postDataAnak.AnggotaRumahTangga,
-                    TandaTanganOrangTua = postDataAnak.TandaTanganOrangTua
+                    TandaTanganPath = postDataAnak.TandaTanganPath
                 },
                 // Nakes
                 NakesUser = currentNakes.Result,

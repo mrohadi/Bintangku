@@ -5,6 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Bintangku.Services.Extensions;
 using Bintangku.Services.Middleware;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace Bintangku.WebApi
 {
@@ -26,7 +30,7 @@ namespace Bintangku.WebApi
             services.AddIdentityServices(_config);
             services.AddControllers();
             services.AddCors();
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bintangku.WebApi", Version = "v1" });
@@ -41,16 +45,21 @@ namespace Bintangku.WebApi
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
             app.UseCors(policy => 
                 policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-            
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

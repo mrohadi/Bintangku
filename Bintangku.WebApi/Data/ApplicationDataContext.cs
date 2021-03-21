@@ -41,21 +41,6 @@ namespace Bintangku.Data
                 .HasOne(n => n.NakesUser)
                 .WithMany(a => a.DataAnaks)
                 .HasForeignKey(n => n.UserId);
-            
-            // modelBuilder.Entity<DataAnak>()
-            //     .HasOne<RiwayatKelahiran>(r => r.RiwayatKelahiran)
-            //     .WithOne(d => d.DataAnak)
-            //     .HasForeignKey<RiwayatKelahiran>(r => r.Id);
-
-            // modelBuilder.Entity<DataAnak>()
-            //     .HasOne<RiwayatOrangTua>(r => r.RiwayatOrangTua)
-            //     .WithOne(d => d.DataAnak)
-            //     .HasForeignKey<RiwayatOrangTua>(r => r.Id);
-                
-            // modelBuilder.Entity<DataAnak>()
-            //     .HasOne<KesehatanAnak>(k => k.KesehatanAnak)
-            //     .WithOne(d => d.DataAnak)
-            //     .HasForeignKey<KesehatanAnak>(k => k.Id);
         }
     }
 }

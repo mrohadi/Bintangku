@@ -50,10 +50,10 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" class="mb-3">
-    <table class="table table-bordered table-hover">
+    <!-- <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">No</th>
+          <th scope="col"></th>
           <th scope="col">Nama</th>
           <th scope="col">NIK</th>
           <th scope="col">Jenis Kelamin</th>
@@ -67,7 +67,13 @@
       </thead>
       <tbody *ngFor="let memberAnak of memberAnaks">
         <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
-          <th scope="row">No</th>
+          <th scope="row">
+            <img
+              [src]="createImgPath(memberAnak.imagePath)"
+              alt="profile picture"
+              style="width: 60px; height: 60px; text-align: center"
+            />
+          </th>
           <td>{{ memberAnak.namaLengkap }}</td>
           <td>{{ memberAnak.nik }}</td>
           <td>{{ memberAnak.jenisKelaminAnak }}</td>
@@ -79,6 +85,46 @@
           <td>{{ memberAnak.namaNakes }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+    <article class="">
+      <section class="users">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nama</th>
+              <th scope="col">NIK</th>
+              <th scope="col">Jenis Kelamin</th>
+              <th scope="col">Tanggal Lahir</th>
+              <th scope="col">Nama Ayah</th>
+              <th scope="col">Nama Ibu</th>
+              <th scope="col">Alamat Lengkap</th>
+              <th scope="col">Kontak</th>
+              <th scope="col">Diinput Oleh</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let memberAnak of memberAnaks">
+            <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
+              <th scope="row">
+                <img
+                  [src]="memberAnakService.createImgPath(memberAnak.imagePath)"
+                  alt="profile picture"
+                  style="width: 60px; height: 60px; text-align: center"
+                />
+              </th>
+              <td>{{ memberAnak.namaLengkap }}</td>
+              <td>{{ memberAnak.nik }}</td>
+              <td>{{ memberAnak.jenisKelaminAnak }}</td>
+              <td>{{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}</td>
+              <td>{{ memberAnak.riwayatOrangTua.namaAyah }}</td>
+              <td>{{ memberAnak.riwayatOrangTua.namaIbu }}</td>
+              <td>{{ memberAnak.alamat }}</td>
+              <td>{{ memberAnak.kontak }}</td>
+              <td>{{ memberAnak.namaNakes }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
   </div>
 </div>

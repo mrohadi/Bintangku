@@ -14,7 +14,7 @@ export class AnakDetailComponent implements OnInit {
   memberAnak: MemberAnak;
 
   constructor(
-    private memberAnakService: MemberAnakService,
+    public memberAnakService: MemberAnakService,
     private _toastr: ToastrService,
     private location: Location,
     private route: ActivatedRoute

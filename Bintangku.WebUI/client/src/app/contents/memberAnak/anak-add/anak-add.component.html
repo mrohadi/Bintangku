@@ -79,13 +79,9 @@
       </div>
       <div class="form-group col-md-6">
         <label for="photoAnakUrl">Photo Anak</label>
-        <input
-          formControlName="photoAnakUrl"
-          type="file"
-          placeholder="Photo Anak Url"
-          class="form-control"
-          id="photoAnakUrl"
-        />
+        <app-upload-photo-anak
+          (onUploadFinished)="uploadFinished($event)"
+        ></app-upload-photo-anak>
       </div>
     </div>
     <!-- End - Profile Anak -->
@@ -180,7 +176,7 @@
         <input
           formControlName="namaIbu"
           type="text"
-          placeholder="namaIbu"
+          placeholder="Nama Ibu"
           class="form-control"
           id="namaIbu"
         />
@@ -261,13 +257,9 @@
       </div>
       <div class="form-group col-md-6">
         <label for="tandaTanganOrangTua">Tanda Tangan Orang Tua</label>
-        <input
-          formControlName="tandaTanganOrangTua"
-          type="text"
-          placeholder="Tanda Tangan Orang Tua"
-          class="form-control"
-          id="tandaTanganOrangTua"
-        />
+        <app-upload-ttd
+          (onUploadTtdFinished)="uploadTtdFinished($event)"
+        ></app-upload-ttd>
       </div>
     </div>
     <!-- End - Riwayat Orang Tua -->

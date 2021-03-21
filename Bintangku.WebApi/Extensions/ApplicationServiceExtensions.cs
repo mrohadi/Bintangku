@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Bintangku.Services.Helpers;
 using Newtonsoft.Json;
 using System;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace Bintangku.Services.Extensions
 {
@@ -24,6 +25,12 @@ namespace Bintangku.Services.Extensions
             services.AddMvc().AddNewtonsoftJson(
                 options => {options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+            // Configure service for Upload File 
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
             // Setting up PostgreSql Provider
             services.AddDbContext<ApplicationDataContext>(options =>
             {
@@ -60,7 +67,6 @@ namespace Bintangku.Services.Extensions
                 // or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
-
 
             return services;
         }

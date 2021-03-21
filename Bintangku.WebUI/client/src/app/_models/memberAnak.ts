@@ -1,4 +1,6 @@
 import { Photo } from './photo';
+import { RiwayatKelahiran } from './riwayatKelahiran';
+import { RiwayatOrangTua } from './riwayatOrangTua';
 
 export interface MemberAnak {
   id: number;
@@ -9,21 +11,9 @@ export interface MemberAnak {
   alamat: string;
   kontak: string;
   jumlahSaudara: number;
-  photoAnakUrl: string;
-  beratBadan: number;
-  panjangLahir: number;
-  apgarScore: number;
-  kelahiranDibantuOleh: string;
-  lainLain: string;
-  namaAyah: string;
-  tanggalLahirAyah: Date;
-  pekerjaanAyah: string;
-  namaIbu: string;
-  tanggalLahirIbu: Date;
-  pekerjaanIbu: string;
-  penghasilanOrangTua: number;
-  anggotaRumahTangga: number;
-  tandaTanganOrangTua: string;
+  imagePath: string;
+  riwayatKelahiran: RiwayatKelahiran;
+  riwayatOrangTua: RiwayatOrangTua;
   namaNakes: string;
   nakesPhoto: Photo[];
 }

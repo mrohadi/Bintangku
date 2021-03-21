@@ -7,7 +7,7 @@
     <div class="card">
       <!-- Photo Anak -->
       <img
-        src="{{ memberAnak.photoAnakUrl || './assets/images/user.png' }}"
+        [src]="memberAnakService.createImgPath(memberAnak.imagePath)"
         alt="{{ memberAnak.namaLengkap }}"
         class="card-img-top img-thumbnail"
       />
@@ -85,23 +85,31 @@
             <tbody>
               <tr>
                 <th scope="col">Berat Lahir</th>
-                <th scope="col">{{ memberAnak.beratBadan }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatKelahiran.beratBadan }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Panjang Lahir</th>
-                <th scope="col">{{ memberAnak.panjangLahir }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatKelahiran.panjangLahir }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Apgar Score</th>
-                <th scope="col">{{ memberAnak.apgarScore }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatKelahiran.apgarScore }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Kelahiran Dibantu Oleh</th>
-                <th scope="col">{{ memberAnak.kelahiranDibantuOleh }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatKelahiran.kelahiranDibantuOleh }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Lain - Lain (Masalah Ketika Lahir</th>
-                <th scope="col">{{ memberAnak.lainLain }}</th>
+                <th scope="col">{{ memberAnak.riwayatKelahiran.lainLain }}</th>
               </tr>
             </tbody>
           </table>
@@ -111,43 +119,59 @@
             <tbody>
               <tr>
                 <th scope="col">Nama Ayah</th>
-                <th scope="col">{{ memberAnak.namaAyah }}</th>
+                <th scope="col">{{ memberAnak.riwayatOrangTua.namaAyah }}</th>
               </tr>
               <tr>
                 <th scope="col">Tanggal Lahir Ayah</th>
                 <th scope="col">
-                  {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
+                  {{
+                    memberAnak.riwayatOrangTua.tanggalLahirAyah
+                      | date: "MMMM d, y"
+                  }}
                 </th>
               </tr>
               <tr>
                 <th scope="col">Pekerjaan Ayah</th>
-                <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatOrangTua.pekerjaanAyah }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Nama Ibu</th>
-                <th scope="col">{{ memberAnak.namaIbu }}</th>
+                <th scope="col">{{ memberAnak.riwayatOrangTua.namaIbu }}</th>
               </tr>
               <tr>
                 <th scope="col">Tanggal Lahir Ibu</th>
                 <th scope="col">
-                  {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
+                  {{
+                    memberAnak.riwayatOrangTua.tanggalLahirIbu
+                      | date: "MMMM d, y"
+                  }}
                 </th>
               </tr>
               <tr>
                 <th scope="col">Pekerjaan Ibu</th>
-                <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatOrangTua.pekerjaanIbu }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Penghasilan Orang Tua</th>
-                <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatOrangTua.penghasilanOrangTua }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Anggota Rumah Tangga</th>
-                <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatOrangTua.anggotaRumahTangga }}
+                </th>
               </tr>
               <tr>
                 <th scope="col">Tanda Tangan Orang Tua</th>
-                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+                <th scope="col">
+                  {{ memberAnak.riwayatOrangTua.tandaTanganOrangTua }}
+                </th>
               </tr>
             </tbody>
           </table>
@@ -163,51 +187,47 @@
             <tbody>
               <tr>
                 <th scope="col">Status Gizi BB/TB</th>
-                <th scope="col">{{ memberAnak.namaAyah }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">Status Gizi IMT/U</th>
-                <th scope="col">
-                  {{ memberAnak.tanggalLahirAyah | date: "MMMM d, y" }}
-                </th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">IP/TB</th>
-                <th scope="col">{{ memberAnak.pekerjaanAyah }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">Lingkar Kepala</th>
-                <th scope="col">{{ memberAnak.namaIbu }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">KPSP</th>
-                <th scope="col">
-                  {{ memberAnak.tanggalLahirIbu | date: "MMMM d, y" }}
-                </th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">Daya Dengar</th>
-                <th scope="col">{{ memberAnak.pekerjaanIbu }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">Daya Lihat</th>
-                <th scope="col">{{ memberAnak.penghasilanOrangTua }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">KMPE</th>
-                <th scope="col">{{ memberAnak.anggotaRumahTangga }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">M-CHAT</th>
-                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">GPPH</th>
-                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+                <th scope="col"></th>
               </tr>
               <tr>
                 <th scope="col">Tanggal Pemeriksaan</th>
-                <th scope="col">{{ memberAnak.tandaTanganOrangTua }}</th>
+                <th scope="col"></th>
               </tr>
             </tbody>
             <button

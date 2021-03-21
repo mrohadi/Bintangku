@@ -1,0 +1,11 @@
+.upload {
+  font-weight: bold;
+  color: rgb(63, 81, 181);
+  margin-left: 15px;
+  line-height: 36px;
+}
+
+.my-button {
+  color: white;
+  background-color: rgb(63, 81, 181);
+}

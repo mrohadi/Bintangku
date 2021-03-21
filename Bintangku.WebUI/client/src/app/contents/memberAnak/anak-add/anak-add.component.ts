@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as EventEmitter from 'events';
 import { ToastrService } from 'ngx-toastr';
 import { MemberAnakService } from 'src/app/_services/member-anak.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-anak-add',
@@ -11,6 +12,7 @@ import { MemberAnakService } from 'src/app/_services/member-anak.service';
   styleUrls: ['./anak-add.component.css'],
 })
 export class AnakAddComponent implements OnInit {
+  baseUrl: string = environment.apiUrl;
   jenisKelamins = ['None', 'Laki-Laki', 'Perempuan'];
   pekerjaan = [
     'None',
@@ -22,6 +24,9 @@ export class AnakAddComponent implements OnInit {
     'PNS',
     'Wirwaswasta',
   ];
+  public responseImage: { dbPath: '' };
+  public responseTtd: { dbPath: '' };
+
   PostDataAnak = this.formBuilder.group({
     namaLengkap: ''.toUpperCase(),
     nik: Number,
@@ -30,7 +35,7 @@ export class AnakAddComponent implements OnInit {
     alamat: '',
     kontak: '',
     jumlahSaudara: Number,
-    photoAnakUrl: '',
+    imagePath: { dbPath: '' },
     beratBadan: Number,
     panjangLahir: Number,
     apgarScore: Number,
@@ -44,7 +49,7 @@ export class AnakAddComponent implements OnInit {
     pekerjaanIbu: '',
     penghasilanOrangTua: Number,
     anggotaRumahTangga: Number,
-    tandaTanganOrangTua: '',
+    tandaTanganPath: { dbPath: '' },
   });
   cancel = new EventEmitter();
 
@@ -58,15 +63,25 @@ export class AnakAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addDataAnak(): void {
-    // this.memberAnakService.addMemberAnak(this.addAnakForm.value).subscribe(
-    //   () => {
-    //     this.toastr.success('Data Anak Added Successfully');
-    //     this.route.navigateByUrl('/anak-members');
-    //   },
-    //   (error) => console.log(error)
-    // );
+    this.PostDataAnak.patchValue({ imagePath: this.responseImage.dbPath });
+    this.PostDataAnak.patchValue({ tandaTanganPath: this.responseTtd.dbPath });
+    this.memberAnakService.addMemberAnak(this.PostDataAnak.value).subscribe(
+      () => {
+        this.toastr.success('Data Anak Added Successfully');
+        this.route.navigateByUrl('/anak-members');
+      },
+      (error) => console.log(error)
+    );
     console.log(this.PostDataAnak);
   }
+
+  public uploadFinished = (event) => {
+    this.responseImage = event;
+  };
+
+  public uploadTtdFinished = (event) => {
+    this.responseTtd = event;
+  };
 
   cancelAddAnak() {
     this.route.navigateByUrl('/anak-members');

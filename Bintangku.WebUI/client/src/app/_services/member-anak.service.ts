@@ -12,8 +12,8 @@ export class MemberAnakService {
 
   constructor(private http: HttpClient) {}
 
-  addMemberAnak(model: any) {
-    return this.http.post(this.baseUrl + 'dataanak', model);
+  addMemberAnak(PostDataAnak: any) {
+    return this.http.post(this.baseUrl + 'dataanak', PostDataAnak);
   }
 
   getMemberAnaks(): Observable<MemberAnak[]> {
@@ -31,4 +31,8 @@ export class MemberAnakService {
   deleteMemberAnak(id: number) {
     return this.http.delete(this.baseUrl + 'dataanak/' + id);
   }
+
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:5001/${serverPath}`;
+  };
 }

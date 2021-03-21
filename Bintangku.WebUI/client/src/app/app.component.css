@@ -21,13 +21,26 @@ main {
   box-sizing: border-box;
 }
 
+.my-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
 .my-container {
   position: absolute;
   top: 60px;
   bottom: 60px;
-  height: calc(100% - 120px);
+  height: calc(100% - 60px);
   left: 0;
   right: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
 }
 
 .my-sidenav {
@@ -38,18 +51,11 @@ main {
   /* background: rgba(255, 0, 0, 0.5); */
 }
 
-.my-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
+.push {
+  height: 50px;
 }
 
 .my-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+  background-color: aqua;
+  height: 50px;
 }

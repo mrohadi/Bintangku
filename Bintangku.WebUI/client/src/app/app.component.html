@@ -8,13 +8,13 @@
     </mat-sidenav>
     <!--  -->
     <mat-sidenav-content>
-      <!-- Main Content -->
-      <main>
+      <main class="wrapper">
         <router-outlet></router-outlet>
+        <div class="push"></div>
       </main>
-      <!-- End - Main Content -->
+      <!-- Footer -->
+      <app-footer></app-footer>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-  <mat-toolbar class="my-footer">Footer</mat-toolbar>
 </app-layout>

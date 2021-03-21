@@ -16,7 +16,6 @@ import { AnakComponent } from './contents/memberAnak/anak/anak.component';
 import { NakesDetailComponent } from './contents/memberNakes/nakes-detail/nakes-detail.component';
 import { NakesEditComponent } from './contents/memberNakes/nakes-edit/nakes-edit.component';
 import { NakesComponent } from './contents/memberNakes/nakes/nakes.component';
-import { HomesComponent } from './homes/homes.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 

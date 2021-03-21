@@ -15,7 +15,7 @@ namespace Bintangku.Data.Entities
         public string PekerjaanIbu { get; set; }
         public float PenghasilanOrangTua { get; set; }
         public byte AnggotaRumahTangga { get; set; }
-        public string TandaTanganOrangTua { get; set; }
+        public string TandaTanganPath { get; set; }
 
         // Data Anak Related Entity
         public int DataAnakId { get; set; }

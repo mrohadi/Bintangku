@@ -31,7 +31,6 @@ import { AnakPemeriksaanComponent } from './contents/memberAnak/anak-pemeriksaan
 import { MaterialModule } from './_modules/material.module';
 import { LayoutComponent } from './layout/layout.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HomesComponent } from './homes/homes.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { BeratBadanComponent } from './contents/memberAnak/dialogs/berat-badan/berat-badan.component';
@@ -47,6 +46,8 @@ import { GpphComponent } from './contents/memberAnak/dialogs/gpph/gpph.component
 import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.component';
 import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_directive/has-role.directive';
+import { UploadPhotoAnakComponent } from './contents/memberAnak/upload-photo-anak/upload-photo-anak.component';
+import { UploadTtdComponent } from './contents/memberAnak/upload-ttd/upload-ttd.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,6 @@ import { HasRoleDirective } from './_directive/has-role.directive';
     AnakAddComponent,
     AnakPemeriksaanComponent,
     LayoutComponent,
-    HomesComponent,
     HeaderComponent,
     SidenavListComponent,
     BeratBadanComponent,
@@ -86,6 +86,8 @@ import { HasRoleDirective } from './_directive/has-role.directive';
     MchatComponent,
     AdminPanelComponent,
     HasRoleDirective,
+    UploadPhotoAnakComponent,
+    UploadTtdComponent,
   ],
   imports: [
     BrowserModule,

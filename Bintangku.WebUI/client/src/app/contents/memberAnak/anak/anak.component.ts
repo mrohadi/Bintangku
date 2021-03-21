@@ -13,7 +13,7 @@ export class AnakComponent implements OnInit {
   memberAnaks: MemberAnak[];
   panelOpenState = false;
 
-  constructor(private memberAnakService: MemberAnakService) {}
+  constructor(public memberAnakService: MemberAnakService) {}
 
   ngOnInit(): void {
     this.loadMemberAnaks();
