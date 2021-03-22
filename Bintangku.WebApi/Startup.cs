@@ -7,8 +7,6 @@ using Bintangku.Services.Extensions;
 using Bintangku.Services.Middleware;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
 
 namespace Bintangku.WebApi
 {
