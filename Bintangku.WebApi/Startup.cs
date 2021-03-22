@@ -9,6 +9,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Bintangku.WebApi.Helpers;
 
 namespace Bintangku.WebApi
 {
@@ -55,9 +56,9 @@ namespace Bintangku.WebApi
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(
+                FileProvider = new PhysicalFileProvider2(
                             Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                RequestPath = new PathString("/Resources")
+                RequestPath = "/Resources"
             });
 
             app.UseRouting();
