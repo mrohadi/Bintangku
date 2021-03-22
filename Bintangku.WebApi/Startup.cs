@@ -10,6 +10,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Bintangku.WebApi.Helpers;
+using Microsoft.Extensions.Primitives;
 
 namespace Bintangku.WebApi
 {
@@ -56,9 +57,9 @@ namespace Bintangku.WebApi
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider2(
+                FileProvider = new PhysicalFileProviderCustom(
                             Path.Combine(env.ContentRootPath, "Resources", "Images")),
-                RequestPath = "/Resources/Images"
+                RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
             });
 
             app.UseRouting();
@@ -71,6 +72,41 @@ namespace Bintangku.WebApi
                 endpoints.MapControllers();
                 endpoints.MapFallbackToController("Index", "Fallback");
             });
+        }
+    }
+
+    public class PhysicalFileProviderCustom : IFileProvider
+    {
+        private string _root;
+        private PhysicalFileProvider _physicalFileProvider;
+        public PhysicalFileProviderCustom(string root)
+        {
+            _root = root;
+        }
+        
+        private PhysicalFileProvider GetPhysicalFileProvider()
+        {
+            if (!File.Exists(_root))
+                Directory.CreateDirectory(_root);
+            
+            if (_physicalFileProvider == null)
+                _physicalFileProvider = new PhysicalFileProvider(_root);
+            
+            return _physicalFileProvider;
+        }
+        public IDirectoryContents GetDirectoryContents(string subpath)
+        {
+            return GetPhysicalFileProvider().GetDirectoryContents(subpath);
+        }
+
+        public IFileInfo GetFileInfo(string subpath)
+        {
+            return GetPhysicalFileProvider().GetFileInfo(subpath);
+        }
+
+        public IChangeToken Watch(string filter)
+        {
+            return GetPhysicalFileProvider().Watch(filter);
         }
     }
 }
