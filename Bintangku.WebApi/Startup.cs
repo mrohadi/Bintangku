@@ -55,7 +55,7 @@ namespace Bintangku.WebApi
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                RequestPath = new PathString("/Resources")
+                RequestPath = new PathString(@"/Resources")
             });
 
             app.UseRouting();
