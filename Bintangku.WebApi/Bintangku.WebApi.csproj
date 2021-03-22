@@ -25,6 +25,9 @@
     <Content Include="Resource\*">
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </Content>
+    <Content Include="MyStaticFiles\*">
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>  
   
 

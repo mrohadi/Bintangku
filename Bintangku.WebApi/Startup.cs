@@ -53,9 +53,11 @@ namespace Bintangku.WebApi
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(env.ContentRootPath, "Resources")),
-                RequestPath = "/Resources"
+                // FileProvider = new PhysicalFileProvider(
+                //     Path.Combine(env.ContentRootPath, "Resources")),
+                // RequestPath = "/Resources"
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "MyStaticFiles")),
+                RequestPath = "/StaticFiles" 
             });
 
             app.UseRouting();
