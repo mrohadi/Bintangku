@@ -24,7 +24,7 @@ namespace Bintangku.WebApi.Controllers
                 var formCollection = await Request.ReadFormAsync();
                 var file = formCollection.Files.First();
                 var folderName = Path.Combine("Resources", "Images");
-                var pathToSave = Path.Combine(_env.ContentRootPath, folderName);
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
