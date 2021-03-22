@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Content Include="Resource\*">
-      <CopyToPublishDirectory>always</CopyToPublishDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </Content>
   </ItemGroup>  
   
