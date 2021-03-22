@@ -21,9 +21,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-   <Content Include="Resources/*" CopyToPublishDirectory="Always" />
-   <Content Include="Resources/*" CopyToOutputDirectory="Always" />
+  <Target Name="CreateAppDataFolder" AfterTargets="AfterPublish">
+    <MakeDir Directories="$(PublishDir)Resources" Condition="!Exists('$(PublishDir)Resources')" /> 
+  </Target>
+
+  <ItemGroup> 
+    <Content Include="Resources\**"> 
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory> 
+    </Content> 
   </ItemGroup>
 
 </Project>
