@@ -1,5 +1,6 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-upload-ttd',
@@ -7,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./upload-ttd.component.css'],
 })
 export class UploadTtdComponent implements OnInit {
+  baseUrl: string = environment.apiUrl;
   public progress: number;
   public message: string;
   @Output() public onUploadTtdFinished = new EventEmitter();
@@ -25,7 +27,7 @@ export class UploadTtdComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
 
     this.http
-      .post('https://localhost:5001/api/uploadttd', formData, {
+      .post(this.baseUrl + 'uploadttd', formData, {
         reportProgress: true,
         observe: 'events',
       })
