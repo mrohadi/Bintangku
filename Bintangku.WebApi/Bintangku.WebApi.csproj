@@ -22,13 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resource\*">
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
-    <Content Include="MyStaticFiles\*">
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>  
-  
+   <Content Include="Resources/*" CopyToPublishDirectory="Always" />
+  </ItemGroup>
 
 </Project>

@@ -47,15 +47,17 @@ namespace Bintangku.WebApi
             app.UseHttpsRedirection();
 
             app.UseCors(policy => 
-                policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+                policy.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithOrigins("https://localhost:4200"));
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
-                            Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
-                RequestPath = new PathString("/Images")
+                            Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
             });
 
             app.UseRouting();
