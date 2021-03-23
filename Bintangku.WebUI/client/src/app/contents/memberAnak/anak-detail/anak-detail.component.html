@@ -7,7 +7,7 @@
     <div class="card">
       <!-- Photo Anak -->
       <img
-        [src]="memberAnakService.createImgPath(memberAnak.imagePath)"
+        [src]="memberAnak.imagePath"
         alt="{{ memberAnak.namaLengkap }}"
         class="card-img-top img-thumbnail"
       />
@@ -170,7 +170,7 @@
               <tr>
                 <th scope="col">Tanda Tangan Orang Tua</th>
                 <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.tandaTanganOrangTua }}
+                  {{ memberAnak.riwayatOrangTua.tandaTanganPath }}
                 </th>
               </tr>
             </tbody>

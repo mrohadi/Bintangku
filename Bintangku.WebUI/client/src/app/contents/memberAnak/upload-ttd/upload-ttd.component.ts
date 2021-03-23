@@ -27,7 +27,7 @@ export class UploadTtdComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
 
     this.http
-      .post(this.baseUrl + 'uploadttd', formData, {
+      .post(this.baseUrl + 'dataanak/add-ttd', formData, {
         reportProgress: true,
         observe: 'events',
       })

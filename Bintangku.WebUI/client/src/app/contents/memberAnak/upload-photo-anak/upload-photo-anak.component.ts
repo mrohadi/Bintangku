@@ -25,7 +25,7 @@ export class UploadPhotoAnakComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     this.http
-      .post(this.baseUrl + 'uploadphoto', formData, {
+      .post(this.baseUrl + 'dataanak/add-photo', formData, {
         reportProgress: true,
         observe: 'events',
       })

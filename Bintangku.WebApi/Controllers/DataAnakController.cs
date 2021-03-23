@@ -221,5 +221,32 @@ namespace Bintangku.WebApi.Controllers
             
             return Ok();
         }
+
+        /// <summary>
+        /// Add Photo anak to Cloudinary
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost("add-photo")]
+        public async Task<ActionResult> AddPhotoAnak(IFormFile file)
+        {
+            var result = await _photoService.AddPhotoAsync(file);
+            
+            if (result.Error != null)
+                return BadRequest();
+
+            return Ok(new { Url = result.Url});
+        }
+        
+        [HttpPost("add-ttd")]
+        public async Task<ActionResult> AddTtd(IFormFile file)
+        {
+            var result = await _photoService.AddPhotoAsync(file);
+
+            if (result.Error != null)
+                return BadRequest();
+            
+            return Ok(new { Url = result.Url});
+        }
     }
 }

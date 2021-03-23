@@ -24,8 +24,8 @@ export class AnakAddComponent implements OnInit {
     'PNS',
     'Wirwaswasta',
   ];
-  public responseImage: { dbPath: '' };
-  public responseTtd: { dbPath: '' };
+  public responseImage: { url: '' };
+  public responseTtd: { url: '' };
 
   PostDataAnak = this.formBuilder.group({
     namaLengkap: ''.toUpperCase(),
@@ -35,7 +35,7 @@ export class AnakAddComponent implements OnInit {
     alamat: '',
     kontak: '',
     jumlahSaudara: Number,
-    imagePath: { dbPath: '' },
+    imagePath: { url: '' },
     beratBadan: Number,
     panjangLahir: Number,
     apgarScore: Number,
@@ -49,7 +49,7 @@ export class AnakAddComponent implements OnInit {
     pekerjaanIbu: '',
     penghasilanOrangTua: Number,
     anggotaRumahTangga: Number,
-    tandaTanganPath: { dbPath: '' },
+    tandaTanganPath: { url: '' },
   });
   cancel = new EventEmitter();
 
@@ -63,8 +63,8 @@ export class AnakAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addDataAnak(): void {
-    this.PostDataAnak.patchValue({ imagePath: this.responseImage.dbPath });
-    this.PostDataAnak.patchValue({ tandaTanganPath: this.responseTtd.dbPath });
+    this.PostDataAnak.patchValue({ imagePath: this.responseImage.url });
+    this.PostDataAnak.patchValue({ tandaTanganPath: this.responseTtd.url });
     this.memberAnakService.addMemberAnak(this.PostDataAnak.value).subscribe(
       () => {
         this.toastr.success('Data Anak Added Successfully');
