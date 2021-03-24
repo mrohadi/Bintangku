@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Bintangku.WebApi.Data.Migrations
+namespace Bintangku.WebApi.Migrations
 {
-    public partial class RefactorApp : Migration
+    public partial class UpdateRelationship10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -166,7 +166,7 @@ namespace Bintangku.WebApi.Data.Migrations
                 name: "DataAnaks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    DataAnakId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NamaLengkap = table.Column<string>(type: "text", nullable: true),
                     NIK = table.Column<int>(type: "integer", nullable: false),
@@ -174,18 +174,19 @@ namespace Bintangku.WebApi.Data.Migrations
                     TanggalLahirAnak = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Alamat = table.Column<string>(type: "text", nullable: true),
                     Kontak = table.Column<string>(type: "text", nullable: true),
+                    ImagePath = table.Column<string>(type: "text", nullable: true),
                     JumlahSaudara = table.Column<byte>(type: "smallint", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    NakesUserId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataAnaks", x => x.Id);
+                    table.PrimaryKey("PK_DataAnaks", x => x.DataAnakId);
                     table.ForeignKey(
-                        name: "FK_DataAnaks_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_DataAnaks_AspNetUsers_NakesUserId",
+                        column: x => x.NakesUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,7 +215,7 @@ namespace Bintangku.WebApi.Data.Migrations
                 name: "KesehatanAnak",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PemeriksaanBeratBadan = table.Column<int>(type: "integer", nullable: false),
                     PemeriksaanTinggiBadan = table.Column<int>(type: "integer", nullable: false),
@@ -233,33 +234,12 @@ namespace Bintangku.WebApi.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_KesehatanAnak", x => x.Id);
+                    table.PrimaryKey("PK_KesehatanAnak", x => x.KesehatanAnakId);
                     table.ForeignKey(
                         name: "FK_KesehatanAnak_DataAnaks_DataAnakId",
                         column: x => x.DataAnakId,
                         principalTable: "DataAnaks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PhotoAnak",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Url = table.Column<string>(type: "text", nullable: true),
-                    PublicId = table.Column<string>(type: "text", nullable: true),
-                    DataAnakId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PhotoAnak", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PhotoAnak_DataAnaks_DataAnakId",
-                        column: x => x.DataAnakId,
-                        principalTable: "DataAnaks",
-                        principalColumn: "Id",
+                        principalColumn: "DataAnakId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -267,7 +247,7 @@ namespace Bintangku.WebApi.Data.Migrations
                 name: "RiwayatKelahiran",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    RiwayatKelahiranId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     BeratBadan = table.Column<byte>(type: "smallint", nullable: false),
                     PanjangLahir = table.Column<int>(type: "integer", nullable: false),
@@ -278,12 +258,12 @@ namespace Bintangku.WebApi.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RiwayatKelahiran", x => x.Id);
+                    table.PrimaryKey("PK_RiwayatKelahiran", x => x.RiwayatKelahiranId);
                     table.ForeignKey(
                         name: "FK_RiwayatKelahiran_DataAnaks_DataAnakId",
                         column: x => x.DataAnakId,
                         principalTable: "DataAnaks",
-                        principalColumn: "Id",
+                        principalColumn: "DataAnakId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -291,7 +271,7 @@ namespace Bintangku.WebApi.Data.Migrations
                 name: "RiwayatOrangTua",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    RiwayatOrangTuaId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NamaAyah = table.Column<string>(type: "text", nullable: true),
                     TanggalLahirAyah = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -301,17 +281,17 @@ namespace Bintangku.WebApi.Data.Migrations
                     PekerjaanIbu = table.Column<string>(type: "text", nullable: true),
                     PenghasilanOrangTua = table.Column<float>(type: "real", nullable: false),
                     AnggotaRumahTangga = table.Column<byte>(type: "smallint", nullable: false),
-                    TandaTanganOrangTua = table.Column<string>(type: "text", nullable: true),
+                    TandaTanganPath = table.Column<string>(type: "text", nullable: true),
                     DataAnakId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RiwayatOrangTua", x => x.Id);
+                    table.PrimaryKey("PK_RiwayatOrangTua", x => x.RiwayatOrangTuaId);
                     table.ForeignKey(
                         name: "FK_RiwayatOrangTua_DataAnaks_DataAnakId",
                         column: x => x.DataAnakId,
                         principalTable: "DataAnaks",
-                        principalColumn: "Id",
+                        principalColumn: "DataAnakId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -353,19 +333,13 @@ namespace Bintangku.WebApi.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataAnaks_UserId",
+                name: "IX_DataAnaks_NakesUserId",
                 table: "DataAnaks",
-                column: "UserId");
+                column: "NakesUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_KesehatanAnak_DataAnakId",
                 table: "KesehatanAnak",
-                column: "DataAnakId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PhotoAnak_DataAnakId",
-                table: "PhotoAnak",
                 column: "DataAnakId",
                 unique: true);
 
@@ -406,9 +380,6 @@ namespace Bintangku.WebApi.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "KesehatanAnak");
-
-            migrationBuilder.DropTable(
-                name: "PhotoAnak");
 
             migrationBuilder.DropTable(
                 name: "Photos");

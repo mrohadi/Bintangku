@@ -3,7 +3,7 @@ import { RiwayatKelahiran } from './riwayatKelahiran';
 import { RiwayatOrangTua } from './riwayatOrangTua';
 
 export interface MemberAnak {
-  id: number;
+  dataAnakId: number;
   namaLengkap: string;
   nik: number;
   jenisKelaminAnak: string;

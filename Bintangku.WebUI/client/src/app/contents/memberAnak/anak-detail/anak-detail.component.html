@@ -52,7 +52,7 @@
           <button
             mat-raised-button
             color="primary"
-            routerLink="/anak-members/edit/{{ memberAnak.id }}"
+            routerLink="/anak-members/edit/{{ memberAnak.dataAnakId }}"
             style="margin-right: 5px"
           >
             Edit
@@ -235,7 +235,7 @@
               mat-raised-button
               color="primary"
               routerLink="/anak-members/pemeriksaan-kesehatan/{{
-                memberAnak.id
+                memberAnak.dataAnakId
               }}"
             >
               Pemeriksaan

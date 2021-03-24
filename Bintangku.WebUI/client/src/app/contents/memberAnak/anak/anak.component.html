@@ -104,7 +104,10 @@
             </tr>
           </thead>
           <tbody *ngFor="let memberAnak of memberAnaks">
-            <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
+            <tr
+              class="pointer"
+              routerLink="/anak-members/{{ memberAnak.dataAnakId }}"
+            >
               <th scope="row">
                 <img
                   [src]="memberAnak.imagePath"

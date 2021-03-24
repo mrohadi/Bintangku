@@ -1,28 +1,20 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bintangku.Data.Entities
 {
     public class DataAnak
     {
         [Key]
-        public int Id { get; set; }
-        [Required]
+        public int DataAnakId { get; set; }
         public string NamaLengkap { get; set; }
-        [Required]
         public int NIK { get; set; }
-        [Required]
         public string JenisKelamin { get; set; }
-        [Required]
         public DateTime TanggalLahirAnak { get; set; } = DateTime.Now;
-        [Required]
         public string Alamat { get; set; }
-        [Required]
         public string Kontak { get; set; }
         public string ImagePath { get; set; }
-
-
-        // Riwayat Penyakit dan Pengobatan
         public byte JumlahSaudara { get; set; }
 
         // Riwayat Penyakit Related Entity
@@ -35,7 +27,7 @@ namespace Bintangku.Data.Entities
         public KesehatanAnak KesehatanAnak { get; set; }
 
         // Nakes User relatied entities
-        public int UserId { get; set; }
+        public int NakesUserId { get; set; }
         public NakesUser NakesUser { get; set; }
         
         // Keseahatan Anak realted entity

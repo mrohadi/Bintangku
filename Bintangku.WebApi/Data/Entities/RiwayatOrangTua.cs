@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bintangku.Data.Entities
@@ -6,7 +7,8 @@ namespace Bintangku.Data.Entities
     [Table("RiwayatOrangTua")]
     public class RiwayatOrangTua
     {
-        public int Id { get; set; }
+        [Key]
+        public int RiwayatOrangTuaId { get; set; }
         public string NamaAyah { get; set; }    
         public DateTime TanggalLahirAyah { get; set; } = DateTime.Now;
         public string PekerjaanAyah { get; set; }

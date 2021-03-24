@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,7 +7,6 @@ using Bintangku.Data.DTO;
 using Bintangku.Data.Entities;
 using Bintangku.Services.Extensions;
 using Bintangku.Services.Interfaces;
-using Bintangku.WebApi.ModelBinding;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +40,7 @@ namespace Bintangku.WebApi.Controllers
             var dataAnak = await _context.DataAnaks
                 .Select(anak => new
                 {   
-                    Id = anak.Id,
+                    DataAnakId = anak.DataAnakId,
                     NamaLengkap = anak.NamaLengkap,
                     Nik = anak.NIK,
                     JenisKelaminAnak = anak.JenisKelamin,
@@ -71,10 +69,10 @@ namespace Bintangku.WebApi.Controllers
         public async Task<ActionResult<DataAnak>> GetDataAnak(int id)
         {
             var dataAnak = await _context.DataAnaks
-                .Where(x => x.Id == id)
+                .Where(x => x.DataAnakId == id)
                 .Select(anak => new 
                 {
-                    Id = anak.Id,
+                    DataAnakId = anak.DataAnakId,
                     NamaLengkap = anak.NamaLengkap,
                     Nik = anak.NIK,
                     JenisKelaminAnak = anak.JenisKelamin,
@@ -91,7 +89,7 @@ namespace Bintangku.WebApi.Controllers
                 })
                 .SingleAsync();
 
-                if (dataAnak.Id != id) return BadRequest("Data Anak Tidak Ditemukan!");
+                if (dataAnak.DataAnakId != id) return BadRequest("Data Anak Tidak Ditemukan!");
             
             return Ok(dataAnak);
         }
@@ -142,7 +140,6 @@ namespace Bintangku.WebApi.Controllers
                 },
                 // Nakes
                 NakesUser = currentNakes.Result,
-                UserId = currentNakes.Id
             };  
 
             _context.Add(dataToPost);
@@ -164,7 +161,7 @@ namespace Bintangku.WebApi.Controllers
             int id, [FromBody]UpdateDataAnak updateDataAnak)
         {
             var anak = await _context.DataAnaks
-                .SingleOrDefaultAsync(anak => anak.Id == id);
+                .SingleOrDefaultAsync(anak => anak.DataAnakId == id);
             
             if (anak == null) return BadRequest("Data Anak Tidak Ditemukan");
             
@@ -207,10 +204,11 @@ namespace Bintangku.WebApi.Controllers
         public async Task<IActionResult> UpdateDataAnak(int id)
         {
             var anak = await _context.DataAnaks
-                .Where(x => x.Id == id)
-                .Include(r => r.RiwayatKelahiran)
-                .Include(o => o.RiwayatOrangTua)
-                .Include(n => n.NakesUser)
+                .Where(anak => anak.DataAnakId == id)
+                .Include(kelahiran => kelahiran.RiwayatKelahiran)
+                .Include(orangTua => orangTua.RiwayatOrangTua)
+                .Include(kesehatan => kesehatan.KesehatanAnak)
+                .Include(nakes => nakes.NakesUser)
                 .SingleAsync();
             
             if (anak == null) return BadRequest("Data Anak Tidak Ditemukan!");

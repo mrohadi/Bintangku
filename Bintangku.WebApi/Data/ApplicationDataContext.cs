@@ -14,6 +14,9 @@ namespace Bintangku.Data
         }
 
         public DbSet<DataAnak> DataAnaks { get; set; }
+        public DbSet<RiwayatKelahiran> RiwayatKelahirans { get; set; }
+        public DbSet<RiwayatOrangTua> RiwayatOrangTuas { get; set; }
+        public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,14 +36,26 @@ namespace Bintangku.Data
 
             modelBuilder.Entity<NakesUser>()
                 .HasKey(b => b.Id);
+
+            modelBuilder.Entity<DataAnak>()
+                .HasOne(nakes => nakes.NakesUser)
+                .WithMany(anak => anak.DataAnaks)
+                .HasForeignKey(nakes => nakes.NakesUserId);
             
             modelBuilder.Entity<DataAnak>()
-                .HasKey(b => b.Id);
+                .HasOne(kelahiran => kelahiran.RiwayatKelahiran)
+                .WithOne(anak => anak.DataAnak)
+                .HasForeignKey<RiwayatKelahiran>(kelahiran => kelahiran.DataAnakId);
             
             modelBuilder.Entity<DataAnak>()
-                .HasOne(n => n.NakesUser)
-                .WithMany(a => a.DataAnaks)
-                .HasForeignKey(n => n.UserId);
+                .HasOne(orangTua => orangTua.RiwayatOrangTua)
+                .WithOne(anak => anak.DataAnak)
+                .HasForeignKey<RiwayatOrangTua>(orangTua => orangTua.DataAnakId);
+            
+            modelBuilder.Entity<DataAnak>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithOne(anak => anak.DataAnak)
+                .HasForeignKey<KesehatanAnak>(kesehatan => kesehatan.DataAnakId);
         }
     }
 }

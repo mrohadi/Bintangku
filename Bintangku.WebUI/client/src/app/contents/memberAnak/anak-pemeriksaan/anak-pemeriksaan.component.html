@@ -2,7 +2,7 @@
   <!-- Titile -->
   <h2 class="my-title">Pemeriksaan Anak</h2>
   <!-- End - Title -->
-  <h2>Deteksi Dini Penyimpangan Pertumbuhan</h2>
+  <h2 class="mb-3">Deteksi Dini Penyimpangan Pertumbuhan</h2>
   <form
     class="my-form"
     fxLayout="row"
@@ -10,9 +10,23 @@
     gdColumns="900px 600px"
     fxLayoutGap="100px"
   >
+    <!-- Tanggal Pemeriksaan -->
+    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+      <mat-form-field class="my-full-width" appearance="fill">
+        <mat-label>Tanggal Pemeriksaan</mat-label>
+        <!-- #docregion toggle -->
+        <input matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- #enddocregion toggle -->
+      </mat-form-field>
+    </div>
+    <!-- End - Tanggal Pemeriksaan -->
+    <h2></h2>
+
     <!-- Berat Badan -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Berat Badan</mat-label>
         <input matInput />
       </mat-form-field>
@@ -24,7 +38,7 @@
 
     <!-- Tinggi Badan -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Tinggi Badan</mat-label>
         <input matInput />
       </mat-form-field>
@@ -36,7 +50,7 @@
 
     <!-- Lingkar Kepala -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Lingkar Kepala</mat-label>
         <input matInput />
       </mat-form-field>
@@ -48,7 +62,7 @@
 
     <!-- IMT -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>IMT</mat-label>
         <input matInput />
       </mat-form-field>
@@ -58,7 +72,7 @@
 
     <!-- KPSP -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>KPSP</mat-label>
         <input matInput />
       </mat-form-field>
@@ -70,7 +84,7 @@
 
     <!-- Tes Daya Dengar -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Tet Daya Dengar</mat-label>
         <input matInput />
       </mat-form-field>
@@ -80,7 +94,7 @@
 
     <!-- Tes Daya Lihat (Mata Kanan) -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Tes Daya Lihat (Mata Kanan)</mat-label>
         <input matInput />
       </mat-form-field>
@@ -90,7 +104,7 @@
 
     <!-- Tes Daya Lihat (Mata Kiri) -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>Tes Daya Lihat (Mata Kiri)</mat-label>
         <input matInput />
       </mat-form-field>
@@ -104,7 +118,7 @@
 
     <!-- KMPE -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>KMPE</mat-label>
         <input matInput />
       </mat-form-field>
@@ -114,7 +128,7 @@
 
     <!-- M-CHAT -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>M-CHAT</mat-label>
         <input matInput />
       </mat-form-field>
@@ -124,7 +138,7 @@
 
     <!-- GPPH -->
     <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width">
+      <mat-form-field class="my-full-width" appearance="fill">
         <mat-label>GPPH</mat-label>
         <input matInput />
       </mat-form-field>

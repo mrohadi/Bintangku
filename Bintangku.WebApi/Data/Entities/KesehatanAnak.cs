@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bintangku.Data.Entities
@@ -5,7 +6,8 @@ namespace Bintangku.Data.Entities
     [Table("KesehatanAnak")]
     public class KesehatanAnak
     {
-        public int Id { get; set; } 
+        [Key]
+        public int KesehatanAnakId { get; set; } 
         public int PemeriksaanBeratBadan { get; set; }
         public int PemeriksaanTinggiBadan { get; set; }
         public int Imt { get; set; }

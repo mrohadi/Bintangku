@@ -3,15 +3,17 @@ using System;
 using Bintangku.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Bintangku.WebApi.Data.Migrations
+namespace Bintangku.WebApi.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210323140339_UpdateRelationship10")]
+    partial class UpdateRelationship10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,52 +66,48 @@ namespace Bintangku.WebApi.Data.Migrations
 
             modelBuilder.Entity("Bintangku.Data.Entities.DataAnak", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DataAnakId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Alamat")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("text");
 
                     b.Property<string>("JenisKelamin")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<byte>("JumlahSaudara")
                         .HasColumnType("smallint");
 
                     b.Property<string>("Kontak")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("NIK")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("NakesUserId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("NamaLengkap")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("TanggalLahirAnak")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.HasKey("DataAnakId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("NakesUserId");
 
                     b.ToTable("DataAnaks");
                 });
 
             modelBuilder.Entity("Bintangku.Data.Entities.KesehatanAnak", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("KesehatanAnakId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -156,7 +154,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<string>("StatusGiziIpTb")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("KesehatanAnakId");
 
                     b.HasIndex("DataAnakId")
                         .IsUnique();
@@ -279,7 +277,7 @@ namespace Bintangku.WebApi.Data.Migrations
 
             modelBuilder.Entity("Bintangku.Data.Entities.RiwayatKelahiran", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RiwayatKelahiranId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -302,7 +300,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<int>("PanjangLahir")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("RiwayatKelahiranId");
 
                     b.HasIndex("DataAnakId")
                         .IsUnique();
@@ -312,7 +310,7 @@ namespace Bintangku.WebApi.Data.Migrations
 
             modelBuilder.Entity("Bintangku.Data.Entities.RiwayatOrangTua", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RiwayatOrangTuaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -347,7 +345,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<DateTime>("TanggalLahirIbu")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("Id");
+                    b.HasKey("RiwayatOrangTuaId");
 
                     b.HasIndex("DataAnakId")
                         .IsUnique();
@@ -464,9 +462,7 @@ namespace Bintangku.WebApi.Data.Migrations
                 {
                     b.HasOne("Bintangku.Data.Entities.NakesUser", "NakesUser")
                         .WithMany("DataAnaks")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NakesUserId");
 
                     b.Navigation("NakesUser");
                 });
