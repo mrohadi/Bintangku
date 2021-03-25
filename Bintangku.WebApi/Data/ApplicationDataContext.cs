@@ -17,6 +17,9 @@ namespace Bintangku.Data
         public DbSet<RiwayatKelahiran> RiwayatKelahirans { get; set; }
         public DbSet<RiwayatOrangTua> RiwayatOrangTuas { get; set; }
         public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }
+        public DbSet<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
+        public DbSet<PemeriksaanMchat> PemeriksaanMchats { get; set; }
+        public DbSet<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +59,22 @@ namespace Bintangku.Data
                 .HasOne(kesehatan => kesehatan.KesehatanAnak)
                 .WithOne(anak => anak.DataAnak)
                 .HasForeignKey<KesehatanAnak>(kesehatan => kesehatan.DataAnakId);
+            
+            // Pemeriksaan Foreign Key to Kesehatan Anak Configuration
+            modelBuilder.Entity<PemeriksaanGpph>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanGpphs)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanMchat>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanMchats)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanKmpe>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanKmpes)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
         }
     }
 }
