@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,6 @@ using Bintangku.Data.Entities;
 using Bintangku.Services.Extensions;
 using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,214 +37,238 @@ namespace Bintangku.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DataAnak>>> GetDataAnaks()
         {
-            var dataAnak = await _context.DataAnaks
-                .Select(anak => new
-                {   
-                    DataAnakId = anak.DataAnakId,
-                    NamaLengkap = anak.NamaLengkap,
-                    Nik = anak.NIK,
-                    JenisKelaminAnak = anak.JenisKelamin,
-                    TanggalLahirAnak = anak.TanggalLahirAnak,
-                    Alamat = anak.Alamat,
-                    Kontak = anak.Kontak,
-                    ImagePath = anak.ImagePath,
-                    JumlahSaudara = anak.JumlahSaudara,
-                    RiwayatKelahiran = anak.RiwayatKelahiran,
-                    RiwayatOrangTua = anak.RiwayatOrangTua,
-                    NamaNakes = anak.NakesUser.FullName,
-                    NakesPhoto = anak.NakesUser.Photos
-                        .Select(p => new { Url = p.Url })
-                })
-                .ToListAsync();
-
-            return Ok(dataAnak);
+            try
+            {
+                var dataAnak = await _context.DataAnaks
+                    .Select(anak => new
+                    {   
+                        DataAnakId = anak.DataAnakId,
+                        NamaLengkap = anak.NamaLengkap,
+                        Nik = anak.NIK,
+                        JenisKelaminAnak = anak.JenisKelamin,
+                        TanggalLahirAnak = anak.TanggalLahirAnak,
+                        Alamat = anak.Alamat,
+                        Kontak = anak.Kontak,
+                        ImagePath = anak.ImagePath,
+                        JumlahSaudara = anak.JumlahSaudara,
+                        RiwayatKelahiran = anak.RiwayatKelahiran,
+                        RiwayatOrangTua = anak.RiwayatOrangTua,
+                        KesehatanAnak = anak.KesehatanAnak,
+                        NamaNakes = anak.NakesUser.FullName,
+                        NakesPhoto = anak.NakesUser.Photos
+                            .Select(p => new { Url = p.Url })
+                    })
+                    .ToListAsync();     
+                
+                if(dataAnak != null)
+                    return Ok(dataAnak);
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Data Anak Tidak Ditemukan: ${ex}");
+            }
         }
 
         /// <summary>
         /// HTTP Get to get specific data anak based on given id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Specific data anak</returns>
+        /// <returns>Specific data anak based on DataAnakId</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<DataAnak>> GetDataAnak(int id)
         {
-            var dataAnak = await _context.DataAnaks
-                .Where(x => x.DataAnakId == id)
-                .Select(anak => new 
-                {
-                    DataAnakId = anak.DataAnakId,
-                    NamaLengkap = anak.NamaLengkap,
-                    Nik = anak.NIK,
-                    JenisKelaminAnak = anak.JenisKelamin,
-                    TanggalLahirAnak = anak.TanggalLahirAnak,
-                    Alamat = anak.Alamat,
-                    Kontak = anak.Kontak,
-                    ImagePath = anak.ImagePath,
-                    JumlahSaudara = anak.JumlahSaudara,
-                    RiwayatKelahiran = anak.RiwayatKelahiran,
-                    RiwayatOrangTua = anak.RiwayatOrangTua,
-                    NamaNakes = anak.NakesUser.FullName,
-                    NakesPhoto = anak.NakesUser.Photos
-                        .Select(p => new { Url = p.Url })
-                })
-                .SingleAsync();
-
-                if (dataAnak.DataAnakId != id) return BadRequest("Data Anak Tidak Ditemukan!");
-            
-            return Ok(dataAnak);
+            try
+            {
+                var dataAnak = await _context.DataAnaks
+                    .Where(x => x.DataAnakId == id)
+                    .Select(anak => new 
+                    {
+                        DataAnakId = anak.DataAnakId,
+                        NamaLengkap = anak.NamaLengkap,
+                        Nik = anak.NIK,
+                        JenisKelaminAnak = anak.JenisKelamin,
+                        TanggalLahirAnak = anak.TanggalLahirAnak,
+                        Alamat = anak.Alamat,
+                        Kontak = anak.Kontak,
+                        ImagePath = anak.ImagePath,
+                        JumlahSaudara = anak.JumlahSaudara,
+                        RiwayatKelahiran = anak.RiwayatKelahiran,
+                        RiwayatOrangTua = anak.RiwayatOrangTua,
+                        KesehatanAnak = anak.KesehatanAnak,
+                        NamaNakes = anak.NakesUser.FullName,
+                        NakesPhoto = anak.NakesUser.Photos
+                            .Select(p => new { Url = p.Url })
+                    })
+                    .SingleAsync();
+                if (dataAnak != null)
+                    return Ok(dataAnak);
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Data Anak Tidak Ditemukan: {ex}");
+            }
         }
 
         /// <summary>
         /// HTTP Post to create new data anak and then save it onto data base 
         /// </summary>
-        /// <param name="dataAnakDto"></param>
-        /// <returns></returns>
+        /// <param name="dataAnakDto">Data anak transfer object to post into data base</param>
+        /// <returns>No Return</returns>
         [HttpPost]
-        public async Task<IActionResult> CreateDataAnak([FromBody] PostDataAnak postDataAnak)
+        public async Task<IActionResult> CreateDataAnak(
+            [FromBody] PostDataAnakDto postDataAnakDto)
         {
-            var currentNakesUsername = User.GetUserName();
-            var currentNakes = _context.Users.SingleOrDefaultAsync(
-                x => x.UserName == currentNakesUsername);
-
-            var dataToPost = new DataAnak
+            try
             {
-                NamaLengkap = postDataAnak.NamaLengkap,
-                NIK = postDataAnak.NIK,
-                JenisKelamin = postDataAnak.JenisKelaminAnak,
-                TanggalLahirAnak = postDataAnak.TanggalLahirAnak,
-                Alamat = postDataAnak.Alamat,
-                Kontak = postDataAnak.Kontak,
-                ImagePath = postDataAnak.ImagePath,
-                JumlahSaudara = postDataAnak.JumlahSaudara,
-                // Riwayat Kelahiran
-                RiwayatKelahiran = new RiwayatKelahiran
-                {
-                    BeratBadan = postDataAnak.BeratBadan,
-                    PanjangLahir = postDataAnak.PanjangLahir,
-                    ApgarScore = postDataAnak.ApgarScore,
-                    KelahiranDibantuOleh  = postDataAnak.KelahiranDibantuOleh,
-                    LainLain = postDataAnak.LainLain,
-                },
-                // Riwayat Orang Tua
-                RiwayatOrangTua = new RiwayatOrangTua
-                {
-                    NamaAyah = postDataAnak.NamaAyah,
-                    TanggalLahirAyah = postDataAnak.TanggalLahirAyah,
-                    PekerjaanAyah = postDataAnak.PekerjaanAyah,
-                    NamaIbu = postDataAnak.NamaIbu,
-                    TanggalLahirIbu = postDataAnak.TanggalLahirIbu,
-                    PekerjaanIbu = postDataAnak.PekerjaanIbu,
-                    PenghasilanOrangTua = postDataAnak.PenghasilanOrangTua,
-                    AnggotaRumahTangga = postDataAnak.AnggotaRumahTangga,
-                    TandaTanganPath = postDataAnak.TandaTanganPath
-                },
-                // Nakes
-                NakesUser = currentNakes.Result,
-            };  
+                var currentNakesUsername = User.GetUserName();
+                var currentNakes = _context.Users.SingleOrDefaultAsync(
+                    x => x.UserName == currentNakesUsername);
 
-            _context.Add(dataToPost);
-            
-            if (await _context.SaveChangesAsync() > 0)
-                return Ok();
-                
-            return BadRequest("Failed to save data anak");
+                var dataToPost = new DataAnak
+                {
+                    NamaLengkap = postDataAnakDto.NamaLengkap,
+                    NIK = postDataAnakDto.NIK,
+                    JenisKelamin = postDataAnakDto.JenisKelaminAnak,
+                    TanggalLahirAnak = postDataAnakDto.TanggalLahirAnak,
+                    Alamat = postDataAnakDto.Alamat,
+                    Kontak = postDataAnakDto.Kontak,
+                    ImagePath = postDataAnakDto.ImagePath,
+                    JumlahSaudara = postDataAnakDto.JumlahSaudara,
+                    // Riwayat Kelahiran
+                    RiwayatKelahiran = new RiwayatKelahiran
+                    {
+                        BeratBadan = postDataAnakDto.BeratBadan,
+                        PanjangLahir = postDataAnakDto.PanjangLahir,
+                        ApgarScore = postDataAnakDto.ApgarScore,
+                        KelahiranDibantuOleh  = postDataAnakDto.KelahiranDibantuOleh,
+                        LainLain = postDataAnakDto.LainLain,
+                    },
+                    // Riwayat Orang Tua
+                    RiwayatOrangTua = new RiwayatOrangTua
+                    {
+                        NamaAyah = postDataAnakDto.NamaAyah,
+                        TanggalLahirAyah = postDataAnakDto.TanggalLahirAyah,
+                        PekerjaanAyah = postDataAnakDto.PekerjaanAyah,
+                        NamaIbu = postDataAnakDto.NamaIbu,
+                        TanggalLahirIbu = postDataAnakDto.TanggalLahirIbu,
+                        PekerjaanIbu = postDataAnakDto.PekerjaanIbu,
+                        PenghasilanOrangTua = postDataAnakDto.PenghasilanOrangTua,
+                        AnggotaRumahTangga = postDataAnakDto.AnggotaRumahTangga,
+                        TandaTanganPath = postDataAnakDto.TandaTanganPath
+                    },
+                    KesehatanAnak = new KesehatanAnak
+                    {
+                        PemeriksaanGpphs = new List<PemeriksaanGpph> { },
+                        PemeriksaanMchats = new List<PemeriksaanMchat> { },
+                        PemeriksaanKmpes = new List<PemeriksaanKmpe> { }
+                    },
+                    // Nakes
+                    NakesUser = currentNakes.Result,
+                };
+
+                _context.Add(dataToPost);
+
+                if(await _context.SaveChangesAsync() > 0) 
+                    return Ok();
+                return BadRequest("Failed to Save Data Anak!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
         }
         
         /// <summary>
-        /// Update Specific Data Anak
+        /// Update specific data anak based on DataAnakId
         /// </summary>
-        /// <param name="id">Uniqe anak id</param>
-        /// <param name="updateDataAnak"></param>
-        /// <returns></returns>
-        [HttpPut("{id}")]
+        /// <param name="dataAnakId">Uniqe dataAnakId</param>
+        /// <param name="updateDataAnakDto">Update datan anak transfer object to update in data base</param>
+        /// <returns>No Return</returns>
+        [HttpPut("{dataAnakId}")]
         public async Task<IActionResult> UpdateDataAnak(
-            int id, [FromBody]UpdateDataAnak updateDataAnak)
+            int dataAnakId, [FromBody]UpdateDataAnakDto updateDataAnakDto)
         {
-            var anak = await _context.DataAnaks
-                .SingleOrDefaultAsync(anak => anak.DataAnakId == id);
+            try
+            {
+                var anak = await _context.DataAnaks
+                .SingleOrDefaultAsync(anak => anak.DataAnakId == dataAnakId);
             
-            if (anak == null) return BadRequest("Data Anak Tidak Ditemukan");
-            
-            // Update Prfile Anak
-            anak.NamaLengkap = updateDataAnak.NamaLengkap;
-            anak.NIK = updateDataAnak.NIK;
-            anak.JenisKelamin = updateDataAnak.JenisKelaminAnak;
-            anak.TanggalLahirAnak = updateDataAnak.TanggalLahirAnak;
-            anak.Alamat = updateDataAnak.Alamat;
-            anak.Kontak = updateDataAnak.Kontak;
-            anak.JumlahSaudara = updateDataAnak.JumlahSaudara;
+                if (anak == null) 
+                    return BadRequest("Data Anak Tidak Ditemukan");
+                
+                // Update Prfile Anak
+                anak.NamaLengkap = updateDataAnakDto.NamaLengkap;
+                anak.NIK = updateDataAnakDto.NIK;
+                anak.JenisKelamin = updateDataAnakDto.JenisKelaminAnak;
+                anak.TanggalLahirAnak = updateDataAnakDto.TanggalLahirAnak;
+                anak.Alamat = updateDataAnakDto.Alamat;
+                anak.Kontak = updateDataAnakDto.Kontak;
+                anak.ImagePath = updateDataAnakDto.ImagePath; 
+                anak.JumlahSaudara = updateDataAnakDto.JumlahSaudara;
 
-            // Update Riwayat Kelahiran Data
-            // anak.RiwayatKelahiran.BeratBadan = updateDataAnak.BeratBadan;
-            // anak.RiwayatKelahiran.PanjangLahir = updateDataAnak.PanjangLahir;
-            // anak.RiwayatKelahiran.ApgarScore = updateDataAnak.ApgarScore;
-            // anak.RiwayatKelahiran.KelahiranDibantuOleh = updateDataAnak.KelahiranDibantuOleh;
-            // anak.RiwayatKelahiran.LainLain = updateDataAnak.LainLain;
+                // Update Riwayat Kelahiran Data
+                anak.RiwayatKelahiran.BeratBadan = updateDataAnakDto.BeratBadan;
+                anak.RiwayatKelahiran.PanjangLahir = updateDataAnakDto.PanjangLahir;
+                anak.RiwayatKelahiran.ApgarScore = updateDataAnakDto.ApgarScore;
+                anak.RiwayatKelahiran.KelahiranDibantuOleh = updateDataAnakDto.KelahiranDibantuOleh;
+                anak.RiwayatKelahiran.LainLain = updateDataAnakDto.LainLain;
 
-            // Update Riwayat Orang Tua Data
-            // anak.RiwayatOrangTua.NamaAyah = updateDataAnak.NamaAyah;
-            // anak.RiwayatOrangTua.TanggalLahirAyah = updateDataAnak.TanggalLahirAyah;
-            // anak.RiwayatOrangTua.PekerjaanAyah = updateDataAnak.PekerjaanAyah;
-            // anak.RiwayatOrangTua.NamaIbu = updateDataAnak.NamaIbu;
-            // anak.RiwayatOrangTua.TanggalLahirIbu = updateDataAnak.TanggalLahirIbu;
-            // anak.RiwayatOrangTua.PekerjaanIbu = updateDataAnak.PekerjaanIbu;
-            // anak.RiwayatOrangTua.PenghasilanOrangTua = updateDataAnak.PenghasilanOrangTua;
-            // anak.RiwayatOrangTua.AnggotaRumahTangga = updateDataAnak.AnggotaRumahTangga;
-            // anak.RiwayatOrangTua.TandaTanganOrangTua = updateDataAnak.TandaTanganOrangTua;
+                // Update Riwayat Orang Tua Data
+                anak.RiwayatOrangTua.NamaAyah = updateDataAnakDto.NamaAyah;
+                anak.RiwayatOrangTua.TanggalLahirAyah = updateDataAnakDto.TanggalLahirAyah;
+                anak.RiwayatOrangTua.PekerjaanAyah = updateDataAnakDto.PekerjaanAyah;
+                anak.RiwayatOrangTua.NamaIbu = updateDataAnakDto.NamaIbu;
+                anak.RiwayatOrangTua.TanggalLahirIbu = updateDataAnakDto.TanggalLahirIbu;
+                anak.RiwayatOrangTua.PekerjaanIbu = updateDataAnakDto.PekerjaanIbu;
+                anak.RiwayatOrangTua.PenghasilanOrangTua = updateDataAnakDto.PenghasilanOrangTua;
+                anak.RiwayatOrangTua.AnggotaRumahTangga = updateDataAnakDto.AnggotaRumahTangga;
+                anak.RiwayatOrangTua.TandaTanganPath = updateDataAnakDto.TandaTanganOrangTua;
 
-            _context.Entry(anak).State = EntityState.Modified; 
+                _context.Entry(anak).State = EntityState.Modified; 
 
-            await _context.SaveChangesAsync();
-            
-
-            return Ok();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> UpdateDataAnak(int id)
-        {
-            var anak = await _context.DataAnaks
-                .Where(anak => anak.DataAnakId == id)
-                .Include(kelahiran => kelahiran.RiwayatKelahiran)
-                .Include(orangTua => orangTua.RiwayatOrangTua)
-                .Include(kesehatan => kesehatan.KesehatanAnak)
-                .Include(nakes => nakes.NakesUser)
-                .SingleAsync();
-            
-            if (anak == null) return BadRequest("Data Anak Tidak Ditemukan!");
-            
-            _context.Remove(anak);
-
-            await _context.SaveChangesAsync();
-            
-            return Ok();
+                if(await _context.SaveChangesAsync() > 0)
+                    return Ok();
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
         }
 
         /// <summary>
-        /// Add Photo anak to Cloudinary
+        /// Delete data anak based on specific dataAnakId
         /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        [HttpPost("add-photo")]
-        public async Task<ActionResult> AddPhotoAnak(IFormFile file)
+        /// <param name="dataAnakId">Unique dataAnakId</param>
+        /// <returns>No Return</returns>
+        [HttpDelete("{dataAnakId}")]
+        public async Task<IActionResult> DeleteDataAnak(int dataAnakId)
         {
-            var result = await _photoService.AddPhotoAsync(file);
+            try
+            {
+                var anak = await _context.DataAnaks
+                    .Where(anak => anak.DataAnakId == dataAnakId)
+                    .Include(kelahiran => kelahiran.RiwayatKelahiran)
+                    .Include(orangTua => orangTua.RiwayatOrangTua)
+                    .Include(kesehatan => kesehatan.KesehatanAnak)
+                    .Include(nakes => nakes.NakesUser)
+                    .SingleAsync();
             
-            if (result.Error != null)
-                return BadRequest();
+                if (anak == null) 
+                    return BadRequest("Data Anak Tidak Ditemukan!");
+                
+                _context.Remove(anak);
 
-            return Ok(new { Url = result.Url});
-        }
-        
-        [HttpPost("add-ttd")]
-        public async Task<ActionResult> AddTtd(IFormFile file)
-        {
-            var result = await _photoService.AddPhotoAsync(file);
-
-            if (result.Error != null)
-                return BadRequest();
-            
-            return Ok(new { Url = result.Url});
+                if(await _context.SaveChangesAsync() > 0)
+                    return Ok();
+                return BadRequest("Failed to Save Data in Data Base!");   
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
         }
     }
 }

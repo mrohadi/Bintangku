@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,6 +22,15 @@ namespace Bintangku.Data.Entities
         public string Kmpe { get; set; }
         public string Mchat { get; set; }
         public string Gpph { get; set; }
+        
+        // Pemeriksaan Kesehatan GPPH Related Entity 
+        public ICollection<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
+        
+        // Pemeriksaan Kesehatan M-CHAT Related Entity 
+        public ICollection<PemeriksaanMchat> PemeriksaanMchats { get; set; }
+        
+        // Pemeriksaan Kesehatan KMPE Related Entity
+        public ICollection<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
         
         // Data Anak Related Entity
         public int DataAnakId { get; set; }

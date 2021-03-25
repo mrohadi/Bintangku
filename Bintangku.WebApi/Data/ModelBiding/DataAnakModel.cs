@@ -11,7 +11,7 @@ namespace Bintangku.WebApi.ModelBinding
     public class DataAnakModel
     {
         [ModelBinder(BinderType = typeof(FormDataJsonBinder))] 
-        public PostDataAnak PostDataAnak { get; set; } 
+        public PostDataAnakDto PostDataAnakDto { get; set; } 
         public IFormFile Image { get; set; }
     }
 
