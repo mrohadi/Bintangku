@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Data
+namespace Bintangku.WebApi.Data
 {
     public static class DataSeed
     {

@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
+using CloudinaryDotNet.Actions;
 
-namespace Bintangku.Services.Interfaces
+namespace Bintangku.WebApi.Interfaces
 {
     public interface IPhotoService
     {

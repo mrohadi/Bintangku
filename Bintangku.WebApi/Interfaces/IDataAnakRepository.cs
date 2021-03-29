@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Services.Interfaces
+namespace Bintangku.WebApi.Interfaces
 {
     public interface IDataAnakRepository
     {

@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace Bintangku.Services.Extensions
+namespace Bintangku.WebApi.Extensions
 {
     public static class ClaimPrincipleExtension
     {

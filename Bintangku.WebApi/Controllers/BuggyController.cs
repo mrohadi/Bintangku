@@ -1,7 +1,7 @@
-using Bintangku.Data;
-using Bintangku.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Bintangku.WebApi.Data;
+using Bintangku.WebApi.Data.Entities;
 
 namespace Bintangku.WebApi.Controllers
 {

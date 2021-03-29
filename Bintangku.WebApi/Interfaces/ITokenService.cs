@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Bintangku.Data.Entities;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Services.Interfaces
+namespace Bintangku.WebApi.Interfaces
 {
     public interface ITokenService
     {

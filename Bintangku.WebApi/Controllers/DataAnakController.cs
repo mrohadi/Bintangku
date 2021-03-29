@@ -1,16 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Bintangku.Data;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Extensions;
-using Bintangku.Services.Interfaces;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Extensions;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data;
 
 namespace Bintangku.WebApi.Controllers
 {

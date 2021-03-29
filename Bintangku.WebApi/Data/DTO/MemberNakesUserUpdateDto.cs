@@ -1,6 +1,6 @@
 using System;
 
-namespace Bintangku.Data.DTO
+namespace Bintangku.WebApi.Data.DTO
 {
     public class MemberNakesUserUpdateDto
     {

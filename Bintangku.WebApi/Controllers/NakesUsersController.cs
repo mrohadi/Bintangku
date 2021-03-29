@@ -1,14 +1,14 @@
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Extensions;
-using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Bintangku.WebApi.Extensions;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Data.DTO;
 
 namespace Bintangku.WebApi.Controllers
 {
@@ -65,7 +65,8 @@ namespace Bintangku.WebApi.Controllers
 
             _nakesUserRepository.Update(user);
 
-            if (await _nakesUserRepository.SaveAllAsync()) return NoContent();
+            if (await _nakesUserRepository.SaveAllAsync()) 
+                return NoContent();
             return BadRequest();
         }
 

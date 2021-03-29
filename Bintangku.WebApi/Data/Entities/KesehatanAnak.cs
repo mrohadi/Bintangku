@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     [Table("KesehatanAnak")]
     public class KesehatanAnak
@@ -19,9 +19,6 @@ namespace Bintangku.Data.Entities
         public string Kpsp { get; set; }
         public string DayaDengar { get; set; }
         public string DayaLihat { get; set; }
-        public string Kmpe { get; set; }
-        public string Mchat { get; set; }
-        public string Gpph { get; set; }
         
         // Pemeriksaan Kesehatan GPPH Related Entity 
         public ICollection<PemeriksaanGpph> PemeriksaanGpphs { get; set; }

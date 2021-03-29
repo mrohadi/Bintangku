@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Data.DTO;
 
 namespace Bintangku.WebApi.Controllers
 {

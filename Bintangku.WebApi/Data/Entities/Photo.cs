@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     [Table("Photos")]
     public class Photo

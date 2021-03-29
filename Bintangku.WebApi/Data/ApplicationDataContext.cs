@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Data
+namespace Bintangku.WebApi.Data
 {
     public class ApplicationDataContext : IdentityDbContext<NakesUser, AppRole, int,
         IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, 

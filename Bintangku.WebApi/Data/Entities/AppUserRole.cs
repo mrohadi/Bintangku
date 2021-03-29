@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     // Join table between User and role
     public class AppUserRole : IdentityUserRole<int> 

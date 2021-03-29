@@ -1,6 +1,6 @@
 using System;
 
-namespace Bintangku.Data.Extensions
+namespace Bintangku.WebApi.Extensions
 {
     public static class DateTimeExtension
     {

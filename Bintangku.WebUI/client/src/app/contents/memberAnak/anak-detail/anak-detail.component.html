@@ -183,8 +183,8 @@
           </p>
         </mat-tab>
         <mat-tab label="Kesehatan Anak">
-          <table class="table">
-            <tbody>
+          <table class="table" *ngIf="pemeriksaanGpph">
+            <tbody *ngFor="let gpph of pemeriksaanGpph">
               <tr>
                 <th scope="col">Status Gizi BB/TB</th>
                 <th scope="col"></th>
@@ -223,7 +223,7 @@
               </tr>
               <tr>
                 <th scope="col">GPPH</th>
-                <th scope="col"></th>
+                <th scope="col">{{ gpph.point }}</th>
               </tr>
               <tr>
                 <th scope="col">Tanggal Pemeriksaan</th>

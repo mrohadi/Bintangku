@@ -1,13 +1,13 @@
 using System;
 using System.Threading.Tasks;
-using Bintangku.Data;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Bintangku.WebApi.Data;
+using Bintangku.WebApi.Data.Entities;
 
 namespace Bintangku.WebApi
 {

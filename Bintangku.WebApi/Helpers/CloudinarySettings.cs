@@ -1,4 +1,4 @@
-namespace Bintangku.Services.Helpers
+namespace Bintangku.WebApi.Helpers
 {
     public class CloudinarySettings
     {
