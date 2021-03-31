@@ -1,0 +1,32 @@
+<table class="table" *ngIf="riwayatKelahiran">
+  <tbody>
+    <tr>
+      <th scope="col">Berat Lahir</th>
+      <th scope="col">
+        {{ riwayatKelahiran.beratBadan }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Panjang Lahir</th>
+      <th scope="col">
+        {{ riwayatKelahiran.panjangLahir }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Apgar Score</th>
+      <th scope="col">
+        {{ riwayatKelahiran.apgarScore }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Kelahiran Dibantu Oleh</th>
+      <th scope="col">
+        {{ riwayatKelahiran.kelahiranDibantuOleh }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Lain - Lain (Masalah Ketika Lahir</th>
+      <th scope="col">{{ riwayatKelahiran.lainLain }}</th>
+    </tr>
+  </tbody>
+</table>

@@ -1,8 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     public class DataAnak
     {

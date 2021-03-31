@@ -1,16 +1,16 @@
-using Bintangku.Data;
-using Bintangku.Services.Interfaces;
-using Bintangku.Services.Repository;
-using Bintangku.Services.Services;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Bintangku.Services.Helpers;
-using Newtonsoft.Json;
-using System;
 using Microsoft.AspNetCore.Http.Features;
+using Newtonsoft.Json;
+using Bintangku.WebApi.Data;
+using Bintangku.WebApi.Helpers;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Services;
+using Bintangku.WebApi.Repository;
 
-namespace Bintangku.Services.Extensions
+namespace Bintangku.WebApi.Extensions
 {
     public static class ApplicationServiceExtensions
     {
@@ -21,6 +21,18 @@ namespace Bintangku.Services.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<INakesUserRepository, NakesUserRepository>();
+            services.AddScoped<IRiwayatKelahiranRepository, RiwayatKelahiranRepository>();
+            services.AddScoped<IRiwayatOrangTuaRepository, RiwayatOrangTuaRepository>();
+            // Service for pemeriksaan kesehatan anak
+            services.AddScoped<IPemeriksaanDayaLihatRepository, PemeriksaanDayaLihatRepository>();
+            services.AddScoped<IPemeriksaanGpphRepository, PemeriksaanGpphRepository>();
+            services.AddScoped<IPemeriksaanKmpeRepository, PemeriksaanKmpeRepository>();
+            services.AddScoped<IPemeriksaanMchatRepository, PemeriksaanMchatRepository>();
+            services.AddScoped<IPemeriksaanStatusGiziBbTbRepository, PemeriksaanStatusGiziBbTbRepository>();
+            services.AddScoped<IPemeriksaanStatusGiziImtURepository, PemeriksaanStatusGiziImtURepository>();
+            services.AddScoped<IPemeriksaanStatusGiziIpTbRepository, PemeriksaanStatusGiziIpTbRepository>();
+            services.AddScoped<IPemeriksaanLingkarKepalaRepository, PemeriksaanLingkarKepalaRepository>();
+            
             // Json serializer config to ignore object cycle problem
             services.AddMvc().AddNewtonsoftJson(
                 options => {options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });

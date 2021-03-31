@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     public class AppRole : IdentityRole<int>
     {

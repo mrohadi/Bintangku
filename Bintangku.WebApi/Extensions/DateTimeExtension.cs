@@ -1,6 +1,6 @@
 using System;
 
-namespace Bintangku.Data.Extensions
+namespace Bintangku.WebApi.Extensions
 {
     public static class DateTimeExtension
     {
@@ -14,6 +14,15 @@ namespace Bintangku.Data.Extensions
             var today = DateTime.Today;
             var age = today.Year - dob.Year;
             if (dob.Date > today.AddYears(-age)) age--;
+            return age;
+        }
+
+        public static int CalculateAgeAnak(this DateTime dob)
+        {
+            var today = DateTime.Today;
+            var age = today.Month - dob.Month;
+            if(dob.Date > today.AddMonths(-age)) 
+                age--;
             return age;
         }
     }

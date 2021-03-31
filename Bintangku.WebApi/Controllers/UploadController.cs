@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Bintangku.WebApi.Interfaces;
 
 namespace Bintangku.WebApi.Controllers
 {

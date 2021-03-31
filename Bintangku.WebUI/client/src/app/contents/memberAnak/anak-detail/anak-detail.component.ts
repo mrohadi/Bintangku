@@ -11,7 +11,8 @@ import { MemberAnakService } from 'src/app/_services/member-anak.service';
   styleUrls: ['./anak-detail.component.css'],
 })
 export class AnakDetailComponent implements OnInit {
-  memberAnak: MemberAnak;
+  public dataAnakId: number = parseInt(this.route.snapshot.paramMap.get('id'));
+  public memberAnak: MemberAnak;
 
   constructor(
     public memberAnakService: MemberAnakService,
@@ -22,15 +23,16 @@ export class AnakDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMemberAnak();
+    console.log(this.dataAnakId);
   }
 
-  loadMemberAnak() {
+  public loadMemberAnak() {
     this.memberAnakService
-      .getMemberAnak(parseInt(this.route.snapshot.paramMap.get('id')))
+      .getMemberAnak(this.dataAnakId)
       .subscribe((memberAnak) => (this.memberAnak = memberAnak));
   }
 
-  delete(): any {
+  public delete(): any {
     this.memberAnakService
       .deleteMemberAnak(parseInt(this.route.snapshot.paramMap.get('id')))
       .subscribe(() => {
@@ -39,7 +41,5 @@ export class AnakDetailComponent implements OnInit {
       });
   }
 
-  public executeSelectedChange = (event) => {
-    console.log(event);
-  };
+  public executeSelectedChange = () => {};
 }

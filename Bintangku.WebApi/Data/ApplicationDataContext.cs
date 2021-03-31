@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Data
+namespace Bintangku.WebApi.Data
 {
     public class ApplicationDataContext : IdentityDbContext<NakesUser, AppRole, int,
         IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, 
@@ -20,6 +20,13 @@ namespace Bintangku.Data
         public DbSet<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
         public DbSet<PemeriksaanMchat> PemeriksaanMchats { get; set; }
         public DbSet<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
+        public DbSet<PemeriksaanDayaDengar> PemeriksaanDayaDengars { get; set; }
+        public DbSet<PemeriksaanDayaLihat> PemeriksaanDayaLihats { get; set; }
+        public DbSet<PemeriksaanStatusGiziBbTb> PemeriksaanStatusGiziBbTbs { get; set; }
+        public DbSet<PemeriksaanStatusGiziImtU> PemeriksaanStatusGiziImtUs { get; set; }
+        public DbSet<PemeriksaanStatusGiziIpTb> PemeriksaanStatusGiziIpTbs { get; set; }
+        public DbSet<PemeriksaanLingkarKepala> PemeriksaanLingkarKepalas { get; set; }
+        public DbSet<PemeriksaanKpsp> PemeriksaanKpsps { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -75,6 +82,42 @@ namespace Bintangku.Data
                 .HasOne(kesehatan => kesehatan.KesehatanAnak)
                 .WithMany(pemeriksaan => pemeriksaan.PemeriksaanKmpes)
                 .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanDayaDengar>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanDayaDengars)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanDayaLihat>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanDayaLihats)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanStatusGiziBbTb>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziBbTbs)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanStatusGiziImtU>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziImtUs)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+
+            modelBuilder.Entity<PemeriksaanStatusGiziIpTb>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziIpTbs)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            
+            modelBuilder.Entity<PemeriksaanLingkarKepala>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanLingkarKepalas)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+
+            modelBuilder.Entity<PemeriksaanKpsp>()
+                .HasOne(kesehatan => kesehatan.KesehatanAnak)
+                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanKpsps)
+                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+
         }
     }
 }

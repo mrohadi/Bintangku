@@ -1,17 +1,17 @@
 using System;
+using System.Linq;
+using System.Text;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Data.Entities;
 
-namespace Bintangku.Services.Services
+namespace Bintangku.WebApi.Services
 {
     public class TokenService : ITokenService
     {

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bintangku.Data.DTO
+namespace Bintangku.WebApi.Data.DTO
 {
     public class PostDataAnakDto
     {

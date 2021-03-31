@@ -1,13 +1,13 @@
 using System.Text;
-using Bintangku.Data;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Data;
 
-namespace Bintangku.Services.Extensions
+namespace Bintangku.WebApi.Extensions
 {
     public static class IdentityServiceExtensions
     {

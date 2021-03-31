@@ -1,4 +1,5 @@
 export interface RiwayatOrangTua {
+  riwayatOrangTuaId: number;
   namaAyah: string;
   tanggalLahirAyah: string;
   pekerjaanAyah: string;
@@ -8,4 +9,6 @@ export interface RiwayatOrangTua {
   penghasilanOrangTua: number;
   anggotaRumahTangga: number;
   tandaTanganPath: string;
+  dataAnakId: number;
+  dataAnak?: any;
 }

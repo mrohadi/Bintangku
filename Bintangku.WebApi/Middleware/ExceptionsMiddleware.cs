@@ -1,12 +1,12 @@
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Bintangku.Services.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Bintangku.WebApi.Errors;
 
-namespace Bintangku.Services.Middleware
+namespace Bintangku.WebApi.Middleware
 {
     public class ExceptionsMiddleware
     {

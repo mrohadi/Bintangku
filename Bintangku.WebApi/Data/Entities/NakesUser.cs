@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace Bintangku.Data.Entities
+namespace Bintangku.WebApi.Data.Entities
 {
     public class NakesUser : IdentityUser<int>
     {

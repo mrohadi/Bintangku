@@ -1,10 +1,10 @@
 using System.Linq;
 using AutoMapper;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Data.Extensions;
+using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Extensions;
 
-namespace Bintangku.Services.Helpers
+namespace Bintangku.WebApi.Helpers
 {
     public class AutoMapperProfile : Profile
     {

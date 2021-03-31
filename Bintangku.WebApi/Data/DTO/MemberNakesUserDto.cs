@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Bintangku.Data.Entities;
 
-namespace Bintangku.Data.DTO
+namespace Bintangku.WebApi.Data.DTO
 {
     public class MemberNakesUserDto
     {

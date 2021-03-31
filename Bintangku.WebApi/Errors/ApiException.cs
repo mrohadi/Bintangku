@@ -1,4 +1,4 @@
-namespace Bintangku.Services.Errors
+namespace Bintangku.WebApi.Errors
 {
     public class ApiException
     {

@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using Bintangku.Services.Helpers;
-using Bintangku.Services.Interfaces;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Http;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Helpers;
 
-namespace Bintangku.Services.Services
+namespace Bintangku.WebApi.Services
 {
     public class PhotoService : IPhotoService
     {

@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Bintangku.Data;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using Bintangku.WebApi.Data;
+using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Interfaces;
 
 
-namespace Bintangku.Services.Repository
+namespace Bintangku.WebApi.Repository
 {
     public class NakesUserRepository : INakesUserRepository
     {

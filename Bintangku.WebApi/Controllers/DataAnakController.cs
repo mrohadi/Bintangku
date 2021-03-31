@@ -1,16 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Bintangku.Data;
-using Bintangku.Data.DTO;
-using Bintangku.Data.Entities;
-using Bintangku.Services.Extensions;
-using Bintangku.Services.Interfaces;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Extensions;
+using Bintangku.WebApi.Interfaces;
+using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data;
 
 namespace Bintangku.WebApi.Controllers
 {
@@ -48,12 +48,11 @@ namespace Bintangku.WebApi.Controllers
                         JenisKelaminAnak = anak.JenisKelamin,
                         TanggalLahirAnak = anak.TanggalLahirAnak,
                         Alamat = anak.Alamat,
+                        RiwayatKelahiran = anak.RiwayatKelahiran,
+                        RiwayatOrangTua = anak.RiwayatOrangTua,
                         Kontak = anak.Kontak,
                         ImagePath = anak.ImagePath,
                         JumlahSaudara = anak.JumlahSaudara,
-                        RiwayatKelahiran = anak.RiwayatKelahiran,
-                        RiwayatOrangTua = anak.RiwayatOrangTua,
-                        KesehatanAnak = anak.KesehatanAnak,
                         NamaNakes = anak.NakesUser.FullName,
                         NakesPhoto = anak.NakesUser.Photos
                             .Select(p => new { Url = p.Url })
@@ -93,9 +92,6 @@ namespace Bintangku.WebApi.Controllers
                         Kontak = anak.Kontak,
                         ImagePath = anak.ImagePath,
                         JumlahSaudara = anak.JumlahSaudara,
-                        RiwayatKelahiran = anak.RiwayatKelahiran,
-                        RiwayatOrangTua = anak.RiwayatOrangTua,
-                        KesehatanAnak = anak.KesehatanAnak,
                         NamaNakes = anak.NakesUser.FullName,
                         NakesPhoto = anak.NakesUser.Photos
                             .Select(p => new { Url = p.Url })

@@ -1,16 +1,13 @@
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Bintangku.Services.Extensions;
-using Bintangku.Services.Middleware;
 using Microsoft.Extensions.FileProviders;
-using System.IO;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Bintangku.WebApi.Helpers;
 using Microsoft.Extensions.Primitives;
+using Bintangku.WebApi.Extensions;
+using Bintangku.WebApi.Middleware;
 
 namespace Bintangku.WebApi
 {
@@ -55,12 +52,12 @@ namespace Bintangku.WebApi
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProviderCustom(
-                            Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
-                RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
-            });
+            // app.UseStaticFiles(new StaticFileOptions()
+            // {
+            //     FileProvider = new PhysicalFileProviderCustom(
+            //                 Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
+            //     RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
+            // });
 
             app.UseRouting();
 

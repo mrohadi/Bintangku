@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="text-center" mat-dialog-title>Hasil Pemeriksaan Kesehatan GPPH</h2>
+  <article class="">
+    <section class="users">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Tanggal Pemeriksaan</th>
+            <th scope="col">Point</th>
+            <th scope="col">Interpretasi</th>
+            <th scope="col">Intervensi</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let gpph of resultGpph">
+          <tr class="pointer">
+            <th scope="row">{{ gpph.pemeriksaanGpphId }}</th>
+            <td>{{ gpph.point }}</td>
+            <td>{{ gpph.point }}</td>
+            <td>{{ gpph.interpretasi }}</td>
+            <td>{{ gpph.intervensi }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </article>
+</div>

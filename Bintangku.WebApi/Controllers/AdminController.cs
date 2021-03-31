@@ -1,10 +1,10 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Bintangku.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Bintangku.WebApi.Data.Entities;
 
 namespace Bintangku.WebApi.Controllers
 {
