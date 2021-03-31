@@ -48,12 +48,11 @@ namespace Bintangku.WebApi.Controllers
                         JenisKelaminAnak = anak.JenisKelamin,
                         TanggalLahirAnak = anak.TanggalLahirAnak,
                         Alamat = anak.Alamat,
+                        RiwayatKelahiran = anak.RiwayatKelahiran,
+                        RiwayatOrangTua = anak.RiwayatOrangTua,
                         Kontak = anak.Kontak,
                         ImagePath = anak.ImagePath,
                         JumlahSaudara = anak.JumlahSaudara,
-                        RiwayatKelahiran = anak.RiwayatKelahiran,
-                        RiwayatOrangTua = anak.RiwayatOrangTua,
-                        KesehatanAnak = anak.KesehatanAnak,
                         NamaNakes = anak.NakesUser.FullName,
                         NakesPhoto = anak.NakesUser.Photos
                             .Select(p => new { Url = p.Url })
@@ -93,9 +92,6 @@ namespace Bintangku.WebApi.Controllers
                         Kontak = anak.Kontak,
                         ImagePath = anak.ImagePath,
                         JumlahSaudara = anak.JumlahSaudara,
-                        RiwayatKelahiran = anak.RiwayatKelahiran,
-                        RiwayatOrangTua = anak.RiwayatOrangTua,
-                        KesehatanAnak = anak.KesehatanAnak,
                         NamaNakes = anak.NakesUser.FullName,
                         NakesPhoto = anak.NakesUser.Photos
                             .Select(p => new { Url = p.Url })

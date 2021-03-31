@@ -53,13 +53,26 @@ namespace Bintangku.WebApi.Repository
                         .ThenInclude(pemeriksaan => pemeriksaan.PemeriksaanKmpes)
                     .SingleOrDefaultAsync();
                 
-                var hasilKmpe = new ResultKmpe(pemeriksaanKmpeDto.JumlahYa);
+                var hasilKmpe = new ResultKmpe(pemeriksaanKmpeDto);
 
                 var pemeriksaanKmpe = new PemeriksaanKmpe
                 {
-                    JumlahYa = pemeriksaanKmpeDto.JumlahYa,
+                    JumlahYa =  hasilKmpe.JumlahYa,
                     Interpretasi = hasilKmpe.Interpretasi,
-                    Intervensi = hasilKmpe.Intervensi
+                    Intervensi = hasilKmpe.Intervensi,
+                    Question1 = pemeriksaanKmpeDto.Question1,
+                    Question2 = pemeriksaanKmpeDto.Question2,
+                    Question3 = pemeriksaanKmpeDto.Question3,
+                    Question4 = pemeriksaanKmpeDto.Question4,
+                    Question5 = pemeriksaanKmpeDto.Question5,
+                    Question6 = pemeriksaanKmpeDto.Question6,
+                    Question7 = pemeriksaanKmpeDto.Question7,
+                    Question8 = pemeriksaanKmpeDto.Question8,
+                    Question9 = pemeriksaanKmpeDto.Question9,
+                    Question10 = pemeriksaanKmpeDto.Question10,
+                    Question11 = pemeriksaanKmpeDto.Question11,
+                    Question12 = pemeriksaanKmpeDto.Question12,
+                    Question13 = pemeriksaanKmpeDto.Question13,
                 };
 
                 dataAnak.KesehatanAnak.PemeriksaanKmpes.Add(pemeriksaanKmpe);

@@ -50,6 +50,13 @@ import { UploadPhotoAnakComponent } from './contents/memberAnak/upload-photo-ana
 import { UploadTtdComponent } from './contents/memberAnak/upload-ttd/upload-ttd.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { KesehatanTabComponent } from './contents/memberAnak/tabs/kesehatan-tab/kesehatan-tab.component';
+import { GpphShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gpph-show/gpph-show.component';
+import { KmpeShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/kmpe-show/kmpe-show.component';
+import { MchatShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/mchat-show/mchat-show.component';
+import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
+import { RiwayatOrangTuaTabComponent } from './contents/memberAnak/tabs/riwayat-orang-tua-tab/riwayat-orang-tua-tab.component';
+import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat-kelahiran-tab/riwayat-kelahiran-tab.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +97,13 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     HasRoleDirective,
     UploadPhotoAnakComponent,
     UploadTtdComponent,
+    KesehatanTabComponent,
+    GpphShowComponent,
+    KmpeShowComponent,
+    MchatShowComponent,
+    JadwalImunisasiTabComponent,
+    RiwayatOrangTuaTabComponent,
+    RiwayatKelahiranTabComponent,
   ],
   imports: [
     BrowserModule,

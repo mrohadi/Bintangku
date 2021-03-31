@@ -8,6 +8,7 @@ using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Data.DTO;
 using Bintangku.WebApi.Data;
 using Bintangku.WebApi.Interfaces;
+using System.Collections.Generic;
 
 namespace Bintangku.WebApi.Controllers
 {
@@ -26,7 +27,7 @@ namespace Bintangku.WebApi.Controllers
         /// <param name="dataAnakId">Uniques dataAnakId</param>
         /// <returns>Data pemriksaan KMPE</returns>
         [HttpGet("{dataAnakId}")]
-        public async Task<ActionResult<PemeriksaanKmpe>> GetPemeriksaanKmpe(int dataAnakId)
+        public async Task<ActionResult<IEnumerable<PemeriksaanKmpe>>> GetPemeriksaanKmpe(int dataAnakId)
         {
             try
             {

@@ -1,0 +1,54 @@
+<table class="table" *ngIf="riwayatOrangTua">
+  <tbody>
+    <tr>
+      <th scope="col">Nama Ayah</th>
+      <th scope="col">{{ riwayatOrangTua.namaAyah }}</th>
+    </tr>
+    <tr>
+      <th scope="col">Tanggal Lahir Ayah</th>
+      <th scope="col">
+        {{ riwayatOrangTua.tanggalLahirAyah | date: "MMMM d, y" }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Pekerjaan Ayah</th>
+      <th scope="col">
+        {{ riwayatOrangTua.pekerjaanAyah }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Nama Ibu</th>
+      <th scope="col">{{ riwayatOrangTua.namaIbu }}</th>
+    </tr>
+    <tr>
+      <th scope="col">Tanggal Lahir Ibu</th>
+      <th scope="col">
+        {{ riwayatOrangTua.tanggalLahirIbu | date: "MMMM d, y" }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Pekerjaan Ibu</th>
+      <th scope="col">
+        {{ riwayatOrangTua.pekerjaanIbu }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Penghasilan Orang Tua</th>
+      <th scope="col">
+        {{ riwayatOrangTua.penghasilanOrangTua }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Anggota Rumah Tangga</th>
+      <th scope="col">
+        {{ riwayatOrangTua.anggotaRumahTangga }}
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Tanda Tangan Orang Tua</th>
+      <th scope="col">
+        {{ riwayatOrangTua.tandaTanganPath }}
+      </th>
+    </tr>
+  </tbody>
+</table>

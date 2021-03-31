@@ -52,12 +52,12 @@ namespace Bintangku.WebApi
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProviderCustom(
-                            Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
-                RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
-            });
+            // app.UseStaticFiles(new StaticFileOptions()
+            // {
+            //     FileProvider = new PhysicalFileProviderCustom(
+            //                 Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
+            //     RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
+            // });
 
             app.UseRouting();
 

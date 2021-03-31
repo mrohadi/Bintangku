@@ -16,5 +16,14 @@ namespace Bintangku.WebApi.Extensions
             if (dob.Date > today.AddYears(-age)) age--;
             return age;
         }
+
+        public static int CalculateAgeAnak(this DateTime dob)
+        {
+            var today = DateTime.Today;
+            var age = today.Month - dob.Month;
+            if(dob.Date > today.AddMonths(-age)) 
+                age--;
+            return age;
+        }
     }
 }

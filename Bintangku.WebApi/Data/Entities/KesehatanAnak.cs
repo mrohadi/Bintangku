@@ -11,22 +11,15 @@ namespace Bintangku.WebApi.Data.Entities
         public int KesehatanAnakId { get; set; } 
         public int PemeriksaanBeratBadan { get; set; }
         public int PemeriksaanTinggiBadan { get; set; }
-        public int Imt { get; set; }
-        public string LingkarKepala { get; set; }
-        public string StatusGiziBbTb { get; set; }
-        public string StatusGiziImtU { get; set; }
-        public string StatusGiziIpTb { get; set; }
-        public string Kpsp { get; set; }
-        public string DayaDengar { get; set; }
-        public string DayaLihat { get; set; }
-        
-        // Pemeriksaan Kesehatan GPPH Related Entity 
+        public ICollection<PemeriksaanLingkarKepala> PemeriksaanLingkarKepalas { get; set; }
+        public ICollection<PemeriksaanStatusGiziBbTb> PemeriksaanStatusGiziBbTbs { get; set; }
+        public ICollection<PemeriksaanStatusGiziImtU> PemeriksaanStatusGiziImtUs { get; set; }
+        public ICollection<PemeriksaanStatusGiziIpTb> PemeriksaanStatusGiziIpTbs { get; set; }
+        public ICollection<PemeriksaanKpsp> PemeriksaanKpsps { get; set; }
+        public ICollection<PemeriksaanDayaDengar> PemeriksaanDayaDengars { get; set; }
+        public ICollection<PemeriksaanDayaLihat> PemeriksaanDayaLihats { get; set; }
         public ICollection<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
-        
-        // Pemeriksaan Kesehatan M-CHAT Related Entity 
         public ICollection<PemeriksaanMchat> PemeriksaanMchats { get; set; }
-        
-        // Pemeriksaan Kesehatan KMPE Related Entity
         public ICollection<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
         
         // Data Anak Related Entity

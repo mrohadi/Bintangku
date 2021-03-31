@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Bintangku.WebApi.Data.Migrations
 {
-    public partial class RebuildDatabase : Migration
+    public partial class RefactorDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -219,17 +219,6 @@ namespace Bintangku.WebApi.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PemeriksaanBeratBadan = table.Column<int>(type: "integer", nullable: false),
                     PemeriksaanTinggiBadan = table.Column<int>(type: "integer", nullable: false),
-                    Imt = table.Column<int>(type: "integer", nullable: false),
-                    LingkarKepala = table.Column<string>(type: "text", nullable: true),
-                    StatusGiziBbTb = table.Column<string>(type: "text", nullable: true),
-                    StatusGiziImtU = table.Column<string>(type: "text", nullable: true),
-                    StatusGiziIpTb = table.Column<string>(type: "text", nullable: true),
-                    Kpsp = table.Column<string>(type: "text", nullable: true),
-                    DayaDengar = table.Column<string>(type: "text", nullable: true),
-                    DayaLihat = table.Column<string>(type: "text", nullable: true),
-                    Kmpe = table.Column<string>(type: "text", nullable: true),
-                    Mchat = table.Column<string>(type: "text", nullable: true),
-                    Gpph = table.Column<string>(type: "text", nullable: true),
                     DataAnakId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -296,6 +285,50 @@ namespace Bintangku.WebApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PemeriksaanDayaDengars",
+                columns: table => new
+                {
+                    PemeriksaanDayaDengarId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Interpretasi = table.Column<string>(type: "text", nullable: true),
+                    Intervensi = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanDayaDengars", x => x.PemeriksaanDayaDengarId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanDayaDengars_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PemeriksaanDayaLihats",
+                columns: table => new
+                {
+                    PemeriksaanDayaLihatId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    MataKanan = table.Column<int>(type: "integer", nullable: false),
+                    MataKiri = table.Column<int>(type: "integer", nullable: false),
+                    Interpretasi = table.Column<string>(type: "text", nullable: true),
+                    Intervensi = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanDayaLihats", x => x.PemeriksaanDayaLihatId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanDayaLihats_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PemeriksaanKesehatanGPPH",
                 columns: table => new
                 {
@@ -304,6 +337,16 @@ namespace Bintangku.WebApi.Data.Migrations
                     Point = table.Column<byte>(type: "smallint", nullable: false),
                     Interpretasi = table.Column<string>(type: "text", nullable: true),
                     Intervensi = table.Column<string>(type: "text", nullable: true),
+                    Question1 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question2 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question3 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question4 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question5 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question6 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question7 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question8 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question9 = table.Column<byte>(type: "smallint", nullable: false),
+                    Question10 = table.Column<byte>(type: "smallint", nullable: false),
                     KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -326,6 +369,20 @@ namespace Bintangku.WebApi.Data.Migrations
                     JumlahYa = table.Column<byte>(type: "smallint", nullable: false),
                     Interpretasi = table.Column<string>(type: "text", nullable: true),
                     Intervensi = table.Column<string>(type: "text", nullable: true),
+                    Question1 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question2 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question3 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question4 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question5 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question6 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question7 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question8 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question9 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question10 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question11 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question12 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question13 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question14 = table.Column<bool>(type: "boolean", nullable: false),
                     KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -345,8 +402,33 @@ namespace Bintangku.WebApi.Data.Migrations
                 {
                     PemeriksaanMchatId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    JumlahYa = table.Column<int>(type: "integer", nullable: false),
-                    JumlahTidak = table.Column<int>(type: "integer", nullable: false),
+                    Question1 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question2 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question3 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question4 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question5 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question6 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question7 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question8 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question9 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question10 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question11 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question12 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question13 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question14 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question15 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question16 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question17 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question18 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question19 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question20 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question21 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question22 = table.Column<bool>(type: "boolean", nullable: false),
+                    Question23 = table.Column<bool>(type: "boolean", nullable: false),
+                    TotalCriticalQuestionYes = table.Column<int>(type: "integer", nullable: false),
+                    TotalCriticalQuestionNo = table.Column<int>(type: "integer", nullable: false),
+                    TotalQuestionYes = table.Column<int>(type: "integer", nullable: false),
+                    TotalQuestionNo = table.Column<int>(type: "integer", nullable: false),
                     Interpretasi = table.Column<string>(type: "text", nullable: true),
                     Intervensi = table.Column<string>(type: "text", nullable: true),
                     KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
@@ -363,44 +445,121 @@ namespace Bintangku.WebApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MChat",
+                name: "PemeriksaanKpsps",
                 columns: table => new
                 {
-                    MChatId = table.Column<int>(type: "integer", nullable: false)
+                    PemeriksaanKpspId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    A = table.Column<bool>(type: "boolean", nullable: false),
-                    B = table.Column<bool>(type: "boolean", nullable: false),
-                    C = table.Column<bool>(type: "boolean", nullable: false),
-                    D = table.Column<bool>(type: "boolean", nullable: false),
-                    E = table.Column<bool>(type: "boolean", nullable: false),
-                    F = table.Column<bool>(type: "boolean", nullable: false),
-                    G = table.Column<bool>(type: "boolean", nullable: false),
-                    H = table.Column<bool>(type: "boolean", nullable: false),
-                    I = table.Column<bool>(type: "boolean", nullable: false),
-                    J = table.Column<bool>(type: "boolean", nullable: false),
-                    K = table.Column<bool>(type: "boolean", nullable: false),
-                    L = table.Column<bool>(type: "boolean", nullable: false),
-                    M = table.Column<bool>(type: "boolean", nullable: false),
-                    N = table.Column<bool>(type: "boolean", nullable: false),
-                    O = table.Column<bool>(type: "boolean", nullable: false),
-                    P = table.Column<bool>(type: "boolean", nullable: false),
-                    Q = table.Column<bool>(type: "boolean", nullable: false),
-                    R = table.Column<bool>(type: "boolean", nullable: false),
-                    S = table.Column<bool>(type: "boolean", nullable: false),
-                    T = table.Column<bool>(type: "boolean", nullable: false),
-                    U = table.Column<bool>(type: "boolean", nullable: false),
-                    V = table.Column<bool>(type: "boolean", nullable: false),
-                    W = table.Column<bool>(type: "boolean", nullable: false),
-                    PemeriksaanMchatId = table.Column<int>(type: "integer", nullable: false)
+                    JumlahYa = table.Column<int>(type: "integer", nullable: false),
+                    Interpretasi = table.Column<string>(type: "text", nullable: true),
+                    Tindakan = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MChat", x => x.MChatId);
+                    table.PrimaryKey("PK_PemeriksaanKpsps", x => x.PemeriksaanKpspId);
                     table.ForeignKey(
-                        name: "FK_MChat_PemeriksaanKesehatanM-CHAT_PemeriksaanMchatId",
-                        column: x => x.PemeriksaanMchatId,
-                        principalTable: "PemeriksaanKesehatanM-CHAT",
-                        principalColumn: "PemeriksaanMchatId",
+                        name: "FK_PemeriksaanKpsps_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PemeriksaanLingkarKepalas",
+                columns: table => new
+                {
+                    PemeriksaanLingkarKepalaId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    LingkarKepala = table.Column<int>(type: "integer", nullable: false),
+                    Kurva = table.Column<int>(type: "integer", nullable: false),
+                    Klasifikasi = table.Column<string>(type: "text", nullable: true),
+                    Tindakan = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanLingkarKepalas", x => x.PemeriksaanLingkarKepalaId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanLingkarKepalas_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PemeriksaanStatusGiziBbTbs",
+                columns: table => new
+                {
+                    PemeriksaanStatusGiziBbTbId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BeratBadan = table.Column<int>(type: "integer", nullable: false),
+                    TinggiBadan = table.Column<int>(type: "integer", nullable: false),
+                    ZCode = table.Column<int>(type: "integer", nullable: false),
+                    StatusGizi = table.Column<string>(type: "text", nullable: true),
+                    Tindakan = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanStatusGiziBbTbs", x => x.PemeriksaanStatusGiziBbTbId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanStatusGiziBbTbs_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PemeriksaanStatusGiziImtUs",
+                columns: table => new
+                {
+                    PemeriksaanStatusGiziImtUId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BeratBadan = table.Column<int>(type: "integer", nullable: false),
+                    TinggiBadan = table.Column<int>(type: "integer", nullable: false),
+                    Umur = table.Column<int>(type: "integer", nullable: false),
+                    IMT = table.Column<int>(type: "integer", nullable: false),
+                    ZCode = table.Column<int>(type: "integer", nullable: false),
+                    StatusGizi = table.Column<string>(type: "text", nullable: true),
+                    Tindakan = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanStatusGiziImtUs", x => x.PemeriksaanStatusGiziImtUId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanStatusGiziImtUs_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PemeriksaanStatusGiziIpTbs",
+                columns: table => new
+                {
+                    PemeriksaanStatusGiziIpTbId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TinggiBadan = table.Column<int>(type: "integer", nullable: false),
+                    IndeksPanjang = table.Column<int>(type: "integer", nullable: false),
+                    ZCode = table.Column<int>(type: "integer", nullable: false),
+                    StatusGizi = table.Column<string>(type: "text", nullable: true),
+                    Tindakan = table.Column<string>(type: "text", nullable: true),
+                    KesehatanAnakId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PemeriksaanStatusGiziIpTbs", x => x.PemeriksaanStatusGiziIpTbId);
+                    table.ForeignKey(
+                        name: "FK_PemeriksaanStatusGiziIpTbs_KesehatanAnak_KesehatanAnakId",
+                        column: x => x.KesehatanAnakId,
+                        principalTable: "KesehatanAnak",
+                        principalColumn: "KesehatanAnakId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -453,9 +612,14 @@ namespace Bintangku.WebApi.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MChat_PemeriksaanMchatId",
-                table: "MChat",
-                column: "PemeriksaanMchatId");
+                name: "IX_PemeriksaanDayaDengars_KesehatanAnakId",
+                table: "PemeriksaanDayaDengars",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanDayaLihats_KesehatanAnakId",
+                table: "PemeriksaanDayaLihats",
+                column: "KesehatanAnakId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PemeriksaanKesehatanGPPH_KesehatanAnakId",
@@ -470,6 +634,31 @@ namespace Bintangku.WebApi.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PemeriksaanKesehatanM-CHAT_KesehatanAnakId",
                 table: "PemeriksaanKesehatanM-CHAT",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanKpsps_KesehatanAnakId",
+                table: "PemeriksaanKpsps",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanLingkarKepalas_KesehatanAnakId",
+                table: "PemeriksaanLingkarKepalas",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanStatusGiziBbTbs_KesehatanAnakId",
+                table: "PemeriksaanStatusGiziBbTbs",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanStatusGiziImtUs_KesehatanAnakId",
+                table: "PemeriksaanStatusGiziImtUs",
+                column: "KesehatanAnakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PemeriksaanStatusGiziIpTbs_KesehatanAnakId",
+                table: "PemeriksaanStatusGiziIpTbs",
                 column: "KesehatanAnakId");
 
             migrationBuilder.CreateIndex(
@@ -508,13 +697,34 @@ namespace Bintangku.WebApi.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MChat");
+                name: "PemeriksaanDayaDengars");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanDayaLihats");
 
             migrationBuilder.DropTable(
                 name: "PemeriksaanKesehatanGPPH");
 
             migrationBuilder.DropTable(
                 name: "PemeriksaanKesehatanKMPE");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanKesehatanM-CHAT");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanKpsps");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanLingkarKepalas");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanStatusGiziBbTbs");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanStatusGiziImtUs");
+
+            migrationBuilder.DropTable(
+                name: "PemeriksaanStatusGiziIpTbs");
 
             migrationBuilder.DropTable(
                 name: "Photos");
@@ -527,9 +737,6 @@ namespace Bintangku.WebApi.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "PemeriksaanKesehatanM-CHAT");
 
             migrationBuilder.DropTable(
                 name: "KesehatanAnak");

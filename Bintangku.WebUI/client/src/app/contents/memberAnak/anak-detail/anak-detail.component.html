@@ -80,174 +80,42 @@
             </tbody>
           </table>
         </mat-tab>
+        <!-- Riwayat Kelahiran Tab -->
         <mat-tab label="Riwayat Kelahiran">
-          <table class="table">
-            <tbody>
-              <tr>
-                <th scope="col">Berat Lahir</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatKelahiran.beratBadan }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Panjang Lahir</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatKelahiran.panjangLahir }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Apgar Score</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatKelahiran.apgarScore }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Kelahiran Dibantu Oleh</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatKelahiran.kelahiranDibantuOleh }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Lain - Lain (Masalah Ketika Lahir</th>
-                <th scope="col">{{ memberAnak.riwayatKelahiran.lainLain }}</th>
-              </tr>
-            </tbody>
-          </table>
+          <app-riwayat-kelahiran-tab></app-riwayat-kelahiran-tab>
         </mat-tab>
+        <!-- End - Riwayat Kelahiran Tab -->
+        <!-- Riwayat Orang Tua Tab -->
         <mat-tab label="Riwayat Orang Tua">
-          <table class="table">
-            <tbody>
-              <tr>
-                <th scope="col">Nama Ayah</th>
-                <th scope="col">{{ memberAnak.riwayatOrangTua.namaAyah }}</th>
-              </tr>
-              <tr>
-                <th scope="col">Tanggal Lahir Ayah</th>
-                <th scope="col">
-                  {{
-                    memberAnak.riwayatOrangTua.tanggalLahirAyah
-                      | date: "MMMM d, y"
-                  }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Pekerjaan Ayah</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.pekerjaanAyah }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Nama Ibu</th>
-                <th scope="col">{{ memberAnak.riwayatOrangTua.namaIbu }}</th>
-              </tr>
-              <tr>
-                <th scope="col">Tanggal Lahir Ibu</th>
-                <th scope="col">
-                  {{
-                    memberAnak.riwayatOrangTua.tanggalLahirIbu
-                      | date: "MMMM d, y"
-                  }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Pekerjaan Ibu</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.pekerjaanIbu }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Penghasilan Orang Tua</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.penghasilanOrangTua }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Anggota Rumah Tangga</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.anggotaRumahTangga }}
-                </th>
-              </tr>
-              <tr>
-                <th scope="col">Tanda Tangan Orang Tua</th>
-                <th scope="col">
-                  {{ memberAnak.riwayatOrangTua.tandaTanganPath }}
-                </th>
-              </tr>
-            </tbody>
-          </table>
+          <app-riwayat-orang-tua-tab></app-riwayat-orang-tua-tab>
         </mat-tab>
         <mat-tab label="Jadwal Imunisasi">
-          <p>
-            By using material components, we are going to create fully
-            responsive navigation menu, with its side-bar as well.
-          </p>
+          <app-jadwal-imunisasi-tab></app-jadwal-imunisasi-tab>
         </mat-tab>
+        <!-- End - Riwayat Orang Tua Tab -->
+        <!-- Kesehatan Anak Tab -->
         <mat-tab label="Kesehatan Anak">
-          <table class="table" *ngIf="pemeriksaanGpph">
-            <tbody *ngFor="let gpph of pemeriksaanGpph">
-              <tr>
-                <th scope="col">Status Gizi BB/TB</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">Status Gizi IMT/U</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">IP/TB</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">Lingkar Kepala</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">KPSP</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">Daya Dengar</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">Daya Lihat</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">KMPE</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">M-CHAT</th>
-                <th scope="col"></th>
-              </tr>
-              <tr>
-                <th scope="col">GPPH</th>
-                <th scope="col">{{ gpph.point }}</th>
-              </tr>
-              <tr>
-                <th scope="col">Tanggal Pemeriksaan</th>
-                <th scope="col"></th>
-              </tr>
-            </tbody>
-            <button
-              type="submit"
-              mat-raised-button
-              color="primary"
-              routerLink="/anak-members/pemeriksaan-kesehatan/{{
-                memberAnak.dataAnakId
-              }}"
-            >
-              Pemeriksaan
-            </button>
-          </table>
+          <app-kesehatan-tab></app-kesehatan-tab>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            routerLink="/anak-members/pemeriksaan-kesehatan/{{
+              memberAnak.dataAnakId
+            }}"
+          >
+            InputPemeriksaan
+          </button>
         </mat-tab>
+        <!-- End - Tab Kesehatan Anak -->
+        <!-- Grafik Tab -->
         <mat-tab label="Grafik">
           <p>
             By using material components, we are going to create fully
             responsive navigation menu, with its side-bar as well.
           </p>
         </mat-tab>
+        <!-- End - Grafik Tab -->
       </mat-tab-group>
     </section>
     <!-- End - Menu Details Content -->

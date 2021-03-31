@@ -1,5 +1,4 @@
 import { Photo } from './photo';
-import { RiwayatKelahiran } from './riwayatKelahiran';
 import { RiwayatOrangTua } from './riwayatOrangTua';
 
 export interface MemberAnak {
@@ -11,9 +10,8 @@ export interface MemberAnak {
   alamat: string;
   kontak: string;
   jumlahSaudara: number;
-  imagePath: string;
-  riwayatKelahiran: RiwayatKelahiran;
   riwayatOrangTua: RiwayatOrangTua;
+  imagePath: string;
   namaNakes: string;
   nakesPhoto: Photo[];
 }
