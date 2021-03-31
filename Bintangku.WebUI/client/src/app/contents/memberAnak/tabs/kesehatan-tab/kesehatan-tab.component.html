@@ -1,65 +1,149 @@
 <table class="table">
   <tbody>
     <tr>
-      <th scope="col">Pemeriksaan Berat Badan</th>
-      <th scope="col"></th>
-    </tr>
-    <tr>
-      <th scope="col">Pemeriksaan Tinggi Badang</th>
-      <th scope="col"></th>
-    </tr>
-    <tr>
-      <th scope="col">IMT</th>
-      <th scope="col"></th>
-    </tr>
-    <tr>
       <th scope="col">Lingkar Kepala</th>
-      <th scope="col"></th>
-    </tr>
-    <tr>
-      <th scope="col">Lingkar Kepala</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="oepnLingkarKepalaInput()"
+        >
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openLingkarKepala()">
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Status Gizi (BB/TB)</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="oepnGiziBbTbInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openStatusGiziBbTb()"
+        >
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Status Gizi (IMT/U)</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="oepnGiziItmUInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openStatusGiziImtU()"
+        >
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Status Gizi (IP/TB)</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="openGiziIpTbInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openStatusGiziIpTb()"
+        >
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">KPSP</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="openLingkarKepala()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openKpsp()">
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Daya Dengar</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="openLingkarKepala()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openDayaDengar()">
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Daya Lihat</th>
-      <th scope="col"></th>
+      <th scope="col">
+        <button mat-raised-button color="accent" (click)="openDayaLihatInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openDayaLihat()">
+          Lihat
+        </button>
+      </th>
     </tr>
     <tr>
       <th scope="col">Pemeriksaan GPPH</th>
       <th scope="col">
-        <button class="btn btn-primary" (click)="openGpphShow()">Lihat</button>
+        <button mat-raised-button color="accent" (click)="openGpphInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openGpphShow()">
+          Lihat
+        </button>
       </th>
     </tr>
     <tr>
       <th scope="col">Pemeriksaan KMPE</th>
       <th scope="col">
-        <button class="btn btn-primary" (click)="openKmpeShow()">Lihat</button>
+        <button mat-raised-button color="accent" (click)="openKmpeInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openKmpeShow()">
+          Lihat
+        </button>
       </th>
     </tr>
     <tr>
       <th scope="col">Pemeriksaan M-CHAT</th>
       <th scope="col">
-        <button class="btn btn-primary" (click)="openMchatShow()">Lihat</button>
+        <button mat-raised-button color="accent" (click)="openMchatInput()">
+          Input
+        </button>
+      </th>
+      <th scope="col">
+        <button mat-raised-button color="primary" (click)="openMchatShow()">
+          Lihat
+        </button>
       </th>
     </tr>
   </tbody>

@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Petunjuk Pemeriksaan Lingkar Kepala</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- Lingkar Kepala -->
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Alat pengukur dilingkarkan pada kepala anak melewati dahi, diatas alis
+        mata, diatas kedua telinga, dan bagian belakang kepala yang menonjol,
+        tarik agak kencang.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>Baca angka pada pertemuan dengan angka.</li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Tanyakan tanggal lahir bayi/anak, hitung umur bayi/anak.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Hasil pengukuran dicatat pada grafik lingkaran kepala menurut umur dan
+        jenis kelamin anak.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Buat garis yang menghubungkan antara ukuran yang lalu dengan ukuran
+        sekarang
+      </li></mat-list-item
+    >
+  </mat-list>
+  <!-- End - Lingkar Kepala -->
+
+  <!-- Wool Merah Table -->
+  <div class="container">
+    <form [formGroup]="formLingkarKepala" (ngSubmit)="postLingkarKepala()">
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Lingkar Kepala</mat-label>
+        <input type="number" matInput formControlName="lingkarKepala" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Kurva</mat-label>
+        <input type="number" matInput formControlName="kurva" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+  <!-- End - Wool Merah Table -->
+</mat-dialog-content>
+<!-- Wool Merah Table -->
+<!-- <button mat-button>Submit</button> -->
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

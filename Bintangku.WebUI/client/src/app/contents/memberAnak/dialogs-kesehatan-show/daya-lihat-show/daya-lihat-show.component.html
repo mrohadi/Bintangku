@@ -1,0 +1,31 @@
+<div class="container">
+  <h2 class="text-center" mat-dialog-title>
+    Hasil Pemeriksaan Kesehatan Daya Lihat
+  </h2>
+  <article class="">
+    <section class="users">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Tanggal Pemeriksaan</th>
+            <th scope="col">Mata Kanan</th>
+            <th scope="col">Mata Kiri</th>
+            <th scope="col">Interpretasi</th>
+            <th scope="col">Intervensi</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let dayaLihat of resultDayaLihat">
+          <tr class="pointer">
+            <th scope="row"></th>
+            <td></td>
+            <td>{{ dayaLihat.mataKanan }}</td>
+            <td>{{ dayaLihat.mataKiri }}</td>
+            <td>{{ dayaLihat.interpretasi }}</td>
+            <td>{{ dayaLihat.intervensi }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </article>
+</div>

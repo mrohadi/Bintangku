@@ -1,0 +1,802 @@
+<h2 mat-dialog-title>Petunjuk M-CHAT</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- MCHAT -->
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Ajukan pertanyaan dengan lambat, jelas dan nyaring, satu persatu
+        perilaku yang tertulis pada M-CHAT kepada orang tua atau pengasuh anak.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Lakukan pengamatan kemampuan anak sesuai dengan tugas pada
+        Modified−Checklist for Autism in Toddlers (M-CHAT)
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Catat jawaban orang tua/pengasuh anak dan kesimpulan hasil pengamatan
+        kemampuan anak, YA atau TIDAK. Teliti kembali apakah semua pertanyaan
+        telah dijawab.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <!-- End - M-CHAT -->
+
+  <!-- Wool Merah Table -->
+  <form [formGroup]="formMchat" (ngSubmit)="postMchat()">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Pertanyaan</th>
+          <th style="width: 50px" scope="col">Ya</th>
+          <th style="width: 50px" scope="col">Tidak</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 1 -->
+        <tr>
+          <th scope="row">1</th>
+          <td>Apakah anak anda senang atau tertarik dengan anak lain?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question1"
+                class="form-check-input"
+                type="radio"
+                name="question1"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question1"
+                class="form-check-input"
+                type="radio"
+                name="question1"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 1 -->
+        <!-- Row 2 -->
+        <tr>
+          <th scope="row">2</th>
+          <td>
+            Apakah anak anda senanang menunjuk dengan jarinya untuk
+            mengindikasikan dia menginginkan sesuatu?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question2"
+                class="form-check-input"
+                type="radio"
+                name="question2"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question2"
+                class="form-check-input"
+                type="radio"
+                name="question2"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 2 -->
+        <!-- Row 3 -->
+        <tr>
+          <th scope="row">3</th>
+          <td>
+            Apakah anak anda sering membawa benda didepan orang tua untuk
+            menunjukkan kepada anda sesuatu ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question3"
+                class="form-check-input"
+                type="radio"
+                name="question3"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question3"
+                class="form-check-input"
+                type="radio"
+                name="question3"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 3 -->
+        <!-- Row 4 -->
+        <tr>
+          <th scope="row">4</th>
+          <td>
+            Apakah anak anda meniru perilaku anda? (misal ketika anda membuat
+            ekspresi wajah, apakah anak anda meniru anda ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question4"
+                class="form-check-input"
+                type="radio"
+                name="question4"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question4"
+                class="form-check-input"
+                type="radio"
+                name="question4"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 4 -->
+        <!-- Row 5 -->
+        <tr>
+          <th scope="row">5</th>
+          <td>Apakah anda merespon ketika namanya dipanggil ?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question5"
+                class="form-check-input"
+                type="radio"
+                name="question5"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question5"
+                class="form-check-input"
+                type="radio"
+                name="question5"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 5 -->
+        <!-- Row 6 -->
+        <tr>
+          <th scope="row">6</th>
+          <td>
+            Jika anda menunjuk mainan yang ada di ruangan, apakah anak anda
+            melihatnya ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question6"
+                class="form-check-input"
+                type="radio"
+                name="question6"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question6"
+                class="form-check-input"
+                type="radio"
+                name="question6"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 6 -->
+        <!-- Row 7 -->
+        <tr>
+          <th scope="row">7</th>
+          <td>
+            Apakah anak anda senang diayun, melambung dilutut anda dan
+            sebagainya?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question7"
+                class="form-check-input"
+                type="radio"
+                name="question7"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question7"
+                class="form-check-input"
+                type="radio"
+                name="question7"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 7 -->
+        <!-- Row 8 -->
+        <tr>
+          <th scope="row">8</th>
+          <td>Apakah anak anda senang memanjat, seperti memanjat tangga?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question8"
+                class="form-check-input"
+                type="radio"
+                name="question8"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question8"
+                class="form-check-input"
+                type="radio"
+                name="question8"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 8 -->
+        <!-- Row 9 -->
+        <tr>
+          <th scope="row">9</th>
+          <td>Apakah anak anda senang bermain cilukba atau petak umpet?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question9"
+                class="form-check-input"
+                type="radio"
+                name="question9"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question9"
+                class="form-check-input"
+                type="radio"
+                name="question9"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 9 -->
+        <!-- Row 10 -->
+        <tr>
+          <th scope="row">10</th>
+          <td>
+            Apakah anak anda sering bermain pura−pura, contohnya; berbicara di
+            telepon atau bermain dengan boneka atau bermain pura-pura yang lain
+            ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question10"
+                class="form-check-input"
+                type="radio"
+                name="question10"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question10"
+                class="form-check-input"
+                type="radio"
+                name="question10"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 10 -->
+        <!-- Row 11 -->
+        <tr>
+          <th scope="row">11</th>
+          <td>
+            Apakah anak anda sering menunjuk dengan jarinya untuk bermain
+            sesuatu?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question11"
+                class="form-check-input"
+                type="radio"
+                name="question11"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question11"
+                class="form-check-input"
+                type="radio"
+                name="question11"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 11 -->
+        <!-- Row 12 -->
+        <tr>
+          <th scope="row">12</th>
+          <td>
+            Dapatkah anak anda bermain pantas dengan mainan kecil (seperti mobil
+            atau benda kecil) tanpa memasukkan ke dalam mulut , mengunyah atau
+            menjatuhkannya ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question12"
+                class="form-check-input"
+                type="radio"
+                name="question12"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question12"
+                class="form-check-input"
+                type="radio"
+                name="question12"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 12 -->
+        <!-- Row 13 -->
+        <tr>
+          <th scope="row">13</th>
+          <td>
+            Apakah anak anda melihat mata anda lebih dari satu atau dua detik ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question13"
+                class="form-check-input"
+                type="radio"
+                name="question13"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question13"
+                class="form-check-input"
+                type="radio"
+                name="question13"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 13 -->
+        <!-- Row 14 -->
+        <tr>
+          <th scope="row">14</th>
+          <td>
+            Apakah anak anda sering terlihat sensitif yang berlebihan terhadap
+            suara berisik ? (seperti menutup telinga)
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question14"
+                class="form-check-input"
+                type="radio"
+                name="question14"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question14"
+                class="form-check-input"
+                type="radio"
+                name="question14"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 14 -->
+        <!-- Row 15 -->
+        <tr>
+          <th scope="row">15</th>
+          <td>
+            Apakah anak anda tersenyum sebagai respon terhadap wajah atau senyum
+            anda ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question15"
+                class="form-check-input"
+                type="radio"
+                name="question15"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question15"
+                class="form-check-input"
+                type="radio"
+                name="question15"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 15 -->
+        <!-- Row 16 -->
+        <tr>
+          <th scope="row">16</th>
+          <td>Apakah anak anda berjalan ?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question16"
+                class="form-check-input"
+                type="radio"
+                name="question16"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question16"
+                class="form-check-input"
+                type="radio"
+                name="question16"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 16 -->
+        <!-- Row 11 -->
+        <tr>
+          <th scope="row">17</th>
+          <td>Apakah anak anda melihat benda yang anda lihat ?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question17"
+                class="form-check-input"
+                type="radio"
+                name="question17"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question17"
+                class="form-check-input"
+                type="radio"
+                name="question17"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 17 -->
+        <!-- Row 12 -->
+        <tr>
+          <th scope="row">18</th>
+          <td>
+            Apakah anak anda membuat gerakan jari yang tidak biasanya dekat
+            wajahnya ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question18"
+                class="form-check-input"
+                type="radio"
+                name="question18"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question18"
+                class="form-check-input"
+                type="radio"
+                name="question18"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 18 -->
+        <!-- Row 19 -->
+        <tr>
+          <th scope="row">19</th>
+          <td>
+            Apakah anak anda berusaha menarik perhatian anda terhadap
+            aktivitasnya ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question19"
+                class="form-check-input"
+                type="radio"
+                name="question19"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question19"
+                class="form-check-input"
+                type="radio"
+                name="question19"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 19 -->
+        <!-- Row 20 -->
+        <tr>
+          <th scope="row">20</th>
+          <td>Apakah anda sering khawatir apabila anak anda tuli ?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question20"
+                class="form-check-input"
+                type="radio"
+                name="question20"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question20"
+                class="form-check-input"
+                type="radio"
+                name="question20"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 20 -->
+        <!-- Row 21 -->
+        <tr>
+          <th scope="row">21</th>
+          <td>Apakah anak anda mengerti apa yang dikatakan orang lain ?</td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question21"
+                class="form-check-input"
+                type="radio"
+                name="question21"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question21"
+                class="form-check-input"
+                type="radio"
+                name="question21"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 21 -->
+        <!-- Row 22 -->
+        <tr>
+          <th scope="row">22</th>
+          <td>
+            Apakah anak anda kadang−kadang memandang untuk hal yang tidak jelas
+            atau mondar mandir tanpa tujuan ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question22"
+                class="form-check-input"
+                type="radio"
+                name="question22"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question22"
+                class="form-check-input"
+                type="radio"
+                name="question22"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 22 -->
+        <!-- Row 23 -->
+        <tr>
+          <th scope="row">23</th>
+          <td>
+            Apakah anak anda melihat wajah anda untuk melihat reaksi anda ketika
+            bertemu sesuatu yang tidak dikenal ?
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question23"
+                class="form-check-input"
+                type="radio"
+                name="question23"
+                [value]="value.yes"
+                checked
+              />
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                formControlName="question23"
+                class="form-check-input"
+                type="radio"
+                name="question23"
+                [value]="value.no"
+                checked
+              />
+            </div>
+          </td>
+        </tr>
+        <!-- End - Row 23 -->
+        <!--  -->
+        <tr>
+          <th colspan="2" scope="row">Jumlah</th>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th colspan="2" scope="row">Nilai Total</th>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+
+  <!-- End - Wool Merah Table -->
+</mat-dialog-content>
+<!-- Wool Merah Table -->
+<!-- <button mat-button>Submit</button> -->
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

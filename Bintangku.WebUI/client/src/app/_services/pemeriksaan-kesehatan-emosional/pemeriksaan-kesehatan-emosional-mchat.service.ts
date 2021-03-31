@@ -27,6 +27,9 @@ export class PemeriksaanKesehatanEmosionalMchatService {
    * postPemeriksaanMchat
    */
   public postPemeriksaanMchat(dataAnakId: number, model: any) {
-    this.http.post(this.baseUrl + 'pemeriksaanmchat/' + dataAnakId, model);
+    return this.http.post(
+      this.baseUrl + 'pemeriksaanmchat/' + dataAnakId,
+      model
+    );
   }
 }

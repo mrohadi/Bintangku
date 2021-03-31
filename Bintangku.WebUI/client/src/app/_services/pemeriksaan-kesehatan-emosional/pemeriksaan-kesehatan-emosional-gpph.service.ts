@@ -27,6 +27,9 @@ export class PemeriksaanKesehatanEmosionalGpphService {
    * postPemeriksaanGpph
    */
   public postPemeriksaanGpph(dataAnakId: number, model: any) {
-    this.http.post(this.baseUrl + 'pemeriksaangpph/' + dataAnakId, model);
+    return this.http.post(
+      this.baseUrl + 'pemeriksaangpph/' + dataAnakId,
+      model
+    );
   }
 }

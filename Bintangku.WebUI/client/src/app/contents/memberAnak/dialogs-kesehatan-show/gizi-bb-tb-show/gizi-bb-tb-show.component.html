@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="text-center" mat-dialog-title>
+    Hasil Pemeriksaan Status Gizi BB/TB
+  </h2>
+  <article class="">
+    <section class="users">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Tanggal Pemeriksaan</th>
+            <th scope="col">Berat Badan</th>
+            <th scope="col">Tinggi Badan</th>
+            <th scope="col">ZCode</th>
+            <th scope="col">Status Gizi</th>
+            <th scope="col">Tindakan</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let gizi of resultGiziBbTb">
+          <tr class="pointer">
+            <th scope="row">{{ gizi.pemeriksaanStatusGiziBbTbId }}</th>
+            <th></th>
+            <td>{{ gizi.beratBadan }}</td>
+            <td>{{ gizi.tinggiBadan }}</td>
+            <td>{{ gizi.zCode }}</td>
+            <td>{{ gizi.statusGizi }}</td>
+            <td>{{ gizi.tindakan }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </article>
+</div>

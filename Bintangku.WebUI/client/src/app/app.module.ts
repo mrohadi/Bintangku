@@ -43,7 +43,6 @@ import { DayaDengarComponent } from './contents/memberAnak/dialogs/daya-dengar/d
 import { DayaLihatComponent } from './contents/memberAnak/dialogs/daya-lihat/daya-lihat.component';
 import { KmpeComponent } from './contents/memberAnak/dialogs/kmpe/kmpe.component';
 import { GpphComponent } from './contents/memberAnak/dialogs/gpph/gpph.component';
-import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.component';
 import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_directive/has-role.directive';
 import { UploadPhotoAnakComponent } from './contents/memberAnak/upload-photo-anak/upload-photo-anak.component';
@@ -57,6 +56,21 @@ import { MchatShowComponent } from './contents/memberAnak/dialogs-kesehatan-show
 import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
 import { RiwayatOrangTuaTabComponent } from './contents/memberAnak/tabs/riwayat-orang-tua-tab/riwayat-orang-tua-tab.component';
 import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat-kelahiran-tab/riwayat-kelahiran-tab.component';
+import { DayaLihatShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/daya-lihat-show/daya-lihat-show.component';
+import { DayaDengarShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/daya-dengar-show/daya-dengar-show.component';
+import { KpspShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/kpsp-show/kpsp-show.component';
+import { GiziBbTbShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-bb-tb-show/gizi-bb-tb-show.component';
+import { GiziImtUShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-imt-u-show/gizi-imt-u-show.component';
+import { GiziIpTbShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-ip-tb-show/gizi-ip-tb-show.component';
+import { GiziLingkarKepalaShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-lingkar-kepala-show/gizi-lingkar-kepala-show.component';
+import { MchatInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/mchat-input/mchat-input.component';
+import { GpphInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gpph-input/gpph-input.component';
+import { KmpeInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/kmpe-input/kmpe-input.component';
+import { DayaLihatInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/daya-lihat-input/daya-lihat-input.component';
+import { GiziIpTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-ip-tb-input/gizi-ip-tb-input.component';
+import { GiziImtUComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-imt-u/gizi-imt-u.component';
+import { GiziBbTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-bb-tb-input/gizi-bb-tb-input.component';
+import { LingkarKepalaInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/lingkar-kepala-input/lingkar-kepala-input.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +106,6 @@ import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat
     DayaLihatComponent,
     KmpeComponent,
     GpphComponent,
-    MchatComponent,
     AdminPanelComponent,
     HasRoleDirective,
     UploadPhotoAnakComponent,
@@ -104,6 +117,21 @@ import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat
     JadwalImunisasiTabComponent,
     RiwayatOrangTuaTabComponent,
     RiwayatKelahiranTabComponent,
+    DayaLihatShowComponent,
+    DayaDengarShowComponent,
+    KpspShowComponent,
+    GiziBbTbShowComponent,
+    GiziImtUShowComponent,
+    GiziIpTbShowComponent,
+    GiziLingkarKepalaShowComponent,
+    MchatInputComponent,
+    GpphInputComponent,
+    KmpeInputComponent,
+    DayaLihatInputComponent,
+    GiziIpTbInputComponent,
+    GiziImtUComponent,
+    GiziBbTbInputComponent,
+    LingkarKepalaInputComponent,
   ],
   imports: [
     BrowserModule,

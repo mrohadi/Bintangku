@@ -27,6 +27,9 @@ export class PemeriksaanKesehatanKmpeService {
    * postPemeriksaanKmpe
    */
   public postPemeriksaanKmpe(dataAnakId: number, model: any) {
-    this.http.post(this.baseUrl + 'pemeriksaankmpe/' + dataAnakId, model);
+    return this.http.post(
+      this.baseUrl + 'pemeriksaankmpe/' + dataAnakId,
+      model
+    );
   }
 }

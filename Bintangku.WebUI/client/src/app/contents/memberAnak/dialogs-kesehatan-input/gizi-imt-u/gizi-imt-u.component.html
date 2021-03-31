@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Petunjuk Pemeriksaan Status Gizi IMT/U</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- KPSP -->
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Pilih suatu ruangan yang bersih dan tenang, dengan penyinaran yang baik
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Gantungkan poster “E” setinggi mata anak pada posisi duduk
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Letakkan sebuah kursi sejauh 3 meter dari poster “E” menghadap ke poster
+        “ E”
+      </li></mat-list-item
+    >
+  </mat-list>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Letakkan sebuah kursi lainnya di samping poster “E” untuk pemeriksa.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Pemeriksa memberikan kartu "E" pada anak.. Latih anak dalam mengarahkan
+        kartu "E" menghadap atas, bawah, kiri dan kanan; sesuai yang ditunjuk
+        pada poster “E” oleh pemeriksa. Beri pujian setiap kali anak mau
+        melakukannya. Lakukan hal ini sampai anak dapat mengarahkan kartu "E"
+        dengan benar.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Selanjutnya, anak diminta menutup sebelah matanya dengan buku/kertas.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Dengan alat penunjuk, tunjuk huruf "E” pada poster, satu persatu, mulai
+        baris pertama sampai baris ke empat atau baris "E" terkecil yang masih
+        dapat di lihat.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Puji anak setiap kali dapat mencocokan posisi kartu "E" yang dipegangnya
+        dengan huruf "E" pada poster.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><li>
+        Ulangi pemeriksaan tersebut pada mata satunya dengan cara yang sama.
+      </li></mat-list-item
+    >
+  </mat-list>
+  <!-- End - KPSP -->
+
+  <!-- Wool Merah Table -->
+  <div class="container">
+    <form [formGroup]="formGiziImtU" (ngSubmit)="postGiziImtU()">
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Berat Badan</mat-label>
+        <input type="number" matInput formControlName="beratBadan" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Tinggi Badan</mat-label>
+        <input type="number" matInput formControlName="tinggiBadan" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Umur</mat-label>
+        <input type="number" matInput formControlName="umur" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mr-5">
+        <mat-label>Z Code</mat-label>
+        <input type="number" matInput formControlName="zCode" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+  <!-- End - Wool Merah Table -->
+</mat-dialog-content>
+<!-- Wool Merah Table -->
+<!-- <button mat-button>Submit</button> -->
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
