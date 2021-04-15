@@ -13,20 +13,22 @@ namespace Bintangku.WebApi.Data
         {
         }
 
-        public DbSet<DataAnak> DataAnaks { get; set; }
-        public DbSet<RiwayatKelahiran> RiwayatKelahirans { get; set; }
-        public DbSet<RiwayatOrangTua> RiwayatOrangTuas { get; set; }
-        public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }
-        public DbSet<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
-        public DbSet<PemeriksaanMchat> PemeriksaanMchats { get; set; }
-        public DbSet<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
-        public DbSet<PemeriksaanDayaDengar> PemeriksaanDayaDengars { get; set; }
-        public DbSet<PemeriksaanDayaLihat> PemeriksaanDayaLihats { get; set; }
-        public DbSet<PemeriksaanStatusGiziBbTb> PemeriksaanStatusGiziBbTbs { get; set; }
-        public DbSet<PemeriksaanStatusGiziImtU> PemeriksaanStatusGiziImtUs { get; set; }
-        public DbSet<PemeriksaanStatusGiziIpTb> PemeriksaanStatusGiziIpTbs { get; set; }
-        public DbSet<PemeriksaanLingkarKepala> PemeriksaanLingkarKepalas { get; set; }
-        public DbSet<PemeriksaanKpsp> PemeriksaanKpsps { get; set; }
+        public DbSet<ChildData> ChildDatas { get; set; }
+        public DbSet<BirthHistory> BirthHistories { get; set; }
+        public DbSet<ParentHistory> ParentHistories { get; set; }
+        public DbSet<ChildHealth> ChildHealths { get; set; }
+        public DbSet<GpphCheckup> GpphCheckups { get; set; }
+        public DbSet<MchatCheckup> MchatCheckups { get; set; }
+        public DbSet<KmpeCheckup> KmpeCheckups { get; set; }
+        public DbSet<HearingPowerCheckup> HearingPowerCheckups { get; set; }
+        public DbSet<VisionCheckup> VisionCheckups { get; set; }
+        public DbSet<NutritionalStatusBbTbCheckup> NutritionalStatusBbTbCheckups { get; set; }
+        public DbSet<NutritionalStatusImtUCheckup> NutritionalStatusImtUCheckups { get; set; }
+        public DbSet<NutritionalStatusIpTbCheckup> NutritionalStatusIpTbCheckups { get; set; }
+        public DbSet<HeadCircumferenceCheckup> HeadCircumferenceCheckups { get; set; }
+        public DbSet<KpspCheckup> KpspCheckups { get; set; }
+        public DbSet<KpspDetail> KpspDetails { get; set; }
+        public DbSet<HearingPowerDetail> HearingPowerDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,76 +49,86 @@ namespace Bintangku.WebApi.Data
             modelBuilder.Entity<NakesUser>()
                 .HasKey(b => b.Id);
 
-            modelBuilder.Entity<DataAnak>()
+            modelBuilder.Entity<ChildData>()
                 .HasOne(nakes => nakes.NakesUser)
                 .WithMany(anak => anak.DataAnaks)
                 .HasForeignKey(nakes => nakes.NakesUserId);
             
-            modelBuilder.Entity<DataAnak>()
-                .HasOne(kelahiran => kelahiran.RiwayatKelahiran)
-                .WithOne(anak => anak.DataAnak)
-                .HasForeignKey<RiwayatKelahiran>(kelahiran => kelahiran.DataAnakId);
+            modelBuilder.Entity<ChildData>()
+                .HasOne(birth => birth.BirthHistory)
+                .WithOne(child => child.ChildData)
+                .HasForeignKey<BirthHistory>(birth => birth.BirthHistoryId);
             
-            modelBuilder.Entity<DataAnak>()
-                .HasOne(orangTua => orangTua.RiwayatOrangTua)
-                .WithOne(anak => anak.DataAnak)
-                .HasForeignKey<RiwayatOrangTua>(orangTua => orangTua.DataAnakId);
+            modelBuilder.Entity<ChildData>()
+                .HasOne(parent => parent.ParentHistory)
+                .WithOne(child => child.ChildData)
+                .HasForeignKey<ParentHistory>(parent => parent.ParentHistoryId);
             
-            modelBuilder.Entity<DataAnak>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithOne(anak => anak.DataAnak)
-                .HasForeignKey<KesehatanAnak>(kesehatan => kesehatan.DataAnakId);
+            modelBuilder.Entity<ChildData>()
+                .HasOne(health => health.ChildHealth)
+                .WithOne(child => child.ChildData)
+                .HasForeignKey<ChildHealth>(health => health.ChildDataId);
             
             // Pemeriksaan Foreign Key to Kesehatan Anak Configuration
-            modelBuilder.Entity<PemeriksaanGpph>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanGpphs)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<GpphCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.GpphCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanMchat>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanMchats)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<MchatCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.MchatCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanKmpe>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanKmpes)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<KmpeCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.KmpeCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanDayaDengar>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanDayaDengars)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<HearingPowerCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.hearingPowerCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanDayaLihat>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanDayaLihats)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<VisionCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.VisionCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanStatusGiziBbTb>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziBbTbs)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<NutritionalStatusBbTbCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.NutritionalStatusBbTbCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanStatusGiziImtU>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziImtUs)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<NutritionalStatusImtUCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.NutritionalStatusImtUCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
 
-            modelBuilder.Entity<PemeriksaanStatusGiziIpTb>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanStatusGiziIpTbs)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<NutritionalStatusIpTbCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.NutritionalStatusIpTbCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
             
-            modelBuilder.Entity<PemeriksaanLingkarKepala>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanLingkarKepalas)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<HeadCircumferenceCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.HeadCircumferenceCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
 
-            modelBuilder.Entity<PemeriksaanKpsp>()
-                .HasOne(kesehatan => kesehatan.KesehatanAnak)
-                .WithMany(pemeriksaan => pemeriksaan.PemeriksaanKpsps)
-                .HasForeignKey(kesehatan => kesehatan.KesehatanAnakId);
+            modelBuilder.Entity<KpspCheckup>()
+                .HasOne(health => health.ChildHealth)
+                .WithMany(check => check.KpspCheckups)
+                .HasForeignKey(health => health.ChildHealthId);
+
+            modelBuilder.Entity<KpspDetail>()
+                .HasOne(kpsp => kpsp.KpspCheckup)
+                .WithMany(detail => detail.KpspDetails)
+                .HasForeignKey(kpsp => kpsp.KpspCheckupId);
+            
+            modelBuilder.Entity<HearingPowerDetail>()
+                .HasOne(check => check.HearingPowerCheckup)
+                .WithMany(detail => detail.HearingPowerDetails)
+                .HasForeignKey(hear => hear.HearingPowerCheckupId);
 
         }
     }

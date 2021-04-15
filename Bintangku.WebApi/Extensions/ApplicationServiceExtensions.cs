@@ -21,17 +21,17 @@ namespace Bintangku.WebApi.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<INakesUserRepository, NakesUserRepository>();
-            services.AddScoped<IRiwayatKelahiranRepository, RiwayatKelahiranRepository>();
-            services.AddScoped<IRiwayatOrangTuaRepository, RiwayatOrangTuaRepository>();
+            services.AddScoped<IBirthHistoryRepository, BirthHistoryRepository>();
+            services.AddScoped<IParentHistoryRepository, ParentHistoryRepository>();
             // Service for pemeriksaan kesehatan anak
-            services.AddScoped<IPemeriksaanDayaLihatRepository, PemeriksaanDayaLihatRepository>();
-            services.AddScoped<IPemeriksaanGpphRepository, PemeriksaanGpphRepository>();
-            services.AddScoped<IPemeriksaanKmpeRepository, PemeriksaanKmpeRepository>();
-            services.AddScoped<IPemeriksaanMchatRepository, PemeriksaanMchatRepository>();
-            services.AddScoped<IPemeriksaanStatusGiziBbTbRepository, PemeriksaanStatusGiziBbTbRepository>();
-            services.AddScoped<IPemeriksaanStatusGiziImtURepository, PemeriksaanStatusGiziImtURepository>();
-            services.AddScoped<IPemeriksaanStatusGiziIpTbRepository, PemeriksaanStatusGiziIpTbRepository>();
-            services.AddScoped<IPemeriksaanLingkarKepalaRepository, PemeriksaanLingkarKepalaRepository>();
+            services.AddScoped<IVisionCheckupRepository, VisionCheckupRepository>();
+            services.AddScoped<IGpphCheckupRepository, GpphCheckupRepository>();
+            services.AddScoped<IKmpeCheckupRepository, KmpeCheckupRepository>();
+            services.AddScoped<IMchatCheckupRepository, MchatCheckupRepository>();
+            services.AddScoped<INutritionalStatusBbTbCheckupRepository, NutritionalStatusBbTbCheckupRepository>();
+            services.AddScoped<INutritionalStatusImtUCheckupRepository, NutritionalStatusImtUCheckupRepository>();
+            services.AddScoped<INutritionalStatusIpTbCheckupRepository, NutritionalStatusIpTbCheckupRepository>();
+            services.AddScoped<IHeadCircumferenceCheckupRepository, HeadCircumferenceCheckupRepository>();
             
             // Json serializer config to ignore object cycle problem
             services.AddMvc().AddNewtonsoftJson(
