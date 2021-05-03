@@ -19,7 +19,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [Authorize]
-        [HttpGet("buggy/auth")]
+        [HttpGet("auth")]
         public ActionResult<string> GetSecret()
         {
             return "Secret text";
@@ -29,7 +29,7 @@ namespace Bintangku.WebApi.Controllers
         /// Test 404 Not Found responses
         /// </summary>
         /// <returns></returns>
-        [HttpGet("buggy/not-found")]
+        [HttpGet("not-found")]
         public ActionResult<NakesUser> GetNotFound()
         {
             var thing = _dataContext.Users.Find(-1);
@@ -43,7 +43,7 @@ namespace Bintangku.WebApi.Controllers
         /// Test 500 Internal Server error response
         /// </summary>
         /// <returns></returns>
-        [HttpGet("buggy/server-error")]
+        [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
             var thing = _dataContext.Users.Find(-1);
@@ -57,7 +57,7 @@ namespace Bintangku.WebApi.Controllers
         /// Test Bad Request responses
         /// </summary>
         /// <returns></returns>
-        [HttpGet("buggy/bad-request")]
+        [HttpGet("bad-request")]
         public ActionResult<string> GetBadRequest()
         {
             return BadRequest("This was not a good request");

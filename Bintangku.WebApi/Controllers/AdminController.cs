@@ -17,7 +17,7 @@ namespace Bintangku.WebApi.Controllers
         }
 
         [Authorize(Policy = "RequirePuskesmasRole")]
-        [HttpGet("admin/admin-with-roles")] 
+        [HttpGet("admin-with-roles")] 
         public async Task<ActionResult> GetUsersWithRoles()
         {
             var user = await _userManager.Users
@@ -35,7 +35,7 @@ namespace Bintangku.WebApi.Controllers
             return Ok(user);
         }
 
-        [HttpPost("admin/edit-roles/{id}")]
+        [HttpPost("edit-roles/{id}")]
         public async Task<ActionResult> EditRole(string id, [FromQuery] string roles)
         {
             var selectedRoles = roles.Split(",").ToArray();
@@ -60,7 +60,7 @@ namespace Bintangku.WebApi.Controllers
         }
         
         [Authorize(Policy = "RequirePuskesmasRole")]
-        [HttpGet("admin/puskesmas-with-roles")] 
+        [HttpGet("puskesmas-with-roles")] 
         public ActionResult GetPuskesmasRoles()
         {
             return Ok("Only admin or puskesmas can see this");

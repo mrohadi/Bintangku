@@ -62,55 +62,24 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.BirthHistory", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.DataAnak", b =>
                 {
-                    b.Property<int>("BirthHistoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ApgarScore")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("BirthAssistedBy")
-                        .HasColumnType("text");
-
-                    b.Property<int>("ChildDataId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Etc")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Length")
-                        .HasColumnType("integer");
-
-                    b.Property<byte>("Weight")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("BirthHistoryId");
-
-                    b.ToTable("BirthHistory");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildData", b =>
-                {
-                    b.Property<int>("ChildDataId")
+                    b.Property<int>("DataAnakId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Gender")
+                    b.Property<string>("Alamat")
                         .HasColumnType("text");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("text");
+
+                    b.Property<string>("JenisKelamin")
+                        .HasColumnType("text");
+
+                    b.Property<byte>("JumlahSaudara")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Kontak")
                         .HasColumnType("text");
@@ -121,24 +90,27 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<int>("NakesUserId")
                         .HasColumnType("integer");
 
-                    b.Property<byte>("NumberOfSiblings")
-                        .HasColumnType("smallint");
+                    b.Property<string>("NamaLengkap")
+                        .HasColumnType("text");
 
-                    b.HasKey("ChildDataId");
+                    b.Property<DateTime>("TanggalLahirAnak")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("DataAnakId");
 
                     b.HasIndex("NakesUserId");
 
-                    b.ToTable("ChildDatas");
+                    b.ToTable("DataAnaks");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildHealth", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>
                 {
-                    b.Property<int>("ChildHealthId")
+                    b.Property<int>("KesehatanAnakId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int>("ChildDataId")
+                    b.Property<int>("DataAnakId")
                         .HasColumnType("integer");
 
                     b.Property<int>("PemeriksaanBeratBadan")
@@ -147,376 +119,12 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<int>("PemeriksaanTinggiBadan")
                         .HasColumnType("integer");
 
-                    b.HasKey("ChildHealthId");
+                    b.HasKey("KesehatanAnakId");
 
-                    b.HasIndex("ChildDataId")
+                    b.HasIndex("DataAnakId")
                         .IsUnique();
 
-                    b.ToTable("ChildHealth");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.GpphCheckup", b =>
-                {
-                    b.Property<int>("GpphCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Interpretasi")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Intervensi")
-                        .HasColumnType("text");
-
-                    b.Property<byte>("Point")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question1")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question10")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question2")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question3")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question4")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question5")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question6")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question7")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question8")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Question9")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("GpphCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("GpphCheckup");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HeadCircumferenceCheckup", b =>
-                {
-                    b.Property<int>("HeadCircumferenceCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("Action")
-                        .HasColumnType("text");
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Classification")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Curve")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("HeadCircumference")
-                        .HasColumnType("integer");
-
-                    b.HasKey("HeadCircumferenceCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("HeadCircumferenceCheckups");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HearingPowerCheckup", b =>
-                {
-                    b.Property<int>("HearingPowerCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("HearingPowerCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("HearingPowerCheckups");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HearingPowerDetail", b =>
-                {
-                    b.Property<int>("HearingPowerDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("Age")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("HearingPowerCheckupId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Interpretasi")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Intervensi")
-                        .HasColumnType("text");
-
-                    b.Property<int>("TotalYes")
-                        .HasColumnType("integer");
-
-                    b.HasKey("HearingPowerDetailId");
-
-                    b.HasIndex("HearingPowerCheckupId");
-
-                    b.ToTable("HearingPowerDetails");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KmpeCheckup", b =>
-                {
-                    b.Property<int>("KmpeCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Interpretasi")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Intervensi")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Question1")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question10")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question11")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question12")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question13")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question14")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question2")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question3")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question4")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question5")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question6")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question7")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question8")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question9")
-                        .HasColumnType("boolean");
-
-                    b.Property<byte>("TotalYes")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("KmpeCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("KmpeCheckup");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KpspCheckup", b =>
-                {
-                    b.Property<int>("KpspCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("KpspCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("KpspCheckups");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KpspDetail", b =>
-                {
-                    b.Property<int>("KpspDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("Age")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("BicaraDanBahasa")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("GerakHalus")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("GerakKasar")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Interpretasi")
-                        .HasColumnType("text");
-
-                    b.Property<int>("JumlahYa")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("KpspCheckupId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Question")
-                        .HasColumnType("text");
-
-                    b.Property<int>("SosialisasiDanKemandirian")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Tindakan")
-                        .HasColumnType("text");
-
-                    b.HasKey("KpspDetailId");
-
-                    b.HasIndex("KpspCheckupId");
-
-                    b.ToTable("KpspDetails");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.MchatCheckup", b =>
-                {
-                    b.Property<int>("MchatCheckupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Interpretasi")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Intervensi")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Question1")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question10")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question11")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question12")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question13")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question14")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question15")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question16")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question17")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question18")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question19")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question2")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question20")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question21")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question22")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question23")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question3")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question4")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question5")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question6")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question7")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question8")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Question9")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("TotalCriticalQuestionNo")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TotalCriticalQuestionYes")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TotalQuestionNo")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TotalQuestionYes")
-                        .HasColumnType("integer");
-
-                    b.HasKey("MchatCheckupId");
-
-                    b.HasIndex("ChildHealthId");
-
-                    b.ToTable("M-ChatCheckup");
+                    b.ToTable("KesehatanAnak");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NakesUser", b =>
@@ -606,146 +214,441 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusBbTbCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaDengar", b =>
                 {
-                    b.Property<int>("NutritionalStatusBbTbCheckupId")
+                    b.Property<int>("PemeriksaanDayaDengarId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("Action")
+                    b.Property<string>("Interpretasi")
                         .HasColumnType("text");
 
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("NutritionalStatus")
+                    b.Property<string>("Intervensi")
                         .HasColumnType("text");
 
-                    b.Property<int>("Weight")
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PemeriksaanDayaDengarId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanDayaDengars");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaLihat", b =>
+                {
+                    b.Property<int>("PemeriksaanDayaLihatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Interpretasi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Intervensi")
+                        .HasColumnType("text");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MataKanan")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MataKiri")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PemeriksaanDayaLihatId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanDayaLihats");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanGpph", b =>
+                {
+                    b.Property<int>("PemeriksaanGpphId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Interpretasi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Intervensi")
+                        .HasColumnType("text");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte>("Point")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Question9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("PemeriksaanGpphId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanKesehatanGPPH");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKmpe", b =>
+                {
+                    b.Property<int>("PemeriksaanKmpeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Interpretasi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Intervensi")
+                        .HasColumnType("text");
+
+                    b.Property<byte>("JumlahYa")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Question1")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question10")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question11")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question12")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question13")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question14")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question2")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question3")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question4")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question5")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question6")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question7")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question8")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question9")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("PemeriksaanKmpeId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanKesehatanKMPE");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKpsp", b =>
+                {
+                    b.Property<int>("PemeriksaanKpspId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Interpretasi")
+                        .HasColumnType("text");
+
+                    b.Property<int>("JumlahYa")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Tindakan")
+                        .HasColumnType("text");
+
+                    b.HasKey("PemeriksaanKpspId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanKpsps");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanLingkarKepala", b =>
+                {
+                    b.Property<int>("PemeriksaanLingkarKepalaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Klasifikasi")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Kurva")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("LingkarKepala")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Tindakan")
+                        .HasColumnType("text");
+
+                    b.HasKey("PemeriksaanLingkarKepalaId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanLingkarKepalas");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanMchat", b =>
+                {
+                    b.Property<int>("PemeriksaanMchatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Interpretasi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Intervensi")
+                        .HasColumnType("text");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Question1")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question10")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question11")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question12")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question13")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question14")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question15")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question16")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question17")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question18")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question19")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question2")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question20")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question21")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question22")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question23")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question3")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question4")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question5")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question6")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question7")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question8")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Question9")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("TotalCriticalQuestionNo")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalCriticalQuestionYes")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalQuestionNo")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalQuestionYes")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PemeriksaanMchatId");
+
+                    b.HasIndex("KesehatanAnakId");
+
+                    b.ToTable("PemeriksaanKesehatanM-CHAT");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziBbTb", b =>
+                {
+                    b.Property<int>("PemeriksaanStatusGiziBbTbId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("BeratBadan")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("StatusGizi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Tindakan")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TinggiBadan")
                         .HasColumnType("integer");
 
                     b.Property<int>("ZCode")
                         .HasColumnType("integer");
 
-                    b.HasKey("NutritionalStatusBbTbCheckupId");
+                    b.HasKey("PemeriksaanStatusGiziBbTbId");
 
-                    b.HasIndex("ChildHealthId");
+                    b.HasIndex("KesehatanAnakId");
 
-                    b.ToTable("NutritionalStatusBbTbCheckups");
+                    b.ToTable("PemeriksaanStatusGiziBbTbs");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusImtUCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziImtU", b =>
                 {
-                    b.Property<int>("NutritionalStatusImtUCheckupId")
+                    b.Property<int>("PemeriksaanStatusGiziImtUId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("Action")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Height")
+                    b.Property<int>("BeratBadan")
                         .HasColumnType("integer");
 
                     b.Property<int>("IMT")
                         .HasColumnType("integer");
 
-                    b.Property<string>("NutritionalStatus")
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("StatusGizi")
                         .HasColumnType("text");
 
-                    b.Property<int>("Weight")
+                    b.Property<string>("Tindakan")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TinggiBadan")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Umur")
                         .HasColumnType("integer");
 
                     b.Property<int>("ZCode")
                         .HasColumnType("integer");
 
-                    b.HasKey("NutritionalStatusImtUCheckupId");
+                    b.HasKey("PemeriksaanStatusGiziImtUId");
 
-                    b.HasIndex("ChildHealthId");
+                    b.HasIndex("KesehatanAnakId");
 
-                    b.ToTable("NutritionalStatusImtUCheckups");
+                    b.ToTable("PemeriksaanStatusGiziImtUs");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusIpTbCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziIpTb", b =>
                 {
-                    b.Property<int>("NutritionalStatusIpTbCheckupId")
+                    b.Property<int>("PemeriksaanStatusGiziIpTbId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("Action")
+                    b.Property<int>("IndeksPanjang")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("KesehatanAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("StatusGizi")
                         .HasColumnType("text");
 
-                    b.Property<int>("ChildHealthId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("IndexLength")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("NutritionalStatus")
+                    b.Property<string>("Tindakan")
                         .HasColumnType("text");
+
+                    b.Property<int>("TinggiBadan")
+                        .HasColumnType("integer");
 
                     b.Property<int>("ZCode")
                         .HasColumnType("integer");
 
-                    b.HasKey("NutritionalStatusIpTbCheckupId");
+                    b.HasKey("PemeriksaanStatusGiziIpTbId");
 
-                    b.HasIndex("ChildHealthId");
+                    b.HasIndex("KesehatanAnakId");
 
-                    b.ToTable("NutritionalStatusIpTbCheckups");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ParentHistory", b =>
-                {
-                    b.Property<int>("ParentHistoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ChildDataId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("FatherDateOfBirth")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("FatherJob")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FatherName")
-                        .HasColumnType("text");
-
-                    b.Property<byte>("HouseholdMember")
-                        .HasColumnType("smallint");
-
-                    b.Property<DateTime>("MotherDateOfBirth")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("MotherJob")
-                        .HasColumnType("text");
-
-                    b.Property<string>("MotherName")
-                        .HasColumnType("text");
-
-                    b.Property<float>("ParentIncome")
-                        .HasColumnType("real");
-
-                    b.Property<string>("SignaturePath")
-                        .HasColumnType("text");
-
-                    b.HasKey("ParentHistoryId");
-
-                    b.ToTable("ParentHistory");
+                    b.ToTable("PemeriksaanStatusGiziIpTbs");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Photo", b =>
@@ -774,33 +677,82 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.VisionCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.RiwayatKelahiran", b =>
                 {
-                    b.Property<int>("VisionCheckupId")
+                    b.Property<int>("RiwayatKelahiranId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int>("ChildHealthId")
+                    b.Property<int>("ApgarScore")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Interpretasi")
+                    b.Property<byte>("BeratBadan")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("DataAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("KelahiranDibantuOleh")
                         .HasColumnType("text");
 
-                    b.Property<string>("Intervensi")
+                    b.Property<string>("LainLain")
                         .HasColumnType("text");
 
-                    b.Property<int>("LeftEye")
+                    b.Property<int>("PanjangLahir")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RightEye")
+                    b.HasKey("RiwayatKelahiranId");
+
+                    b.HasIndex("DataAnakId")
+                        .IsUnique();
+
+                    b.ToTable("RiwayatKelahiran");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.RiwayatOrangTua", b =>
+                {
+                    b.Property<int>("RiwayatOrangTuaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte>("AnggotaRumahTangga")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("DataAnakId")
                         .HasColumnType("integer");
 
-                    b.HasKey("VisionCheckupId");
+                    b.Property<string>("NamaAyah")
+                        .HasColumnType("text");
 
-                    b.HasIndex("ChildHealthId");
+                    b.Property<string>("NamaIbu")
+                        .HasColumnType("text");
 
-                    b.ToTable("VisionCheckups");
+                    b.Property<string>("PekerjaanAyah")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PekerjaanIbu")
+                        .HasColumnType("text");
+
+                    b.Property<float>("PenghasilanOrangTua")
+                        .HasColumnType("real");
+
+                    b.Property<string>("TandaTanganPath")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("TanggalLahirAyah")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("TanggalLahirIbu")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("RiwayatOrangTuaId");
+
+                    b.HasIndex("DataAnakId")
+                        .IsUnique();
+
+                    b.ToTable("RiwayatOrangTua");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -908,18 +860,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.BirthHistory", b =>
-                {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildData", "ChildData")
-                        .WithOne("BirthHistory")
-                        .HasForeignKey("Bintangku.WebApi.Data.Entities.BirthHistory", "BirthHistoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ChildData");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildData", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.DataAnak", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.NakesUser", "NakesUser")
                         .WithMany("DataAnaks")
@@ -930,147 +871,125 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("NakesUser");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildHealth", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildData", "ChildData")
-                        .WithOne("ChildHealth")
-                        .HasForeignKey("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildDataId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.DataAnak", "DataAnak")
+                        .WithOne("KesehatanAnak")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.KesehatanAnak", "DataAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildData");
+                    b.Navigation("DataAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.GpphCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaDengar", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("GpphCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanDayaDengars")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HeadCircumferenceCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaLihat", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("HeadCircumferenceCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanDayaLihats")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HearingPowerCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanGpph", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("hearingPowerCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanGpphs")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HearingPowerDetail", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKmpe", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.HearingPowerCheckup", "HearingPowerCheckup")
-                        .WithMany("HearingPowerDetails")
-                        .HasForeignKey("HearingPowerCheckupId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanKmpes")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("HearingPowerCheckup");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KmpeCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKpsp", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("KmpeCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanKpsps")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KpspCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanLingkarKepala", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("KpspCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanLingkarKepalas")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KpspDetail", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanMchat", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.KpspCheckup", "KpspCheckup")
-                        .WithMany("KpspDetails")
-                        .HasForeignKey("KpspCheckupId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanMchats")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("KpspCheckup");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.MchatCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziBbTb", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("MchatCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanStatusGiziBbTbs")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusBbTbCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziImtU", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("NutritionalStatusBbTbCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanStatusGiziImtUs")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusImtUCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziIpTb", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("NutritionalStatusImtUCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
+                        .WithMany("PemeriksaanStatusGiziIpTbs")
+                        .HasForeignKey("KesehatanAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NutritionalStatusIpTbCheckup", b =>
-                {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("NutritionalStatusIpTbCheckups")
-                        .HasForeignKey("ChildHealthId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ChildHealth");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ParentHistory", b =>
-                {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildData", "ChildData")
-                        .WithOne("ParentHistory")
-                        .HasForeignKey("Bintangku.WebApi.Data.Entities.ParentHistory", "ParentHistoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ChildData");
+                    b.Navigation("KesehatanAnak");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Photo", b =>
@@ -1084,15 +1003,26 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("NakesUser");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.VisionCheckup", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.RiwayatKelahiran", b =>
                 {
-                    b.HasOne("Bintangku.WebApi.Data.Entities.ChildHealth", "ChildHealth")
-                        .WithMany("VisionCheckups")
-                        .HasForeignKey("ChildHealthId")
+                    b.HasOne("Bintangku.WebApi.Data.Entities.DataAnak", "DataAnak")
+                        .WithOne("RiwayatKelahiran")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.RiwayatKelahiran", "DataAnakId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("DataAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.RiwayatOrangTua", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.DataAnak", "DataAnak")
+                        .WithOne("RiwayatOrangTua")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.RiwayatOrangTua", "DataAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DataAnak");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -1136,46 +1066,36 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildData", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.DataAnak", b =>
                 {
-                    b.Navigation("BirthHistory");
+                    b.Navigation("KesehatanAnak");
 
-                    b.Navigation("ChildHealth");
+                    b.Navigation("RiwayatKelahiran");
 
-                    b.Navigation("ParentHistory");
+                    b.Navigation("RiwayatOrangTua");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.ChildHealth", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>
                 {
-                    b.Navigation("GpphCheckups");
+                    b.Navigation("PemeriksaanDayaDengars");
 
-                    b.Navigation("HeadCircumferenceCheckups");
+                    b.Navigation("PemeriksaanDayaLihats");
 
-                    b.Navigation("hearingPowerCheckups");
+                    b.Navigation("PemeriksaanGpphs");
 
-                    b.Navigation("KmpeCheckups");
+                    b.Navigation("PemeriksaanKmpes");
 
-                    b.Navigation("KpspCheckups");
+                    b.Navigation("PemeriksaanKpsps");
 
-                    b.Navigation("MchatCheckups");
+                    b.Navigation("PemeriksaanLingkarKepalas");
 
-                    b.Navigation("NutritionalStatusBbTbCheckups");
+                    b.Navigation("PemeriksaanMchats");
 
-                    b.Navigation("NutritionalStatusImtUCheckups");
+                    b.Navigation("PemeriksaanStatusGiziBbTbs");
 
-                    b.Navigation("NutritionalStatusIpTbCheckups");
+                    b.Navigation("PemeriksaanStatusGiziImtUs");
 
-                    b.Navigation("VisionCheckups");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.HearingPowerCheckup", b =>
-                {
-                    b.Navigation("HearingPowerDetails");
-                });
-
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KpspCheckup", b =>
-                {
-                    b.Navigation("KpspDetails");
+                    b.Navigation("PemeriksaanStatusGiziIpTbs");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.NakesUser", b =>

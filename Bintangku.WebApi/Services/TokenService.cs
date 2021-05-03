@@ -46,7 +46,7 @@ namespace Bintangku.WebApi.Services
             {
                 Subject = new ClaimsIdentity(claims),
                 // FIXME: change the days
-                Expires = DateTime.Now.AddMinutes(2000),
+                Expires = DateTime.Now.AddMinutes(20),
                 SigningCredentials = creds
             };
 

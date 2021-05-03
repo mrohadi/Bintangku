@@ -40,6 +40,7 @@ namespace Bintangku.WebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.UseMiddleware<ExceptionsMiddleware>();
 
             app.UseHttpsRedirection();
@@ -57,6 +58,8 @@ namespace Bintangku.WebApi
             //                 Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
             //     RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
             // });
+
+            
 
             app.UseRouting();
 

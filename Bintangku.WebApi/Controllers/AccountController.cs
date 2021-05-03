@@ -28,7 +28,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="registerDto">nakes user object</param>
         /// <returns>nakes user object (Nakes User DTO)</returns>
-        [HttpPost("account/register")]
+        [HttpPost("register")]
         public async Task<ActionResult<NakesUserDto>> Register(RegisterDto registerDto)
         {
             if (await UserExists(registerDto.Username)) 
@@ -66,7 +66,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="loginDto">nakes user login object</param>
         /// <returns>logined nakes user</returns>
-        [HttpPost("account/login")]
+        [HttpPost("login")]
         public async Task<ActionResult<NakesUserDto>> Login(LoginDto loginDto) 
         {
             var nakesUser = await _userManager.Users 

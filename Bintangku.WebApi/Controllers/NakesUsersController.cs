@@ -30,7 +30,7 @@ namespace Bintangku.WebApi.Controllers
         /// HTTP Get method to get nakes user data from database
         /// </summary>
         /// <returns>List of nakes users</returns>
-        [HttpGet("nakes-user")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberNakesUserDto>>> GetNakesUsers()
         {
             var users = await _nakesUserRepository.GetMembersAsync();
@@ -43,7 +43,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="id">id of specific nakes user</param>
         /// <returns>nakes user based on given id</returns>
-        [HttpGet("nakes-user/{nakesUsername}", Name = "GetUser")]
+        [HttpGet("{nakesUsername}", Name = "GetUser")]
         public async Task<ActionResult<MemberNakesUserDto>> GetNakesUser(string nakesUsername)
         {
             return await _nakesUserRepository.GetMemberAsync(nakesUsername);
@@ -54,7 +54,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="memberNakesUserUpdateDto"></param>
         /// <returns></returns>
-        [HttpPut("nakes-user")]
+        [HttpPut]
         public async Task<ActionResult> UpdateNakesUser(
             MemberNakesUserUpdateDto memberNakesUserUpdateDto)
         {
@@ -75,7 +75,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="file">Photo to Upload</param>
         /// <returns></returns>
-        [HttpPost("nakes-user/add-photo")]
+        [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
             var username = User.GetUserName();
@@ -109,7 +109,7 @@ namespace Bintangku.WebApi.Controllers
             return BadRequest("Problem adding photo");
         }
 
-        [HttpPut("nakes-user/set-main-photo/{photoId}")]
+        [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
             var user = await _nakesUserRepository.GetNakesUserByUsername(User.GetUserName());
@@ -135,7 +135,7 @@ namespace Bintangku.WebApi.Controllers
             return BadRequest("Failed to set main photo");
         }
 
-        [HttpDelete("nakes-user/delete-photo/{photoId}")]
+        [HttpDelete("delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
             var user = await _nakesUserRepository.GetNakesUserByUsername(User.GetUserName());

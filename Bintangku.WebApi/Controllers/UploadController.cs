@@ -20,7 +20,7 @@ namespace Bintangku.WebApi.Controllers
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        [HttpPost("upload/photo-anak")]
+        [HttpPost("photo-anak")]
         public async Task<ActionResult> UploadPhotoAnak(IFormFile file)
         {
             var result = await _photoService.AddPhotoAsync(file);
@@ -31,7 +31,7 @@ namespace Bintangku.WebApi.Controllers
             return Ok(new { Url = result.SecureUrl });
         }
         
-        [HttpPost("upload/ttd")]
+        [HttpPost("ttd")]
         public async Task<ActionResult> UploadTtd(IFormFile file)
         {
             var result = await _photoService.AddPhotoAsync(file);
