@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Data;
+using System;
 
 namespace Bintangku.WebApi.Extensions
 {
@@ -19,6 +20,8 @@ namespace Bintangku.WebApi.Extensions
                 .AddIdentityCore<NakesUser>(options =>
                 {
                     options.Password.RequireNonAlphanumeric = false;
+
+                    // options.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddRoles<AppRole>()
                 .AddRoleManager<RoleManager<AppRole>>()
@@ -26,15 +29,24 @@ namespace Bintangku.WebApi.Extensions
                 .AddRoleValidator<RoleValidator<AppRole>>()
                 .AddEntityFrameworkStores<ApplicationDataContext>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = true;
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
+                        // ValidIssuer = jwtTokenConfig.Issuer
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.FromHours(5)
                     };
                 });
             

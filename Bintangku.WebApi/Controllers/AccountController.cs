@@ -72,7 +72,7 @@ namespace Bintangku.WebApi.Controllers
             var nakesUser = await _userManager.Users 
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
             
-            if (nakesUser == null) return Unauthorized("Invalid Username");
+            if (nakesUser == null) return BadRequest("Invalid Username");
             
             var result = await _signInManager
                 .CheckPasswordSignInAsync(nakesUser, loginDto.Password,  false);
