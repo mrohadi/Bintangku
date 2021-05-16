@@ -21,17 +21,7 @@ namespace Bintangku.WebApi.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<INakesUserRepository, NakesUserRepository>();
-            services.AddScoped<IRiwayatKelahiranRepository, RiwayatKelahiranRepository>();
-            services.AddScoped<IRiwayatOrangTuaRepository, RiwayatOrangTuaRepository>();
-            // Service for pemeriksaan kesehatan anak
-            services.AddScoped<IPemeriksaanDayaLihatRepository, PemeriksaanDayaLihatRepository>();
-            services.AddScoped<IPemeriksaanGpphRepository, PemeriksaanGpphRepository>();
-            services.AddScoped<IPemeriksaanKmpeRepository, PemeriksaanKmpeRepository>();
-            services.AddScoped<IPemeriksaanMchatRepository, PemeriksaanMchatRepository>();
-            services.AddScoped<IPemeriksaanStatusGiziBbTbRepository, PemeriksaanStatusGiziBbTbRepository>();
-            services.AddScoped<IPemeriksaanStatusGiziImtURepository, PemeriksaanStatusGiziImtURepository>();
-            services.AddScoped<IPemeriksaanStatusGiziIpTbRepository, PemeriksaanStatusGiziIpTbRepository>();
-            services.AddScoped<IPemeriksaanLingkarKepalaRepository, PemeriksaanLingkarKepalaRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             // Json serializer config to ignore object cycle problem
             services.AddMvc().AddNewtonsoftJson(

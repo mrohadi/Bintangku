@@ -17,12 +17,17 @@ namespace Bintangku.WebApi.Extensions
             return age;
         }
 
+        /// <summary>
+        /// Extension method to calculate child age
+        /// </summary>
+        /// <param name="dob">Date of birth child</param>
+        /// <returns>Age of children</returns>
         public static int CalculateAgeAnak(this DateTime dob)
         {
             var today = DateTime.Today;
-            var age = today.Month - dob.Month;
-            if(dob.Date > today.AddMonths(-age)) 
-                age--;
+            var month = today.Month - dob.Month;
+            var year = (today.Year - dob.Year) * 12;
+            var age = month + year;
             return age;
         }
     }

@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-} from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
-import { NavigationExtras, Router } from "@angular/router";
-import { ToastrService } from "ngx-toastr";
-import { catchError } from "rxjs/operators";
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -31,25 +31,27 @@ export class ErrorInterceptor implements HttpInterceptor {
                   }
                 }
                 throw modalStateError.flat();
-              } else {
+              } else if (typeof error.error === 'object') {
                 this.toastr.error(error.statusText, error.status);
+              } else {
+                this.toastr.error(error.error, error.status);
               }
               break;
             case 401:
-              this.toastr.error(error.statusText, error.status);
+              this.toastr.error(error.statusText, error.error);
               break;
             case 404:
-              this.router.navigateByUrl("/not-found");
+              this.router.navigateByUrl('/not-found');
               break;
             case 500:
               const navigationExtras: NavigationExtras = {
                 state: { error: error.error },
               };
-              this.router.navigateByUrl("/server-error", navigationExtras);
+              this.router.navigateByUrl('/server-error', navigationExtras);
               break;
 
             default:
-              this.toastr.error("Someting went wrong!");
+              this.toastr.error('Someting went wrong!');
               console.log(error);
               break;
           }

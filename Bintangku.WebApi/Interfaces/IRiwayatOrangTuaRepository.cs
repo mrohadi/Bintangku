@@ -9,7 +9,7 @@ namespace Bintangku.WebApi.Interfaces
         /// Update data riwayat orang tua anak
         /// </summary>
         /// <param name="riwayatOrangTua">Riwayat orang tua object</param>
-        void Update(RiwayatOrangTua riwayatOrangTua); 
+        Task UpdateRiwayatOrangTuaAsync(int dataAnakId, RiwayatOrangTua riwayatOrangTua); 
         /// <summary>
         /// Get data riwayat orang tua anak
         /// </summary>

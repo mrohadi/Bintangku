@@ -9,18 +9,24 @@ using Bintangku.WebApi.Extensions;
 using Bintangku.WebApi.Interfaces;
 using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Data.DTO;
+using System;
 
 namespace Bintangku.WebApi.Controllers
 {
     [Authorize]
     public class NakesUsersController : BaseApiController
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly INakesUserRepository _nakesUserRepository;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
         public NakesUsersController(
-        INakesUserRepository nakesUserRepository, IMapper mapper, IPhotoService photoService)
+            IUnitOfWork unitOfWork,
+            INakesUserRepository nakesUserRepository, 
+            IMapper mapper, 
+            IPhotoService photoService)
         {
+            _unitOfWork = unitOfWork;
             _photoService = photoService;
             _mapper = mapper;
             _nakesUserRepository = nakesUserRepository;
@@ -33,9 +39,19 @@ namespace Bintangku.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberNakesUserDto>>> GetNakesUsers()
         {
-            var users = await _nakesUserRepository.GetMembersAsync();
+            try
+            {
+                var users = await _unitOfWork.NakesUserRepository.GetMembersAsync();
 
-            return Ok(users);
+                if(users != null)
+                    return Ok(users);    
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
+            
         }
 
         /// <summary>
@@ -46,7 +62,19 @@ namespace Bintangku.WebApi.Controllers
         [HttpGet("{nakesUsername}", Name = "GetUser")]
         public async Task<ActionResult<MemberNakesUserDto>> GetNakesUser(string nakesUsername)
         {
-            return await _nakesUserRepository.GetMemberAsync(nakesUsername);
+            try
+            {
+                var user = await _nakesUserRepository.GetMemberAsync(nakesUsername); 
+
+                if(user != null)
+                    return Ok(user);
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
+            
         }
 
         /// <summary>
@@ -58,16 +86,24 @@ namespace Bintangku.WebApi.Controllers
         public async Task<ActionResult> UpdateNakesUser(
             MemberNakesUserUpdateDto memberNakesUserUpdateDto)
         {
-            var username = User.GetUserName();
-            var user = await _nakesUserRepository.GetNakesUserByUsername(username);
+            try
+            {
+                var username = User.GetUserName();
+                var user = await _unitOfWork.NakesUserRepository
+                    .GetNakesUserByUsername(username);
 
-            _mapper.Map(memberNakesUserUpdateDto, user);
+                _mapper.Map(memberNakesUserUpdateDto, user);
 
-            _nakesUserRepository.Update(user);
+                _nakesUserRepository.Update(user);
 
-            if (await _nakesUserRepository.SaveAllAsync()) 
-                return NoContent();
-            return BadRequest();
+                if (await _nakesUserRepository.SaveAllAsync()) 
+                    return Ok();
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {    
+                return StatusCode(500, $"{ex}");
+            }
         }
 
         /// <summary>

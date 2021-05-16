@@ -34,6 +34,9 @@ namespace Bintangku.WebApi.Controllers
             if (await UserExists(registerDto.Username)) 
                 return BadRequest("Username already exist");
             
+            if(registerDto == null)
+                return BadRequest();
+
             var nakesUser = new NakesUser
             {
                 Email = registerDto.Email,
@@ -77,7 +80,7 @@ namespace Bintangku.WebApi.Controllers
             var result = await _signInManager
                 .CheckPasswordSignInAsync(nakesUser, loginDto.Password,  false);
             
-            if (!result.Succeeded) return Unauthorized();
+            if (!result.Succeeded) return Unauthorized("Invalid Password");
 
             return new NakesUserDto
             {

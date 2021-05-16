@@ -1,4 +1,5 @@
 using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.DTO.Pemeriksaan;
 
 namespace Bintangku.WebApi.Pemeriksaan
 {
@@ -6,7 +7,7 @@ namespace Bintangku.WebApi.Pemeriksaan
     {
         public string StatusGizi { get; set; } = "";
         public string Tindakan { get; set; } = "";
-        private PemeriksaanStatusGiziBbTbDto _giziBbTbDto;
+        private readonly PemeriksaanStatusGiziBbTbDto _giziBbTbDto;
         public ResultStatusGiziBbTb(PemeriksaanStatusGiziBbTbDto giziBbTbDto)
         {
             _giziBbTbDto = giziBbTbDto;

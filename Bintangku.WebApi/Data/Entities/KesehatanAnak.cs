@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Bintangku.WebApi.Data.Entities.Pemeriksaan;
 
 namespace Bintangku.WebApi.Data.Entities
 {

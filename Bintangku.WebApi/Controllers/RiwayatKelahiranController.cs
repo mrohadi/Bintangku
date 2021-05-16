@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Interfaces;
@@ -9,10 +10,10 @@ namespace Bintangku.WebApi.Controllers
     [Authorize]
     public class RiwayatKelahiranController : BaseApiController
     {
-        private IRiwayatKelahiranRepository _repository;
-        public RiwayatKelahiranController(IRiwayatKelahiranRepository repository)
+        private readonly IUnitOfWork _unitOfWork;
+        public RiwayatKelahiranController(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
         
         /// <summary>
@@ -25,15 +26,35 @@ namespace Bintangku.WebApi.Controllers
         {
             try
             {
-                var riwayatKelahiran = await _repository.GetRiwayatKelahiran(dataAnakId);
+                RiwayatKelahiran kelahiran = await _unitOfWork.RiwayatKelahiranRepository
+                    .GetRiwayatKelahiran(dataAnakId);
 
-                if(riwayatKelahiran == null)
+                if(kelahiran == null)
                     return BadRequest("Riwayat Kelahiran Anak Tidak Ditemukan!");
-                return Ok(riwayatKelahiran);
+                return Ok(kelahiran);
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                throw;
+                return StatusCode(500, $"Riwayat Kelahiran Tidak Ditemukan! {ex}");
+            }
+        }
+
+        [HttpPut("{dataAnakId}")]
+        public async Task<IActionResult> UpdateRiwayatKelahiran(
+            int dataAnakId, RiwayatKelahiran riwayatKelahiran)
+        {
+            try
+            {
+                await _unitOfWork.RiwayatKelahiranRepository
+                    .UpdateRiwayatKelahiran(dataAnakId, riwayatKelahiran);
+                
+                if(await _unitOfWork.Complete())
+                    return Ok();
+                return BadRequest();    
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Gagal Mengupdate Riwayat Kelahiran! {ex}");
             }
         }
     }
