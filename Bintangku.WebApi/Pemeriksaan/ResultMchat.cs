@@ -1,4 +1,5 @@
 using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.DTO.Pemeriksaan;
 
 namespace Bintangku.WebApi.Pemeriksaan
 {
@@ -10,7 +11,7 @@ namespace Bintangku.WebApi.Pemeriksaan
         public int TotalCriticalQuestionNo { get; set; } = 0;
         public string Interpretasi { get; set; } = "";
         public string Intervensi { get; set; } = "";
-        private PemeriksaanMchatDto _pemeriksaanMchatDto;
+        private readonly PemeriksaanMchatDto _pemeriksaanMchatDto;
         public ResultMchat(PemeriksaanMchatDto pemeriksaanMchatDto)         
         {
             _pemeriksaanMchatDto = pemeriksaanMchatDto;

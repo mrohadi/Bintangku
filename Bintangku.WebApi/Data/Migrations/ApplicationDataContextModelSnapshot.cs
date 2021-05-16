@@ -78,13 +78,13 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<string>("JenisKelamin")
                         .HasColumnType("text");
 
-                    b.Property<byte>("JumlahSaudara")
+                    b.Property<byte?>("JumlahSaudara")
                         .HasColumnType("smallint");
 
                     b.Property<string>("Kontak")
                         .HasColumnType("text");
 
-                    b.Property<int>("NIK")
+                    b.Property<int?>("NIK")
                         .HasColumnType("integer");
 
                     b.Property<int>("NakesUserId")
@@ -93,14 +93,1331 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Property<string>("NamaLengkap")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("TanggalLahirAnak")
+                    b.Property<DateTime?>("TanggalLahirAnak")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("UmurAnak")
+                        .HasColumnType("integer");
 
                     b.HasKey("DataAnakId");
 
                     b.HasIndex("NakesUserId");
 
                     b.ToTable("DataAnaks");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", b =>
+                {
+                    b.Property<int>("ImunisasiAnakId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("DataAnakId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ImunisasiAnakId");
+
+                    b.HasIndex("DataAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiAnaks");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiBCG", b =>
+                {
+                    b.Property<int>("ImunisasiBCGId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiBCGId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiBCGs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiCampak", b =>
+                {
+                    b.Property<int>("ImunisasiCampakId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiCampakId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiCampaks");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDTP", b =>
+                {
+                    b.Property<int>("ImunisasiDTPId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiDTPId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiDTPs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDengue", b =>
+                {
+                    b.Property<int>("ImunisasiDengueId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiDengueId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiDengues");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHPV", b =>
+                {
+                    b.Property<int>("ImunisasiHpvId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiHpvId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiHPVs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisA", b =>
+                {
+                    b.Property<int>("ImunisasiHepatitisAId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiHepatitisAId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiHepatitisAs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisB", b =>
+                {
+                    b.Property<int>("ImunisasiHepatitisBId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiHepatitisBId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiHepatitisBs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHib", b =>
+                {
+                    b.Property<int>("ImunisasiHibId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiHibId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiHibs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiInfluenza", b =>
+                {
+                    b.Property<int>("ImunisasiInfluenzaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiInfluenzaId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiInfluenzas");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiJapaneseEncephalitis", b =>
+                {
+                    b.Property<int>("ImunisasiJapaneseEncephalitisId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiJapaneseEncephalitisId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiJapaneseEncephalitis");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiMMR", b =>
+                {
+                    b.Property<int>("ImunisasiMMRId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiMMRId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiMMRs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPCV", b =>
+                {
+                    b.Property<int>("ImunisasiPCVId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiPCVId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiPCVs");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPolio", b =>
+                {
+                    b.Property<int>("ImunisasiPolioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiPolioId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiPolios");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiRotavirus", b =>
+                {
+                    b.Property<int>("ImunisasiRotavirusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiRotavirusId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiRotaviruses");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiTifoid", b =>
+                {
+                    b.Property<int>("ImunisasiTifoidId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiTifoidId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiTifoids");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiVarisela", b =>
+                {
+                    b.Property<int>("ImunisasiVariselaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<byte?>("Bulan1")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan15")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan2")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan24")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan4")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Bulan9")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("ImunisasiAnakId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte?>("Lahir")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun10")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun12")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun18")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun3")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun5")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun6")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun7")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun8")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("Tahun9")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("ImunisasiVariselaId");
+
+                    b.HasIndex("ImunisasiAnakId")
+                        .IsUnique();
+
+                    b.ToTable("ImunisasiVariselas");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>
@@ -214,7 +1531,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaDengar", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanDayaDengar", b =>
                 {
                     b.Property<int>("PemeriksaanDayaDengarId")
                         .ValueGeneratedOnAdd()
@@ -237,7 +1554,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanDayaDengars");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaLihat", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanDayaLihat", b =>
                 {
                     b.Property<int>("PemeriksaanDayaLihatId")
                         .ValueGeneratedOnAdd()
@@ -266,7 +1583,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanDayaLihats");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanGpph", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanGpph", b =>
                 {
                     b.Property<int>("PemeriksaanGpphId")
                         .ValueGeneratedOnAdd()
@@ -322,7 +1639,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanKesehatanGPPH");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKmpe", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanKmpe", b =>
                 {
                     b.Property<int>("PemeriksaanKmpeId")
                         .ValueGeneratedOnAdd()
@@ -390,7 +1707,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanKesehatanKMPE");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKpsp", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanKpsp", b =>
                 {
                     b.Property<int>("PemeriksaanKpspId")
                         .ValueGeneratedOnAdd()
@@ -416,7 +1733,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanKpsps");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanLingkarKepala", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanLingkarKepala", b =>
                 {
                     b.Property<int>("PemeriksaanLingkarKepalaId")
                         .ValueGeneratedOnAdd()
@@ -445,7 +1762,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanLingkarKepalas");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanMchat", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanMchat", b =>
                 {
                     b.Property<int>("PemeriksaanMchatId")
                         .ValueGeneratedOnAdd()
@@ -549,7 +1866,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanKesehatanM-CHAT");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziBbTb", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziBbTb", b =>
                 {
                     b.Property<int>("PemeriksaanStatusGiziBbTbId")
                         .ValueGeneratedOnAdd()
@@ -581,7 +1898,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanStatusGiziBbTbs");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziImtU", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziImtU", b =>
                 {
                     b.Property<int>("PemeriksaanStatusGiziImtUId")
                         .ValueGeneratedOnAdd()
@@ -619,7 +1936,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.ToTable("PemeriksaanStatusGiziImtUs");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziIpTb", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziIpTb", b =>
                 {
                     b.Property<int>("PemeriksaanStatusGiziIpTbId")
                         .ValueGeneratedOnAdd()
@@ -871,6 +2188,193 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("NakesUser");
                 });
 
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.DataAnak", "DataAnak")
+                        .WithOne("ImunisasiAnak")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "DataAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DataAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiBCG", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiBCG")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiBCG", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiCampak", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiCampak")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiCampak", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDTP", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiDTP")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDTP", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDengue", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiDengue")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiDengue", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHPV", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiHPV")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHPV", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisA", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiHepatitisA")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisA", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisB", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiHepatitisB")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHepatitisB", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHib", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiHib")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiHib", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiInfluenza", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiInfluenza")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiInfluenza", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiJapaneseEncephalitis", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiJapaneseEncephalitis")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiJapaneseEncephalitis", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiMMR", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiMMR")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiMMR", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPCV", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiPCV")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPCV", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPolio", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiPolio")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiPolio", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiRotavirus", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiRotavirus")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiRotavirus", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiTifoid", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiTifoid")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiTifoid", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiVarisela", b =>
+                {
+                    b.HasOne("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", "ImunisasiAnak")
+                        .WithOne("ImunisasiVarisela")
+                        .HasForeignKey("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiVarisela", "ImunisasiAnakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImunisasiAnak");
+                });
+
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.DataAnak", "DataAnak")
@@ -882,7 +2386,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("DataAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaDengar", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanDayaDengar", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanDayaDengars")
@@ -893,7 +2397,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanDayaLihat", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanDayaLihat", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanDayaLihats")
@@ -904,7 +2408,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanGpph", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanGpph", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanGpphs")
@@ -915,7 +2419,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKmpe", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanKmpe", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanKmpes")
@@ -926,7 +2430,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanKpsp", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanKpsp", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanKpsps")
@@ -937,7 +2441,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanLingkarKepala", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanLingkarKepala", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanLingkarKepalas")
@@ -948,7 +2452,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanMchat", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanMchat", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanMchats")
@@ -959,7 +2463,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziBbTb", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziBbTb", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanStatusGiziBbTbs")
@@ -970,7 +2474,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziImtU", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziImtU", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanStatusGiziImtUs")
@@ -981,7 +2485,7 @@ namespace Bintangku.WebApi.Data.Migrations
                     b.Navigation("KesehatanAnak");
                 });
 
-            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.PemeriksaanStatusGiziIpTb", b =>
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Pemeriksaan.PemeriksaanStatusGiziIpTb", b =>
                 {
                     b.HasOne("Bintangku.WebApi.Data.Entities.KesehatanAnak", "KesehatanAnak")
                         .WithMany("PemeriksaanStatusGiziIpTbs")
@@ -1068,11 +2572,48 @@ namespace Bintangku.WebApi.Data.Migrations
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.DataAnak", b =>
                 {
+                    b.Navigation("ImunisasiAnak");
+
                     b.Navigation("KesehatanAnak");
 
                     b.Navigation("RiwayatKelahiran");
 
                     b.Navigation("RiwayatOrangTua");
+                });
+
+            modelBuilder.Entity("Bintangku.WebApi.Data.Entities.Imunisasi.ImunisasiAnak", b =>
+                {
+                    b.Navigation("ImunisasiBCG");
+
+                    b.Navigation("ImunisasiCampak");
+
+                    b.Navigation("ImunisasiDengue");
+
+                    b.Navigation("ImunisasiDTP");
+
+                    b.Navigation("ImunisasiHepatitisA");
+
+                    b.Navigation("ImunisasiHepatitisB");
+
+                    b.Navigation("ImunisasiHib");
+
+                    b.Navigation("ImunisasiHPV");
+
+                    b.Navigation("ImunisasiInfluenza");
+
+                    b.Navigation("ImunisasiJapaneseEncephalitis");
+
+                    b.Navigation("ImunisasiMMR");
+
+                    b.Navigation("ImunisasiPCV");
+
+                    b.Navigation("ImunisasiPolio");
+
+                    b.Navigation("ImunisasiRotavirus");
+
+                    b.Navigation("ImunisasiTifoid");
+
+                    b.Navigation("ImunisasiVarisela");
                 });
 
             modelBuilder.Entity("Bintangku.WebApi.Data.Entities.KesehatanAnak", b =>

@@ -1,4 +1,5 @@
 using Bintangku.WebApi.Data.DTO;
+using Bintangku.WebApi.Data.DTO.Pemeriksaan;
 
 namespace Bintangku.WebApi.Pemeriksaan
 {
@@ -6,7 +7,7 @@ namespace Bintangku.WebApi.Pemeriksaan
     {
         public string Klasifikasi { get; set; } = "";
         public string Tindakan { get; set; } = "";
-        private PemeriksaanLingkarKepalaDto _dto;
+        private readonly PemeriksaanLingkarKepalaDto _dto;
         public ResultLingkarKepala(PemeriksaanLingkarKepalaDto dto)
         {
             _dto = dto;

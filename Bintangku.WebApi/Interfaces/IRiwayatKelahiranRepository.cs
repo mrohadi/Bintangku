@@ -8,13 +8,10 @@ namespace Bintangku.WebApi.Interfaces
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="dataAnakId"></param>
         /// <param name="riwayatKelahiran"></param>
-        void Update(RiwayatKelahiran riwayatKelahiran);
-        /// <summary>
-        /// 
-        /// </summary>
         /// <returns></returns>
-        Task<bool> SaveAllAsync();
+        Task UpdateRiwayatKelahiran(int dataAnakId, RiwayatKelahiran riwayatKelahiran);
         /// <summary>
         /// Get riwayat kelahiran anak 
         /// </summary>

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Bintangku.WebApi.Data.Entities;
+using Bintangku.WebApi.Data.Entities.Imunisasi;
+using Bintangku.WebApi.Data.Entities.Pemeriksaan;
 
 namespace Bintangku.WebApi.Data
 {
@@ -16,7 +18,7 @@ namespace Bintangku.WebApi.Data
         public DbSet<DataAnak> DataAnaks { get; set; }
         public DbSet<RiwayatKelahiran> RiwayatKelahirans { get; set; }
         public DbSet<RiwayatOrangTua> RiwayatOrangTuas { get; set; }
-        public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }
+        public DbSet<KesehatanAnak> KesehatanAnaks { get; set; }        
         public DbSet<PemeriksaanGpph> PemeriksaanGpphs { get; set; }
         public DbSet<PemeriksaanMchat> PemeriksaanMchats { get; set; }
         public DbSet<PemeriksaanKmpe> PemeriksaanKmpes { get; set; }
@@ -27,6 +29,24 @@ namespace Bintangku.WebApi.Data
         public DbSet<PemeriksaanStatusGiziIpTb> PemeriksaanStatusGiziIpTbs { get; set; }
         public DbSet<PemeriksaanLingkarKepala> PemeriksaanLingkarKepalas { get; set; }
         public DbSet<PemeriksaanKpsp> PemeriksaanKpsps { get; set; }
+
+        public DbSet<ImunisasiAnak> ImunisasiAnaks { get; set; }
+        public DbSet<ImunisasiHepatitisB> ImunisasiHepatitisBs { get; set; }
+        public DbSet<ImunisasiPolio> ImunisasiPolios { get; set; }
+        public DbSet<ImunisasiBCG> ImunisasiBCGs { get; set; }
+        public DbSet<ImunisasiDTP> ImunisasiDTPs { get; set; }
+        public DbSet<ImunisasiHib> ImunisasiHibs { get; set; }
+        public DbSet<ImunisasiPCV> ImunisasiPCVs { get; set; }
+        public DbSet<ImunisasiRotavirus> ImunisasiRotaviruses { get; set; }
+        public DbSet<ImunisasiInfluenza> ImunisasiInfluenzas { get; set; }
+        public DbSet<ImunisasiCampak> ImunisasiCampaks { get; set; }
+        public DbSet<ImunisasiMMR> ImunisasiMMRs { get; set; }
+        public DbSet<ImunisasiTifoid> ImunisasiTifoids { get; set; }
+        public DbSet<ImunisasiHepatitisA> ImunisasiHepatitisAs { get; set; }
+        public DbSet<ImunisasiVarisela> ImunisasiVariselas { get; set; }
+        public DbSet<ImunisasiHPV> ImunisasiHPVs { get; set; }
+        public DbSet<ImunisasiJapaneseEncephalitis> ImunisasiJapaneseEncephalitis { get; set; }
+        public DbSet<ImunisasiDengue> ImunisasiDengues { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -10,6 +10,7 @@ import { AccountServices } from 'src/app/_services/account.service';
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
+  validationErrors: string[] = [];
 
   constructor(
     private accountService: AccountServices,
@@ -27,7 +28,8 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toastr.error(error.error.errors.Password);
+        // this.toastr.error(error.error.Password);
+        this.validationErrors = error;
       }
     );
   }

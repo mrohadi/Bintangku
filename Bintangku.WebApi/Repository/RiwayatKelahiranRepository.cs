@@ -9,7 +9,7 @@ namespace Bintangku.WebApi.Repository
 {
     public class RiwayatKelahiranRepository : IRiwayatKelahiranRepository
     {
-        private ApplicationDataContext _context;
+        private readonly ApplicationDataContext _context;
         public RiwayatKelahiranRepository(ApplicationDataContext context)
         {
             _context = context;
@@ -19,9 +19,11 @@ namespace Bintangku.WebApi.Repository
         {
             try
             {
-                return await _context.RiwayatKelahirans
+                RiwayatKelahiran kelahiran = await _context.RiwayatKelahirans
                     .Where(anak => anak.DataAnakId == dataAnakId)
-                    .SingleOrDefaultAsync();
+                    .SingleOrDefaultAsync(); 
+
+                return kelahiran;
             }
             catch (System.Exception)
             {
@@ -29,14 +31,19 @@ namespace Bintangku.WebApi.Repository
             }
         }
 
-        public Task<bool> SaveAllAsync()
+        public async Task UpdateRiwayatKelahiran(int dataAnakId, RiwayatKelahiran riwayatKelahiran)
         {
-            throw new System.NotImplementedException();
-        }
+            RiwayatKelahiran riwayat = await _context.RiwayatKelahirans
+                .Where(x => x.DataAnakId == dataAnakId)
+                .SingleOrDefaultAsync();
 
-        public void Update(RiwayatKelahiran riwayatKelahiran)
-        {
-            throw new System.NotImplementedException();
+            riwayat.BeratBadan = riwayatKelahiran.BeratBadan;
+            riwayat.PanjangLahir = riwayatKelahiran.PanjangLahir;
+            riwayat.ApgarScore = riwayatKelahiran.ApgarScore;
+            riwayat.KelahiranDibantuOleh = riwayatKelahiran.KelahiranDibantuOleh;
+            riwayat.LainLain = riwayatKelahiran.LainLain;
+
+            _context.Entry(riwayat).State = EntityState.Modified;
         }
     }
 }
