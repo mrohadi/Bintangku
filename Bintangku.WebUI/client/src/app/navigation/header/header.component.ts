@@ -6,7 +6,7 @@ import { AccountServices } from 'src/app/_services/account.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   model: any = {};
@@ -35,9 +35,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.toastr.success('Nakes Logout Successfully');
     this.accountService.logout();
     this.router.navigateByUrl('/');
-    this.toastr.success('Nakes Logout Successfully');
   }
 
   public onToggleSidenav = () => {
