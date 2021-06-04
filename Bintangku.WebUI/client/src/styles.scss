@@ -7,7 +7,6 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -56,13 +55,14 @@ $client-warn: mat.define-palette(mat.$red-palette);
 
 $custom-typograpy: mat.define-typography-config(
   $font-family: 'Oxygen, sans-serif',
-  $headline: mat.define-typography-level(42px, 48.3px, 400),
-  $title: mat.define-typography-level(32px, 36.8px , 400),
-  $subheading-2: mat.define-typography-level(24px, 27.6px , 400),
-  $subheading-1: mat.define-typography-level(18px, 20.7px , 400),
-  $body-1: mat.define-typography-level(14.5px, 21.75px , 400, 'Oxygen', 0.02em),
-  $button: mat.define-typography-level(13.5px, 17.05px , 400)
+  $headline: mat.define-typography-level(42px, 48.3px, 400, 'Oxygen, sans-serif'),
+  $title: mat.define-typography-level(32px, 36.8px , 400, 'Oxygen, sans-serif'),
+  $subheading-2: mat.define-typography-level(24px, 27.6px , 400,'Oxygen, sans-serif'),
+  $subheading-1: mat.define-typography-level(18px, 20.7px , 400, 'Oxygen, sans-serif'),
+  $body-1: mat.define-typography-level(14.5px, 21.75px , 400, 'Oxygen, sans-serif', 0.02em),
+  $button: mat.define-typography-level(13.5px, 17.05px , 400, 'Oxygen, sans-serif')
 );
+@include mat.core($custom-typograpy);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $client-theme: mat.define-light-theme((
@@ -70,8 +70,7 @@ $client-theme: mat.define-light-theme((
     primary: $client-primary,
     accent: $client-accent,
     warn: $client-warn,
-  ),
-  typography: $custom-typograpy
+  )
 ));
 
 // Include theme styles for core and each component used in your app.
@@ -92,5 +91,10 @@ $client-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Oxygen', sans-serif; }
+body {
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  background-color: #E5E5E5;
+}

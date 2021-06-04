@@ -1,5 +1,50 @@
 <footer class="w-full bg-blue-700 py-12">
-  <div class="mat-body">
-    Copyright © 2021 by <span class="text-blue-500">Capella Project.</span> All Right Reserved
+  <div class="xl:container px-7 mx-auto">
+    <div class="flex">
+      <div class="w-2/4">
+        <div class="mb-8">
+          Bintangku
+        </div>
+        <div class="mat-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus rutrum ut pulvinar ut urna, tortor amet,
+            tortor. In lacinia volutpat dictum pharetra, est quam.</p>
+        </div>
+        <div class="space-x-2">
+          <!-- 800: facebook, 400:linkedin, 50: twitter -->
+          <a *ngFor="let color of [800, 50, 400]" href="http://">
+            <div class="rounded-full inline-block w-9 h-9" [class]="'bg-blue-' + color">
+
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="w-2/4">
+        <div class="flex">
+          <div class="w-2/4">
+            <h3 class="mat-h3">
+              Narahubung
+            </h3>
+          </div>
+          <div class="w-2/4">
+            <h3 class="mat-h3">
+              Lokasi
+            </h3>
+            <p class="mat-body">
+              Taman Surya 5 Ruko Avenue Blok KK1 No. 57, Cengkareng, Jakarta Barat 11730
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="text-center mat-body">
+      <p class="text-gray-400">
+        Copyright © 2021 by <span class="text-blue-500">Capella Project.</span> All Right Reserved
+      </p>
+    </div>
   </div>
 </footer>
+<div class="bg-blue-800"></div>
+<div class="bg-blue-50"></div>
+<div class="bg-blue-400"></div>

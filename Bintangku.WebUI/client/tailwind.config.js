@@ -1,18 +1,18 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const blue= {
-  50: '#eff6ff',
+  50: '#1DA1F2', // twitter icon bg
   100: '#66CBFF', // Blue - Sky
   200: '#bfdbfe',
   300: '#32CCFE', // Blue - Sky Lighter
-  400: '#60a5fa',
+  400: '#2867B2', // linkedin icon bg
   500: '#5D9FE2', // Blue - Light
   600: '#2563eb',
   700: '#003466', // Blue - Dark
-  800: '#1e40af',
+  800: '#3C5A99', // facebook icon bg
   900: '#06275D', // Blue - Black Alt
-},
-yellow= {
+};
+const yellow= {
   50: '#fefce8',
   100: '#FFCC66', // Yellow - light
   200: '#FFC000', // Yellow - Most Orange
@@ -23,7 +23,8 @@ yellow= {
   700: '#a16207',
   800: '#854d0e',
   900: '#713f12',
-},red = {
+};
+const red = {
   50: '#fefce8',
   100: '#FECCCB',
   200: '#FFC000',
@@ -45,8 +46,9 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    color:{
+    colors:{
       ...defaultTheme.colors,
+      black: '#323232',
       blue,
       red,
       yellow
