@@ -1,0 +1,21 @@
+.accent-heading {
+  @apply font-bold text-blue-700 flex w-64 items-center;
+  &::after {
+    @apply block h-0.5 w-full flex-1 ml-2;
+    content: "";
+    border: solid 1px;
+  }
+}
+
+.misi-content {
+  @apply rounded-tr-3xl py-7 pr-7;
+  width: 618px;
+  background-color: #fafafa;
+}
+
+.misi-img {
+  @apply rounded-2xl absolute bottom-0 right-0;
+  width: 707px;
+  height: 367px;
+  z-index: -1;
+}
