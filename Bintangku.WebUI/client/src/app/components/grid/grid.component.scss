@@ -1,0 +1,136 @@
+.container-grid {
+  @apply flex flex-wrap w-full box-border;
+}
+
+.item {
+  @apply box-border m-0;
+  // margin: "0"; // For instance; it's useful when used with a `figure` element.
+}
+
+.zeroMinWidth {
+  @apply min-w-0;
+}
+
+.direction {
+  &-column {
+    flex-direction: "column";
+    &-reverse {
+      flex-direction: "column-reverse";
+    }
+  }
+  &-row-reverse {
+    flex-direction: "row-reverse";
+  }
+}
+
+.wrap {
+  & .nowrap {
+    flex-wrap: "nowrap";
+  }
+  & .wrap-reverse {
+    flex-wrap: "wrap-reverse";
+  }
+}
+$SPACINGS : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$GRID_SIZES :'auto', true, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+
+$bp: "xs", "sm", "md", "lg", "xl", "2xl";
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==xs {
+    @media only screen and (min-width: 0) {
+      @content
+    }
+  }
+
+  @if $breakpoint==sm {
+    @screen sm {
+      @content
+    }
+  }
+
+  @if $breakpoint==md {
+    @screen md {
+      @content
+    }
+  }
+
+  @if $breakpoint==lg {
+    @screen lg{
+      @content
+    }
+  }
+
+  @if $breakpoint==xl {
+    @screen xl {
+      @content
+    }
+  }
+  @if $breakpoint==2xl {
+    @screen 2xl {
+      @content
+    }
+  }
+}
+
+
+@each $poin in $bp {
+  @each $size in $GRID_SIZES {
+    //flex: [flex-grow] [flex-shrink] [flex-basis];
+    .item-#{$poin}-#{$size} {
+      @if $size==true {
+        @include respond($poin) {
+          flex-basis: 0;
+          flex-grow: 1;
+          max-width: 100%;
+        }
+      }
+
+      @else if $size=='auto' {
+        @include respond($poin) {
+          flex-basis: auto;
+          flex-grow: 0;
+          max-width: none;
+        }
+      }
+
+      @else {
+        @include respond($poin) {
+          $width: $size/12*100000000/1000000;
+          flex-basis: $width*1%;
+          flex-grow: 0;
+          max-width: $width*1%;
+        }
+      }
+    }
+  }
+}
+
+@each $space in $SPACINGS {
+  @if $space==0{
+
+  }
+  .grid-#{$space} {
+
+    margin: -($space*4px);
+    width: calc(100% + #{$space*8px});
+    & > .item {
+      padding: $space*4px;
+    }
+  }
+}
+
+$align-content : 'center','flex-start','flex-end','space-between','space-around';
+$align-items: 'flex-start', 'center', 'flex-end', 'baseline';
+$justify-content:'center','flex-end','space-between','space-around','space-evenly';
+$LIST: ('align-content':$align-content,'align-items':$align-items,'justify-content':$justify-content);
+
+@each $name, $glyph in $LIST {
+    .#{$name} {
+        @each $tipe in $glyph {
+            &-#{$tipe} {
+            #{$name}:#{$tipe}
+        }
+        }
+    }
+}
