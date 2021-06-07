@@ -19,3 +19,12 @@
   height: 367px;
   z-index: -1;
 }
+
+.btn-auth {
+  @apply uppercase;
+  border-radius: 50px;
+  &.mat-raised-button.mat-accent.accent {
+    background-color: #f0f8fd;
+    border: 1px solid #66cbff;
+  }
+}
