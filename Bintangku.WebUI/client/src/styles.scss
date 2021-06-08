@@ -1,0 +1,121 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$light-primary-text: white;
+$dark-primary-text: rgba(black, 0.87);
+
+$light-blue-palette-custom: (
+  50: #e1f5fe,
+  100: #b3e5fc,
+  200: #81d4fa,
+  300: #4fc3f7,
+  400: #29b6f6,
+  500: #03a9f4,
+  600: #039be5,
+  700: #0288d1,
+  800: #003466,
+  900: #06275d,
+  A100: #66cbff,
+  A200: #32ccfe,
+  A400: #5d9fe2,
+  A700: #0091ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+$client-primary: mat.define-palette(
+  $light-blue-palette-custom,
+  A400,
+  A100,
+  800
+);
+$client-accent: mat.define-palette($light-blue-palette-custom, A100, 100, A400);
+
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$red-palette);
+
+$custom-typograpy: mat.define-typography-config(
+  $font-family: "Oxygen, sans-serif",
+  $headline:
+    mat.define-typography-level(42px, 48.3px, 400, "Oxygen, sans-serif"),
+  $title: mat.define-typography-level(32px, 36.8px, 400, "Oxygen, sans-serif"),
+  $subheading-2:
+    mat.define-typography-level(24px, 27.6px, 400, "Oxygen, sans-serif"),
+  $subheading-1:
+    mat.define-typography-level(18px, 20.7px, 400, "Oxygen, sans-serif"),
+  $body-1:
+    mat.define-typography-level(
+      14.5px,
+      21.75px,
+      400,
+      "Oxygen, sans-serif",
+      0.02em
+    ),
+  $button:
+    mat.define-typography-level(13.5px, 17.05px, 400, "Oxygen, sans-serif"),
+);
+@include mat.core($custom-typograpy);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $client-primary,
+      accent: $client-accent,
+      warn: $client-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap/scss/bootstrap.scss";
+@import "~ngx-toastr/toastr.css";
+// "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+// "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+// "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+// "./node_modules/bootstrap/dist/css/bootstrap.css",
+// "./node_modules/bootstrap/dist/js/bootstrap.js",
+// "./node_modules/font-awesome/css/font-awesome.css",
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Oxygen", sans-serif;
+  background-color: #fafafa;
+  & button:focus {
+    outline: none;
+  }
+}

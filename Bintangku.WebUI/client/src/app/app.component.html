@@ -1,20 +1,4 @@
 <app-layout>
-  <app-header class="my-header" (sidenavToggle)="sidenav.toggle()">
-  </app-header>
-
-  <mat-sidenav-container class="my-container">
-    <mat-sidenav #sidenav role="navigation " class="my-sidenav">
-      <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
-    </mat-sidenav>
-    <!--  -->
-    <mat-sidenav-content>
-      <ngx-spinner>Loading...</ngx-spinner>
-      <main class="wrapper">
-        <router-outlet></router-outlet>
-        <div class="push"></div>
-      </main>
-      <!-- Footer -->
-      <app-footer></app-footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <router-outlet></router-outlet>
 </app-layout>
+<!-- This example requires Tailwind CSS v2.0+ -->

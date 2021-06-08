@@ -1,50 +1,63 @@
-<mat-toolbar color="primary">
-  <a mat-icon-button (click)="onToggleSidenav()">
-    <mat-icon>menu</mat-icon>
-  </a>
-  <a class="example-app-name bintangku" routerLink="/home">Bintangku</a>
+<div class="fixed flex right-0 left-0 z-50 top-6">
+  <div class="xl:container mx-auto space-x-6 flex items-center">
+    <div *ngIf="accountService.currentUser$ | async" [@flyInOut]="'in'"
+      class="rounded-xl shadow-xl px-2 flex items-center bg-white h-16 w-16">
+      <button mat-icon-button color="primary">
+        <mat-icon class="menu">subject</mat-icon>
+      </button>
+    </div>
+    <div class="flex container rounded-xl px-7 h-16 bg-white shadow-xl items-center justify-between">
+      <div class="flex space-x-2 items-center">
+        <img src="/assets/images/logo.png" class="rounded-full w-9 h-9">
+        <h1 class="text-blue-700 text-xl m-0 font-bold"> Bintangku</h1>
+      </div>
+      <div class="hidden md:block md:space-x-8">
+        <a [routerLink]="['/home']" class="font-medium text-gray-500 hover:text-blue-700">Beranda</a>
+        <a [routerLink]="['/home']" fragment="visi-kami" class="font-medium text-gray-500 hover:text-blue-700">Misi</a>
+        <a [routerLink]="['/home']" fragment="layanan-kami"
+          class="font-medium text-gray-500 hover:text-blue-700">Layanan</a>
+        <a [routerLink]="['/home']" fragment="tentang-kami"
+          class="font-medium text-gray-500 hover:text-blue-700">Tentang</a>
+      </div>
+      <div class="flex" [ngClass]="flexDir">
+        <!-- If User Not Login -->
 
-  <!-- Dropdown User When Login -->
-  <div
-    class="dropdown"
-    fxFlex
-    fxLayout
-    fxLayoutAlign="end"
-    fxHide.xs
-    *ngIf="accountService.currentUser$ | async as user"
-  >
-    <mat-icon
-      class="account-circle"
-      material-icons.md-48
-      [matMenuTriggerFor]="menu"
-      >account_circle</mat-icon
-    >
-    <!-- <button mat-button>Menu</button> -->
-    <mat-menu #menu="matMenu">
-      <a class="a" mat-menu-item routerLink="/nakes-members/{{ user.username }}"
-        >Profile</a
-      >
-      <a class="a" mat-menu-item (click)="logout()">Logout</a>
-    </mat-menu>
+        <div [@flyOutIn]="'in'" *ngIf="(accountService.currentUser$ | async) === null" class="space-x-2">
+          <a [routerLink]="['/login']" (click)="flexDir = 'col-col'" mat-raised-button color="accent" class="btn-auth accent">
+            login
+          </a>
+          <a [routerLink]="['/register']" mat-raised-button color="primary" class="btn-auth">
+            register
+          </a>
+        </div>
+        <!-- If user not login -end- -->
+        <!-- If User Login -->
+        <div [@flyOutIn]="'in'" *ngIf="accountService.currentUser$ | async as user" class="flex space-x-2">
+          <button mat-mini-fab disabled aria-label="Acount Login">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <div class="inline-flex flex-col">
+            <span class="mat-body text-blue-900">{{user.username}}</span>
+            <span style="font-size: 10px;" class="text-blue-900">example@mail.com</span>
+          </div>
+          <button mat-icon-button [matMenuTriggerFor]="menu"
+            aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>expand_more</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- End - Dropdown User When Login -->
-
-  <!-- Account Navigation When User Not Login -->
-  <div
-    fxFlex
-    fxLayout
-    fxLayoutAlign="end"
-    fxHide.xs
-    *ngIf="(accountService.currentUser$ | async) === null"
-  >
-    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-      <li>
-        <a mat-raised-button color="primary" routerLink="/login">Login</a>
-      </li>
-      <li>
-        <a mat-raised-button color="accent" routerLink="/register">Register</a>
-      </li>
-    </ul>
+</div>
+<mat-menu class="mt-4" #menu="matMenu">
+  <div *ngIf="accountService.currentUser$ | async as user" class="min-w-max">
+    <a routerLink="/nakes-members/{{ user.username }}" mat-menu-item>
+      <mat-icon>portrait</mat-icon>
+      <span>Profile</span>
+    </a>
+    <button (click)="logout()" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
   </div>
-  <!-- End - Account Navigation When User Not Login -->
-</mat-toolbar>
+</mat-menu>

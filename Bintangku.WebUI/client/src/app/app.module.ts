@@ -71,6 +71,7 @@ import { GiziIpTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-
 import { GiziImtUComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-imt-u/gizi-imt-u.component';
 import { GiziBbTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-bb-tb-input/gizi-bb-tb-input.component';
 import { LingkarKepalaInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/lingkar-kepala-input/lingkar-kepala-input.component';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -132,6 +133,7 @@ import { LingkarKepalaInputComponent } from './contents/memberAnak/dialogs-keseh
     GiziImtUComponent,
     GiziBbTbInputComponent,
     LingkarKepalaInputComponent,
+    GridComponent,
   ],
   imports: [
     BrowserModule,

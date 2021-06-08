@@ -1,0 +1,30 @@
+.btn-auth {
+  @apply uppercase;
+  border-radius: 50px;
+  &.mat-raised-button.mat-accent.accent {
+    background-color: #f0f8fd;
+    border: 1px solid #66cbff;
+  }
+}
+
+.mat-icon.menu {
+  @apply text-blue-500;
+  font-size: 40px;
+  width: 40px;
+}
+.flex.col-col {
+  @apply flex-col;
+}
+.flex.col-re {
+  @apply flex-col-reverse;
+}
+.mat-menu-panelmat-menu-panel.ng-trigger.ng-trigger-transformMenu.ng-tns-c333-1.mat-menu-below.ng-star-inserted.mat-elevation-z4.mat-menu-before {
+  min-width: 184px;
+  max-width: 280px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 0.75rem;
+  outline: 0;
+  min-height: 64px;
+}

@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -6,11 +7,34 @@ import { AccountServices } from 'src/app/_services/account.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'translateX(-100%)' }))
+      ])
+    ]),
+    trigger('flyOutIn', [
+      state('in', style({ transform: 'translateY(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateY(100%)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'translateY(-100%)' }))
+      ]),
+    ])
+  ]
 })
 export class HeaderComponent implements OnInit {
   model: any = {};
   @Output() public sidenavToggle = new EventEmitter();
+  flexDir = 'col-col';
 
   constructor(
     public accountService: AccountServices,
@@ -35,9 +59,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.flexDir = 'col-re';
+    this.toastr.success('Nakes Logout Successfully');
     this.accountService.logout();
     this.router.navigateByUrl('/');
-    this.toastr.success('Nakes Logout Successfully');
   }
 
   public onToggleSidenav = () => {
