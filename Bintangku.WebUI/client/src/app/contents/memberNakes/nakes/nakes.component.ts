@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MemberNakes } from 'src/app/_models/memberNakes';
 import { MembersNakesService } from 'src/app/_services/membersNakes.service';
 
@@ -6,6 +6,7 @@ import { MembersNakesService } from 'src/app/_services/membersNakes.service';
   selector: 'app-nakes',
   templateUrl: './nakes.component.html',
   styleUrls: ['./nakes.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NakesComponent implements OnInit {
   memberNakes: MemberNakes[];

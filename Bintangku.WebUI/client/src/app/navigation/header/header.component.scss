@@ -28,3 +28,6 @@
   outline: 0;
   min-height: 64px;
 }
+.active {
+  @apply text-blue-700;
+}
