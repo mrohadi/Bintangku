@@ -1,45 +1,29 @@
-import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'div[app-grid]',
   exportAs:'appGrid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  inputs: [
-    'alignContent',
-    'alignItems',
-    'container',
-    'direction',
-    'item',
-    'justify',
-    'lg',
-    'md',
-    'sm',
-    'spacing',
-    'wrap',
-    'xl',
-    'xxl',
-    'xs',
-    'zeroMinWidth',
-  ],
 })
 export class GridComponent implements OnInit {
-  alignContent: ALIGNCONTENT = 'stretch';
-  alignItems: ALIGNITEMS = 'stretch';
-  container: boolean;
-  direction: DIRECTION = 'row';
-  item:boolean;
-  justify: JUSTIFY = 'flex-start';
-  lg: SIZES = false;
-  md: SIZES = false;
-  sm: SIZES = false;
-  spacing: SPACINGS = 0;
-  wrap: WRAP = 'wrap';
-  xl: SIZES = false;
-  xxl: SIZES = false;
-  xs: SIZES = false;
-  zeroMinWidth = false;
+  @Input() alignContent: ALIGNCONTENT = 'stretch';
+  @Input() alignItems: ALIGNITEMS = 'stretch';
+  @Input() container: boolean;
+  @Input() direction: DIRECTION = 'row';
+  @Input() item:boolean;
+  @Input() justify: JUSTIFY = 'flex-start';
+  @Input() lg: SIZES = false;
+  @Input() md: SIZES = false;
+  @Input() sm: SIZES = false;
+  @Input() spacing: SPACINGS = 0;
+  @Input() wrap: WRAP = 'wrap';
+  @Input() xl: SIZES = false;
+  @Input() xxl: SIZES = false;
+  @Input() xs: SIZES = false;
+  @Input() zeroMinWidth = false;
 
   classArray: string[] = []
   toClass(d:string, value:number|string){

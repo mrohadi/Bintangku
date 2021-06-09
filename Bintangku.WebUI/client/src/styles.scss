@@ -96,7 +96,8 @@ $client-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 // @import "~bootstrap/scss/bootstrap.scss";
-@import "~ngx-toastr/toastr.css";
+// @import "~ngx-toastr/toastr.css";
+
 // "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
 // "./node_modules/bootstrap/dist/css/bootstrap.min.css",
 // "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
@@ -107,6 +108,7 @@ $client-theme: mat.define-light-theme(
 @tailwind components;
 @tailwind utilities;
 
+@import 'toastr.scss';
 html,
 body {
   height: 100%;

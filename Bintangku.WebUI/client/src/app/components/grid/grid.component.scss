@@ -13,22 +13,23 @@
 
 .direction {
   &-column {
-    flex-direction: "column";
+    flex-direction: column;
+    flex-direction: column;
     &-reverse {
-      flex-direction: "column-reverse";
+      flex-direction: column-reverse;
     }
   }
   &-row-reverse {
-    flex-direction: "row-reverse";
+    flex-direction: row-reverse;
   }
 }
 
 .wrap {
   & .nowrap {
-    flex-wrap: "nowrap";
+    flex-wrap: nowrap;
   }
   & .wrap-reverse {
-    flex-wrap: "wrap-reverse";
+    flex-wrap: wrap-reverse;
   }
 }
 $SPACINGS : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;

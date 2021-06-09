@@ -1,6 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+// eslint-disable-next-line
 
-const blue= {
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+const blue = {
   50: '#1DA1F2', // twitter icon bg
   100: '#66CBFF', // Blue - Sky
   200: '#bfdbfe',
@@ -12,7 +14,7 @@ const blue= {
   800: '#3C5A99', // facebook icon bg
   900: '#06275D', // Blue - Black Alt
 };
-const yellow= {
+const yellow = {
   50: '#fefce8',
   100: '#FFCC66', // Yellow - light
   200: '#FFC000', // Yellow - Most Orange
@@ -46,7 +48,7 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors:{
+    colors: {
       ...defaultTheme.colors,
       black: '#323232',
       blue,
