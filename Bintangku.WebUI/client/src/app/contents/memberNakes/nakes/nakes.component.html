@@ -1,4 +1,13 @@
-<div class="px-3 mt-2">
+<section class="my-6 relative h-full py-16">
+  <div class="xl:container mx-auto py-7 my-16 px-7">
+    <div app-grid container="true" spacing="6">
+      <div app-grid *ngFor="let member of memberNakes" item="true" xs="4">
+        <app-nakes-card [memberNakes]="member"></app-nakes-card>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="px-3 mt-2">
   <h1 class="my-title">Tenaga Kesehatan Kami</h1>
   <hr />
   <div class="row">
@@ -6,4 +15,4 @@
       <app-nakes-card [memberNakes]="member"></app-nakes-card>
     </div>
   </div>
-</div>
+</div> -->

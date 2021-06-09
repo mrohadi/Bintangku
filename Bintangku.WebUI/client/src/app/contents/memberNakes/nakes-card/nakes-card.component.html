@@ -1,20 +1,22 @@
-<div class="card mb-4">
-  <div class="card-img-wrapper">
-    <img
-      class="card-img-top"
-      src="{{ memberNakes.photoUrl || './assets/images/user.png' }}"
-      alt="{{ memberNakes.username }}"
-      routerLink="/nakes-members/{{ memberNakes.username }}"
-    />
-    <ul class="list-inline member-icons animate text-center"></ul>
+<div class="bg-white w-full overflow-hidden shadow-md rounded-xl">
+  <div class="p-4 flex items-center space-x-4">
+    <div class="flex overflow-hidden h-20 w-20 relative items-center justify-center rounded-full">
+      <img src="/assets/images/user.png" class="w-full h-full text-transparent object-cover text-center" alt="">
+    </div>
+    <div>
+      <h4 class="mat-h4 mb-2 capitalize">{{ memberNakes.fullName }}</h4>
+      <div class="space-x-3 flex items-center space-x-3">
+        <mat-icon class="text-gray-400">location_on</mat-icon>
+        <span class="inline-block text-gray-400 capitalize">{{memberNakes.tempatPelayanan}}</span>
+      </div>
+      <div class="space-x-3 flex items-center">
+        <mat-icon class="text-gray-400">account_box</mat-icon>
+        <span class="inline-block text-gray-400">000000</span>
+      </div>
+    </div>
   </div>
-  <div class="card-body p-1">
-    <h6 class="card-title text-center mb-1">
-      <i class="fa fa-user mr-2"></i>
-      {{ memberNakes.fullName }}
-    </h6>
-    <p class="card-text text-muted text-center">
-      {{ memberNakes.tempatPelayanan }}
-    </p>
+  <hr>
+  <div class="text-right uppercase">
+    <button mat-button>Selengkapnya<mat-icon>arrow_right</mat-icon></button>
   </div>
 </div>
