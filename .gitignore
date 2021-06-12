@@ -444,4 +444,4 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-Bintangku.WebApi/wwwroot
+# Bintangku.WebApi/wwwroot
