@@ -45,67 +45,24 @@ namespace Bintangku.WebApi
 
             app.UseHttpsRedirection();
 
+            app.UseRouting();
+            
             app.UseCors(policy => 
                 policy.AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithOrigins("https://localhost:4200"));
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            // app.UseStaticFiles(new StaticFileOptions()
-            // {
-            //     FileProvider = new PhysicalFileProviderCustom(
-            //                 Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Images")),
-            //     RequestPath = Path.Combine(env.ContentRootPath, "/Resources/Images")
-            // });
-
-            
-
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapFallbackToController("Index", "Fallback");
             });
-        }
-    }
-
-    public class PhysicalFileProviderCustom : IFileProvider
-    {
-        private string _root;
-        private PhysicalFileProvider _physicalFileProvider;
-        public PhysicalFileProviderCustom(string root)
-        {
-            _root = root;
-        }
-        
-        private PhysicalFileProvider GetPhysicalFileProvider()
-        {
-            if (!File.Exists(_root))
-                Directory.CreateDirectory(_root);
-            
-            if (_physicalFileProvider == null)
-                _physicalFileProvider = new PhysicalFileProvider(_root);
-            
-            return _physicalFileProvider;
-        }
-        public IDirectoryContents GetDirectoryContents(string subpath)
-        {
-            return GetPhysicalFileProvider().GetDirectoryContents(subpath);
-        }
-
-        public IFileInfo GetFileInfo(string subpath)
-        {
-            return GetPhysicalFileProvider().GetFileInfo(subpath);
-        }
-
-        public IChangeToken Watch(string filter)
-        {
-            return GetPhysicalFileProvider().Watch(filter);
         }
     }
 }
