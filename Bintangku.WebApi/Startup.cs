@@ -31,7 +31,7 @@ namespace Bintangku.WebApi
             services.AddCors();
             services.AddHttpsRedirection(option => 
             {
-                option.HttpsPort = 4200;
+                option.HttpsPort = 5001;
             });
             
             services.AddSwaggerGen(c =>
