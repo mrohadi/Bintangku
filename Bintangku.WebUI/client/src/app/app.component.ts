@@ -21,4 +21,7 @@ export class AppComponent implements OnInit {
     const user: User = JSON.parse(localStorage.getItem('user') ?? '{}');
     this.accountServie.setCurrentUser(user);
   }
+  onActivate(event) {
+    window.scroll(0,0);
+  }
 }

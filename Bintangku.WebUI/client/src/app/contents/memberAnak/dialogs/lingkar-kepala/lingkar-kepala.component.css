@@ -1,0 +1,4 @@
+.btn-submit {
+  @apply uppercase;
+  border-radius: 50px;
+}

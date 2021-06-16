@@ -1,7 +1,7 @@
 <div class="bg-white w-full overflow-hidden shadow-md rounded-xl">
   <div class="p-4 flex items-center space-x-4">
-    <div class="flex overflow-hidden h-20 w-20 relative items-center justify-center rounded-full">
-      <img src="/assets/images/user.png" class="w-full h-full text-transparent object-cover text-center" alt="">
+    <div class="flex overflow-hidden h-20 w-20 border border-blue-100 relative items-center justify-center rounded-full">
+      <img [src]="memberNakes.photoUrl || '/assets/images/user.png'" class="w-full h-full text-transparent object-cover text-center" alt="">
     </div>
     <div>
       <h4 class="mat-h4 mb-2 capitalize">{{ memberNakes.fullName }}</h4>
@@ -17,6 +17,7 @@
   </div>
   <hr>
   <div class="text-right uppercase">
-    <button mat-button>Selengkapnya<mat-icon>arrow_right</mat-icon></button>
+    <button (click)="openDialog(memberNakes.username)" mat-button>Selengkapnya<mat-icon>arrow_right</mat-icon></button>
   </div>
 </div>
+

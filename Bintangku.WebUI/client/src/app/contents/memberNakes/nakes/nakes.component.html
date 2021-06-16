@@ -1,5 +1,37 @@
 <section class="my-6 relative h-full py-16">
   <div class="xl:container mx-auto py-7 my-16 px-7">
+    <div class="flex pb-9 mb-9 justify-between items-center">
+      <div class="">
+        <h3 class="h3-accent">
+          Tenaga Kesehatan
+        </h3>
+        <span class="mat-body text-black text-opacity-50">11 orang</span>
+      </div>
+      <div class="relative border w-96 bg-blue-100 bg-opacity-10 px-12 py-2 sm:text-sm border-blue-100 rounded-xl shadow-sm">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <label for="search" class="text-gray-500 flex sm:text-sm">
+            <mat-icon>search</mat-icon>
+          </label>
+        </div>
+        <input name="search" id="search" class="rounded-xl" matInput placeholder="Cari Disini..." value="">
+      </div>
+      <div class="flex w-44">
+        <label for="urutkan" class="py-2 w-full inline-block text-black text-opacity-50">Urutkan : </label>
+        <!-- <div class="focus:ring-indigo-500 focus:border-indigo-500 bg-blue-100 bg-opacity-10 pl-4 ring-blue-100 border-blue-100 h-full text-gray-500 sm:text-sm rounded-full"> -->
+          <mat-select class="py-2 px-4 bg-blue-100 bg-opacity-10 ring-blue-100 border-blue-100 h-full border text-gray-500 sm:text-sm rounded-full" [(value)]="selected">
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        <!-- </div> -->
+        <!-- <select id="urutkan" name="urutkan" class="focus:ring-indigo-500 focus:border-indigo-500 bg-blue-100 bg-opacity-10 pl-4 ring-blue-100 border-blue-100 h-full text-gray-500 sm:text-sm rounded-full">
+          <option>Nama</option>
+          <option>Kota</option>
+          <option>NIK</option>
+        </select> -->
+      </div>
+    </div>
     <div app-grid container="true" spacing="6">
       <div app-grid *ngFor="let member of memberNakes" item="true" xs="4">
         <app-nakes-card [memberNakes]="member"></app-nakes-card>
@@ -7,12 +39,3 @@
     </div>
   </div>
 </section>
-<!-- <div class="px-3 mt-2">
-  <h1 class="my-title">Tenaga Kesehatan Kami</h1>
-  <hr />
-  <div class="row">
-    <div *ngFor="let member of memberNakes" class="col-3">
-      <app-nakes-card [memberNakes]="member"></app-nakes-card>
-    </div>
-  </div>
-</div> -->

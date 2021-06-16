@@ -13,6 +13,7 @@ import { AnakDetailComponent } from './contents/memberAnak/anak-detail/anak-deta
 import { AnakEditComponent } from './contents/memberAnak/anak-edit/anak-edit.component';
 import { AnakPemeriksaanComponent } from './contents/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
 import { AnakComponent } from './contents/memberAnak/anak/anak.component';
+import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
 import { NakesDetailComponent } from './contents/memberNakes/nakes-detail/nakes-detail.component';
 import { NakesEditComponent } from './contents/memberNakes/nakes-edit/nakes-edit.component';
 import { NakesComponent } from './contents/memberNakes/nakes/nakes.component';
@@ -42,7 +43,16 @@ const routes: Routes = [
       { path: 'nakes-members/:username', component: NakesDetailComponent },
       { path: 'nakes-member/edit', component: NakesEditComponent },
       { path: 'anak-members', component: AnakComponent },
-      { path: 'anak-members/:id', component: AnakDetailComponent },
+      {
+        path: 'anak-members/:id',
+        component: AnakDetailComponent,
+        children: [
+          { path: '', redirectTo: 'kesehatan', pathMatch: 'full' },
+          { path: 'kesehatan', component: AnakPemeriksaanComponent },
+          { path: 'jadwal-imunisasi', component: JadwalImunisasiTabComponent },
+        ],
+      },
+
       { path: 'anak-member/add', component: AnakAddComponent },
       { path: 'anak-members/edit/:id', component: AnakEditComponent },
       {

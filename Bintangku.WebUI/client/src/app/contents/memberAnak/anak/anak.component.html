@@ -1,133 +1,136 @@
-<div class="px-4">
-  <h2 class="dasboard mb-4">Dashboard</h2>
-  <!-- Material Accordian -->
-  <div class="row mb-3" style="margin-bottom: 20px">
-    <div class="col-4">
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header color="primary">
-            <mat-panel-title> Jadwal Vaksin Minggu Ini </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel>
-      </mat-accordion>
+<section class="my-6 relative h-full py-16">
+  <div class="xl:container mx-auto py-7 my-16 px-7">
+    <div class="mb-4">
+      <h3 class="h3-accent">
+        Data Anak
+      </h3>
+      <span class="mat-body text-black text-opacity-50">3 orang</span>
     </div>
-    <div class="col-4">
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Anak Dalam Pemantauan </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div class="col-4">
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Rujuk Ke Dokter Anak</mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-  </div>
-  <!-- End - Material Accordian -->
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" class="mb-3">
-    <button mat-raised-button color="primary" routerLink="/anak-member/add">
-      Tambahkan Anak
-    </button>
-  </div>
+    <div class="flex space-x-4 mb-9">
+      <button mat-button>Filter<mat-icon>filter_alt</mat-icon></button>
+      <div class="w-64">
+        <mat-select
+          class="py-2 px-4 bg-blue-100 bg-opacity-10 ring-blue-100 border-blue-100 h-full border text-gray-500 sm:text-sm rounded-full"
+          [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="1">Jadwal Vaksin Hari Ini</mat-option>
+          <mat-option value="2">Anak Dalam Pemantauan</mat-option>
+          <mat-option value="3">Rujuk Ke Dokter Anak</mat-option>
+        </mat-select>
+      </div>
+      <div class="w-64">
+        <mat-select
+          class="py-2 px-4 bg-blue-100 bg-opacity-10 ring-blue-100 border-blue-100 h-full border text-gray-500 sm:text-sm rounded-full"
+          [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="1">Jadwal Vaksin Hari Ini</mat-option>
+          <mat-option value="2">Anak Dalam Pemantauan</mat-option>
+          <mat-option value="3">Rujuk Ke Dokter Anak</mat-option>
+        </mat-select>
+      </div>
+      <div class="w-64">
+        <mat-select
+          class="py-2 px-4 bg-blue-100 bg-opacity-10 ring-blue-100 border-blue-100 h-full border text-gray-500 sm:text-sm rounded-full"
+          [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="1">Jadwal Vaksin Hari Ini</mat-option>
+          <mat-option value="2">Anak Dalam Pemantauan</mat-option>
+          <mat-option value="3">Rujuk Ke Dokter Anak</mat-option>
+        </mat-select>
+      </div>
 
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" class="mb-3">
-    <!-- <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Nama</th>
-          <th scope="col">NIK</th>
-          <th scope="col">Jenis Kelamin</th>
-          <th scope="col">Tanggal Lahir</th>
-          <th scope="col">Nama Ayah</th>
-          <th scope="col">Nama Ibu</th>
-          <th scope="col">Alamat Lengkap</th>
-          <th scope="col">Kontak</th>
-          <th scope="col">Diinput Oleh</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let memberAnak of memberAnaks">
-        <tr class="pointer" routerLink="/anak-members/{{ memberAnak.id }}">
-          <th scope="row">
-            <img
-              [src]="createImgPath(memberAnak.imagePath)"
-              alt="profile picture"
-              style="width: 60px; height: 60px; text-align: center"
-            />
-          </th>
-          <td>{{ memberAnak.namaLengkap }}</td>
-          <td>{{ memberAnak.nik }}</td>
-          <td>{{ memberAnak.jenisKelaminAnak }}</td>
-          <td>{{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}</td>
-          <td>{{ memberAnak.namaAyah }}</td>
-          <td>{{ memberAnak.namaIbu }}</td>
-          <td>{{ memberAnak.alamat }}</td>
-          <td>{{ memberAnak.kontak }}</td>
-          <td>{{ memberAnak.namaNakes }}</td>
-        </tr>
-      </tbody>
-    </table> -->
-    <article class="">
-      <section class="users">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Nama</th>
-              <th scope="col">NIK</th>
-              <th scope="col">Jenis Kelamin</th>
-              <th scope="col">Tanggal Lahir</th>
-              <th scope="col">Nama Ayah</th>
-              <th scope="col">Nama Ibu</th>
-              <th scope="col">Alamat Lengkap</th>
-              <th scope="col">Kontak</th>
-              <th scope="col">Diinput Oleh</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let memberAnak of memberAnaks">
-            <tr
-              class="pointer"
-              routerLink="/anak-members/{{ memberAnak.dataAnakId }}"
-            >
-              <th scope="row">
-                <img
-                  [src]="memberAnak.imagePath"
-                  alt="profile picture"
-                  style="width: 60px; height: 60px; text-align: center"
-                />
-              </th>
-              <td>{{ memberAnak.namaLengkap }}</td>
-              <td>{{ memberAnak.nik }}</td>
-              <td>{{ memberAnak.jenisKelaminAnak }}</td>
-              <td>{{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}</td>
-              <td>{{ memberAnak.riwayatOrangTua.namaAyah }}</td>
-              <td>{{ memberAnak.riwayatOrangTua.namaIbu }}</td>
-              <td>{{ memberAnak.alamat }}</td>
-              <td>{{ memberAnak.kontak }}</td>
-              <td>{{ memberAnak.namaNakes }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </article>
+    </div>
+    <div class="flex justify-end pt-9 mb-9">
+      <div class="relative border w-96 bg-blue-100 bg-opacity-10 px-12 py-2 sm:text-sm border-blue-100 rounded-xl shadow-sm">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <label for="search" class="text-gray-500 flex sm:text-sm">
+            <mat-icon>search</mat-icon>
+          </label>
+        </div>
+        <input name="search" id="search" class="rounded-xl" matInput placeholder="Ex. Pizza" value="Sushi">
+      </div>
+      <div>
+        <button mat-button>
+          REFRESH <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-button>
+          TAMBAH <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <table mat-table [dataSource]="memberAnaks">
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">Nama</span> </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex items-center justify-center space-x-4">
+            <div class="rounded-full h-11 w-11 overflow-hidden inline-flex justify-center items-center">
+              <img src="https://randomuser.me/api/portraits/women/54.jpg"
+                class="text-transparent object-cover text-center" alt="">
+            </div>
+            <p>{{element.namaLengkap}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nik">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">NIK</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.nik}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="kelamin">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">Jenis Kelamin</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.jenisKelaminAnak}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="ttl">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">Tempat Tanggal Lahir</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.tanggalLahirAnak | date}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="nama_ayah">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">Nama Ayah</span> </th>
+        <td mat-cell *matCellDef="let element"> nama ayah </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="nama_ibu">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">Nama Ibu</span> </th>
+        <td mat-cell *matCellDef="let element"> nama ibu </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="pengimput">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">penginput</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.namaNakes}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="aksi">
+        <th mat-header-cell *matHeaderCellDef> <span class="text-blue-700 font-bold">aksi</span> </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="text-blue-700" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button class="text-blue-700" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="anakColumns"></tr>
+      <tr mat-row
+        (click)="clickRow(row)"
+        *matRowDef="let row; columns: anakColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-</div>
+</section>
+
+<!-- <div style="background-color:red;padding: 8px 16px; border-radius: 12px">
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</div> -->

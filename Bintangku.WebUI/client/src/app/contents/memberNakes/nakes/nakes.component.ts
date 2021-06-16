@@ -5,11 +5,12 @@ import { MembersNakesService } from 'src/app/_services/membersNakes.service';
 @Component({
   selector: 'app-nakes',
   templateUrl: './nakes.component.html',
-  styleUrls: ['./nakes.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./nakes.component.scss'],
 })
 export class NakesComponent implements OnInit {
   memberNakes: MemberNakes[];
+  selected = 'option1';
+  loading = false;
 
   constructor(private memberNakesServices: MembersNakesService) {}
 
@@ -18,8 +19,18 @@ export class NakesComponent implements OnInit {
   }
 
   loadMembersNakes() {
-    this.memberNakesServices.getMembersNakes().subscribe((membersNakes) => {
-      this.memberNakes = membersNakes;
-    });
+    this.loading = true;
+    this.memberNakesServices.getMembersNakes().subscribe(
+      (membersNakes) => {
+        this.memberNakes = membersNakes;
+      },
+      () => {
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
+        console.log(this.memberNakes);
+      }
+    );
   }
 }
