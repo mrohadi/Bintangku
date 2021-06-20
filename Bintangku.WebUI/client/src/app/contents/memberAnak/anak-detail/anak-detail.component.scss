@@ -1,0 +1,13 @@
+.mat-body tr > td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.active {
+  @apply text-blue-700 text-opacity-100 font-bold;
+  &::after {
+    content: '';
+    @apply block w-full bg-blue-400;
+    height: 2px;
+    margin-top: -8px;
+  }
+}

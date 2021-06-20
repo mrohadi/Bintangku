@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './jadwal-imunisasi-tab.component.html',
   styleUrls: ['./jadwal-imunisasi-tab.component.css']
 })
-export class JadwalImunisasiTabComponent implements OnInit {
+export class JadwalImunisasiTabComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

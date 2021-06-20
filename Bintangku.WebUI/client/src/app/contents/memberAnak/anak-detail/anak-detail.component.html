@@ -1,124 +1,85 @@
-<h2 class="h2" *ngIf="memberAnak">
-  Detail Informasi {{ memberAnak.namaLengkap }}
-</h2>
-<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end" *ngIf="memberAnak">
-  <!-- Detail profile anak -->
-  <div class="col-3">
-    <div class="card">
-      <!-- Photo Anak -->
-      <img
-        [src]="memberAnak.imagePath"
-        alt="{{ memberAnak.namaLengkap }}"
-        class="card-img-top img-thumbnail"
-      />
-      <!-- End - Photo anak -->
-      <!-- Informasi anak -->
-      <div class="card-body">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th scope="col">Nama Anak</th>
-              <th scope="col">{{ memberAnak.namaLengkap }}</th>
-            </tr>
-            <tr>
-              <th scope="col">NIK</th>
-              <th scope="col">{{ memberAnak.nik }}</th>
-            </tr>
-            <tr>
-              <th scope="col">Jenis Kelamin</th>
-              <th scope="col">{{ memberAnak.jenisKelaminAnak }}</th>
-            </tr>
-            <tr>
-              <th scope="col">Tanggal Lahir</th>
-              <th scope="col">
-                {{ memberAnak.tanggalLahirAnak | date: "MMMM d, y" }}
-              </th>
-            </tr>
-            <tr>
-              <th scope="col">Alamat Lengkap</th>
-              <th scope="col">{{ memberAnak.alamat }}</th>
-            </tr>
-            <tr>
-              <th scope="col">Kontak</th>
-              <th scope="col">{{ memberAnak.kontak }}</th>
-            </tr>
-          </tbody>
-        </table>
+<section class="my-6 relative h-full py-16">
+  <div class="xl:container mx-auto py-7 my-16 px-7">
+    <div class="flex">
+      <div><button mat-button>
+          <mat-icon>arrow_back</mat-icon>
+        </button></div>
+      <h2 class="mat-title">Detail Informasi</h2>
+    </div>
+    <div app-grid container="true" spacing="7">
+      <div app-grid item="true" xs="3">
+        <div class="relative">
+          <div class="px-9 pb-9 w-full absolute top-0">
+            <div class="rounded-xl shadow-lg overflow-hidden">
+              <div style="height: 189px;" class="w-full bg-blue-100">
+                <img src="/assets/images/detail-anak.jpg" alt="" width="220" height="158" class="w-full h-full text-transparent object-cover text-center"  srcset="">
+              </div>
+            </div>
+          </div>
+          <div style="height: 107px;"></div>
+          <div class="bg-white overflow-hidden shadow-xl rounded-xl">
+            <div style="height: 82px; margin-bottom: 24px;"></div>
+            <div class="text-center pb-2 mb-4">
+              <h3 class="mat-subheading-2">Adiyasa Hidayat</h3>
+              <p class="mat-body text-black text-opacity-50">2 tahun<span
+                  class="inline-block w-2 h-2 mx-2 rounded-full bg-blue-700"></span>Laki-laki</p>
+            </div>
+            <hr class="border-blue-100 border-opacity-50">
+            <div class="p-4">
+              <table class="mat-body">
+                <tr>
+                  <td class="text-blue-700 font-bold pr-2">NIK</td>
+                  <td class="text-black text-opacity-50 pl-2">123456789</td>
+                </tr>
+                <tr>
+                  <td class="text-blue-700 font-bold pr-2">Tanggal Lahir</td>
+                  <td class="text-black text-opacity-50 pl-2">8 Maret 2021</td>
+                </tr>
+                <tr>
+                  <td class="text-blue-700 font-bold pr-2">Nama Ayah</td>
+                  <td class="text-black text-opacity-50 pl-2">Lentera Hidayat</td>
+                </tr>
+                <tr>
+                  <td class="text-blue-700 font-bold pr-2">Nama Ibu</td>
+                  <td class="text-black text-opacity-50 pl-2">Jenirah Hidayat</td>
+                </tr>
+                <tr>
+                  <td class="text-blue-700 font-bold pr-2">Kontak</td>
+                  <td class="text-black text-opacity-50 pl-2">081234567</td>
+                </tr>
+              </table>
+              <div class="py-4">
+                <hr class="border-blue-100 border-opacity-50">
+              </div>
+              <div class="mat-body text-center">
+                <p class="text-blue-700 font-bold">Alamat lengkap</p>
+                <p class="text-black text-opacity-50">Jl. Babakan Lio RT 1 RW 11, 16680, Bogor, Jawa Barat</p>
+              </div>
+            </div>
+            <div class="flex border-blue-100 border-t border-opacity-50 justify-between">
+              <button style="width: 50%;height: 52px;" mat-button>
+                EDIT&nbsp;<mat-icon>edit</mat-icon>
+              </button>
+              <button style="width: 50%; height: 52px;" mat-button>
+                LIHAT&nbsp;<mat-icon>chevron_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- End - Informasi anak -->
-      <!--  -->
-      <div class="card-footer">
-        <div class="btn-group d-flex">
-          <button
-            mat-raised-button
-            color="primary"
-            routerLink="/anak-members/edit/{{ memberAnak.dataAnakId }}"
-            style="margin-right: 5px"
-          >
-            Edit
-          </button>
-          <button (click)="delete()" mat-raised-button color="warn">
-            Delete
-          </button>
+      <div app-grid item="true" xs="true">
+        <div class="rounded-xl mb-4 border bg-white border-blue-100">
+          <a [routerLink]="['./', 'kesehatan']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Kesehatan</a>
+          <a [routerLink]="['./', 'jadwal-imunisasi']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Jadwal imunisasi</a>
+          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Grafik</a>
+          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Kelahiran</a>
+          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat penyakit</a>
+          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Keluarga</a>
+        </div>
+        <div>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   </div>
-  <!-- End - Detail profile anak -->
-
-  <!-- Tab Menu Details -->
-  <div class="col-9">
-    <section fxLayout="column" fxFlexAlign="start">
-      <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
-        <mat-tab label="Riwayat Penyakit">
-          <table class="table">
-            <tbody>
-              <tr>
-                <th scope="col">Jumalah Saudara</th>
-                <th scope="col">{{ memberAnak.jumlahSaudara }}</th>
-              </tr>
-            </tbody>
-          </table>
-        </mat-tab>
-        <!-- Riwayat Kelahiran Tab -->
-        <mat-tab label="Riwayat Kelahiran">
-          <app-riwayat-kelahiran-tab></app-riwayat-kelahiran-tab>
-        </mat-tab>
-        <!-- End - Riwayat Kelahiran Tab -->
-        <!-- Riwayat Orang Tua Tab -->
-        <mat-tab label="Riwayat Orang Tua">
-          <app-riwayat-orang-tua-tab></app-riwayat-orang-tua-tab>
-        </mat-tab>
-        <mat-tab label="Jadwal Imunisasi">
-          <app-jadwal-imunisasi-tab></app-jadwal-imunisasi-tab>
-        </mat-tab>
-        <!-- End - Riwayat Orang Tua Tab -->
-        <!-- Kesehatan Anak Tab -->
-        <mat-tab label="Kesehatan Anak">
-          <app-kesehatan-tab></app-kesehatan-tab>
-          <!-- <button
-            type="submit"
-            mat-raised-button
-            color="primary"
-            routerLink="/anak-members/pemeriksaan-kesehatan/{{
-              memberAnak.dataAnakId
-            }}"
-          >
-            InputPemeriksaan
-          </button> -->
-        </mat-tab>
-        <!-- End - Tab Kesehatan Anak -->
-        <!-- Grafik Tab -->
-        <mat-tab label="Grafik">
-          <p>
-            By using material components, we are going to create fully
-            responsive navigation menu, with its side-bar as well.
-          </p>
-        </mat-tab>
-        <!-- End - Grafik Tab -->
-      </mat-tab-group>
-    </section>
-    <!-- End - Menu Details Content -->
-  </div>
-  <!-- End - Tab Menu Details -->
-</div>
+</section>

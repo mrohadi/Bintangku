@@ -1,29 +1,127 @@
-<div class="row" *ngIf="memberNakes">
-  <div class="col-4">
-    <div class="card">
-      <img
-        src="{{ memberNakes.photoUrl || './assets/images/user.png' }}"
-        alt="{{ memberNakes.username }}"
-        class="card-img-top img-thumbnail"
-      />
-      <div class="card-body">
-        <div>
-          <strong>Nama Tenaga Kesehatan:</strong>
-          <p class="">{{ memberNakes.fullName }}</p>
-        </div>
-        <div>
-          <strong>Umur:</strong>
-          <p class="">{{ memberNakes.age }}</p>
-        </div>
-        <div>
-          <strong>Tempat Pelayanan:</strong>
-          <p class="">{{ memberNakes.tempatPelayanan }}</p>
-        </div>
-        <div>
-          <strong>No STR Tenaga Kesehatan:</strong>
-          <p class="">{{ memberNakes.noStrTenagaKesehatan }}</p>
-        </div>
-      </div>
+<div *ngIf="!loading" class="flex space-x-8">
+  <div>
+    <div class="rounded-full flex lebar-165 overflow-hidden items-center justify-center">
+      <img class="h-full text-transparent object-cover text-center" [src]="memberNakes.photoUrl" alt="">
+    </div>
+  </div>
+  <div class="w-full">
+    <h2 class="mat-title">
+      {{memberNakes.fullName}}
+    </h2>
+    <p class="mat-body accent-section">
+      profile
+    </p>
+    <div class="my-4">
+      <table>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon class="text-blue-700">assignment_ind</mat-icon>
+            </p>
+          </td>
+          <td>Usia</td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">{{memberNakes.age}} tahun</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon class="text-blue-700">room</mat-icon>
+            </p>
+          </td>
+          <td>
+            <p class="mat-body">Tempat Pelayanan</p>
+          </td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">{{memberNakes.tempatPelayanan}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon class="text-blue-700">account_box</mat-icon>
+            </p>
+          </td>
+          <td>
+            <p class="mat-body">No STR Tenaga Kesehatan</p>
+          </td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">{{memberNakes.noStrTenagaKesehatan}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <p class="mat-body accent-section">
+      Kontak
+    </p>
+    <div class="mt-4">
+      <table>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon class="text-blue-700">phone</mat-icon>
+            </p>
+          </td>
+          <td>No. Telepon</td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">{{memberNakes.phoneNumber}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon svgIcon="whats-app" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            </p>
+          </td>
+          <td>
+            <p class="mat-body">WhatsApp</p>
+          </td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">{{memberNakes.phoneNumber}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="flex">
+              <mat-icon svgIcon="line-app" aria-hidden="false" aria-label="line acaount"></mat-icon>
+            </p>
+          </td>
+          <td>
+            <p class="mat-body">LINE</p>
+          </td>
+          <td>
+            <p class="mat-body text-black text-opacity-50">@veronica_chan</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="flex animate-pulse space-x-8">
+  <div>
+    <div class="rounded-full flex bg-gray-500 lebar-165 overflow-hidden items-center justify-center">
+    </div>
+  </div>
+  <div class="w-full">
+    <h2 class="mat-title bg-gray-500">
+      &nbsp;
+    </h2>
+    <p class="mat-body accent-section">
+      profile
+    </p>
+    <div class="my-4 mat-typography">
+      <p class="bg-gray-500">&nbsp;</p>
+      <p class="bg-gray-500">&nbsp;</p>
+      <p class="bg-gray-500">&nbsp;</p>
+    <p class="mat-body accent-section">
+      Kontak
+    </p>
+    <div class="mt-4 mat-typography">
+      <p class="bg-gray-500">&nbsp;</p>
+      <p class="bg-gray-500">&nbsp;</p>
+      <p class="bg-gray-500">&nbsp;</p>
     </div>
   </div>
 </div>

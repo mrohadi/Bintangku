@@ -1,0 +1,38 @@
+.h3-accent {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 27.6px;
+  display: inline-flex;
+  align-items: center;
+  color: #003466;
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #003466;
+    margin: 0 12px;
+  }
+}
+
+
+table {
+  width: 100%;
+}
+.mat-column- {
+  &aksi,
+  &nama {
+    text-align: center;
+  }
+}
+tr.mat-row,
+tr.mat-footer-row {
+  height: 76px;
+  &:hover {
+    background-color: #f5f9fd;
+  }
+}
+.mat-row .mat-cell {
+  cursor: pointer;
+}

@@ -1,151 +1,51 @@
-<div class="add-anak-container px-3">
-  <!-- Titile -->
-  <h2 class="my-title">Pemeriksaan Anak</h2>
-  <!-- End - Title -->
-  <h2 class="mb-3">Deteksi Dini Penyimpangan Pertumbuhan</h2>
-  <form
-    class="my-form"
-    fxLayout="row"
-    fxLayout.xs="column"
-    gdColumns="900px 600px"
-    fxLayoutGap="100px"
-  >
-    <!-- Tanggal Pemeriksaan -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Tanggal Pemeriksaan</mat-label>
-        <!-- #docregion toggle -->
-        <input matInput [matDatepicker]="picker" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <!-- #enddocregion toggle -->
-      </mat-form-field>
-    </div>
-    <!-- End - Tanggal Pemeriksaan -->
-    <h2></h2>
-
-    <!-- Berat Badan -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Berat Badan</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="openBeratBadan()">
-        Petunjuk
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container> -->
+  <ng-container matColumnDef="name">
+    <td mat-cell *matCellDef="let element"> {{element['name']}} </td>
+  </ng-container>
+  <ng-container matColumnDef="position">
+    <td mat-cell *matCellDef="let element">
+      <button class="add" (click)="openModal(element.position)" mat-button>
+        TAMBAHKAN &nbsp;<mat-icon svgIcon="pencil-add"></mat-icon>
       </button>
-    </div>
-    <!-- End - Berat Badan -->
-
-    <!-- Tinggi Badan -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Tinggi Badan</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="openTinggiBadan()">
-        Petunjuk
+      <button
+      (click)="expandedElement = expandedElement === element ? null : element" mat-button>
+        {{ expandedElement === element ?"TUTUP":"SELENGKAPNYA" }} <mat-icon>{{ expandedElement === element ? "expand_less":"expand_more" }}</mat-icon>
       </button>
-    </div>
-    <!-- End - Tinggi Badan -->
+    </td>
+  </ng-container>
 
-    <!-- Lingkar Kepala -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Lingkar Kepala</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="openLingkarKepala()">
-        Petunjuk
-      </button>
-    </div>
-    <!-- End - Lingkar Kepala -->
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
+           <table mat-table *ngIf="element === expandedElement && !loading" [dataSource]="detail[element.position].dataSource">
+            <ng-container matColumnDef="{{column}}" *ngFor="let column of detail[element.position].columnsToDisplay">
+              <th mat-header-cell class="text-blue-700 font-bold" *matHeaderCellDef> {{detail[element.position].stringDisplay[column]}} </th>
+              <td mat-cell *matCellDef="let element;let index = index"> {{ column === 'no' ? (index + 1):element[column]}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="detail[element.position].columnsToDisplay"></tr>
+            <tr mat-row class="no-border-last" *matRowDef="let row; columns: detail[element.position].columnsToDisplay;"></tr>
+           </table>
+      </div>
+    </td>
+  </ng-container>
 
-    <!-- IMT -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>IMT</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - IMT -->
 
-    <!-- KPSP -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>KPSP</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="openKpsp()">
-        Petunjuk
-      </button>
-    </div>
-    <!-- End - KPSP -->
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      >
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
 
-    <!-- Tes Daya Dengar -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Tet Daya Dengar</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - Tes Daya Dengar -->
 
-    <!-- Tes Daya Lihat (Mata Kanan) -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Tes Daya Lihat (Mata Kanan)</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - Tes Daya Lihat (Mata Kanan) -->
-
-    <!-- Tes Daya Lihat (Mata Kiri) -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>Tes Daya Lihat (Mata Kiri)</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - Tes Daya Lihat (Mata Kanan) -->
-
-    <!-- Deteksi Dini Penyimpangan Perilaku Emosional -->
-    <h2>Deteksi Dini Penyimpangan Perilaku Emosional</h2>
-    <h2></h2>
-
-    <!-- KMPE -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>KMPE</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - KMPE -->
-
-    <!-- M-CHAT -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>M-CHAT</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Petunjuk</button>
-    </div>
-    <!-- End - M-CHAT -->
-
-    <!-- GPPH -->
-    <div class="mb-5" fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-      <mat-form-field class="my-full-width" appearance="fill">
-        <mat-label>GPPH</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="openGpph()">
-        Petunjuk
-      </button>
-    </div>
-    <!-- End - GPPH -->
-  </form>
-</div>
+<!-- Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

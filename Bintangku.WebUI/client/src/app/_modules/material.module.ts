@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -54,6 +55,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
+    MatPaginatorModule
   ],
   exports: [
     MatTabsModule,
@@ -83,6 +85,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
+    MatPaginatorModule
   ],
 })
 export class MaterialModule {}

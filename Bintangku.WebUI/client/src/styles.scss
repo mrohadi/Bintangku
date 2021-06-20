@@ -112,6 +112,7 @@ $client-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -120,4 +121,33 @@ body {
   & button:focus {
     outline: none;
   }
+}
+.custom-modalbox {
+  .mat-dialog-container {
+      @apply bg-white rounded-xl p-10;
+
+  }
+}
+mat-row,
+mat-header-row,
+mat-footer-row,
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-bottom-color: #bfe7fc;
+}
+mat-header-cell {
+  @apply text-blue-700 font-bold;
+  font-size: 14.5px;
+  line-height: 21.75px;
+  letter-spacing: 2%;
+}
+.mat-table {
+  background-color: transparent;
+}
+
+input {
+  background: transparent;
+  width: 100%;
+  outline: none;
 }

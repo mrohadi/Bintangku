@@ -1,0 +1,17 @@
+.h3-accent {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 27.6px;
+  display: inline-flex;
+  align-items: center;
+  color: #003466;
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #003466;
+    margin: 0 12px;
+  }
+}

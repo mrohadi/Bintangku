@@ -1,26 +1,56 @@
-.petunjuk {
-  margin-top: 5px;
-}
-.popup {
-  margin-top: 5px;
-}
-.my-title {
-  color: #3f51b5;
-  font-size: 30px;
-  text-shadow: 1px 1px 2px grey;
-  margin: 20px 0;
-  text-align: center;
-}
-.my-form {
-  min-width: 200px;
-  max-width: 500px;
+table {
   width: 100%;
 }
 
-/* .my-full-width {
-  width: 100%;
-} */
+tr.example-detail-row {
+  height: 0;
+}
 
-/* td {
-  padding-right: 8px;
-} */
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+.mat-column-position {
+  text-align: right;
+}
+.add .mat-icon svg {
+  width: 85%;
+}
+.no-border-last:last-child > td.mat-cell[class*="mat-column"] {
+  border-bottom-color: transparent;
+}
