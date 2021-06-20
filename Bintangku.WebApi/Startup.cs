@@ -48,8 +48,10 @@ namespace Bintangku.WebApi
             app.UseRouting();
             
             app.UseCors(policy => 
-                policy.AllowAnyHeader()
+                policy
+                    .AllowAnyOrigin()
                     .AllowAnyMethod()
+                    .AllowAnyHeader()
                     .WithOrigins("https://localhost:4200"));
             
             app.UseAuthentication();
