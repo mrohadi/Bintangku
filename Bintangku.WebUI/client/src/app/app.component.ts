@@ -22,6 +22,6 @@ export class AppComponent implements OnInit {
     this.accountServie.setCurrentUser(user);
   }
   onActivate(event) {
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 }

@@ -1,0 +1,1131 @@
+
+    <form [formGroup]="PostDataAnak" (ngSubmit)="addDataAnak()">
+      <!-- Profile Anak -->
+      <h2>Profile Anak</h2>
+      <div class="">
+        <div class="">
+          <label for="namaAnak">Nama Anak</label>
+          <input
+            formControlName="namaLengkap"
+            name="namaAnak"
+            placeholder="Nama Anak"
+            type="text"
+            class=""
+            id="namaAnak"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nik">NIK</label>
+          <input
+            formControlName="nik"
+            name="nik"
+            placeholder="NIK"
+            type="number"
+            class="form-control"
+            id="nik"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="jenisKelaminAnak">Jenis Kelamin</label>
+          <select
+            formControlName="jenisKelaminAnak"
+            class="form-control"
+            id="jenisKelaminAnak"
+          >
+            <option
+              [value]="jenisKelamin"
+              *ngFor="let jenisKelamin of jenisKelamins"
+            >
+              {{ jenisKelamin }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tanggalLahirAnak">Tanggal Lahir</label>
+          <input
+            formControlName="tanggalLahirAnak"
+            type="text"
+            placeholder="Tanggal Lahir"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="alamat">Alamat Lengkap</label>
+          <input
+            formControlName="alamat"
+            type="text"
+            placeholder="Alamat Lengkap"
+            class="form-control"
+            id="alamat"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="kontak">Kontak</label>
+          <input
+            formControlName="kontak"
+            type="text"
+            placeholder="Kontak"
+            class="form-control"
+            id="kontak"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="photoAnakUrl">Photo Anak</label>
+          <app-upload-photo-anak
+            (onUploadFinished)="uploadFinished($event)"
+          ></app-upload-photo-anak>
+        </div>
+      </div>
+      <!-- End - Profile Anak -->
+
+      <!-- Riwayat Penyakit dan Pengobatan -->
+      <h2>Riwayat Penyakit dan Pengobatan</h2>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="jumlahSaudara">Jumlah Saudara</label>
+          <input
+            formControlName="jumlahSaudara"
+            type="number"
+            placeholder="Jumlah Saudara"
+            class="form-control"
+            id="jumlahSaudara"
+          />
+        </div>
+      </div>
+      <!-- End - Riwayat Penyakit dan Pengobatan -->
+
+      <!-- Riwayat Kelahiran -->
+      <h2>Riwayat Kelahiran</h2>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="beratBadan">Berat Badan</label>
+          <input
+            formControlName="beratBadan"
+            type="number"
+            placeholder="Berat Badan"
+            class="form-control"
+            id="beratBadan"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="panjangLahir">Panjang Lahir</label>
+          <input
+            formControlName="panjangLahir"
+            type="number"
+            placeholder="Panjang Lahir"
+            class="form-control"
+            id="panjangLahir"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apgharScore">Apghar Score</label>
+          <input
+            formControlName="apgarScore"
+            type="number"
+            placeholder="Apgar Score"
+            class="form-control"
+            id="apgharScore"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="kelahiranDibantuOleh">Kelahiran Dibantu Oleh</label>
+          <input
+            formControlName="kelahiranDibantuOleh"
+            type="text"
+            placeholder="Kelahiran Dibantu Oleh"
+            class="form-control"
+            id="kelahiranDibantuOleh"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lainLain">Lain - Lain (Masalah Ketika Lahir)</label>
+          <input
+            formControlName="lainLain"
+            type="text"
+            placeholder="Lain - Lain (Masalah Ketika Lahir)"
+            class="form-control"
+            id="lainLain"
+          />
+        </div>
+      </div>
+      <!-- End - Riwayat Kelahiran -->
+
+      <!-- Riwayat Orang Tua -->
+      <h2>Riwayat Orang Tua</h2>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="namaAyah">Nama Ayah</label>
+          <input
+            formControlName="namaAyah"
+            type="text"
+            placeholder="Nama Ayah"
+            class="form-control"
+            id="namaAyah"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="namaIbu">Nama Ibu</label>
+          <input
+            formControlName="namaIbu"
+            type="text"
+            placeholder="Nama Ibu"
+            class="form-control"
+            id="namaIbu"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tanggalLahirAyah">Tanggal Lahir Ayah </label>
+          <input
+            formControlName="tanggalLahirAyah"
+            type="text"
+            placeholder="Tanggal Lahir Ayah"
+            class="form-control"
+            id="tanggalLahirAyah"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tanggalLahirIbu">Tanggal Lahir Ibu</label>
+          <input
+            formControlName="tanggalLahirIbu"
+            type="text"
+            placeholder="Tanggal Lahir Ibu"
+            class="form-control"
+            id="tanggalLahirIbu"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="pekerjaanAyah">Pekerjaan Ayah</label>
+          <select
+            formControlName="pekerjaanAyah"
+            class="form-control"
+            id="pekerjaanAyah"
+          >
+            <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+              {{ pekerjaan }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="pekerjaanIbu">Pekerjaan Ibu</label>
+          <select
+            formControlName="pekerjaanIbu"
+            class="form-control"
+            id="pekerjaanIbu"
+          >
+            <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+              {{ pekerjaan }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="penghasilanOrangTua">Penghasilan Orang Tua</label>
+          <input
+            formControlName="penghasilanOrangTua"
+            type="number"
+            placeholder="Penghasilan Orang Tua"
+            class="form-control"
+            id="penghasilanOrangTua"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="anggotaRumahTangga">Anggota Rumah Tangga</label>
+          <input
+            formControlName="anggotaRumahTangga"
+            type="number"
+            placeholder="Anggota Rumah Tangga"
+            class="form-control"
+            id="anggotaRumahTangga"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tandaTanganOrangTua">Tanda Tangan Orang Tua</label>
+          <app-upload-ttd
+            (onUploadTtdFinished)="uploadTtdFinished($event)"
+          ></app-upload-ttd>
+        </div>
+      </div>
+      <!-- End - Riwayat Orang Tua -->
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" style="margin-right: 5px">
+        Submit
+      </button>
+      <!-- End - Submit Button -->
+      <a (click)="cancelAddAnak()" class="btn btn-warning">Cancel</a>
+    </form>
+    <!--  -->
+
+
+    <form [formGroup]="PostDataAnak" (ngSubmit)="addDataAnak()">
+      <!-- Profile Anak -->
+      <h2 style="margin-left: 10px">Profile Anak</h2>
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="namaAnak"
+          >
+            Nama Anak
+          </label>
+          <input
+            formControlName="namaLengkap"
+            name="namaAnak"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="namaAnak"
+            type="text"
+            placeholder="Nama Anak"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="nik"
+          >
+            NIK
+          </label>
+          <input
+            formControlName="nik"
+            name="nik"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="nik"
+            type="number"
+            placeholder="NIK"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="jenisKelaminAnak"
+          >
+            Jenis Kelamin Anak
+          </label>
+          <div class="relative">
+            <select
+              formControlName="jenisKelaminAnak"
+              class="
+                block
+                appearance-none
+                w-full
+                bg-gray-200
+                border border-gray-200
+                text-gray-700
+                py-3
+                px-4
+                pr-8
+                rounded
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-gray-500
+              "
+              id="jenisKelaminAnak"
+            >
+              <option
+                [value]="jenisKelamin"
+                *ngFor="let jenisKelamin of jenisKelamins"
+              >
+                {{ jenisKelamin }}
+              </option>
+            </select>
+            <div
+              class="
+                pointer-events-none
+                absolute
+                inset-y-0
+                right-0
+                flex
+                items-center
+                px-2
+                text-gray-700
+              "
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="tanggalLahirAnak"
+          >
+            Tanggal Lahir Anak
+          </label>
+          <input
+            formControlName="tanggalLahirAnak"
+            type="text"
+            placeholder="Tanggal Lahir"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="alamat"
+          >
+            Nama Anak
+          </label>
+          <input
+            formControlName="alamat"
+            name="alamat"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="alamat"
+            type="text"
+            placeholder="Alamat Lengkap"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="kontak"
+          >
+            Kontak
+          </label>
+          <input
+            formControlName="kontak"
+            name="kontak"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="kontak"
+            type="text"
+            placeholder="Kontak"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="photoAnakUrl"
+          >
+            Photo Anak
+          </label>
+
+          <app-upload-photo-anak
+            (onUploadFinished)="uploadFinished($event)"
+          ></app-upload-photo-anak>
+        </div>
+      </div>
+      <!-- End - Profile Anak -->
+
+      <!-- Riwayat Penyakit dan Pengobatan -->
+      <h2 style="margin-left: 10px">Riwayat Penyakit dan Pengobatan</h2>
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="jumlahSaudara"
+          >
+            Jumlah Saudara
+          </label>
+          <input
+            formControlName="jumlahSaudara"
+            name="jumlahSaudara"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="jumlahSaudara"
+            type="number"
+            placeholder="Jumlah Saudara"
+          />
+        </div>
+      </div>
+      <!-- End - Riwayat Penyakit dan Pengobatan -->
+
+      <!-- Riwayat Kelahiran -->
+      <h2 style="margin-left: 10px">Riwayat Kelahiran</h2>
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="beratBadan"
+          >
+            Berat Badan
+          </label>
+          <input
+            formControlName="beratBadan"
+            name="beratBadan"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="beratBadan"
+            type="number"
+            placeholder="Berat Badan"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="panjangLahir"
+          >
+            Panjang Lahir
+          </label>
+          <input
+            formControlName="panjangLahir"
+            name="panjangLahir"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="panjangLahir"
+            type="number"
+            placeholder="Panjang Lahir"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="apgarScore"
+          >
+            Apgar Score
+          </label>
+          <input
+            formControlName="apgarScore"
+            name="apgarScore"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="apgarScore"
+            type="number"
+            placeholder="Apgar Score"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="kelahiranDibantuOleh"
+          >
+            Kelahiran Dibantu Oleh
+          </label>
+          <input
+            formControlName="kelahiranDibantuOleh"
+            name="kelahiranDibantuOleh"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="kelahiranDibantuOleh"
+            type="text"
+            placeholder="kelahiranDibantuOleh"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="lainLain"
+          >
+            Lain - Lain
+          </label>
+          <input
+            formControlName="lainLain"
+            name="lainLain"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="lainLain"
+            type="text"
+            placeholder="Lain - Lain"
+          />
+        </div>
+      </div>
+      <!-- End - Kelahiran -->
+
+      <!-- Riwayat Orang Tua -->
+      <h2 style="margin-left: 10px">Riwayat Orang Tua</h2>
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="namaAyah"
+          >
+            Nama Ayah
+          </label>
+          <input
+            formControlName="namaAyah"
+            name="namaAyah"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="namaAyah"
+            type="text"
+            placeholder="Nama Ayah"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="tanggalLahirAyah"
+          >
+            Tanggal Lahir Ayah
+          </label>
+          <input
+            formControlName="tanggalLahirAyah"
+            type="text"
+            placeholder="Tanggal Lahir Ayah"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="namaIbu"
+          >
+            Nama Ibu
+          </label>
+          <input
+            formControlName="namaIbu"
+            name="namaIbu"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="namaIbu"
+            type="text"
+            placeholder="Nama Ibu"
+          />
+        </div>
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="tanggalLahirIbu"
+          >
+            Tanggal Lahir Ibu
+          </label>
+          <input
+            formControlName="tanggalLahirIbu"
+            type="text"
+            placeholder="Tanggal Lahir Ibu"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{
+              dateInputFormat: 'DD-MM-YYYY',
+              containerClass: 'theme-blue'
+            }"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="pekerjaanAyah"
+          >
+            Pekerjaan Ayah
+          </label>
+          <div class="relative">
+            <select
+              formControlName="pekerjaanAyah"
+              class="
+                block
+                appearance-none
+                w-full
+                bg-gray-200
+                border border-gray-200
+                text-gray-700
+                py-3
+                px-4
+                pr-8
+                rounded
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-gray-500
+              "
+              id="pekerjaanAyah"
+            >
+              <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+                {{ pekerjaan }}
+              </option>
+            </select>
+            <div
+              class="
+                pointer-events-none
+                absolute
+                inset-y-0
+                right-0
+                flex
+                items-center
+                px-2
+                text-gray-700
+              "
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="pekerjaanIbu"
+          >
+            Pekerjaan Ibu
+          </label>
+          <div class="relative">
+            <select
+              formControlName="pekerjaanIbu"
+              class="
+                block
+                appearance-none
+                w-full
+                bg-gray-200
+                border border-gray-200
+                text-gray-700
+                py-3
+                px-4
+                pr-8
+                rounded
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-gray-500
+              "
+              id="pekerjaanIbu"
+            >
+              <option [value]="pekerjaan" *ngFor="let pekerjaan of pekerjaan">
+                {{ pekerjaan }}
+              </option>
+            </select>
+            <div
+              class="
+                pointer-events-none
+                absolute
+                inset-y-0
+                right-0
+                flex
+                items-center
+                px-2
+                text-gray-700
+              "
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="penghasilanorangtua"
+          >
+            penghasilah orang tua
+          </label>
+          <input
+            formcontrolname="penghasilanorangtua"
+            name="penghasilanorangtua"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="namaibu"
+            type="number"
+            placeholder="penghasilan orang tua"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="anggotarumahtangga"
+          >
+            anggota rumah tangga
+          </label>
+          <input
+            formcontrolname="penghasilanorangtua"
+            name="anggotarumahtangga"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="anggotarumahtangga"
+            type="number"
+            placeholder="anggota rumah tangga"
+          />
+        </div>
+      </div>
+
+      <div class="mt-2 flex space-x-4">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="penghasilanorangtua"
+          >
+            Tanda Tangan Orang Tua
+          </label>
+          <app-upload-ttd
+            (onUploadTtdFinished)="uploadTtdFinished($event)"
+          ></app-upload-ttd>
+        </div>
+      </div>
+      <!-- End - Kelahiran -->
+
+      <!-- Submit Buttin -->
+      <button type="submit" mat-button>TAMBAH <mat-icon>add</mat-icon></button>
+      <button mat-button (click)="cancelAddAnak()">
+        KEMBALI <mat-icon>cancel</mat-icon>
+      </button>
+      <!-- End - Submit Button -->
+    </form>

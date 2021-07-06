@@ -9,7 +9,7 @@ import { DayaLihatService } from 'src/app/_services/kesehatan-fisik/daya-lihat.s
   templateUrl: './daya-lihat-input.component.html',
   styleUrls: ['./daya-lihat-input.component.css'],
 })
-export class DayaLihatInputComponent implements OnInit {
+export class DayaLihatInputComponent {
   private dataAnakId: number = this.data.dataAnakId;
   public value = { satu: 0, dua: 1, tiga: 2, empat: 3 };
 
@@ -26,7 +26,7 @@ export class DayaLihatInputComponent implements OnInit {
     private _dayaLihatService: DayaLihatService
   ) {}
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
   /**
    * postDayaLihat
