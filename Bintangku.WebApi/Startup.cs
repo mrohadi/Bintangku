@@ -1,4 +1,4 @@
-using System.IO;
+// using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -52,7 +52,8 @@ namespace Bintangku.WebApi
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .WithOrigins("https://localhost:4200"));
+                    .WithOrigins("https://localhost:4200")
+                    .WithOrigins("https://bintangku.herokuapp.com"));
             
             app.UseAuthentication();
             app.UseAuthorization();

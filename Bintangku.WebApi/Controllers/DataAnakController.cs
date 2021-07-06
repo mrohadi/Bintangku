@@ -30,7 +30,7 @@ namespace Bintangku.WebApi.Controllers
             {
                 var dataAnak = await _unitOfWork.DataAnakRepository
                     .GetDataAnaksAsync();
-                
+            
                 if(dataAnak != null)
                     return Ok(dataAnak);
                 return BadRequest();

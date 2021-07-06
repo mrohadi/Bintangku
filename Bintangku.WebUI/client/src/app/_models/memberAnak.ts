@@ -2,7 +2,7 @@ import { Photo } from './photo';
 import { RiwayatOrangTua } from './riwayatOrangTua';
 
 export interface MemberAnak {
-  dataAnakId: number;
+  id: number;
   namaLengkap: string;
   nik: number;
   jenisKelaminAnak: string;
@@ -11,6 +11,8 @@ export interface MemberAnak {
   kontak: string;
   jumlahSaudara: number;
   riwayatOrangTua: RiwayatOrangTua;
+  namaAyah: string;
+  namaIbu: string;
   imagePath: string;
   namaNakes: string;
   nakesPhoto: Photo[];

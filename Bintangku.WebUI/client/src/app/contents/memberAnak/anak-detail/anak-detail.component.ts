@@ -22,14 +22,16 @@ export class AnakDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.loadMemberAnak();
-    console.log(this.dataAnakId);
+    this.dataAnakId = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.loadMemberAnak(this.dataAnakId);
   }
 
-  public loadMemberAnak() {
-    this.memberAnakService
-      .getMemberAnak(this.dataAnakId)
-      .subscribe((memberAnak) => (this.memberAnak = memberAnak));
+  public loadMemberAnak(id: number) {
+    this.memberAnakService.getMemberAnak(id).subscribe(
+      (memberAnak) => (this.memberAnak = memberAnak),
+      (err) => console.log(err),
+      () => console.log(this.memberAnak)
+  );
   }
 
   public delete(): any {
@@ -40,6 +42,4 @@ export class AnakDetailComponent implements OnInit {
         this.location.back();
       });
   }
-
-  public executeSelectedChange = () => {};
 }
