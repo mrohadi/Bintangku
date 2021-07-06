@@ -67,14 +67,14 @@
           </div>
         </div>
       </div>
-      <div app-grid item="true" xs="true">
+      <div app-grid item="true" xs="9">
         <div class="rounded-xl mb-4 border bg-white border-blue-100">
           <a [routerLink]="['./', 'kesehatan']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Kesehatan</a>
           <a [routerLink]="['./', 'jadwal-imunisasi']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Jadwal imunisasi</a>
           <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Grafik</a>
-          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Kelahiran</a>
-          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat penyakit</a>
-          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Keluarga</a>
+          <a [routerLink]="['./', 'riwayat-kelahiran']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Kelahiran</a>
+          <a [routerLink]="['./', 'riwayat-keluarga']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Keluarga</a>
+          <a [routerLink]="['./', 'kesehatan-gigi']" class="uppercase text-black text-opacity-50" mat-button>Kesehatan Gigi</a>
         </div>
         <div>
           <router-outlet></router-outlet>

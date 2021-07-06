@@ -14,6 +14,9 @@ import { AnakEditComponent } from './contents/memberAnak/anak-edit/anak-edit.com
 import { AnakPemeriksaanComponent } from './contents/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
 import { AnakComponent } from './contents/memberAnak/anak/anak.component';
 import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
+import { KesehatanTabComponent } from './contents/memberAnak/tabs/kesehatan-tab/kesehatan-tab.component';
+import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat-kelahiran-tab/riwayat-kelahiran-tab.component';
+import { RiwayatOrangTuaTabComponent } from './contents/memberAnak/tabs/riwayat-orang-tua-tab/riwayat-orang-tua-tab.component';
 import { NakesDetailComponent } from './contents/memberNakes/nakes-detail/nakes-detail.component';
 import { NakesEditComponent } from './contents/memberNakes/nakes-edit/nakes-edit.component';
 import { NakesComponent } from './contents/memberNakes/nakes/nakes.component';
@@ -50,6 +53,10 @@ const routes: Routes = [
           { path: '', redirectTo: 'kesehatan', pathMatch: 'full' },
           { path: 'kesehatan', component: AnakPemeriksaanComponent },
           { path: 'jadwal-imunisasi', component: JadwalImunisasiTabComponent },
+          { path: 'riwayat-kelahiran', component: RiwayatKelahiranTabComponent },
+          { path: 'riwayat-keluarga', component: RiwayatOrangTuaTabComponent },
+          { path: 'kesehatan-gigi', component: KesehatanTabComponent },
+
         ],
       },
 

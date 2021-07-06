@@ -18,12 +18,13 @@ export class RiwayatOrangTuaTabComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getRiwayatOrangTua();
+    // this.getRiwayatOrangTua();
+    console.log('jalan')
   }
 
   private getRiwayatOrangTua() {
     this._orangTuaService
-      .getRiwayatOrangTua(this.dataAnakId)
+      .getRiwayatOrangTua(1)
       .subscribe((result) => (this.riwayatOrangTua = result));
   }
 }

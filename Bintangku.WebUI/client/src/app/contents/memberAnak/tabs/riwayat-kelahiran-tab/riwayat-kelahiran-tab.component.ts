@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
 import { RiwayatKelahiran } from 'src/app/_models/riwayatKelahiran';
 import { RiwayatKelahiranService } from 'src/app/_services/riwayat-kelahiran.service';
 
@@ -9,24 +9,27 @@ import { RiwayatKelahiranService } from 'src/app/_services/riwayat-kelahiran.ser
   styleUrls: ['./riwayat-kelahiran-tab.component.css'],
 })
 export class RiwayatKelahiranTabComponent implements OnInit {
-  public dataAnakId: number = parseInt(this.route.snapshot.paramMap.get('id'));
-  public riwayatKelahiran: RiwayatKelahiran;
+riwayatKelahiran: RiwayatKelahiran;
 
   constructor(
     private _kelahiranService: RiwayatKelahiranService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.getRiwayatKelahiran();
+    const tree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
+    this.getRiwayatKelahiran(+s[1].path);
   }
 
   /**
    * getRiwayatKelahiran
    */
-  public getRiwayatKelahiran() {
+getRiwayatKelahiran(id:number) {
     this._kelahiranService
-      .getRiwayatKelahiran(this.dataAnakId)
+      .getRiwayatKelahiran(1)
       .subscribe((result) => (this.riwayatKelahiran = result));
   }
 }
