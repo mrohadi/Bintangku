@@ -8,6 +8,7 @@ namespace Bintangku.WebApi.Data.DTO
         public string NamaLengkap { get; set; }
         public int? NIK { get; set; }
         public string JenisKelamin { get; set; }
+        public string ImagePath { get; set; }
         public DateTime? TanggalLahirAnak { get; set; }
         public int UmurAnak { get; set; }
         public string NamaAyah { get; set; }

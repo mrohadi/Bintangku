@@ -9,7 +9,7 @@ import { LingkatKepalaService } from 'src/app/_services/kesehatan-fisik/lingkat-
   templateUrl: './lingkar-kepala-input.component.html',
   styleUrls: ['./lingkar-kepala-input.component.css'],
 })
-export class LingkarKepalaInputComponent implements OnInit {
+export class LingkarKepalaInputComponent {
   private dataAnakId: number = this.data.dataAnakId;
 
   formLingkarKepala = this.formBuilder.group({
@@ -25,7 +25,7 @@ export class LingkarKepalaInputComponent implements OnInit {
     private _lingkarKepalaservice: LingkatKepalaService
   ) {}
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
   /**
    * postGiziImtU

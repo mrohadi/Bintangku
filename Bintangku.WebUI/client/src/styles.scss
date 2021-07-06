@@ -104,9 +104,12 @@ $client-theme: mat.define-light-theme(
 // "./node_modules/bootstrap/dist/css/bootstrap.css",
 // "./node_modules/bootstrap/dist/js/bootstrap.js",
 // "./node_modules/font-awesome/css/font-awesome.css",
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @import 'toastr.scss';
 html,
