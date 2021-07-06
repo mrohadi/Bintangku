@@ -5,7 +5,7 @@ export interface MemberAnak {
   id: number;
   namaLengkap: string;
   nik: number;
-  jenisKelaminAnak: string;
+  jenisKelamin: string;
   tanggalLahirAnak: Date;
   alamat: string;
   kontak: string;

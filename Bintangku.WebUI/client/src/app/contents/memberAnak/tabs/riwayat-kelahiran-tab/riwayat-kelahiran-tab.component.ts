@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
+import { PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
 import { RiwayatKelahiran } from 'src/app/_models/riwayatKelahiran';
 import { RiwayatKelahiranService } from 'src/app/_services/riwayat-kelahiran.service';
 
@@ -9,11 +9,18 @@ import { RiwayatKelahiranService } from 'src/app/_services/riwayat-kelahiran.ser
   styleUrls: ['./riwayat-kelahiran-tab.component.css'],
 })
 export class RiwayatKelahiranTabComponent implements OnInit {
-riwayatKelahiran: RiwayatKelahiran;
+  riwayatKelahiran: RiwayatKelahiran;
+  tableRow = ["beratBadan", "panjangLahir", "apgarScore", "kelahiranDibantuOleh", "lainLain"];
+  objRow = {
+    beratBadan: "Berat Badan",
+    panjangLahir: "Panjang Lahir",
+    apgarScore: "Apgar Score",
+    kelahiranDibantuOleh: "Dibantu Oleh",
+    lainLain: "Lain-lain"
+  }
 
   constructor(
     private _kelahiranService: RiwayatKelahiranService,
-    private route: ActivatedRoute,
     private router: Router,
   ) {}
 
@@ -29,7 +36,7 @@ riwayatKelahiran: RiwayatKelahiran;
    */
 getRiwayatKelahiran(id:number) {
     this._kelahiranService
-      .getRiwayatKelahiran(1)
+      .getRiwayatKelahiran(id)
       .subscribe((result) => (this.riwayatKelahiran = result));
   }
 }

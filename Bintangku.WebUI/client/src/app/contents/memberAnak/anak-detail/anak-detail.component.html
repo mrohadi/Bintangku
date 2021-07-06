@@ -33,10 +33,10 @@
             <div class="text-center pb-2 mb-4">
               <h3 class="mat-subheading-2">{{ memberAnak?.namaLengkap }}</h3>
               <p class="mat-body text-black text-opacity-50">
-                2 tahun<span
+                {{ageCalculator(memberAnak?.tanggalLahirAnak)}}<span
                   class="inline-block w-2 h-2 mx-2 rounded-full bg-blue-700"
                 ></span>
-                {{ memberAnak?.jenisKelaminAnak }}
+                {{ memberAnak?.jenisKelamin }}
               </p>
             </div>
             <hr class="border-blue-100 border-opacity-50" />
@@ -51,7 +51,7 @@
                 <tr>
                   <td class="text-blue-700 font-bold pr-2">Tanggal Lahir</td>
                   <td class="text-black text-opacity-50 pl-2">
-                    {{ memberAnak?.tanggalLahirAnak }}
+                    {{ memberAnak?.tanggalLahirAnak | date:'longDate' }}
                   </td>
                 </tr>
                 <tr>
@@ -90,7 +90,7 @@
                 justify-between
               "
             >
-              <button style="width: 50%; height: 52px" mat-button>
+              <button style="width: 100%; height: 52px" mat-button>
                 EDIT&nbsp;<mat-icon
                   routerLink="/anak-members/edit/{{ memberAnak?.id }}"
                   routerLinkActive="router-link-active"
