@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DialogData } from 'src/app/contents/memberNakes/nakes-detail/nakes-detail.component';
 import { LingkatKepalaService } from 'src/app/_services/kesehatan-fisik/lingkat-kepala.service';
 
 @Component({
@@ -10,9 +11,8 @@ import { LingkatKepalaService } from 'src/app/_services/kesehatan-fisik/lingkat-
   templateUrl: './lingkar-kepala.component.html',
   styleUrls: ['./lingkar-kepala.component.css'],
 })
-export class LingkarKepalaComponent implements OnInit {
+export class LingkarKepalaComponent {
   formLinkar: FormGroup;
-  public dataAnakId: number = parseInt(this.route.snapshot.paramMap.get('id'));
 
   formLingkarKepala = this.fb.group({
     lingkarKepala: Number,
@@ -24,7 +24,8 @@ export class LingkarKepalaComponent implements OnInit {
     private _lingkarKepalaService: LingkatKepalaService,
     private _toastr: ToastrService,
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<LingkarKepalaComponent>
+    public dialogRef: MatDialogRef<LingkarKepalaComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.formLinkar = fb.group({
       head_circum: ['', [Validators.required, Validators.pattern('^[1-9]')]],
@@ -32,20 +33,16 @@ export class LingkarKepalaComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.dataAnakId = parseInt(this.route.snapshot.paramMap.get('id'));
-    console.log(this.dataAnakId);
-  }
 
   /**
    * Method to input Pemeriksaan Lingkar Kepala
    */
-  public postLingkarKepala() {
+  public postLingkarKepala(form:FormGroup) {
     this._lingkarKepalaService
-      .postLingkarKepala(this.dataAnakId, this.formLingkarKepala.value)
+      .postLingkarKepala(this.data.id, form.value)
       .subscribe(
         () => {
-          this.dialogRef.close();
+          this.dialogRef.close('update');
           this._toastr.success('Data Lingkar Kepala Added Successfully!');
         },
         (err) => console.log(err)

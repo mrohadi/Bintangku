@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ErrorsService } from '../_services/errors.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public errorsService: ErrorsService) { }
 
   ngOnInit(): void {
+    const isError = (window.location.pathname === '/server-error');
+    this.errorsService.changeStatus(isError);
   }
 
 }

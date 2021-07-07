@@ -10,8 +10,7 @@ import { MemberAnakService } from 'src/app/_services/member-anak.service';
   templateUrl: './anak-detail.component.html',
   styleUrls: ['./anak-detail.component.scss'],
 })
-export class AnakDetailComponent implements OnInit {
-  public dataAnakId: number = parseInt(this.route.snapshot.paramMap.get('id'));
+export class AnakDetailComponent {
   public memberAnak: MemberAnak;
 
   constructor(
@@ -19,11 +18,8 @@ export class AnakDetailComponent implements OnInit {
     private _toastr: ToastrService,
     private location: Location,
     private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
-    this.dataAnakId = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.loadMemberAnak(this.dataAnakId);
+  ) {
+    this.loadMemberAnak(+route.snapshot.paramMap.get('id'));
   }
 
   public loadMemberAnak(id: number) {
@@ -41,5 +37,12 @@ export class AnakDetailComponent implements OnInit {
         this._toastr.success('Data Anak Deleted Successfully');
         this.location.back();
       });
+  }
+  ageCalculator(date:Date = new Date()){
+    const convertAge = new Date(date);
+    const timeDiff = Math.abs(Date.now() - convertAge.getTime());
+    const tahun = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
+    const bulan = Math.floor((timeDiff / (1000 * 3600 * 24))/30.4375);
+    return tahun > 0 ? `${tahun} tahun` : `${bulan} bulan`;
   }
 }

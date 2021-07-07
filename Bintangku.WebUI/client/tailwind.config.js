@@ -36,7 +36,7 @@ const red = {
   600: '#FF3366', //Red - Maroon
   700: '#a16207',
   800: '#854d0e',
-  900: '#713f12',
+  900: '#ff0000',
 };
 module.exports = {
   purge: {

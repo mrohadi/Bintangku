@@ -1,54 +1,126 @@
-<div class="container">
+<div class="p-10">
+  <div class="p-4"></div>
+</div>
+<div app-grid container="true" justify="center" alignItems="center">
+  <div app-grid item="true" sm="4">
+    <div class="opo"></div>
+    <form [formGroup]="formRegister">
+      <div app-grid container="true" justify="center" alignItems="center">
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="formRegister?.controls?.email?.invalid">
+              {{getErrorMessage('email')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="formRegister?.controls?.username?.invalid">
+              {{getErrorMessage('username')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullname" required>
+            <mat-error *ngIf="formRegister?.controls?.fullname?.invalid">
+              {{getErrorMessage('fullname')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phonenumber" type="tel" required>
+            <mat-error *ngIf="formRegister?.controls?.phonenumber?.invalid">
+              {{getErrorMessage('phonenumber')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Tempat Pelayanan</mat-label>
+            <input matInput formControlName="tempatpelayanan" required>
+            <mat-error *ngIf="formRegister?.controls?.tempatpelayanan?.invalid">
+              {{getErrorMessage('tempatpelayanan')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>No STR Tenaga Kesehatan</mat-label>
+            <input matInput formControlName="nostrtenagakesehatan" type="tel" required>
+            <mat-error *ngIf="formRegister?.controls?.nostrtenagakesehatan?.invalid">
+              {{getErrorMessage('nostrtenagakesehatan')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <mat-form-field class="w-full">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-error *ngIf="formRegister?.controls?.password?.invalid">
+              {{getErrorMessage('password')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div app-grid item="true" xs="12">
+          <div class="mat-typography">
+            <p>By join up you accept our <a class="text-blue-700 font-bold" href="#">Terms Of Use</a></p>
+          </div>
+        </div>
+        <div app-grid item="true" xs="12">
+          <div app-grid container="true" justify="center" spacing="1" alignItems="center">
+            <div app-grid item="true" xs="12">
+              <button type="submit" [disabled]="formRegister.invalid" class="w-full" mat-flat-button color="primary">Register</button>
+            </div>
+            <div app-grid item="true" xs="12">
+              <button type="button" (click)="cancel()" class="w-full" mat-flat-button color="warn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="p-10">
+  <div class="p-4"></div>
+</div>
+<!--
+tempatpelayanan:'',
+      nostrtenagakesehatan:'',
+      password:'',
+
+ -->
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-5 mx-auto">
       <div id="first">
         <div class="text-center mb-5">
-          <img
-            src="../../../assets/images/logo.png"
-            width="100"
-            height="100"
-            alt=""
-            loading="lazy"
-          />
+          <img src="../../../assets/images/logo.png" width="100" height="100" alt="" loading="lazy" />
         </div>
         <div class="myform form">
           <div class="logo mb-3">
             <div class="col-md-12 text-center">
               <h1>Register</h1>
             </div>
-          </div>
+          </div> -->
 
           <!-- Register form -->
-          <form
-            #registerForm="ngForm"
-            (ngSubmit)="register()"
-            autocomplete="off"
-          >
+          <!-- <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
             <div class="form-group">
-              <input
-                [(ngModel)]="model.email"
-                class="form-control"
-                type="text"
-                name="email"
-                placeholder="Email"
-              />
+              <input [(ngModel)]="model.email" class="form-control" type="text" name="email" placeholder="Email" />
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.username"
-                name="username"
-                required
-                minlength="4"
-                class="form-control"
-                type="text"
-                name="username"
-                placeholder="Username"
-                #username="ngModel"
-              />
-              <div
-                *ngIf="username.invalid && (username.dirty || username.touched)"
-                class="alert alert-danger"
-              >
+              <input [(ngModel)]="model.username" name="username" required minlength="4" class="form-control"
+                type="text" name="username" placeholder="Username" #username="ngModel" />
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
                 <div *ngIf="username.errors.required">Name is required.</div>
                 <div *ngIf="username.errors.minlength">
                   Name must be at least 4 characters long.
@@ -56,49 +128,24 @@
               </div>
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.fullname"
-                class="form-control"
-                type="text"
-                name="fullname"
-                placeholder="Nama Lengkap"
-              />
+              <input [(ngModel)]="model.fullname" class="form-control" type="text" name="fullname"
+                placeholder="Nama Lengkap" />
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.phonenumber"
-                class="form-control"
-                type="text"
-                name="phonenumber"
-                placeholder="phonenumber"
-              />
+              <input [(ngModel)]="model.phonenumber" class="form-control" type="text" name="phonenumber"
+                placeholder="phonenumber" />
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.tempatpelayanan"
-                class="form-control"
-                type="text"
-                name="tempatpelayanan"
-                placeholder="Tempat Pelayanan"
-              />
+              <input [(ngModel)]="model.tempatpelayanan" class="form-control" type="text" name="tempatpelayanan"
+                placeholder="Tempat Pelayanan" />
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.nostrtenagakesehatan"
-                class="form-control"
-                type="number"
-                name="nostrtenagakesehatan"
-                placeholder="No Str Ketenaga Kerjaan"
-              />
+              <input [(ngModel)]="model.nostrtenagakesehatan" class="form-control" type="number"
+                name="nostrtenagakesehatan" placeholder="No Str Ketenaga Kerjaan" />
             </div>
             <div class="form-group">
-              <input
-                [(ngModel)]="model.password"
-                class="form-control"
-                type="password"
-                name="password"
-                placeholder="password"
-              />
+              <input [(ngModel)]="model.password" class="form-control" type="password" name="password"
+                placeholder="password" />
             </div>
             <div *ngIf="validationErrors.length > 0">
               <ul class="text-danger">
@@ -113,26 +160,20 @@
               </p>
             </div>
             <div class="col-md-12 text-center">
-              <button
-                class="btn btn-block mybtn btn-primary tx-tfm"
-                type="submit"
-              >
+              <button class="btn btn-block mybtn btn-primary tx-tfm" type="submit">
                 Register
               </button>
             </div>
           </form>
           <div class="col-md-12 text-center mt-2">
-            <button
-              (click)="cancel()"
-              class="btn btn-block mybtn btn-danger tx-tfm"
-            >
+            <button (click)="cancel()" class="btn btn-block mybtn btn-danger tx-tfm">
               Cancel
             </button>
-          </div>
+          </div> -->
           <!-- End - Register form -->
 
           <!-- Another register method -->
-          <div class="col-md-12">
+          <!-- <div class="col-md-12">
             <div class="login-or">
               <hr class="hr-or" />
               <span class="span-or">or</span>
@@ -140,23 +181,22 @@
           </div>
           <div class="col-md-12 mb-3">
             <p class="text-center">
-              <a href="javascript:void();" class="google btn mybtn"
-                ><i class="fa fa-google-plus"> </i> Join using Google
+              <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus"> </i> Join using Google
               </a>
             </p>
-          </div>
+          </div> -->
           <!-- End - Another register method -->
 
           <!-- Go to Login page -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <p class="text-center">
               Already have an account?
               <a href="/signin" id="signin">Login here</a>
             </p>
-          </div>
+          </div> -->
           <!-- End - Go to Login page -->
-        </div>
+        <!-- </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->

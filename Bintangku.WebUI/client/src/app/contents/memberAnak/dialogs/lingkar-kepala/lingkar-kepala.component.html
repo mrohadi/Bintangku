@@ -40,7 +40,7 @@
   </div> -->
 
   <div class="w-full my-4">
-    <form [formGroup]="formLingkarKepala" (ngSubmit)="postLingkarKepala()">
+    <form [formGroup]="formLingkarKepala" (ngSubmit)="postLingkarKepala(formLingkarKepala)">
       <div app-grid container="true" spacing="3">
         <div app-grid item="true" xs="6">
           <label class="mb-1" for="">Lingkar Kepala</label>
@@ -55,17 +55,16 @@
           </div>
         </div>
       </div>
-      <button type="submit">Submit</button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn-submit"
+        color="primary">
+        Submit
+      </button>
     </form>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button
-    mat-raised-button
-    class="btn-submit"
-    color="primary"
-    [mat-dialog-close]="formLingkarKepala.value"
-  >
-    Submit
-  </button>
+
 </mat-dialog-actions>

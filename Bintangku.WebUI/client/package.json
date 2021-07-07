@@ -27,7 +27,6 @@
     "@angular/platform-browser": "~12.0.3",
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
-    "bootstrap": "4.0",
     "bootswatch": "^4.6.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.29.1",

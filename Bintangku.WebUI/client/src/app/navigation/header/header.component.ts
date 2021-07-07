@@ -31,7 +31,7 @@ import { AccountServices } from 'src/app/_services/account.service';
     ])
   ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   model: any = {};
   @Output() public sidenavToggle = new EventEmitter();
   flexDir = 'col-col';
@@ -41,8 +41,6 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService
   ) {}
-
-  ngOnInit(): void {}
 
   login() {
     this.accountService.loginService(this.model).subscribe(

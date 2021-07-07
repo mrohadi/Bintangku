@@ -143,7 +143,6 @@ import { GridComponent } from './components/grid/grid.component';
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule,
     FormsModule,
     SharedModule,
     NgxSpinnerModule,

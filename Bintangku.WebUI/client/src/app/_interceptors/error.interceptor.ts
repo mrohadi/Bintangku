@@ -9,10 +9,11 @@ import { Observable, throwError } from 'rxjs';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { catchError } from 'rxjs/operators';
+import { ErrorsService } from '../_services/errors.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private toastr: ToastrService) {}
+  constructor(private router: Router, private toastr: ToastrService, private errorsService: ErrorsService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -47,6 +48,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               const navigationExtras: NavigationExtras = {
                 state: { error: error.error },
               };
+              this.errorsService.changeStatus(true);
               this.router.navigateByUrl('/server-error', navigationExtras);
               break;
 
