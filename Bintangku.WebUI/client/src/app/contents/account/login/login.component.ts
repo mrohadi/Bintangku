@@ -12,7 +12,7 @@ import { AccountServices } from 'src/app/_services/account.service';
 export class LoginComponent {
   model: any = {};
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
   });
 

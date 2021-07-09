@@ -1,14 +1,33 @@
-<div app-grid class="h-screen" container="true" justify="center" alignItems="center">
+<div
+  app-grid
+  class="h-screen"
+  container="true"
+  justify="center"
+  alignItems="center"
+>
   <div app-grid item="true" xs="4">
-    <form class="login-form" [formGroup]="form" (ngSubmit)="login()" autocomplete="off">
+    <form
+      class="login-form"
+      [formGroup]="form"
+      (ngSubmit)="login()"
+      autocomplete="off"
+    >
       <!-- Email Field -->
       <mat-form-field class="login-full-width">
-        <mat-label>Username</mat-label>
-        <input formControlName="username" type="text" name="username" matInput placeholder="Ex. nakesuser" />
-        <mat-error *ngIf="
-          emailFormControl.hasError('email') &&
-          !emailFormControl.hasError('required')
-        ">
+        <mat-label>Email</mat-label>
+        <input
+          formControlName="email"
+          type="text"
+          name="email"
+          matInput
+          placeholder="Ex. nakesuser@gmail.com"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
           Please enter a valid email address
         </mat-error>
         <mat-error *ngIf="emailFormControl.hasError('required')">
@@ -20,11 +39,19 @@
       <!-- Password Field -->
       <mat-form-field class="login-full-width">
         <mat-label>Password</mat-label>
-        <input formControlName="password" name="password" type="password" matInput placeholder="Password" />
-        <mat-error *ngIf="
-          emailFormControl.hasError('email') &&
-          !emailFormControl.hasError('required')
-        ">
+        <input
+          formControlName="password"
+          name="password"
+          type="password"
+          matInput
+          placeholder="Password"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
           Please enter a valid password
         </mat-error>
         <mat-error *ngIf="emailFormControl.hasError('required')">
