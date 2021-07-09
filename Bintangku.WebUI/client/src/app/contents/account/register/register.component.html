@@ -4,83 +4,120 @@
 <div app-grid container="true" justify="center" alignItems="center">
   <div app-grid item="true" sm="4">
     <div class="opo"></div>
-    <form [formGroup]="formRegister">
+    <form [formGroup]="formRegister" (ngSubmit)="register(formRegister)">
       <div app-grid container="true" justify="center" alignItems="center">
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" required>
+            <input matInput formControlName="email" required />
             <mat-error *ngIf="formRegister?.controls?.email?.invalid">
-              {{getErrorMessage('email')}}
+              {{ getErrorMessage("email") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Username</mat-label>
-            <input matInput formControlName="username" required>
+            <input matInput formControlName="username" required />
             <mat-error *ngIf="formRegister?.controls?.username?.invalid">
-              {{getErrorMessage('username')}}
+              {{ getErrorMessage("username") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Full Name</mat-label>
-            <input matInput formControlName="fullname" required>
+            <input matInput formControlName="fullname" required />
             <mat-error *ngIf="formRegister?.controls?.fullname?.invalid">
-              {{getErrorMessage('fullname')}}
+              {{ getErrorMessage("fullname") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phonenumber" type="tel" required>
+            <input matInput formControlName="phonenumber" type="tel" required />
             <mat-error *ngIf="formRegister?.controls?.phonenumber?.invalid">
-              {{getErrorMessage('phonenumber')}}
+              {{ getErrorMessage("phonenumber") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Tempat Pelayanan</mat-label>
-            <input matInput formControlName="tempatpelayanan" required>
+            <input matInput formControlName="tempatpelayanan" required />
             <mat-error *ngIf="formRegister?.controls?.tempatpelayanan?.invalid">
-              {{getErrorMessage('tempatpelayanan')}}
+              {{ getErrorMessage("tempatpelayanan") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>No STR Tenaga Kesehatan</mat-label>
-            <input matInput formControlName="nostrtenagakesehatan" type="tel" required>
-            <mat-error *ngIf="formRegister?.controls?.nostrtenagakesehatan?.invalid">
-              {{getErrorMessage('nostrtenagakesehatan')}}
+            <input
+              matInput
+              formControlName="nostrtenagakesehatan"
+              type="tel"
+              required
+            />
+            <mat-error
+              *ngIf="formRegister?.controls?.nostrtenagakesehatan?.invalid"
+            >
+              {{ getErrorMessage("nostrtenagakesehatan") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <mat-form-field class="w-full">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" required>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              required
+            />
             <mat-error *ngIf="formRegister?.controls?.password?.invalid">
-              {{getErrorMessage('password')}}
+              {{ getErrorMessage("password") }}
             </mat-error>
           </mat-form-field>
         </div>
         <div app-grid item="true" xs="12">
           <div class="mat-typography">
-            <p>By join up you accept our <a class="text-blue-700 font-bold" href="#">Terms Of Use</a></p>
+            <p>
+              By join up you accept our
+              <a class="text-blue-700 font-bold" href="#">Terms Of Use</a>
+            </p>
           </div>
         </div>
         <div app-grid item="true" xs="12">
-          <div app-grid container="true" justify="center" spacing="1" alignItems="center">
+          <div
+            app-grid
+            container="true"
+            justify="center"
+            spacing="1"
+            alignItems="center"
+          >
             <div app-grid item="true" xs="12">
-              <button type="submit" [disabled]="formRegister.invalid" class="w-full" mat-flat-button color="primary">Register</button>
+              <button
+                type="submit"
+                [disabled]="formRegister.invalid"
+                class="w-full"
+                mat-flat-button
+                color="primary"
+              >
+                Register
+              </button>
             </div>
             <div app-grid item="true" xs="12">
-              <button type="button" (click)="cancel()" class="w-full" mat-flat-button color="warn">Cancel</button>
+              <button
+                type="button"
+                (click)="cancel()"
+                class="w-full"
+                mat-flat-button
+                color="warn"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
@@ -112,8 +149,8 @@ tempatpelayanan:'',
             </div>
           </div> -->
 
-          <!-- Register form -->
-          <!-- <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+<!-- Register form -->
+<!-- <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
             <div class="form-group">
               <input [(ngModel)]="model.email" class="form-control" type="text" name="email" placeholder="Email" />
             </div>
@@ -170,10 +207,10 @@ tempatpelayanan:'',
               Cancel
             </button>
           </div> -->
-          <!-- End - Register form -->
+<!-- End - Register form -->
 
-          <!-- Another register method -->
-          <!-- <div class="col-md-12">
+<!-- Another register method -->
+<!-- <div class="col-md-12">
             <div class="login-or">
               <hr class="hr-or" />
               <span class="span-or">or</span>
@@ -185,17 +222,17 @@ tempatpelayanan:'',
               </a>
             </p>
           </div> -->
-          <!-- End - Another register method -->
+<!-- End - Another register method -->
 
-          <!-- Go to Login page -->
-          <!-- <div class="form-group">
+<!-- Go to Login page -->
+<!-- <div class="form-group">
             <p class="text-center">
               Already have an account?
               <a href="/signin" id="signin">Login here</a>
             </p>
           </div> -->
-          <!-- End - Go to Login page -->
-        <!-- </div>
+<!-- End - Go to Login page -->
+<!-- </div>
       </div>
     </div>
   </div>

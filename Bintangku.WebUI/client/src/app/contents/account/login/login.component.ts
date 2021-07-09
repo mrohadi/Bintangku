@@ -17,7 +17,7 @@ export class LoginComponent {
   });
 
   emailFormControl = new FormControl('', [
-  Validators.required,
+    Validators.required,
     Validators.email,
   ]);
 

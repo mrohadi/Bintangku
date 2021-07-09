@@ -52,6 +52,7 @@ namespace Bintangku.WebApi
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    .AllowCredentials()
                     .WithOrigins("https://localhost:4200")
                     .WithOrigins("https://bintangku.herokuapp.com"));
             
