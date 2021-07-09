@@ -76,6 +76,7 @@ namespace Bintangku.WebApi.Repository.Pemeriksaan
                     Question11 = pemeriksaanKmpeDto.Question11,
                     Question12 = pemeriksaanKmpeDto.Question12,
                     Question13 = pemeriksaanKmpeDto.Question13,
+                    Question14 = pemeriksaanKmpeDto.Question14
                 };
 
                 dataAnak.KesehatanAnak.PemeriksaanKmpes.Add(pemeriksaanKmpe);

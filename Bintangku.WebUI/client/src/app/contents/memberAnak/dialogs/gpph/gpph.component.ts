@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { PemeriksaanKesehatanService } from 'src/app/_services/pemeriksaan-kesehatan.service';
 
 @Component({
   selector: 'app-gpph',
   templateUrl: './gpph.component.html',
   styleUrls: ['./gpph.component.css'],
 })
-export class GpphComponent implements OnInit {
+export class GpphComponent {
   public value = { satu: 0, dua: 1, tiga: 2, empat: 3 };
   public total: number;
 
@@ -23,13 +26,17 @@ export class GpphComponent implements OnInit {
     value10: Number,
   });
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private _pemeriksaanService: PemeriksaanKesehatanService,
+    public dialogRef: MatDialogRef<GpphComponent>,
+    private _toastr: ToastrService,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) {}
 
   result() {}
 
-  submit() {
+  submit(form: FormGroup) {
     var result =
       parseInt(this.formGpph.value.value1) +
       parseInt(this.formGpph.value.value2) +
@@ -41,6 +48,12 @@ export class GpphComponent implements OnInit {
       parseInt(this.formGpph.value.value8) +
       parseInt(this.formGpph.value.value9) +
       parseInt(this.formGpph.value.value10);
-    console.log(result);
+
+    this._pemeriksaanService
+      .postPemeriksaanGpph(this.data.id, form.value)
+      .subscribe(() => {
+        this.dialogRef.close('update');
+        this._toastr.success('Berhasil Menambahkan Pemeriksaan GPPH');
+      });
   }
 }

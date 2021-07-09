@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Interfaces;
 using Bintangku.WebApi.Data.DTO;
+using System.Linq;
 
 namespace Bintangku.WebApi.Controllers
 {
@@ -72,10 +73,18 @@ namespace Bintangku.WebApi.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<NakesUserDto>> Login(LoginDto loginDto) 
         {
-            var nakesUser = await _userManager.Users 
-                .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+            var nakesUser = new NakesUser();
+            if (!string.IsNullOrEmpty(loginDto.Email))
+                nakesUser = await _userManager.Users
+                    .Where(email => email.Email == loginDto.Email)
+                    .SingleOrDefaultAsync();
             
-            if (nakesUser == null) return BadRequest("Invalid Username");
+            if (!string.IsNullOrEmpty(loginDto.Username))
+                nakesUser = await _userManager.Users
+                    .Where(un => un.UserName == loginDto.Username)
+                    .SingleOrDefaultAsync();
+            
+            if (nakesUser == null) return BadRequest("Invalid Username Or Email");
             
             var result = await _signInManager
                 .CheckPasswordSignInAsync(nakesUser, loginDto.Password,  false);

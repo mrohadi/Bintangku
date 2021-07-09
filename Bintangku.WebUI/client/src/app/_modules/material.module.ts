@@ -55,7 +55,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   exports: [
     MatTabsModule,
@@ -85,7 +85,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}

@@ -1,10 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DialogData } from 'src/app/contents/memberNakes/nakes-detail/nakes-detail.component';
 import { LingkatKepalaService } from 'src/app/_services/kesehatan-fisik/lingkat-kepala.service';
+import { PemeriksaanKesehatanService } from 'src/app/_services/pemeriksaan-kesehatan.service';
 
 @Component({
   selector: 'app-lingkar-kepala',
@@ -20,8 +19,7 @@ export class LingkarKepalaComponent {
   });
 
   constructor(
-    private route: ActivatedRoute,
-    private _lingkarKepalaService: LingkatKepalaService,
+    private _pemeriksaanService: PemeriksaanKesehatanService,
     private _toastr: ToastrService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<LingkarKepalaComponent>,
@@ -33,12 +31,11 @@ export class LingkarKepalaComponent {
     });
   }
 
-
   /**
    * Method to input Pemeriksaan Lingkar Kepala
    */
-  public postLingkarKepala(form:FormGroup) {
-    this._lingkarKepalaService
+  public postLingkarKepala(form: FormGroup) {
+    this._pemeriksaanService
       .postLingkarKepala(this.data.id, form.value)
       .subscribe(
         () => {

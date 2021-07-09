@@ -111,7 +111,7 @@ $client-theme: mat.define-light-theme(
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import 'toastr.scss';
+@import "toastr.scss";
 html,
 body {
   height: 100%;
@@ -127,8 +127,7 @@ body {
 }
 .custom-modalbox {
   .mat-dialog-container {
-      @apply bg-white rounded-xl p-10;
-
+    @apply bg-white rounded-xl p-10;
   }
 }
 mat-row,

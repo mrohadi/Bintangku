@@ -1,0 +1,165 @@
+<h2 mat-dialog-title>
+  Petunjuk Pemeriksaan Status Gizi Berat Badan Menurut Tinggi Badan
+</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- Pengukuran Berat Badan -->
+  <h4 mat-dialog-title>A. Pengukuran Berat Badan</h4>
+  <ul class="list-outside list-disc px-6">
+    <ul class="list-outside list-disc px-6">
+      <li>Menggunakan Timbangan Bayi</li>
+      <ul class="list-outside list-disc px-6">
+        <li>
+          Timbangan bayi digunakan untuk menimbang anak sampai umur 2 tahun atau
+          selama anak masih bisa berbaring/duduk tenang.
+        </li>
+        <li>
+          Letakkan timbangan pada meja yang datar dan tidak mudah bergoyang.
+        </li>
+        <li>Lihat posisi jarum atau angka harus menunjuk ke angka 0.</li>
+        <li>Bayi sebaiknya telanjang, tanpa topi, kaus kaki, sarung tangan.</li>
+        <li>
+          Baringkan bayi dengan hati−hati di atas timbangan sampai berhenti.
+        </li>
+        <li>
+          Baca angka yang ditunjukkan oleh jarum timbangan atau angka timbangan.
+        </li>
+        <li>
+          Bila bayi terus menerus bergerak, perhatikan gerakan jarum, baca angka
+          di tengah-tengah antara gerakan jarum ke kanan dan kekiri.
+        </li>
+      </ul>
+
+      <li>Menggunakan Timbangan Dacin</li>
+      <ul class="list-outside list-disc px-6">
+        <li>
+          Pastikan dacin masih layak digunakan, periksa dan letakkan banul geser
+          pada angka nol. Jika ujung kedua paku dacin tidak dalam posisi lurus,
+          maka timbangan tidak layak digunakan dan harus dikalibrasi.
+        </li>
+        <li>
+          Masukan Balita ke dalam sarung timbang dengan pakaian seminimal
+          mungkin dan geser bandul sampai jarum tegak lurus.
+        </li>
+        <li>
+          Baca berat badan Balita dengan melihat angka di ujung bandul geser.
+        </li>
+
+        <li>Catat hasil penimbangan dengan benar</li>
+
+        <li>
+          Kembalikan bandul ke angka nol dan keluarkan Balita dari sarung
+          timbang.
+        </li>
+      </ul>
+
+      <li>Menggunakan Timbangan Injak (Timbangan Digital)</li>
+      <ul class="list-outside list-disc px-6">
+        <li>
+          Letakkan timbangan di lantai yang datar sehingga tidak mudah bergerak.
+        </li>
+        <li>Lihat posisi jarum atau angka harus menunjuk ke angka 0.</li>
+        <li>
+          Anak sebaiknya memakai baju sehari−hari yang tipis, tidak memakai alas
+          kaki, jaket, topi, jam tangan, kalung, dan tidak memegang sesuatu.
+        </li>
+
+        <li>Anak berdiri di atas timbangan tanpa dipegangi.</li>
+
+        <li>Lihat jarum timbangan sampai berhenti.</li>
+        <li>
+          Baca angka yang ditunjukkan oleh jarum timbangan atau angka timbangan.
+        </li>
+        <li>
+          Bila anak terus menerus bergerak, perhatikan gerakan jarum, baca angka
+          di tengah tengah antara gerakan jarum ke kanan dan ke kiri.
+        </li>
+      </ul>
+    </ul>
+  </ul>
+  <br />
+  <!-- End - Pengukuran Berat Badan -->
+
+  <!-- Pengukuran Tinggi Badan -->
+  <h4 mat-dialog-title>A. Pengukuran Tinggi Badan</h4>
+  <ul class="list-outside list-disc px-6">
+    <ul class="list-outside list-disc px-6">
+      <li>
+        Pengukuran Panjang Badan Untuk Anak 0-24 Bulan, Cara Mengukur Tinggi
+        Badan Dengan Berbaring:
+      </li>
+      <ul class="list-outside list-disc px-6">
+        <li>Sebaiknya dilakukan oleh 2 orang.</li>
+        <li>Bayi dibaringkan telentang pada alas yang datar.</li>
+        <li>Kepala bayi menempel pada pembatas angka</li>
+        <li>
+          Petugas 1 : kedua tangan memegang kepala bayi agar tetap menempel pada
+          pembatas angka 0 (pembatas kepala).
+        </li>
+        <li>
+          Petugas 2 : tangan kiri menekan lutut bayi agar lurus, tangan kanan
+          menekan batas kaki ke telapak kaki.
+        </li>
+        <li>Petugas 2 membaca angka di tepi diluar pengukur</li>
+        <li>
+          Jika Anak umur 0 - 24 bulan diukur berdiri, maka hasil pengukurannya
+          dikoreksi dengan menambahkan 0,7 cm.
+        </li>
+      </ul>
+
+      <li>
+        Pengukuran Tinggi Badan untuk anak 24 - 72 Bulan Cara mengukur dengan
+        posisi berdiri:
+      </li>
+      <ul class="list-outside list-disc px-6">
+        <li>Anak tidak memakai sandal atau sepatu.</li>
+        <li>Berdiri tegak menghadap kedepan.</li>
+        <li>Punggung, pantat dan tumit menempel pada tiang pengukur.</li>
+
+        <li>Turunkan batas atas pengukur sampai menempel di ubun−ubun.</li>
+
+        <li>Baca angka pada batas tersebut.</li>
+        <li>
+          Jika anak umur diatas 24 bulan diukur telentang, maka hasil
+          pengukurannya dikoreksi dengan mengurangkan 0,7 cm.
+        </li>
+      </ul>
+    </ul>
+  </ul>
+  <!-- End - Pengukuran Berat Badan -->
+
+  <div class="w-full my-4">
+    <form
+      [formGroup]="formStatusGiziBbTb"
+      (ngSubmit)="postStatusGiziBbTb(formStatusGiziBbTb)"
+    >
+      <div app-grid container="true" spacing="3">
+        <div app-grid item="true" xs="4">
+          <label class="mb-1">Berat Badan (Gram)</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="beratBadan" />
+          </div>
+        </div>
+        <div app-grid item="true" xs="4">
+          <label class="mb-1" for="">Tinggi Badan (Cm)</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="tinggiBadan" />
+          </div>
+        </div>
+        <div app-grid item="true" xs="4">
+          <label class="mb-1" for="">Z-Code</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="zCode" />
+          </div>
+        </div>
+      </div>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn-submit mt-9"
+        color="primary"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</mat-dialog-content>

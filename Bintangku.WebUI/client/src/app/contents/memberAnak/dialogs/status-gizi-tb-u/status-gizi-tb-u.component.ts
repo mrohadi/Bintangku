@@ -5,21 +5,22 @@ import { ToastrService } from 'ngx-toastr';
 import { PemeriksaanKesehatanService } from 'src/app/_services/pemeriksaan-kesehatan.service';
 
 @Component({
-  selector: 'app-daya-lihat',
-  templateUrl: './daya-lihat.component.html',
-  styleUrls: ['./daya-lihat.component.css'],
+  selector: 'app-status-gizi-tb-u',
+  templateUrl: './status-gizi-tb-u.component.html',
+  styleUrls: ['./status-gizi-tb-u.component.scss'],
 })
-export class DayaLihatComponent {
-  formDayaLihat = this.fb.group({
-    mataKanan: Number,
-    mataKiri: Number,
+export class StatusGiziTbUComponent {
+  formStatusGiziTbU = this.fb.group({
+    tinggiBadan: Number,
+    indeksPanjang: Number,
+    zCode: Number,
   });
 
   constructor(
     private _toastr: ToastrService,
     private fb: FormBuilder,
     private _pemeriksaanService: PemeriksaanKesehatanService,
-    public dialogRef: MatDialogRef<DayaLihatComponent>,
+    public dialogRef: MatDialogRef<StatusGiziTbUComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}
 
@@ -27,12 +28,14 @@ export class DayaLihatComponent {
    *
    * @param form
    */
-  postDayaLihat(form: FormGroup) {
+  postStatusGiziTbU(form: FormGroup) {
     this._pemeriksaanService
-      .postDayaLihat(this.data.id, form.value)
+      .postGiziIpTb(this.data.id, form.value)
       .subscribe(() => {
         this.dialogRef.close('update');
-        this._toastr.success('Berhasil Menambahkan Pemeriksaan Daya Lihat');
+        this._toastr.success(
+          'Berhasil Menambahkan Pemeriksaan Status Gizi TB/U'
+        );
       });
   }
 }

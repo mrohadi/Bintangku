@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>
+  Petunjuk Pemeriksaan Status Gizi Tinggi Badan Menurut Umur
+</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- Pengukuran Tinggi Badan -->
+  <h4 mat-dialog-title>A. Pengukuran Tinggi Badan</h4>
+  <ul class="list-outside list-disc px-6">
+    <ul class="list-outside list-disc px-6">
+      <li>
+        Pengukuran Panjang Badan Untuk Anak 0-24 Bulan, Cara Mengukur Tinggi
+        Badan Dengan Berbaring:
+      </li>
+      <ul class="list-outside list-disc px-6">
+        <li>Sebaiknya dilakukan oleh 2 orang.</li>
+        <li>Bayi dibaringkan telentang pada alas yang datar.</li>
+        <li>Kepala bayi menempel pada pembatas angka</li>
+        <li>
+          Petugas 1 : kedua tangan memegang kepala bayi agar tetap menempel pada
+          pembatas angka 0 (pembatas kepala).
+        </li>
+        <li>
+          Petugas 2 : tangan kiri menekan lutut bayi agar lurus, tangan kanan
+          menekan batas kaki ke telapak kaki.
+        </li>
+        <li>Petugas 2 membaca angka di tepi diluar pengukur</li>
+        <li>
+          Jika Anak umur 0 - 24 bulan diukur berdiri, maka hasil pengukurannya
+          dikoreksi dengan menambahkan 0,7 cm.
+        </li>
+      </ul>
+
+      <li>
+        Pengukuran Tinggi Badan untuk anak 24 - 72 Bulan Cara mengukur dengan
+        posisi berdiri:
+      </li>
+      <ul class="list-outside list-disc px-6">
+        <li>Anak tidak memakai sandal atau sepatu.</li>
+        <li>Berdiri tegak menghadap kedepan.</li>
+        <li>Punggung, pantat dan tumit menempel pada tiang pengukur.</li>
+
+        <li>Turunkan batas atas pengukur sampai menempel di ubun−ubun.</li>
+
+        <li>Baca angka pada batas tersebut.</li>
+        <li>
+          Jika anak umur diatas 24 bulan diukur telentang, maka hasil
+          pengukurannya dikoreksi dengan mengurangkan 0,7 cm.
+        </li>
+      </ul>
+    </ul>
+  </ul>
+  <!-- End - Pengukuran Berat Badan -->
+
+  <div class="w-full my-4">
+    <form
+      [formGroup]="formStatusGiziTbU"
+      (ngSubmit)="postStatusGiziTbU(formStatusGiziTbU)"
+    >
+      <div app-grid container="true" spacing="3">
+        <div app-grid item="true" xs="4">
+          <label class="mb-1" for="">Tinggi Badan (Cm)</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="tinggiBadan" />
+          </div>
+        </div>
+        <div app-grid item="true" xs="4">
+          <label class="mb-1" for="">Indeks Panjang (Cm)</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="indeksPanjang" />
+          </div>
+        </div>
+        <div app-grid item="true" xs="4">
+          <label class="mb-1" for="">Z-Code</label>
+          <div class="bg-blue-100 rounded-full bg-opacity-50 py-2 px-4">
+            <input matInput type="number" formControlName="zCode" />
+          </div>
+        </div>
+      </div>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn-submit mt-9"
+        color="primary"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</mat-dialog-content>

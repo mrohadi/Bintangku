@@ -29,7 +29,6 @@ export class NakesComponent implements OnInit {
       },
       () => {
         this.loading = false;
-        console.log(this.memberNakes);
       }
     );
   }

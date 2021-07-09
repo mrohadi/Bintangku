@@ -33,7 +33,8 @@
             <div class="text-center pb-2 mb-4">
               <h3 class="mat-subheading-2">{{ memberAnak?.namaLengkap }}</h3>
               <p class="mat-body text-black text-opacity-50">
-                {{ageCalculator(memberAnak?.tanggalLahirAnak)}}<span
+                {{ ageCalculator(memberAnak?.tanggalLahirAnak)
+                }}<span
                   class="inline-block w-2 h-2 mx-2 rounded-full bg-blue-700"
                 ></span>
                 {{ memberAnak?.jenisKelamin }}
@@ -51,7 +52,7 @@
                 <tr>
                   <td class="text-blue-700 font-bold pr-2">Tanggal Lahir</td>
                   <td class="text-black text-opacity-50 pl-2">
-                    {{ memberAnak?.tanggalLahirAnak | date:'longDate' }}
+                    {{ memberAnak?.tanggalLahirAnak | date: "longDate" }}
                   </td>
                 </tr>
                 <tr>
@@ -92,7 +93,7 @@
             >
               <button style="width: 100%; height: 52px" mat-button>
                 EDIT&nbsp;<mat-icon
-                  routerLink="/anak-members/edit/{{ memberAnak?.id }}"
+                  routerLink="/anak-members/edit/{{ anakId }}"
                   routerLinkActive="router-link-active"
                   >edit</mat-icon
                 >
@@ -103,12 +104,48 @@
       </div>
       <div app-grid item="true" xs="9">
         <div class="rounded-xl mb-4 border bg-white border-blue-100">
-          <a [routerLink]="['./', 'kesehatan']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Kesehatan</a>
-          <a [routerLink]="['./', 'jadwal-imunisasi']" routerLinkActive="active" class="uppercase text-black text-opacity-50" mat-button>Jadwal imunisasi</a>
-          <a [routerLink]="['']" class="uppercase text-black text-opacity-50" mat-button>Grafik</a>
-          <a [routerLink]="['./', 'riwayat-kelahiran']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Kelahiran</a>
-          <a [routerLink]="['./', 'riwayat-keluarga']" class="uppercase text-black text-opacity-50" mat-button>Riwayat Keluarga</a>
-          <a [routerLink]="['./', 'kesehatan-gigi']" class="uppercase text-black text-opacity-50" mat-button>Kesehatan Gigi</a>
+          <a
+            [routerLink]="['./', 'kesehatan']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Kesehatan</a
+          >
+          <a
+            [routerLink]="['./', 'jadwal-imunisasi']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Jadwal imunisasi</a
+          >
+          <a
+            [routerLink]="['./', 'grafik']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Grafik</a
+          >
+          <a
+            [routerLink]="['./', 'riwayat-kelahiran']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Riwayat Kelahiran</a
+          >
+          <a
+            [routerLink]="['./', 'riwayat-keluarga']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Riwayat Keluarga</a
+          >
+          <a
+            [routerLink]="['./', 'kesehatan-gigi']"
+            routerLinkActive="active"
+            class="uppercase text-black text-opacity-50"
+            mat-button
+            >Kesehatan Gigi</a
+          >
         </div>
         <div>
           <router-outlet></router-outlet>

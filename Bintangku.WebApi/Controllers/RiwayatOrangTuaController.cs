@@ -1,26 +1,19 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Bintangku.WebApi.Data;
 using Bintangku.WebApi.Data.Entities;
 using Bintangku.WebApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Bintangku.WebApi.Controllers
 {
     [Authorize]
     public class RiwayatOrangTuaController : BaseApiController
     {
-        private readonly IRiwayatOrangTuaRepository _repository;
-        private readonly ApplicationDataContext _context;
         private readonly IUnitOfWork _unitOfWork;
-        public RiwayatOrangTuaController(IUnitOfWork unitOfWork,IRiwayatOrangTuaRepository repository, ApplicationDataContext context)
+        public RiwayatOrangTuaController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _context = context;
-            _repository = repository;
         }
         
         [HttpGet("{dataAnakId}")]

@@ -1,0 +1,5 @@
+.btn-submit {
+  @apply uppercase;
+  border-radius: 50px;
+  margin-top: 16px;
+}

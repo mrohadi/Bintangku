@@ -9,7 +9,7 @@ namespace Bintangku.WebApi.Controllers
     [Authorize]
     public class UploadController : BaseApiController
     {
-        private IPhotoService _photoService;
+        private readonly IPhotoService _photoService;
         public UploadController(IPhotoService photoService)
         {
             _photoService = photoService;

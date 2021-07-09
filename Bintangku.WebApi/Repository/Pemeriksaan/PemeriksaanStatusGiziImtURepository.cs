@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bintangku.WebApi.Data;
-using Bintangku.WebApi.Data.DTO;
 using Bintangku.WebApi.Data.DTO.Pemeriksaan;
 using Bintangku.WebApi.Data.Entities.Pemeriksaan;
 using Bintangku.WebApi.Interfaces.Pemeriksaan;

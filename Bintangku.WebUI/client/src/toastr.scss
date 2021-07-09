@@ -18,7 +18,7 @@
   &-top-center,
   &-top-full-width,
   &-bottom-full-width,
-  &-bottom-center{
+  &-bottom-center {
     @apply w-full;
   }
 
@@ -38,7 +38,7 @@
   }
 
   &-top-left,
-  &-bottom-left{
+  &-bottom-left {
     left: 12px;
   }
 }

@@ -1,1 +1,551 @@
-<p>kmpe works!</p>
+<h2 mat-dialog-title>Petunjuk Pemeriksaan KMPE</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- KMPE -->
+
+  <ul class="list-outside list-disc px-6">
+    <ul class="list-outside list-disc px-6">
+      <li>
+        Tanyakan setiap pertanyaan dengan lambat, jelas dan nyaring, satu
+        persatu perilaku yang tertulis pada kmpe kepada orang tua/pengasuh anak
+      </li>
+      <li>Catat jawaban ya, kemudian hitung jumlah jawaban ya</li>
+    </ul>
+    <br />
+    <!-- end - KMPE -->
+
+    <!-- wool merah table -->
+    <form [formGroup]="formKmpe" (ngSubmit)="submit(formKmpe)">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Kegiatan yang diamati</th>
+            <th style="width: 50px" scope="col">Ya</th>
+            <th style="width: 50px" scope="col">Tidak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              Apakah anak anda sering bereaksi negatif, marah atau tegang tanpa
+              sebab yang jelas? (bereaksi negatif contohnya rewel, tidak
+              sabaran, banyak menangis, mudah tersinggung atau bereaksi
+              berlebihan bila merasa situasi tidak seperti yang diharapkannya
+              atau kemauannya tidak terpenuhi)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question1"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question1"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 1 -->
+
+          <!-- row 2 -->
+          <tr>
+            <th scope="row">2</th>
+            <td>
+              Apakah anak anda sering bereaksi negatif, marah atau tegang tanpa
+              sebab yang jelas? (bereaksi negatif contohnya rewel, tidak
+              sabaran, banyak menangis, mudah tersinggung atau bereaksi
+              berlebihan bila merasa situasi tidak seperti yang diharapkannya
+              atau kemauannya tidak terpenuhi)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question2"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question2"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 2 -->
+
+          <!-- row 3 -->
+          <tr>
+            <th scope="row">3</th>
+            <td>
+              Apakah anak anda sering bereaksi negatif, marah atau tegang tanpa
+              sebab yang jelas? (bereaksi negatif contohnya rewel, tidak
+              sabaran, banyak menangis, mudah tersinggung atau bereaksi
+              berlebihan bila merasa situasi tidak seperti yang diharapkannya
+              atau kemauannya tidak terpenuhi)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question3"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question3"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 3 -->
+
+          <!-- row 4 -->
+          <tr>
+            <th scope="row">4</th>
+            <td>
+              Apakah anak anda mudah takut atau cemas berlebihan tanpa sebab
+              yang jelas ? (misalnya takut pada binatang atau benda yang tidak
+              berbahaya, terlihat cemas ketika tidak melihat ibu/pengasuhnya)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question4"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question4"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 4 -->
+
+          <!-- row 5 -->
+          <tr>
+            <th scope="row">5</th>
+            <td>
+              Apakah anak anda sering sulit konsentrasi, perhatiannya mudah
+              teralihkan atau banyak bergerak / tidak bisa diam? (misalnya anak
+              tidak bisa bertahan lama untuk bermain dengan satu permainan,
+              mudah mengalihkan perhatian bila ada hal lain yang lebih menarik
+              perhatian seperti bunyi atau gerakan, tidak bisa duduk dengan
+              tenang,M-Chat 1. Ajukan pertanyaan dengan lambat, jelas dan
+              nyaring, satu persatu perilaku yang banyak bergerak atau cenderung
+              berjalan / berlari mondar-mandir)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question5"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question5"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 5 -->
+
+          <!-- row 6 -->
+          <tr>
+            <th scope="row">6</th>
+            <td>
+              Apakah anak anda lebih banyak menempel / selalu minta ditemani,
+              mudah cemas dan tidak percaya diri ? (seakan minta perlindungan
+              atau minta ditemani pada berbagai situasi, terutama ketika berada
+              dalam situasi baru atau ada orang yang baru dikenalnya;
+              mengekspresikan kecemasan serta terlihat tidak percaya diri)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question6"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question6"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 6 -->
+
+          <!-- row 7 -->
+          <tr>
+            <th scope="row">7</th>
+            <td>
+              Apakah anak anda lebih banyak menempel / selalu minta ditemani,
+              mudah cemas dan tidak percaya diri ? (seakan minta perlindungan
+              atau minta ditemani pada berbagai situasi, terutama ketika berada
+              dalam situasi baru atau ada orang yang baru dikenalnya;
+              mengekspresikan kecemasan serta terlihat tidak percaya diri)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question7"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question7"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 7 -->
+
+          <!-- row 8 -->
+          <tr>
+            <th scope="row">8</th>
+            <td>
+              Apakah anak anda lebih banyak menempel / selalu minta ditemani,
+              mudah cemas dan tidak percaya diri ? (seakan minta perlindungan
+              atau minta ditemani pada berbagai situasi, terutama ketika berada
+              dalam situasi baru atau ada orang yang baru dikenalnya;
+              mengekspresikan kecemasan serta terlihat tidak percaya diri)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question8"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.yes"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question8"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="value.no"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 8 -->
+
+          <!-- row 9 -->
+          <tr>
+            <th scope="row">9</th>
+            <td>
+              Apakah anak anda seringkali mengeluh sakit kepala, sakit perut
+              atau keluhan fisik lainnya dalam waktu-waktu tertentu?
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question9"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question9"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 9 -->
+
+          <!-- row 10 -->
+          <tr>
+            <th scope="row">10</th>
+            <td>
+              Apakah anak anda mudah putus asa atau frustasi dan sering
+              menunjukkan emosi yang negatif ? (Seperti sedih atau kecewa yang
+              berkepanjangan, mudah mengeluh, marah atau protes. Misal ketika
+              anak merasa kesulitan dalam menggambar, lalu berteriak minta
+              tolong, marah, atau kertasnya disobek)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question10"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question10"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 10 -->
+
+          <!-- row 11 -->
+          <tr>
+            <th scope="row">11</th>
+            <td>
+              Apakah anak anda mudah putus asa atau frustasi dan sering
+              menunjukkan emosi yang negatif ? (Seperti sedih atau kecewa yang
+              berkepanjangan, mudah mengeluh, marah atau protes. Misal ketika
+              anak merasa kesulitan dalam menggambar, lalu berteriak minta
+              tolong, marah, atau kertasnya disobek)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question11"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question11"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 11 -->
+
+          <!-- row 12 -->
+          <tr>
+            <th scope="row">12</th>
+            <td>
+              Apakah anak anda sering berkelahi, bertengkar, atau menyerang anak
+              lain baik secara verbal maupun non-verbal ? (seperti misalnya
+              mengejek, meneriaki, merebut permainan, atau memukul temannya)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question12"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question12"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 12 -->
+
+          <!-- row 13 -->
+          <tr>
+            <th scope="row">13</th>
+            <td>
+              Apakah anak anda sering diperlakukan tidak menyenangkan oleh anak
+              lain atau orang dewasa? (seperti misalnya ditinggal bermain,
+              dihindari, diejek, dikata−katai, direbut mainannya atau disakiti
+              secara fisik)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question13"
+                  class="form-check-input"
+                  type="radio"
+                  name="question13"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question13"
+                  class="form-check-input"
+                  type="radio"
+                  name="question13"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 13 -->
+
+          <!-- row 14 -->
+          <tr>
+            <th scope="row">14</th>
+            <td>
+              Apakah anak anda sering diperlakukan tidak menyenangkan oleh anak
+              lain atau orang dewasa? (seperti misalnya ditinggal bermain,
+              dihindari, diejek, dikata−katai, direbut mainannya atau disakiti
+              secara fisik)
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question14"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.yes }}"
+                  checked
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input
+                  formControlName="question14"
+                  class="form-check-input"
+                  type="radio"
+                  value="{{ value.no }}"
+                  checked
+                />
+              </div>
+            </td>
+          </tr>
+          <!-- end - row 14 -->
+
+          <tr>
+            <th colspan="2" scope="row">jumlah</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row">nilai total</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-bottom: 16px">
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn-submit mt-9"
+          color="primary"
+          style="margin-right: 10px"
+        >
+          submit
+        </button>
+        <button
+          mat-raised-button
+          mat-dialog-close
+          class="btn-submit mt-9"
+          color="primary"
+        >
+          close
+        </button>
+      </div>
+    </form>
+  </ul></mat-dialog-content
+>

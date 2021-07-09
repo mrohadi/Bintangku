@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +29,6 @@ import { AnakEditComponent } from './contents/memberAnak/anak-edit/anak-edit.com
 import { AnakPemeriksaanComponent } from './contents/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
 import { MaterialModule } from './_modules/material.module';
 import { LayoutComponent } from './layout/layout.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { BeratBadanComponent } from './contents/memberAnak/dialogs/berat-badan/berat-badan.component';
@@ -50,28 +48,16 @@ import { UploadTtdComponent } from './contents/memberAnak/upload-ttd/upload-ttd.
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { KesehatanTabComponent } from './contents/memberAnak/tabs/kesehatan-tab/kesehatan-tab.component';
-import { GpphShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gpph-show/gpph-show.component';
-import { KmpeShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/kmpe-show/kmpe-show.component';
-import { MchatShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/mchat-show/mchat-show.component';
 import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
 import { RiwayatOrangTuaTabComponent } from './contents/memberAnak/tabs/riwayat-orang-tua-tab/riwayat-orang-tua-tab.component';
 import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat-kelahiran-tab/riwayat-kelahiran-tab.component';
-import { DayaLihatShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/daya-lihat-show/daya-lihat-show.component';
-import { DayaDengarShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/daya-dengar-show/daya-dengar-show.component';
-import { KpspShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/kpsp-show/kpsp-show.component';
-import { GiziBbTbShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-bb-tb-show/gizi-bb-tb-show.component';
-import { GiziImtUShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-imt-u-show/gizi-imt-u-show.component';
-import { GiziIpTbShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-ip-tb-show/gizi-ip-tb-show.component';
-import { GiziLingkarKepalaShowComponent } from './contents/memberAnak/dialogs-kesehatan-show/gizi-lingkar-kepala-show/gizi-lingkar-kepala-show.component';
-import { MchatInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/mchat-input/mchat-input.component';
-import { GpphInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gpph-input/gpph-input.component';
-import { KmpeInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/kmpe-input/kmpe-input.component';
-import { DayaLihatInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/daya-lihat-input/daya-lihat-input.component';
-import { GiziIpTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-ip-tb-input/gizi-ip-tb-input.component';
-import { GiziImtUComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-imt-u/gizi-imt-u.component';
-import { GiziBbTbInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/gizi-bb-tb-input/gizi-bb-tb-input.component';
-import { LingkarKepalaInputComponent } from './contents/memberAnak/dialogs-kesehatan-input/lingkar-kepala-input/lingkar-kepala-input.component';
 import { GridComponent } from './components/grid/grid.component';
+import { StatusGiziBbTbComponent } from './contents/memberAnak/dialogs/status-gizi-bb-tb/status-gizi-bb-tb.component';
+import { StatusGiziImtUComponent } from './contents/memberAnak/dialogs/status-gizi-imt-u/status-gizi-imt-u.component';
+import { StatusGiziTbUComponent } from './contents/memberAnak/dialogs/status-gizi-tb-u/status-gizi-tb-u.component';
+import { GrafikTabComponent } from './contents/memberAnak/tabs/grafik-tab/grafik-tab.component';
+import { KesehatanGigiTabComponent } from './contents/memberAnak/tabs/kesehatan-gigi-tab/kesehatan-gigi-tab.component';
+import { MchatComponent } from './contents/memberAnak/dialogs/mchat/mchat.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +79,6 @@ import { GridComponent } from './components/grid/grid.component';
     AnakDetailComponent,
     AnakAddComponent,
     AnakEditComponent,
-    AnakAddComponent,
     AnakPemeriksaanComponent,
     LayoutComponent,
     HeaderComponent,
@@ -112,28 +97,16 @@ import { GridComponent } from './components/grid/grid.component';
     UploadPhotoAnakComponent,
     UploadTtdComponent,
     KesehatanTabComponent,
-    GpphShowComponent,
-    KmpeShowComponent,
-    MchatShowComponent,
     JadwalImunisasiTabComponent,
     RiwayatOrangTuaTabComponent,
     RiwayatKelahiranTabComponent,
-    DayaLihatShowComponent,
-    DayaDengarShowComponent,
-    KpspShowComponent,
-    GiziBbTbShowComponent,
-    GiziImtUShowComponent,
-    GiziIpTbShowComponent,
-    GiziLingkarKepalaShowComponent,
-    MchatInputComponent,
-    GpphInputComponent,
-    KmpeInputComponent,
-    DayaLihatInputComponent,
-    GiziIpTbInputComponent,
-    GiziImtUComponent,
-    GiziBbTbInputComponent,
-    LingkarKepalaInputComponent,
     GridComponent,
+    StatusGiziBbTbComponent,
+    StatusGiziImtUComponent,
+    StatusGiziTbUComponent,
+    GrafikTabComponent,
+    KesehatanGigiTabComponent,
+    MchatComponent,
   ],
   imports: [
     BrowserModule,

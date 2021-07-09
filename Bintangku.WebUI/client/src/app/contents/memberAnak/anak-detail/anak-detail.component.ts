@@ -10,8 +10,9 @@ import { MemberAnakService } from 'src/app/_services/member-anak.service';
   templateUrl: './anak-detail.component.html',
   styleUrls: ['./anak-detail.component.scss'],
 })
-export class AnakDetailComponent {
+export class AnakDetailComponent implements OnInit {
   public memberAnak: MemberAnak;
+  public anakId: number;
 
   constructor(
     public memberAnakService: MemberAnakService,
@@ -22,12 +23,18 @@ export class AnakDetailComponent {
     this.loadMemberAnak(+route.snapshot.paramMap.get('id'));
   }
 
+  ngOnInit(): void {
+    this.loadMemberAnak(+this.route.snapshot.paramMap.get('id'));
+    this.anakId = parseInt(this.route.snapshot.paramMap.get('id'));
+    console.log(this.anakId);
+  }
+
   public loadMemberAnak(id: number) {
     this.memberAnakService.getMemberAnak(id).subscribe(
       (memberAnak) => (this.memberAnak = memberAnak),
-      (err) => console.log(err),
-      () => console.log(this.memberAnak)
-  );
+      (err) => console.log(err)
+    );
+    // console.log(id);
   }
 
   public delete(): any {
@@ -38,11 +45,11 @@ export class AnakDetailComponent {
         this.location.back();
       });
   }
-  ageCalculator(date:Date = new Date()){
+  ageCalculator(date: Date = new Date()) {
     const convertAge = new Date(date);
     const timeDiff = Math.abs(Date.now() - convertAge.getTime());
-    const tahun = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
-    const bulan = Math.floor((timeDiff / (1000 * 3600 * 24))/30.4375);
+    const tahun = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+    const bulan = Math.floor(timeDiff / (1000 * 3600 * 24) / 30.4375);
     return tahun > 0 ? `${tahun} tahun` : `${bulan} bulan`;
   }
 }

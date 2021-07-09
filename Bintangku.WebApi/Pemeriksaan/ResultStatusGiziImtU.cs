@@ -1,11 +1,10 @@
-using Bintangku.WebApi.Data.DTO;
 using Bintangku.WebApi.Data.DTO.Pemeriksaan;
 
 namespace Bintangku.WebApi.Pemeriksaan
 {
     public class ResultStatusGiziImtU
     {
-        public int IMT { get; set; }
+        public double IMT { get; set; }
         public string StatusGizi { get; set; } = "";
         public string Tindakan { get; set; } = "";
         private readonly PemeriksaanStatusGiziImtUDto _dto;
@@ -18,7 +17,8 @@ namespace Bintangku.WebApi.Pemeriksaan
         
         private void Result()
         {
-            IMT = _dto.BeratBadan * (_dto.TinggiBadan^2); 
+            // FIXME: Perbaiki desimalnya
+            IMT = _dto.BeratBadan / (_dto.TinggiBadan * _dto.TinggiBadan); 
 
             if(_dto.ZCode > 2)
             {

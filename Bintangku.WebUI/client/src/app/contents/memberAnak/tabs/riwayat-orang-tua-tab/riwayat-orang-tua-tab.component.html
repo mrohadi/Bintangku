@@ -1,6 +1,4 @@
 <div class="mat-typography">
-  <h2 class="text-center">Riwayat Kelahiran Anak</h2>
-  <hr>
   <table class="table-fixed w-full">
     <thead>
       <tr>
@@ -10,8 +8,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of tableRow">
-        <td class="border px-4 py-2 font-medium">{{objRow[item]}}</td>
-        <td class="border px-4 py-2 font-medium">{{riwayatOrangTua[item]}}</td>
+        <td class="border px-4 py-2 font-medium">{{ objRow[item] }}</td>
+        <td class="border px-4 py-2 font-medium">
+          {{ riwayatOrangTua[item] }}
+        </td>
       </tr>
     </tbody>
   </table>

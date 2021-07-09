@@ -13,7 +13,9 @@ import { AnakDetailComponent } from './contents/memberAnak/anak-detail/anak-deta
 import { AnakEditComponent } from './contents/memberAnak/anak-edit/anak-edit.component';
 import { AnakPemeriksaanComponent } from './contents/memberAnak/anak-pemeriksaan/anak-pemeriksaan.component';
 import { AnakComponent } from './contents/memberAnak/anak/anak.component';
+import { GrafikTabComponent } from './contents/memberAnak/tabs/grafik-tab/grafik-tab.component';
 import { JadwalImunisasiTabComponent } from './contents/memberAnak/tabs/jadwal-imunisasi-tab/jadwal-imunisasi-tab.component';
+import { KesehatanGigiTabComponent } from './contents/memberAnak/tabs/kesehatan-gigi-tab/kesehatan-gigi-tab.component';
 import { KesehatanTabComponent } from './contents/memberAnak/tabs/kesehatan-tab/kesehatan-tab.component';
 import { RiwayatKelahiranTabComponent } from './contents/memberAnak/tabs/riwayat-kelahiran-tab/riwayat-kelahiran-tab.component';
 import { RiwayatOrangTuaTabComponent } from './contents/memberAnak/tabs/riwayat-orang-tua-tab/riwayat-orang-tua-tab.component';
@@ -53,10 +55,13 @@ const routes: Routes = [
           { path: '', redirectTo: 'kesehatan', pathMatch: 'full' },
           { path: 'kesehatan', component: AnakPemeriksaanComponent },
           { path: 'jadwal-imunisasi', component: JadwalImunisasiTabComponent },
-          { path: 'riwayat-kelahiran', component: RiwayatKelahiranTabComponent },
+          { path: 'grafik', component: GrafikTabComponent },
+          {
+            path: 'riwayat-kelahiran',
+            component: RiwayatKelahiranTabComponent,
+          },
           { path: 'riwayat-keluarga', component: RiwayatOrangTuaTabComponent },
-          { path: 'kesehatan-gigi', component: KesehatanTabComponent },
-
+          { path: 'kesehatan-gigi', component: KesehatanGigiTabComponent },
         ],
       },
 
