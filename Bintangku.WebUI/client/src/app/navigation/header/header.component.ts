@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { IsActiveMatchOptions, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountServices } from 'src/app/_services/account.service';
 
@@ -35,6 +35,13 @@ export class HeaderComponent {
   model: any = {};
   @Output() public sidenavToggle = new EventEmitter();
   flexDir = 'col-col';
+
+  iSactive: IsActiveMatchOptions ={
+    matrixParams: 'exact',
+    queryParams: 'exact',
+    paths: 'exact',
+    fragment: 'exact'
+  }
 
   constructor(
     public accountService: AccountServices,

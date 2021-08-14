@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { LoginComponent } from './contents/account/login/login.component';
 import { RegisterComponent } from './contents/account/register/register.component';
 import { AdminPanelComponent } from './contents/admin/admin-panel/admin-panel.component';
@@ -83,9 +83,12 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
-
+const optional:ExtraOptions = {
+  anchorScrolling: 'enabled',
+  relativeLinkResolution: 'legacy'
+}
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, optional)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
