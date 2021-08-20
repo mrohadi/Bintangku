@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component} from '@angular/core';
 interface Items {
   title: string;
   desc: string;
@@ -11,21 +10,21 @@ interface Items {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   registerMode = false;
   items: Items[] = [
     {
-      title: 'Riwayat kesehatan digital',
+      title: 'Riwayat Kesehatan Digital',
       desc: 'Kemudahan dalam pencatatan riwayat kesehatan, tumbuh kembang, nutrisi, dan imunisasi setiap anak',
       imgPath: '',
     },
     {
-      title: 'Pengingat imunisasi',
+      title: 'Pengingat Imunisasi',
       desc: 'Otomatisasi pengiriman pesan singkat ke setiap orang tua sebagai pengingat jadwal imunisasi',
       imgPath: '',
     },
     {
-      title: 'Konsultasi dengan Ahli',
+      title: 'Konsultasi Dengan Ahli',
       desc: 'Konsultasi masalah kesehatan dan pertumbuhan anak dengan ahli',
       imgPath: '',
     },
@@ -37,8 +36,6 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   registerToggle() {
     this.registerMode = !this.registerMode;
