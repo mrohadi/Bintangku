@@ -23,14 +23,16 @@
       <div class="flex relative justify-between">
         <div class="inline-flex items-center flex-col">
           <div class="w-0.5 bg-blue-500 h-24"></div>
-          <button
+          <a
+            routerLink="/home"
+            fragment="visi-kami"
             mat-fab
             color="primary"
             title="Lihat Lebih Lanjut"
             aria-label="Lihat Lebih Lanjut"
           >
             <mat-icon>arrow_downward</mat-icon>
-          </button>
+          </a>
         </div>
         <div class="inline-flex">
           <div class="flex absolute right-0" style="top: -88px">
@@ -146,7 +148,7 @@
                 <div class="pl-7">
                   <div class="mat-typography">
                     <h3 class="text-blue-700 font-bold">
-                      Cara {{ item.title }}
+                      {{ item.title }}
                     </h3>
                     <p class="opacity-60 text-justify">
                       {{ item.desc }}
@@ -288,17 +290,8 @@
             class="btn-auth"
             routerLinkActive="router-link-active"
           >
-            gabung sekarang
+            donasi sekarang
           </a>
-          <p></p>
-          <p>
-            Sudah bergabung?
-            <a
-              class="text-blue-500 hover:text-blue-700"
-              [routerLink]="['/login']"
-              >Login</a
-            >
-          </p>
         </div>
         <div app-grid item="true" xs="2">
           <div class="absolute top-0">

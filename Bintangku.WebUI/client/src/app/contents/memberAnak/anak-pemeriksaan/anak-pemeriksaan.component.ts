@@ -429,32 +429,43 @@ export class AnakPemeriksaanComponent implements OnInit {
    * @param index Index of ELEMENT_DATA
    */
   openModal(index: number) {
-    switch (index) {
-      case 0:
-        this.openLingkarKepala(this.idAnak);
-        break;
-      case 1:
-        this.openStatusGiziBbTb(this.idAnak);
-        break;
-      case 2:
-        this.openStatusGiziImtU(this.idAnak);
-        break;
-      case 3:
-        this.openStatusGiziTbU(this.idAnak);
-        break;
-      case 6:
-        this.openDayaLihat(this.idAnak);
-        break;
-      case 7:
-        this.openGpph(this.idAnak);
-        break;
-      case 8:
-        this.openKmpe(this.idAnak);
-        break;
-      case 9:
-        this.openMchat(this.idAnak);
-        break;
-    }
+    const modal = [
+      'openLingkarKepala',
+      'openStatusGiziBbTb',
+      'openStatusGiziImtU',
+      'openStatusGiziTbU',
+      'openDayaLihat',
+      'openGpph',
+      'openKmpe',
+      'openMchat'
+    ]
+    this[modal[index]](this.idAnak)
+    // switch (index) {
+    //   case 0:
+    //     this.openLingkarKepala(this.idAnak);
+    //     break;
+    //   case 1:
+    //     this.openStatusGiziBbTb(this.idAnak);
+    //     break;
+    //   case 2:
+    //     this.openStatusGiziImtU(this.idAnak);
+    //     break;
+    //   case 3:
+    //     this.openStatusGiziTbU(this.idAnak);
+    //     break;
+    //   case 6:
+    //     this.openDayaLihat(this.idAnak);
+    //     break;
+    //   case 7:
+    //     this.openGpph(this.idAnak);
+    //     break;
+    //   case 8:
+    //     this.openKmpe(this.idAnak);
+    //     break;
+    //   case 9:
+    //     this.openMchat(this.idAnak);
+    //     break;
+    // }
   }
 
   /**
